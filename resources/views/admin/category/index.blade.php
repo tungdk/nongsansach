@@ -20,7 +20,7 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><a href="{{route('admin.category.create')}}" class="btn btn-success">Thêm mới</a>
+                <h3 class="box-title"><a href="{{route('admin.category.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
                 </h3>
             </div>
             <div class="box-body">
@@ -31,6 +31,7 @@
                             <tr>
                                 <th style="width: 5%">#</th>
                                 <th style="width: 30%">Tên danh mục</th>
+                                <th style="width: 30%">Danh mục cha</th>
                                 <th style="width: 10%">Trạng thái</th>
                                 <th style="width: 20%">Thao tác</th>
                             </tr>
@@ -40,11 +41,12 @@
 
                                         <td>{{ $cate->id }}</td>
                                         <td>{{ $cate->name }}</td>
+                                        <td>{{ $cate->name }}</td>
                                         <td>
                                             @if($cate->status == 1)
-                                                <a href="" class="label label-info">Hiển thị</a>
+                                                <a href="{{route('admin.category.active', $cate->id)}}" class="label label-info">Hiển thị</a>
                                             @else
-                                                <a href="" class="label label-default">Ẩn</a>
+                                                <a href="{{route('admin.category.active', $cate->id)}}" class="label label-default">Ẩn</a>
                                             @endif
                                         </td>
                                         <td>

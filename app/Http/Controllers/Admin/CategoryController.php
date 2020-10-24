@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Components\Recusive;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RequestCategory;
 use App\Models\Category;
@@ -11,9 +12,9 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    private $category;
-    public function __construct(Category $category){
-        $this->category = $category;
+    private $cate;
+    public function __construct(Category $cate){
+        $this->category = $cate;
     }
 
     public function index(){
@@ -26,14 +27,44 @@ class CategoryController extends Controller
     }
 
     public function create(){
-        return view('admin.category.create');
+        $htmlOption = $this->getCategory($parentId = '');
+        return view('admin.category.create', compact('htmlOption'));
+    }
+
+    public function getCategory($parentId){
+        $data = Category::all();
+        $recusive = new Recusive($data);
+        $htmlOption = $recusive->categoryRecusive($parentId);
+        return $htmlOption;
     }
 
     public function store(RequestCategory $request){
-        $data = $request->except('_token');
-        $data['slug'] = Str::slug($request->name);
-        $id = Category::insertGetId($data);
-//        return redirect()->back();
+        $category = new Category();
+        $category->name = $request->name;
+        $category->parent_id = $request->parent_id;
+        $category->slug = Str::slug($request->name);
+        $category->save();
+        return redirect()->back();
+    }
+
+    public function edit($id){
+        $category = Category::find($id);
+        $htmlOption = $this->getCategory($category->parent_id);
+        return view('admin.category.update', compact('category','htmlOption'));
+    }
+    public function update(Request $request, $id){
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->parent_id = $request->parent_id;
+        $category->slug = Str::slug($request->name);
+        $category->save();
         return redirect()->route('admin.category.index');
+    }
+
+    public function active($id){
+        $category = Category::find($id);
+        $category->status = ! $category->status;
+        $category->save();
+        return redirect()->back();
     }
 }

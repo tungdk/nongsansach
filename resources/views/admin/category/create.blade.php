@@ -24,7 +24,7 @@
                 <div class="box-body">
                     <form role="form" action="" method="POST">
                         @csrf
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group {{ $errors->first('name' ? 'has-danger' : '') }}">
                                 <label for="name">Tên danh mục <span class="text-danger">(*)</span></label>
                                 <input type="text" class="form-control" name="name" placeholder="Nhập tên danh mục">
@@ -33,16 +33,17 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="name">Password</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1"
-                                       placeholder="Password">
+                                <label>Chọn danh mục cha</label>
+                                <select class="custom-select form-control" name="parent_id">
+                                    <option value="0">Chọn danh mục cha</option>
+                                    {!! $htmlOption !!}
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="box-footer text-center">
-                                <button type="submit" class="btn btn-primary">Lưu dữ liệu</button>
-                                <a href="{{route('admin.category.index')}}" class="btn btn-primary">Quay lại</a>
-
+                                <a href="{{route('admin.category.index')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Quay lại</a>
+                                <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
                         </div>
 

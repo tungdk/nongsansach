@@ -101,7 +101,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('admin.category.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+                    <li><a href="{{route('admin.category.create')}}"><i class="fa fa-circle-o"></i> Thêm mới danh mục</a></li>
                     <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
                 </ul>
             </li>
