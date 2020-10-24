@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\CategoryController;
+use \App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,15 +14,14 @@ use \App\Http\Controllers\Admin\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::group(['prefix'=>'admin'], function (){
     Route::get('/', function () {
         return view('admin.index');
-    });
+    })->name('admin.dashboard');
+
+    Route::get('/dashboard', function () {
+        return view('admin.index');
+    })->name('admin.dashboard');
 
     //Category
     Route::group(['prefix'=>'category'], function (){
