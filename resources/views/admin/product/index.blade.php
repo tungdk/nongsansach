@@ -32,6 +32,8 @@
                                 <th style="width: 5%">#</th>
                                 <th style="width: 30%">Tên</th>
                                 <th style="width: 30%">Ảnh</th>
+                                <th>Giá</th>
+                                <th>Giá sale</th>
                                 <th style="width: 10%">Trạng thái</th>
                                 <th style="width: 20%">Thao tác</th>
                             </tr>
@@ -41,7 +43,9 @@
 
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->image }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>{{ $product->sale }}</td>
                                         <td>
                                             @if($product->status == 1)
                                                 <a href="{{route('admin.product.active', $product->id)}}" class="label label-info">Hiển thị</a>

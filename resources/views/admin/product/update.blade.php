@@ -1,5 +1,5 @@
 @extends('layouts.layout_admin')
-@section('title', 'Thêm mới sản phẩm')
+@section('title', 'Cập nhật sản phẩm')
 @section('content')
 
     <!-- Content Header (Page header) -->

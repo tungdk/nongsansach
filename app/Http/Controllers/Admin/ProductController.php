@@ -14,8 +14,11 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::all();
-        return view('admin.product.index', compact('products'));
+        $products = Product::paginate(10);
+        $viewData = [
+            'products' => $products
+        ];
+        return view('admin.product.index', $viewData);
     }
 
     public function create(){
