@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -45,9 +46,17 @@ class ProductController extends Controller
 
     public function edit($id){
         $product = Product::findOrFail($id);
-        return view('admin.product.update', compact('product'));
+        $categories = Category::all();
+        $units=Unit::all();
+        return view('admin.product.update', compact('product', 'categories', 'units'));
     }
-    public function update(){
+    public function update(ProductRequest $request, $id){
+        $product = Product::find($id);
+        $data = $request->except('_token');
+        $data['slug'] = Str::slug($request->name);
+        $data['updated_at'] = Carbon::now();
+        $product->update($data);
 
+        return redirect()->back();
     }
 }
