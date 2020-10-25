@@ -8,7 +8,7 @@
             Quản lý danh mục sản phẩm
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('admin.category.index')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
+            <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
             <li><a href="{{route('admin.category.index')}}">Danh mục sản phẩm</a></li>
             <li class="active">Danh sách</li>
         </ol>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\ProductController;
+use \App\Http\Controllers\Admin\DashboardController;
+use \App\Http\Controllers\Admin\UnitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,13 +17,10 @@ use \App\Http\Controllers\Admin\ProductController;
 */
 
 Route::group(['prefix'=>'admin'], function (){
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('admin.dashboard');
 
-    Route::get('/dashboard', function () {
-        return view('admin.index');
-    })->name('admin.dashboard');
+    //dashboard
+    Route::get('', [DashboardController::class, 'index']) ->name('admin.dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index']) ->name('admin.dashboard');
 
     //Category
     Route::group(['prefix'=>'category'], function (){
@@ -40,6 +39,19 @@ Route::group(['prefix'=>'admin'], function (){
 
     });
 
+    //Unit
+    Route::group(['prefix'=>'unit'], function (){
+
+        Route::get('', [UnitController::class, 'index'])->name('admin.unit.index');
+        Route::get('create', [UnitController::class, 'create'])->name('admin.unit.create');
+        Route::post('create', [UnitController::class, 'store']);
+
+        Route::get('edit/{id}', [UnitController::class, 'edit'])->name('admin.unit.edit');
+        Route::post('edit/{id}', [UnitController::class, 'update']);
+
+        Route::get('active/{id}', [UnitController::class, 'active'])->name('admin.unit.active');
+        Route::delete('delete/{id}', [UnitController::class, 'delete'])->name('admin.unit.delete');
+    });
 
     //Product
     Route::group(['prefix'=>'product'], function (){

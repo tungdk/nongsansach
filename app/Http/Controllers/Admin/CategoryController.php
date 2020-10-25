@@ -12,11 +12,6 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    private $cate;
-    public function __construct(Category $cate){
-        $this->category = $cate;
-    }
-
     public function index(){
 //        $categories = DB::table('categories')->paginate(1);
         $categories = Category::all();

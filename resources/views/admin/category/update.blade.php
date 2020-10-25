@@ -8,7 +8,7 @@
             Cập nhật danh mục sản phẩm
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('admin.category.index')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
+            <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
             <li><a href="{{route('admin.category.index')}}">Danh mục sản phẩm</a></li>
             <li class="active">Sửa</li>
         </ol>
@@ -41,8 +41,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="box-footer text-center">
-                                <button type="submit" class="btn btn-primary">Lưu dữ liệu</button>
-                                <a href="{{route('admin.category.index')}}" class="btn btn-primary">Quay lại</a>
+                                <a href="{{route('admin.category.index')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Quay lại</a>
+                                <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
 
                             </div>
                         </div>

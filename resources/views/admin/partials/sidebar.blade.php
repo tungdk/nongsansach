@@ -27,13 +27,13 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <i class="fa fa-dashboard"></i> <span>Bảng tin</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                    <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-circle-o"></i> Bảng tin</a></li>
                     <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                 </ul>
             </li>
@@ -105,24 +105,18 @@
                     <li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
+
+            <li>
+                <a href="{{route('admin.product.index')}}">
                     <i class="fa fa-table"></i> <span>Sản phẩm</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('admin.product.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                </ul>
             </li>
             <li>
-                <a href="../calendar.html">
-                    <i class="fa fa-calendar"></i> <span>Calendar</span>
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-calendar"></i> <span>Đơn vị</span>
                     <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
             </span>
                 </a>
             </li>
