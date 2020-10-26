@@ -64,6 +64,8 @@ Route::group(['prefix'=>'admin'], function (){
         Route::post('edit/{id}', [ProductController::class, 'update']);
 
         Route::get('active/{id}', [ProductController::class, 'active'])->name('admin.product.active');
+        Route::get('hot/{id}', [ProductController::class, 'hot'])->name('admin.product.hot');
+
         Route::delete('delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
 
 

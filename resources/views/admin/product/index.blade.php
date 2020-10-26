@@ -29,13 +29,14 @@
                         <table class="table">
                             <tbody>
                             <tr>
-                                <th style="width: 5%">#</th>
-                                <th style="width: 30%">Tên</th>
-                                <th style="width: 30%">Ảnh</th>
+                                <th>#</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
                                 <th>Giá</th>
                                 <th>Giá sale</th>
-                                <th style="width: 10%">Trạng thái</th>
-                                <th style="width: 20%">Thao tác</th>
+                                <th>Trạng thái</th>
+                                <th>Nổi bật</th>
+                                <th>Thao tác</th>
                             </tr>
                             @if(isset($products))
                                 @foreach($products as $product)
@@ -43,14 +44,23 @@
 
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->image }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->sale }}</td>
+                                        <td>
+                                            <img src="{{pare_url_file($product->avatar) }}" style="width: 80px; height: 80px" alt="">
+                                        </td>
+                                        <td>{{ number_format($product->price, 0,',','.') }} vnđ</td>
+                                        <td>{{ number_format($product->sale, 0,',','.') }} vnđ</td>
                                         <td>
                                             @if($product->status == 1)
                                                 <a href="{{route('admin.product.active', $product->id)}}" class="label label-info">Hiển thị</a>
                                             @else
                                                 <a href="{{route('admin.product.active', $product->id)}}" class="label label-default">Ẩn</a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($product->hot == 1)
+                                                <a href="{{route('admin.product.hot', $product->id)}}" class="label label-info">Nổi bật</a>
+                                            @else
+                                                <a href="{{route('admin.product.hot', $product->id)}}" class="label label-default">Ẩn</a>
                                             @endif
                                         </td>
                                         <td>

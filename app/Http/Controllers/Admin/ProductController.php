@@ -35,10 +35,13 @@ class ProductController extends Controller
     }
 
     public function store(ProductRequest $request){
-//        $product = new Product();
-//        $product->name = $request->name;
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'avatar');
         $data['slug'] = Str::slug($request->name);
+        if($request->avatar){
+            $image = upload_image('avatar');
+            if($image['code'] == 1)
+                $data['avatar'] = $image['name'];
+        }
         Product::insertGetId($data);
         return redirect()->back();
 
@@ -52,11 +55,28 @@ class ProductController extends Controller
     }
     public function update(ProductRequest $request, $id){
         $product = Product::find($id);
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'avatar');
         $data['slug'] = Str::slug($request->name);
         $data['updated_at'] = Carbon::now();
+        if($request->avatar){
+            $image = upload_image('avatar');
+            if($image['code'] == 1)
+                $data['avatar'] = $image['name'];
+        }
         $product->update($data);
 
+        return redirect()->back();
+    }
+    public function active($id){
+        $product = Product::find($id);
+        $product->status = ! $product->status;
+        $product->save();
+        return redirect()->back();
+    }
+    public function hot($id){
+        $product = Product::find($id);
+        $product->hot = ! $product->hot;
+        $product->save();
         return redirect()->back();
     }
 }

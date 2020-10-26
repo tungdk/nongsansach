@@ -114,7 +114,7 @@
                     <a href="javascript:;" class="btn btn-primary">Choose File....
                         <input type="file"
                                style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"
-                               name="picture" size="40" class="js-upload">
+                               name="avatar" size="40" class="js-upload">
                     </a>
                     &nbsp;
                     <span class="label label-info" id="upload-file-info"></span>
@@ -140,7 +140,7 @@
                     <a href="javascript:;" class="btn btn-primary">Choose File....
                         <input type="file"
                                style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"
-                               name="picture" size="40" class="js-upload">
+                               name="avatar" size="40" class="js-upload">
                     </a>
                     &nbsp;
                     <span class="label label-info" id="upload-file-info"></span>
