@@ -5,6 +5,8 @@ use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\ProductController;
 use \App\Http\Controllers\Admin\DashboardController;
 use \App\Http\Controllers\Admin\UnitController;
+use \App\Http\Controllers\Admin\PostCategoryController;
+use \App\Http\Controllers\Admin\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +71,38 @@ Route::group(['prefix'=>'admin'], function (){
         Route::delete('delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
 
 
+
+    });
+
+    //Post
+    Route::group(['prefix'=>'post'], function (){
+        //Category post
+        Route::group(['prefix'=>'category'], function (){
+            Route::get('', [PostCategoryController::class, 'index'])->name('admin.postcate.index');
+            Route::get('create', [PostCategoryController::class, 'create'])->name('admin.postcate.create');
+            Route::post('create', [PostCategoryController::class, 'store']);
+
+            Route::get('edit/{id}', [PostCategoryController::class, 'edit'])->name('admin.postcate.edit');
+            Route::post('edit/{id}', [PostCategoryController::class, 'update']);
+
+            Route::get('active/{id}', [PostCategoryController::class, 'active'])->name('admin.postcate.active');
+            Route::get('hot/{id}', [PostCategoryController::class, 'hot'])->name('admin.postcate.hot');
+
+            Route::delete('delete/{id}', [PostCategoryController::class, 'delete'])->name('admin.postcate.delete');
+        });
+
+        //Post
+        Route::get('', [PostController::class, 'index'])->name('admin.post.index');
+        Route::get('create', [PostController::class, 'create'])->name('admin.post.create');
+        Route::post('create', [PostController::class, 'store']);
+
+        Route::get('edit/{id}', [PostController::class, 'edit'])->name('admin.post.edit');
+        Route::post('edit/{id}', [PostController::class, 'update']);
+
+        Route::get('active/{id}', [PostController::class, 'active'])->name('admin.post.active');
+        Route::get('hot/{id}', [PostController::class, 'hot'])->name('admin.post.hot');
+
+        Route::delete('delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
 
     });
 });

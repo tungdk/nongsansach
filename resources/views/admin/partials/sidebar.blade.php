@@ -38,27 +38,104 @@
                 </ul>
             </li>
 
-            <li>
+            <li class="{{ request()->is('admin/category*') ? 'active' : '' }}">
                 <a href="{{route('admin.category.index')}}">
-                    <i class="fa fa-table"></i> <span>Danh mục</span>
+                    <i class="fa fa-table " ></i> <span>Danh mục</span>
                     <span class="pull-right-container">
             </span>
                 </a>
             </li>
-            <li>
+            <li class="{{ request()->is('admin/product*') ? 'active' : '' }}">
                 <a href="{{route('admin.product.index')}}">
-                    <i class="fa fa-table"></i> <span>Sản phẩm</span>
+                    <i class="fa fa-product-hunt"></i> <span>Sản phẩm</span>
+                    <span class="pull-right-container"></span>
+                </a>
+            </li>
+            <li class="{{ request()->is('admin/unit*') ? 'active' : '' }}">
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-balance-scale"></i> <span>Đơn vị</span>
                     <span class="pull-right-container">
             </span>
                 </a>
             </li>
+
+            <li class="treeview {{ request()->is('admin/post*') ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ request()->is('admin/post/category*') ? 'active' : '' }}" ><a href="{{route('admin.postcate.index')}}"><i class="fa fa-circle-o"></i> Danh mục</a></li>
+                    <li><a href="{{route('admin.post.index')}}"><i class="fa fa-circle-o"></i> Bài viêt</a></li>
+                </ul>
+            </li>
+
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cart-arrow-down"></i> <span> Đơn hàng</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-circle-o"></i> Chờ xác nhận</a></li>
+                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Đã huỷ</a></li>
+                </ul>
+            </li>
+
+
             <li>
                 <a href="{{route('admin.unit.index')}}">
-                    <i class="fa fa-calendar"></i> <span>Đơn vị</span>
+                    <i class="fa fa-tags"></i> <span> Mã giảm giá</span>
                     <span class="pull-right-container">
             </span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-calendar"></i> <span> Sự kiện</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-users"></i> <span> Khách hàng</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-comments"></i> <span> Bình luận</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-id-card"></i> <span> Phản hồi</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-cogs"></i> <span> Cài đặt chung</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
             <li>
                 <a href="../mailbox/mailbox.html">
                     <i class="fa fa-envelope"></i> <span>Mailbox</span>
@@ -69,7 +146,6 @@
             </span>
                 </a>
             </li>
-            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
