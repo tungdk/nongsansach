@@ -40,4 +40,10 @@ class CouponController extends Controller
         return redirect()->back();
     }
 
+    public function active($id){
+        $coupon = Coupon::find($id);
+        $coupon->status = ! $coupon->status;
+        $coupon->save();
+        return redirect()->back();
+    }
 }
