@@ -32,9 +32,24 @@
                                     <span class="text-danger">{{ $errors->first('config_key') }}</span>
                                 @endif
                             </div>
+
+                            @if(request()->type === 'Text')
+                                <input type="hidden" name="type" value="text">
+                            @elseif(request()->type === 'Textarea')
+                                <input type="hidden" name="type" value="textarea">
+                            @elseif(request()->type === 'Ckeditor')
+                                <input type="hidden" name="type" value="ckeditor">
+                            @endif
+
                             <div class="form-group {{ $errors->first('config_value' ? 'has-danger' : '') }}">
                                 <label for="name">Giá trị <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="config_value" placeholder="Nhập giá trị">
+                                @if(request()->type === 'Text')
+                                    <input type="text" class="form-control" name="config_value" placeholder="Nhập giá trị">
+                                @elseif(request()->type === 'Textarea')
+                                    <textarea class="form-control" name="config_value" placeholder="Nhập giá trị" rows="5"></textarea>
+                                @elseif(request()->type === 'Ckeditor')
+                                    <textarea class="form-control" id="config_value" name="config_value" placeholder="Nhập giá trị"></textarea>
+                                @endif
                                 @if($errors->first('config_value'))
                                     <span class="text-danger">{{ $errors->first('config_value') }}</span>
                                 @endif
@@ -59,4 +74,10 @@
 
     </section>
     <!-- /.content -->
+@endsection
+@section('js')
+    <script src="{{asset('adminlte/ckeditor/ckeditor.js')}}"></script>
+    <script>
+        CKEDITOR.replace('config_value');
+    </script>
 @endsection

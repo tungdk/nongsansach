@@ -20,8 +20,20 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><a href="{{route('admin.setting.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
-                </h3>
+                <div class="btn-group float-right" >
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></button>
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{route('admin.setting.create') . '?type=Text'}}">Text</a></li>
+                            <li><a href="{{route('admin.setting.create') . '?type=Textarea'}}">Textarea</a></li>
+                            <li><a href="{{route('admin.setting.create') . '?type=Ckeditor'}}">Ckeditor</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="box-body">
                 <div class="col-md-12">
