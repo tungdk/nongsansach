@@ -54,4 +54,11 @@ class PostController extends Controller
         $post->update($data);
         return redirect()->back();
     }
+
+    public function active($id){
+        $post = Post::find($id);
+        $post->status = ! $post->status;
+        $post->save();
+        return redirect()->back();
+    }
 }
