@@ -37,4 +37,11 @@ class PostCategoryController extends Controller
         $postcate->save();
         return redirect()->back();
     }
+
+    public function active($id){
+        $postcate = PostCategory::find($id);
+        $postcate->status = ! $postcate->status;
+        $postcate->save();
+        return redirect()->back();
+    }
 }
