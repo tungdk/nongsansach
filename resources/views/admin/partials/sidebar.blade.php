@@ -129,7 +129,7 @@
             </li>
 
             <li>
-                <a href="{{route('admin.unit.index')}}">
+                <a href="{{route('admin.setting.index')}}">
                     <i class="fa fa-cogs"></i> <span> Cài đặt chung</span>
                     <span class="pull-right-container">
             </span>

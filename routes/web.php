@@ -8,6 +8,7 @@ use \App\Http\Controllers\Admin\UnitController;
 use \App\Http\Controllers\Admin\PostCategoryController;
 use \App\Http\Controllers\Admin\CouponController;
 use \App\Http\Controllers\Admin\PostController;
+use \App\Http\Controllers\Admin\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -122,6 +123,20 @@ Route::group(['prefix'=>'admin'], function (){
 
         Route::get('active/{id}', [CouponController::class, 'active'])->name('admin.coupon.active');
         Route::delete('delete/{id}', [CouponController::class, 'delete'])->name('admin.coupon.delete');
+    });
+
+    //Setting
+    Route::group(['prefix'=>'setting'], function (){
+
+        Route::get('', [SettingController::class, 'index'])->name('admin.setting.index');
+        Route::get('create', [SettingController::class, 'create'])->name('admin.setting.create');
+        Route::post('create', [SettingController::class, 'store']);
+
+        Route::get('edit/{id}', [SettingController::class, 'edit'])->name('admin.setting.edit');
+        Route::post('edit/{id}', [SettingController::class, 'update']);
+
+        Route::get('active/{id}', [SettingController::class, 'active'])->name('admin.setting.active');
+        Route::delete('delete/{id}', [SettingController::class, 'delete'])->name('admin.setting.delete');
     });
 
 
