@@ -14,7 +14,7 @@ class CategoryController extends Controller
 {
     public function index(){
 //        $categories = DB::table('categories')->paginate(1);
-        $categories = Category::all();
+        $categories = Category::all()->sortByDesc('created_at');
         $data = [
             'categories' => $categories
         ];

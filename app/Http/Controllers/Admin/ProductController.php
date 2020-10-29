@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::paginate(10);
+        $products = Product::sortByDesc('created_at')->paginate(10);
         $viewData = [
             'products' => $products
         ];

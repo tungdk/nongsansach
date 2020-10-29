@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CouponController extends Controller
 {
     public function index(){
-        $coupons = Coupon::all();
+        $coupons = Coupon::all()->sortByDesc('created_at');
         return view('admin.coupon.index', compact('coupons'));
     }
 

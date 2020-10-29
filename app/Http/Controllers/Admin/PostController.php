@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::where('status',1)->get();
+        $posts = Post::where('status',1)->sortByDesc('created_at')->get();
         return view('admin.post.index', compact('posts'));
     }
 

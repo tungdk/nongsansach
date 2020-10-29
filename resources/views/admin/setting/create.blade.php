@@ -48,7 +48,7 @@
                                 @elseif(request()->type === 'Textarea')
                                     <textarea class="form-control" name="config_value" placeholder="Nhập giá trị" rows="5"></textarea>
                                 @elseif(request()->type === 'Ckeditor')
-                                    <textarea class="form-control" id="config_value" name="config_value" placeholder="Nhập giá trị"></textarea>
+                                    <textarea class="form-control" id="config_value_setting" name="config_value" placeholder="Nhập giá trị"></textarea>
                                 @endif
                                 @if($errors->first('config_value'))
                                     <span class="text-danger">{{ $errors->first('config_value') }}</span>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="box-footer text-center">
-                                <a href="{{route('admin.category.index')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Quay lại</a>
+                                <a href="{{route('admin.setting.index')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Quay lại</a>
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
                         </div>
@@ -78,6 +78,6 @@
 @section('js')
     <script src="{{asset('adminlte/ckeditor/ckeditor.js')}}"></script>
     <script>
-        CKEDITOR.replace('config_value');
+        CKEDITOR.replace('config_value_setting');
     </script>
 @endsection

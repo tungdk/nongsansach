@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class PostCategoryController extends Controller
 {
     public function index(){
-        $postcates = PostCategory::all();
+        $postcates = PostCategory::all()->sortByDesc('created_at');
         return view('admin.post_category.index', compact('postcates'));
     }
     public function create(){

@@ -44,6 +44,7 @@
                                 <th style="width: 5%">#</th>
                                 <th style="width: 30%">Tên</th>
                                 <th style="width: 30%">Giá trị</th>
+                                <th >Kiểu</th>
                                 <th style="width: 10%">Trạng thái</th>
                                 <th style="width: 20%">Thao tác</th>
                             </tr>
@@ -54,6 +55,7 @@
                                         <td>{{ $setting->id }}</td>
                                         <td>{{ $setting->config_key }}</td>
                                         <td><textarea rows="4" cols="50" disabled>{{ $setting->config_value }}</textarea> </td>
+                                        <td>{{ $setting->type }}</td>
                                         <td>
                                             @if($setting->status == 1)
                                                 <a href="{{route('admin.setting.active', $setting->id)}}" class="label label-info">Hiển thị</a>
