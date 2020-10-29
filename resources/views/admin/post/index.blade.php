@@ -30,43 +30,34 @@
                             <tbody>
                             <tr>
                                 <th>#</th>
-                                <th>Tên</th>
+                                <th>Tiêu đề</th>
                                 <th>Ảnh</th>
-                                <th>Giá</th>
-                                <th>Giá sale</th>
+                                <th>Lượt xem</th>
+                                <th>Ngày đăng</th>
                                 <th>Trạng thái</th>
-                                <th>Nổi bật</th>
                                 <th>Thao tác</th>
                             </tr>
-                            @if(isset($products))
-                                @foreach($products as $product)
+                            @if(isset($posts))
+                                @foreach($posts as $post)
                                     <tr>
-
-                                        <td>{{ $product->id }}</td>
-                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $post->id }}</td>
+                                        <td>{{ $post->title }}</td>
                                         <td>
-                                            <img src="{{pare_url_file($product->avatar) }}" style="width: 80px; height: 80px" alt="">
+                                            <img src="{{pare_url_file($post->thumbnail) }}" style="width: 80px; height: 80px" alt="">
                                         </td>
-                                        <td>{{ number_format($product->price, 0,',','.') }} vnđ</td>
-                                        <td>{{ number_format($product->sale, 0,',','.') }} vnđ</td>
+                                        <td>{{ $post->views }}</td>
+                                        <td>{{ $post->created_at }}</td>
                                         <td>
-                                            @if($product->status == 1)
-                                                <a href="{{route('admin.product.active', $product->id)}}" class="label label-info">Hiển thị</a>
+                                            @if($post->status == 1)
+                                                <a href="{{route('admin.post.active', $post->id)}}" class="label label-info">Hiển thị</a>
                                             @else
-                                                <a href="{{route('admin.product.active', $product->id)}}" class="label label-default">Ẩn</a>
+                                                <a href="{{route('admin.post.active', $post->id)}}" class="label label-default">Ẩn</a>
                                             @endif
                                         </td>
                                         <td>
-                                            @if($product->hot == 1)
-                                                <a href="{{route('admin.product.hot', $product->id)}}" class="label label-info">Nổi bật</a>
-                                            @else
-                                                <a href="{{route('admin.product.hot', $product->id)}}" class="label label-default">Ẩn</a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{route('admin.product.edit', $product->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
+                                            <a href="{{route('admin.post.edit', $post->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                                                 Sửa</a>
-                                            <a href="{{route('admin.product.delete', $product->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
+                                            <a href="{{route('admin.post.delete', $post->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
                                         </td>
 
                                     </tr>

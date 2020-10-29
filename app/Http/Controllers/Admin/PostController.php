@@ -30,6 +30,7 @@ class PostController extends Controller
             if($image['code'] == 1)
                 $data['thumbnail'] = $image['name'];
         }
+        $data['created_at'] = Carbon::now();
         Post::insertGetId($data);
         return redirect()->back();
     }
