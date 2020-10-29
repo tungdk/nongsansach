@@ -30,10 +30,12 @@
                             <tbody>
                             <tr>
                                 <th style="width: 5%">#</th>
-                                <th style="width: 30%">Tên danh mục</th>
-                                <th style="width: 30%">Danh mục cha</th>
-                                <th style="width: 10%">Trạng thái</th>
-                                <th style="width: 20%">Thao tác</th>
+                                <th>Tên mã giảm giá</th>
+                                <th>Mã code</th>
+                                <th>Giảm giá (%)</th>
+                                <th>Lượt sử dụng</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
                             </tr>
                             @if(isset($coupons))
                                 @foreach($coupons as $coupon)
@@ -41,7 +43,9 @@
 
                                         <td>{{ $coupon->id }}</td>
                                         <td>{{ $coupon->name }}</td>
-                                        <td>{{ $coupon->name }}</td>
+                                        <td>{{ $coupon->code }}</td>
+                                        <td>{{ $coupon->sale }}</td>
+                                        <td>{{ $coupon->count }}</td>
                                         <td>
                                             @if($coupon->status == 1)
                                                 <a href="{{route('admin.coupon.active', $coupon->id)}}" class="label label-info">Hiển thị</a>

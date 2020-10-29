@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 class CouponController extends Controller
 {
     public function index(){
-        return view('admin.coupon.index');
+        $coupons = Coupon::all();
+        return view('admin.coupon.index', compact('coupons'));
     }
 
     public function create(){
