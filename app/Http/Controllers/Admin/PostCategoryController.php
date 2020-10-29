@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 class PostCategoryController extends Controller
 {
     public function index(){
-        return view('admin.post_category.index');
+        $postcates = PostCategory::all();
+        return view('admin.post_category.index', compact('postcates'));
     }
     public function create(){
         return view('admin.post_category.create');
