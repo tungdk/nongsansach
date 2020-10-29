@@ -26,22 +26,16 @@
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('name' ? 'has-danger' : '') }}">
                                 <label for="name">Tên danh mục <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="name" value="{{$category->name}}" placeholder="Nhập tên danh mục" >
+                                <input type="text" class="form-control" name="name" value="{{$postcate->name}}" placeholder="Nhập tên danh mục" >
                                 @if($errors->first('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <label>Chọn danh mục cha</label>
-                                <select class="custom-select form-control" name="parent_id" >
-                                    <option value="0">Chọn danh mục cha</option>
-                                    {!! $htmlOption !!}
-                                </select>
-                            </div>
+
                         </div>
                         <div class="col-md-12">
                             <div class="box-footer text-center">
-                                <a href="{{route('admin.category.index')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Quay lại</a>
+                                <a href="{{route('admin.postcate.index')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Quay lại</a>
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
 
                             </div>

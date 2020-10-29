@@ -24,4 +24,17 @@ class PostCategoryController extends Controller
         $postcate->save();
         return redirect()->back();
     }
+
+    public function edit($id){
+        $postcate = PostCategory::find($id);
+        return view('admin.post_category.update', compact('postcate'));
+    }
+
+    public function update(PostCategoryRequest $request, $id){
+        $postcate = PostCategory::find($id);
+        $postcate->name = $request->name;
+        $postcate->slug = Str::slug($request->name);
+        $postcate->save();
+        return redirect()->back();
+    }
 }
