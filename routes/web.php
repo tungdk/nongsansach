@@ -6,6 +6,7 @@ use \App\Http\Controllers\Admin\ProductController;
 use \App\Http\Controllers\Admin\DashboardController;
 use \App\Http\Controllers\Admin\UnitController;
 use \App\Http\Controllers\Admin\PostCategoryController;
+use \App\Http\Controllers\Admin\CouponController;
 use \App\Http\Controllers\Admin\PostController;
 /*
 |--------------------------------------------------------------------------
@@ -102,11 +103,27 @@ Route::group(['prefix'=>'admin'], function (){
         Route::get('active/{id}', [PostController::class, 'active'])->name('admin.post.active');
         Route::get('hot/{id}', [PostController::class, 'hot'])->name('admin.post.hot');
 
-        Route::delete('delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
+        Route::get('delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
 
         //Post trash
         Route::get('trash', [PostController::class, 'trash'])->name('admin.post.trash');
 
     });
+
+    //Coupon
+    Route::group(['prefix'=>'coupon'], function (){
+
+        Route::get('', [CouponController::class, 'index'])->name('admin.coupon.index');
+        Route::get('create', [CouponController::class, 'create'])->name('admin.coupon.create');
+        Route::post('create', [CouponController::class, 'store']);
+
+        Route::get('edit/{id}', [CouponController::class, 'edit'])->name('admin.coupon.edit');
+        Route::post('edit/{id}', [CouponController::class, 'update']);
+
+        Route::get('active/{id}', [CouponController::class, 'active'])->name('admin.coupon.active');
+        Route::delete('delete/{id}', [CouponController::class, 'delete'])->name('admin.coupon.delete');
+    });
+
+
 });
 

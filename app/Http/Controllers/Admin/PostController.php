@@ -67,4 +67,10 @@ class PostController extends Controller
         $count_post = count($posts);
         return view('admin.post.trash', compact('posts','count_post'));
     }
+
+    public function delete($id){
+        $post = Post::find($id);
+        if($post) $post->delete();
+        return redirect()->back();
+    }
 }

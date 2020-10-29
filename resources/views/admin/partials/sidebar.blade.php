@@ -89,7 +89,7 @@
 
 
             <li>
-                <a href="{{route('admin.unit.index')}}">
+                <a href="{{route('admin.coupon.index')}}">
                     <i class="fa fa-tags"></i> <span> Mã giảm giá</span>
                     <span class="pull-right-container">
             </span>
