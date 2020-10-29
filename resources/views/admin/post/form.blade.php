@@ -9,18 +9,17 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Tiêu đề <span class="text-danger">(*)</span></label>
                     <input type="text" class="form-control" name="title" placeholder="Tiêu đề bài viết"
-                           value="{{ $product->name ?? old('name') }}">
-                    @if ($errors->first('name'))
-                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                           value="{{ $post->title ?? old('name') }}">
+                    @if ($errors->first('title'))
+                        <span class="text-danger">{{ $errors->first('title') }}</span>
                     @endif
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Mô tả ngắn <span class="text-danger">(*)</span></label>
-                    <textarea class="form-control" name="description" placeholder="Mô tả ngắn" rows="4"
-                              value="{{ $product->name ?? old('name') }}"></textarea>
-                    @if ($errors->first('name'))
-                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                    <textarea class="form-control" name="description" placeholder="Mô tả ngắn" rows="4">{{ $post->description ?? '' }}</textarea>
+                    @if ($errors->first('description'))
+                        <span class="text-danger">{{ $errors->first('description') }}</span>
                     @endif
                 </div>
 
@@ -31,7 +30,7 @@
                         @if(isset($postcates))
                             @foreach ($postcates as $postcate)
                                 <option
-                                    value="{{$postcate->id}}" {{ $product->category->id ?? 0 == $postcate->id ? "selected='selected'" : ""}}>
+                                    value="{{$postcate->id}}" {{ $post->post_category_id ?? 0 == $postcate->id ? "selected='selected'" : ""}}>
                                     {{$postcate->name}}</option>
                             @endforeach
                         @else
@@ -61,9 +60,9 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Chi tiết bài viết</label>
                     <textarea name="content" id="idContent" cols="5" rows="2"
-                              class="form-control">{{ $product->description ?? '' }}</textarea>
-                    @if ($errors->first('description'))
-                        <span class="text-danger">{{ $errors->first('description') }}</span>
+                              class="form-control">{{ $post->content ?? '' }}</textarea>
+                    @if ($errors->first('content'))
+                        <span class="text-danger">{{ $errors->first('content') }}</span>
                     @endif
                 </div>
             </div>
@@ -76,7 +75,7 @@
             </div>
             <div class="box-body block-images">
                 <div style="margin-bottom: 10px">
-                    <img src="/images/no-image.jpg" class="img-thumbnail"
+                    <img src="{{ isset($post->thumbnail) ? pare_url_file($post->thumbnail) : '/images/no-image.jpg' }}" class="img-thumbnail"
                          onerror="this.onerror=null;this.src='images/no-image.jpg'" alt=""
                          style="width:200px; height:200px">
                 </div>
@@ -97,7 +96,7 @@
         <div class="box-footer text-center">
             <div class="col-sm-12">
                 <a href="{{route('admin.post.index')}}" class="btn btn-default"> <i class="fa fa-undo"></i> Quay lại</a>
-                <button type="submit" class="btn btn-success">{{ isset($product) ? "Cập nhật" :"Thêm mới"}} <i
+                <button type="submit" class="btn btn-success">{{ isset($post) ? "Cập nhật" :"Thêm mới"}} <i
                         class="fa fa-save"></i></button>
             </div>
         </div>

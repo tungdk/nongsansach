@@ -34,4 +34,24 @@ class PostController extends Controller
         Post::insertGetId($data);
         return redirect()->back();
     }
+
+    public function edit($id){
+        $post = Post::find($id);
+        $postcates = PostCategory::all();
+        return view('admin.post.update', compact('post', 'postcates'));
+    }
+
+    public function update(PostRequest $request, $id){
+        $post = Post::find($id);
+        $data = $request->except('_token', 'thumbnail');
+        $data['slug'] = Str::slug($request->title);
+        if($request->thumbnail){
+            $image = upload_image('thumbnail');
+            if($image['code'] == 1)
+                $data['thumbnail'] = $image['name'];
+        }
+        $data['updated_at'] = Carbon::now();
+        $post->update($data);
+        return redirect()->back();
+    }
 }

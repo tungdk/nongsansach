@@ -32,6 +32,7 @@
                                 <th>#</th>
                                 <th>Tiêu đề</th>
                                 <th>Ảnh</th>
+                                <th>Danh mục</th>
                                 <th>Lượt xem</th>
                                 <th>Ngày đăng</th>
                                 <th>Trạng thái</th>
@@ -45,6 +46,7 @@
                                         <td>
                                             <img src="{{pare_url_file($post->thumbnail) }}" style="width: 80px; height: 80px" alt="">
                                         </td>
+                                        <td>{{ $post->postcate->name }}</td>
                                         <td>{{ $post->views }}</td>
                                         <td>{{ $post->created_at }}</td>
                                         <td>

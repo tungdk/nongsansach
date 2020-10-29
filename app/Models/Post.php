@@ -9,4 +9,10 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = 'posts';
+    protected $guarded = [];
+
+    public function postcate()
+    {
+        return $this->belongsTo('App\Models\PostCategory','post_category_id','id');
+    }
 }
