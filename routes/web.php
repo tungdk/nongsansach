@@ -104,6 +104,9 @@ Route::group(['prefix'=>'admin'], function (){
 
         Route::delete('delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
 
+        //Post trash
+        Route::get('trash', [PostController::class, 'trash'])->name('admin.post.trash');
+
     });
 });
 

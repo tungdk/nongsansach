@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::all();
+        $posts = Post::where('status',1)->get();
         return view('admin.post.index', compact('posts'));
     }
 
@@ -60,5 +60,11 @@ class PostController extends Controller
         $post->status = ! $post->status;
         $post->save();
         return redirect()->back();
+    }
+
+    public function trash(){
+        $posts = Post::where('status',0)->get();
+        $count_post = count($posts);
+        return view('admin.post.trash', compact('posts','count_post'));
     }
 }
