@@ -53,7 +53,7 @@
 
                                         <td>{{ $setting->id }}</td>
                                         <td>{{ $setting->config_key }}</td>
-                                        <td>{{ $setting->config_value }}</td>
+                                        <td><textarea rows="4" cols="50" disabled>{{ $setting->config_value }}</textarea> </td>
                                         <td>
                                             @if($setting->status == 1)
                                                 <a href="{{route('admin.setting.active', $setting->id)}}" class="label label-info">Hiển thị</a>

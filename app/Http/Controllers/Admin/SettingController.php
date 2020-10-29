@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
     public function index(){
-        return view('admin.setting.index');
+        $settings = Setting::all();
+        return view('admin.setting.index', compact('settings'));
     }
 
     public function create(){
