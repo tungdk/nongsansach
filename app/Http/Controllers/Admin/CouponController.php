@@ -26,4 +26,18 @@ class CouponController extends Controller
         return redirect()->back();
     }
 
+    public function edit($id){
+        $coupon = Coupon::find($id);
+        return view('admin.coupon.update', compact('coupon'));
+
+    }
+
+    public function update(CouponRequest $request, $id){
+        $coupon = Coupon::find($id);
+        $data = $request->except('_token');
+        $data['updated_at'] = Carbon::now();
+        $coupon->update($data);
+        return redirect()->back();
+    }
+
 }

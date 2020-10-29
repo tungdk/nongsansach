@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Thêm mới danh mục sản phẩm
+            Thêm mới mã giảm giá
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
