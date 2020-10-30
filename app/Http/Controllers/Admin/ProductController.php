@@ -15,7 +15,18 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::sortByDesc('created_at')->paginate(10);
+        if(request()->type === 'active'){
+            $products = Product::where('status', 1)->where('quantity', '>', 10)->paginate(10)->sortByDesc('created_at');
+        }
+        elseif(request()->type === 'soldout'){
+            $products = Product::where('quantity', '<=', 10)->paginate(10)->sortByDesc('created_at');
+        }
+        elseif(request()->type === 'unlisted'){
+            $products = Product::where('status', 0)->paginate(10)->sortByDesc('created_at');
+        }
+        else{
+            $products = Product::paginate(10)->sortByDesc('created_at');
+        }
         $viewData = [
             'products' => $products
         ];

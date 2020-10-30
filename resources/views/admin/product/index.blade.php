@@ -20,8 +20,22 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><a href="{{route('admin.product.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
+                <h3 class="box-title pull-right"><a href="{{route('admin.product.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
                 </h3>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item @if(request()->type === 'all') active @endif">
+                        <a class="nav-link " href="{{route('admin.product.index') . '?type=all'}}">Tất cả</a>
+                    </li>
+                    <li class="nav-item @if(request()->type === 'active') active @endif">
+                        <a class="nav-link" href="{{route('admin.product.index') . '?type=active'}}">Còn hàng</a>
+                    </li>
+                    <li class="nav-item @if(request()->type === 'soldout') active @endif">
+                        <a class="nav-link" href="{{route('admin.product.index') . '?type=soldout'}}">Hết hàng</a>
+                    </li>
+                    <li class="nav-item @if(request()->type === 'unlisted') active @endif">
+                        <a class="nav-link" href="{{route('admin.product.index') . '?type=unlisted'}}">Đã ẩn</a>
+                    </li>
+                </ul>
             </div>
             <div class="box-body">
                 <div class="col-md-12">
@@ -30,25 +44,46 @@
                             <tbody>
                             <tr>
                                 <th>#</th>
-                                <th>Tên</th>
-                                <th>Ảnh</th>
+                                <th>Sản phẩm</th>
+{{--                                <th>Ảnh</th>--}}
                                 <th>Giá</th>
                                 <th>Giá sale</th>
+                                <th>Số lượng</th>
                                 <th>Trạng thái</th>
                                 <th>Nổi bật</th>
                                 <th>Thao tác</th>
                             </tr>
                             @if(isset($products))
                                 @foreach($products as $product)
-                                    <tr>
-
+                                    <tr @if($product->status == 0) style="background-color: #c7d6cf" @endif>
                                         <td>{{ $product->id }}</td>
-                                        <td>{{ $product->name }}</td>
                                         <td>
-                                            <img src="{{pare_url_file($product->avatar) }}" style="width: 80px; height: 80px" alt="">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="{{pare_url_file($product->avatar) }}"
+                                                             style="width: 80px; height: 80px" alt="">
+                                                    </div>
+                                                    <div class="col-md-7" style="padding-left: 20px">
+                                                        <div class="row">
+                                                            <div class="col-md-12" style="padding-top: 7px">
+                                                                <h4 style="color: #000000">{{ $product->name }}</h4>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <span>Xem: {{ $product->views }} | Bán: {{$product->buyed}} | Đánh giá: {{ $product->rating }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
-                                        <td>{{ number_format($product->price, 0,',','.') }} vnđ</td>
-                                        <td>{{ number_format($product->sale, 0,',','.') }} vnđ</td>
+{{--                                        <td>{{ $product->name }}</td>--}}
+{{--                                        <td>--}}
+{{--                                            <img src="{{pare_url_file($product->avatar) }}" style="width: 80px; height: 80px" alt="">--}}
+{{--                                        </td>--}}
+                                        <td>{{ number_format($product->price, 0,',','.') }} đ</td>
+                                        <td>{{ number_format($product->sale, 0,',','.') }} đ</td>
+                                        <td>{{ $product->quantity }}</td>
                                         <td>
                                             @if($product->status == 1)
                                                 <a href="{{route('admin.product.active', $product->id)}}" class="label label-info">Hiển thị</a>
