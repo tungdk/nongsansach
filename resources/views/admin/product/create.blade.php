@@ -1,5 +1,8 @@
 @extends('layouts.layout_admin')
 @section('title', 'Thêm mới sản phẩm')
+@section('css')
+    <link rel="stylesheet" href="{{asset('adminlte/css/bootstrap-tagsinput.css')}}">
+@endsection
 @section('content')
 
     <!-- Content Header (Page header) -->
@@ -26,4 +29,7 @@
 
     </section>
     <!-- /.content -->
+@endsection
+@section('js')
+    <script src="{{asset('adminlte/js/bootstrap-tagsinput.min.js')}}"></script>
 @endsection

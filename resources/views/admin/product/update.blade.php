@@ -27,3 +27,6 @@
     </section>
     <!-- /.content -->
 @endsection
+@section('js')
+    <script src="{{asset('adminlte/js/bootstrap-tagsinput.min.js')}}"></script>
+@endsection

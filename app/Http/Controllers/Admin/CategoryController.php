@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\RequestCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -38,7 +39,13 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
         $category->slug = Str::slug($request->name);
-        $category->save();
+        $success = $category->save();
+        if($success){
+            Session::flash('toastr',[
+                'type'  =>  'success',
+                'message' => 'Thêm danh mục thành công'
+            ]);
+        }
         return redirect()->back();
     }
 
@@ -52,8 +59,14 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
         $category->slug = Str::slug($request->name);
-        $category->save();
-        return redirect()->route('admin.category.index');
+        $success = $category->save();
+        if($success){
+            Session::flash('toastr',[
+                'type'  =>  'success',
+                'message' => 'Cập nhật danh mục thành công'
+            ]);
+        }
+        return redirect()->back();
     }
 
     public function active($id){

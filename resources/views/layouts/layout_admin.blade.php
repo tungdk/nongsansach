@@ -21,6 +21,9 @@
     <!-- Pace style -->
     <link rel="stylesheet" href="{{asset('adminlte/plugins/pace/pace.min.css')}}">
 
+    <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,8 +34,16 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    {{--Thông báo--}}
+    @if (session('toastr'))
+        <script>
+            var TYPE_MESSAGE="{{ session('toastr.type') }}";
+            var MESSAGE="{{ session('toastr.message') }}";
+        </script>
+    @endif
+    @yield('css')
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
     @include('admin.partials.header')
@@ -70,8 +81,24 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
 <!-- page script -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
+
 <script type="text/javascript">
     // To make Pace works on Ajax calls
+    if (typeof TYPE_MESSAGE!="undefined") {
+        switch (TYPE_MESSAGE) {
+            case 'success':
+                toastr.success(MESSAGE);
+                break;
+            case 'error':
+                toastr.error(MESSAGE);
+                break;
+            default:
+                break;
+        }
+    }
+
     $(document).ajaxStart(function () {
         Pace.restart()
     })

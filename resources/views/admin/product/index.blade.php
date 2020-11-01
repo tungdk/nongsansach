@@ -55,7 +55,7 @@
                             </tr>
                             @if(isset($products))
                                 @foreach($products as $product)
-                                    <tr @if($product->status == 0) style="background-color: #c7d6cf" @endif>
+                                    <tr @if($product->status == 0) style="background-color: #cecece" @endif>
                                         <td>{{ $product->id }}</td>
                                         <td>
                                             <div class="col-md-12">

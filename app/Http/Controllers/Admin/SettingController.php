@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
     public function index(){
-        $settings = Setting::all()->sortByDesc('created_at');
-        return view('admin.setting.index', compact('settings'));
+//        $settings = Setting::all()->sortByDesc('created_at');
+        $name = Setting::where('config_key', '=', 'name')->first();
+        return view('admin.setting.index2', compact('name'));
     }
 
     public function create(){

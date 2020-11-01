@@ -1,5 +1,8 @@
 @extends('layouts.layout_admin')
 @section('title', 'Cập nhật cài đặt')
+@section('css')
+    <link rel="stylesheet" href="{{asset('adminlte/css/bootstrap-tagsinput.css')}}">
+@endsection
 @section('content')
 
     <!-- Content Header (Page header) -->

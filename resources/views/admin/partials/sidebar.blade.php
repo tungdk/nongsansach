@@ -68,7 +68,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ request()->is('admin/post/category*') ? 'active' : '' }}" ><a href="{{route('admin.postcate.index')}}"><i class="fa fa-circle-o"></i> Danh mục</a></li>
-                    <li><a href="{{route('admin.post.index')}}"><i class="fa fa-circle-o"></i> Bài viêt</a></li>
+                    <li class="{{ request()->is('admin/post') ? 'active' : '' }}" ><a href="{{route('admin.post.index')}}"><i class="fa fa-circle-o"></i> Bài viêt</a></li>
                 </ul>
             </li>
 
@@ -128,12 +128,25 @@
                 </a>
             </li>
 
-            <li>
-                <a href="{{route('admin.setting.index')}}">
-                    <i class="fa fa-cogs"></i> <span> Cài đặt chung</span>
+{{--            <li>--}}
+{{--                <a href="{{route('admin.setting.index')}}">--}}
+{{--                    <i class="fa fa-cogs"></i> <span> Cài đặt chung</span>--}}
+{{--                    <span class="pull-right-container">--}}
+{{--            </span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+
+            <li class="treeview {{ request()->is('admin/setting*') ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-cogs"></i> <span> Cài đặt</span>
                     <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li class="{{ request()->is('admin/setting/admin*') ? 'active' : '' }}" ><a href="{{route('admin.postcate.index')}}"><i class="fa fa-circle-o"></i> Quản trị viên</a></li>
+                    <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}" ><a href="{{route('admin.setting.index')}}"><i class="fa fa-circle-o"></i> Cài đặt hệ thống</a></li>
+                </ul>
             </li>
 
             <li>
