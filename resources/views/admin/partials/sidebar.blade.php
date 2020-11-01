@@ -144,8 +144,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ request()->is('admin/setting/admin*') ? 'active' : '' }}" ><a href="{{route('admin.postcate.index')}}"><i class="fa fa-circle-o"></i> Quản trị viên</a></li>
-                    <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}" ><a href="{{route('admin.setting.index')}}"><i class="fa fa-circle-o"></i> Cài đặt hệ thống</a></li>
+                    <li class="{{ request()->is('admin/setting/admin') ? 'active' : '' }}" ><a href="{{route('admin.setting.admin')}}"><i class="fa fa-circle-o"></i> Quản trị viên</a></li>
+                    <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}" ><a href="{{route('admin.setting.website')}}"><i class="fa fa-circle-o"></i> Cài đặt hệ thống</a></li>
                 </ul>
             </li>
 

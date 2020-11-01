@@ -127,16 +127,17 @@ Route::group(['prefix'=>'admin'], function (){
 
     //Setting
     Route::group(['prefix'=>'setting'], function (){
+        Route::get('admin', [SettingController::class, 'admin'])->name('admin.setting.admin');
+        Route::post('admin', [SettingController::class, 'update_index']);
 
-        Route::get('', [SettingController::class, 'index'])->name('admin.setting.index');
-        Route::get('create', [SettingController::class, 'create'])->name('admin.setting.create');
-        Route::post('create', [SettingController::class, 'store']);
+        Route::get('website', [SettingController::class, 'website'])->name('admin.setting.website');
+        Route::post('website', [SettingController::class, 'update_website']);
 
-        Route::get('edit/{id}', [SettingController::class, 'edit'])->name('admin.setting.edit');
-        Route::post('edit/{id}', [SettingController::class, 'update']);
+        Route::get('social', [SettingController::class, 'social'])->name('admin.setting.social');
+        Route::post('social', [SettingController::class, 'update_social']);
 
-        Route::get('active/{id}', [SettingController::class, 'active'])->name('admin.setting.active');
-        Route::delete('delete/{id}', [SettingController::class, 'delete'])->name('admin.setting.delete');
+
+
     });
 
 
