@@ -27,4 +27,21 @@ class SliderController extends Controller
         Slider::insertGetId($data);
         return redirect()->back();
     }
+
+    public function edit($id){
+        $slider = Slider::find($id);
+        return view('admin.slider.update', compact('slider'));
+    }
+
+    public function update(SliderRequest $request, $id){
+        $sliders = Slider::find($id);
+        $data = $request->except('_token', 'status', 'thumbnail');
+        $data['status'] = $request->status ? '1' : '0';
+        if(isset($request->thumbnail)){
+            $data['thumbnail'] = $request->thumbnail;
+        }
+        $data['created_at'] = Carbon::now();
+        $sliders->update($data);
+        return redirect()->back();
+    }
 }
