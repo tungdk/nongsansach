@@ -44,4 +44,11 @@ class SliderController extends Controller
         $sliders->update($data);
         return redirect()->back();
     }
+
+    public function active($id){
+        $slider = Slider::find($id);
+        $slider->status = ! $slider->status;
+        $slider->save();
+        return redirect()->back();
+    }
 }
