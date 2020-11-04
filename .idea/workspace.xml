@@ -20,17 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="751157d4-fbd2-4f6c-ad78-a925fcd82dcc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Slider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/slider/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/slider/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/slider/update.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/SliderRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SettingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/layout_admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/layout_admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/slider/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/slider/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +207,7 @@
       <workItem from="1604214442401" duration="15519000" />
       <workItem from="1604305244601" duration="868000" />
       <workItem from="1604372489107" duration="608000" />
-      <workItem from="1604462983489" duration="692000" />
+      <workItem from="1604462983489" duration="1968000" />
     </task>
     <servers />
   </component>
