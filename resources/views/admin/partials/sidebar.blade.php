@@ -121,7 +121,7 @@
             </li>
 
             <li>
-                <a href="{{route('admin.unit.index')}}">
+                <a href="{{route('admin.contact.index')}}">
                     <i class="fa fa-id-card"></i> <span> Phản hồi</span>
                     <span class="pull-right-container">
             </span>

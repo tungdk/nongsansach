@@ -10,6 +10,7 @@ use \App\Http\Controllers\Admin\CouponController;
 use \App\Http\Controllers\Admin\PostController;
 use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
+use \App\Http\Controllers\Admin\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -155,6 +156,12 @@ Route::group(['prefix'=>'admin'], function (){
         Route::delete('delete/{id}', [SliderController::class, 'delete'])->name('admin.slider.delete');
     });
 
+    //Slider
+    Route::group(['prefix'=>'contact'], function (){
+
+        Route::get('', [ContactController::class, 'index'])->name('admin.contact.index');
+
+    });
 
 });
 

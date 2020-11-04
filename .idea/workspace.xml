@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="751157d4-fbd2-4f6c-ad78-a925fcd82dcc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Contact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/contact/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +208,7 @@
       <workItem from="1604214442401" duration="15519000" />
       <workItem from="1604305244601" duration="868000" />
       <workItem from="1604372489107" duration="608000" />
-      <workItem from="1604462983489" duration="2642000" />
+      <workItem from="1604462983489" duration="3587000" />
     </task>
     <servers />
   </component>
@@ -239,6 +243,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1604465614665" />
+    <state x="518" y="291" key="NewPhpFileDialog" timestamp="1604466286827">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="518" y="291" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1604466286827" />
     <state x="591" y="191" key="run.anything.popup" timestamp="1603645069379">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
