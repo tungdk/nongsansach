@@ -9,6 +9,7 @@ use \App\Http\Controllers\Admin\PostCategoryController;
 use \App\Http\Controllers\Admin\CouponController;
 use \App\Http\Controllers\Admin\PostController;
 use \App\Http\Controllers\Admin\SettingController;
+use \App\Http\Controllers\Admin\SliderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -138,6 +139,20 @@ Route::group(['prefix'=>'admin'], function (){
 
 
 
+    });
+
+    //Slider
+    Route::group(['prefix'=>'slider'], function (){
+
+        Route::get('', [SliderController::class, 'index'])->name('admin.slider.index');
+        Route::get('create', [SliderController::class, 'create'])->name('admin.slider.create');
+        Route::post('create', [SliderController::class, 'store']);
+
+        Route::get('edit/{id}', [SliderController::class, 'edit'])->name('admin.slider.edit');
+        Route::post('edit/{id}', [SliderController::class, 'update']);
+
+        Route::get('active/{id}', [SliderController::class, 'active'])->name('admin.slider.active');
+        Route::delete('delete/{id}', [SliderController::class, 'delete'])->name('admin.slider.delete');
     });
 
 

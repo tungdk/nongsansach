@@ -97,8 +97,8 @@
             </li>
 
             <li>
-                <a href="{{route('admin.unit.index')}}">
-                    <i class="fa fa-calendar"></i> <span> Sự kiện</span>
+                <a href="{{route('admin.slider.index')}}">
+                    <i class="fa fa-calendar"></i> <span> Slider</span>
                     <span class="pull-right-container">
             </span>
                 </a>

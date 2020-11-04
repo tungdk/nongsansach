@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="{{route('admin.dashboard')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>TQT</b></span>
         <!-- logo for regular state and mobile devices -->
@@ -15,7 +15,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </a>
-
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
@@ -32,7 +31,8 @@
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}"
+                                                 class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Support Team
@@ -86,7 +86,8 @@
                                             <small class="pull-right">20%</small>
                                         </h3>
                                         <div class="progress xs">
-                                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                                            <div class="progress-bar progress-bar-aqua" style="width: 20%"
+                                                 role="progressbar"
                                                  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                 <span class="sr-only">20% Complete</span>
                                             </div>
@@ -110,7 +111,8 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle"
+                                 alt="User Image">
 
                             <p>
                                 Admin

@@ -28,7 +28,28 @@ class SettingController extends Controller
     }
 
     public function update_website(SettingWebsiteRequest $request){
+        $name = Setting::where('config_key','=','name')->first();
+        $name->config_value = $request->name;
+        $name->save();
 
+        $description = Setting::where('config_key','=','description')->first();
+        $description->config_value = $request->description;
+        $description->save();
+
+        $logo = Setting::where('config_key','=','logo')->first();
+        $logo->config_value = $request->logo;
+        $logo->save();
+
+        $favicon = Setting::where('config_key','=','favicon')->first();
+        $favicon->config_value = $request->favicon;
+        $favicon->save();
+
+        Session::flash('toastr',[
+            'type'  =>  'success',
+            'message' => 'Cập nhật website thành công'
+        ]);
+
+        return redirect()->back();
     }
 
     public function social(){
@@ -76,7 +97,7 @@ class SettingController extends Controller
 
             Session::flash('toastr',[
                 'type'  =>  'success',
-                'message' => 'Thêm mạng xã hội thành công'
+                'message' => 'Cập nhật mạng xã hội thành công'
             ]);
 
         return redirect()->back();
