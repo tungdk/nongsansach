@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class UnitController extends Controller
 {
     public function index(){
-        $units = Unit::all()->sortByDesc('created_at');
+        $units = Unit::query()->orderByDesc('created_at')->paginate(10);
         return view('admin.unit.index', compact('units'));
     }
     public function create(){

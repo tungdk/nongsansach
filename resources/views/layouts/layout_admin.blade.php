@@ -44,7 +44,7 @@
     @endif
     @yield('css')
 </head>
-<body class="hold-transition skin-green sidebar-mini" onload="time()">
+<body class="hold-transition skin-green sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
     @include('admin.partials.header')

@@ -67,7 +67,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-{{--                {!! $categories->links() !!}--}}
+                {{ $postcates->links('vendor/pagination/bootstrap-4') }}
             </div>
         </div>
         <!-- /.box -->

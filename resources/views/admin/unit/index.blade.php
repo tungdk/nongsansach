@@ -65,7 +65,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                {{--                {!! $categories->links() !!}--}}
+                {{ $units->links('vendor/pagination/bootstrap-4') }}
             </div>
         </div>
         <!-- /.box -->

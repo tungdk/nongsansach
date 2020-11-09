@@ -116,7 +116,9 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-{{--                                {!! $categories->links() !!}--}}
+                @if(isset($products))
+                    {{ $products->links('vendor/pagination/bootstrap-4') }}
+                @endif
             </div>
         </div>
         <!-- /.box -->

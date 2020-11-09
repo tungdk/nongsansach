@@ -70,7 +70,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                {{--                {!! $categories->links() !!}--}}
+                {{ $contacts->links('vendor/pagination/bootstrap-4') }}
             </div>
         </div>
         <!-- /.box -->

@@ -16,16 +16,16 @@ class ProductController extends Controller
 {
     public function index(){
         if(request()->type === 'active'){
-            $products = Product::where('status', 1)->where('quantity', '>', 10)->paginate(10)->sortByDesc('created_at');
+            $products = Product::where('status', 1)->where('quantity', '>', 10)->orderByDesc('created_at')->paginate(10);
         }
         elseif(request()->type === 'soldout'){
-            $products = Product::where('quantity', '<=', 10)->paginate(10)->sortByDesc('created_at');
+            $products = Product::where('quantity', '<=', 10)->orderByDesc('created_at')->paginate(10);
         }
         elseif(request()->type === 'unlisted'){
-            $products = Product::where('status', 0)->paginate(10)->sortByDesc('created_at');
+            $products = Product::where('status', 0)->orderByDesc('created_at')->paginate(10);
         }
         else{
-            $products = Product::paginate(10)->sortByDesc('created_at');
+            $products = Product::orderByDesc('created_at')->paginate(10);
         }
         $viewData = [
             'products' => $products

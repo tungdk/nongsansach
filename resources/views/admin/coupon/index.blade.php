@@ -71,7 +71,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-{{--                {!! $categories->links() !!}--}}
+                {{ $coupons->links('vendor/pagination/bootstrap-4') }}
             </div>
         </div>
         <!-- /.box -->
