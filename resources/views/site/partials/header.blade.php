@@ -189,7 +189,7 @@
         <div class="container">
             <div class="hidden-sm hidden-xs">
                 <ul class="nav nav-left">
-                    <li class="nav-item "><a class="nav-link" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{route('home')}}">Trang chủ</a></li>
                     <li class="nav-item "><a class="nav-link" href="#">Giới thiệu</a></li>
                     <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>
                     <li class="nav-item "><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>

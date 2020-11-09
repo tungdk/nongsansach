@@ -53,8 +53,8 @@
     <link href="{{asset('site/css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('site/css/style-theme-blue-strong.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
-    <style>
-    </style>
+
+    @yield('css')
     <!-- Header JS -->
     <script src="{{asset('site/js/jquery-2.2.3.min.js')}}" type="text/javascript"></script>
 </head>
@@ -86,6 +86,8 @@
 <script src="site/js/appear.js"></script>
 <script src="site/js/dl_main.js" type="text/javascript"></script>
 <script src="../ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+@yield('js')
 </body>
 
 <!-- Mirrored from shop1.jweb.com.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Nov 2020 07:31:55 GMT -->
