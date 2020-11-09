@@ -12,6 +12,7 @@ use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\ContactController;
 use \App\Http\Controllers\Site\HomeController;
+use \App\Http\Controllers\Site\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -166,5 +167,11 @@ Route::group(['prefix'=>'admin'], function (){
 
 });
 
+
+//website
 Route::get('',  [HomeController::class,'index'])->name('home');
+Route::get('home',  [HomeController::class,'index'])->name('home');
+
+Route::get('login',  [UserController::class,'login'])->name('login');
+Route::get('register',  [UserController::class,'login'])->name('register');
 
