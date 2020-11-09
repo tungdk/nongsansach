@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Components\Recusive;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
 use App\Http\Requests\Admin\RequestCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class CategoryController extends Controller
         return $htmlOption;
     }
 
-    public function store(RequestCategory $request){
+    public function store(CategoryRequest $request){
         $category = new Category();
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
