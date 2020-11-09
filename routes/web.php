@@ -11,6 +11,7 @@ use \App\Http\Controllers\Admin\PostController;
 use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\ContactController;
+use \App\Http\Controllers\Site\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -164,4 +165,6 @@ Route::group(['prefix'=>'admin'], function (){
     });
 
 });
+
+Route::get('',  [HomeController::class,'index'])->name('home');
 
