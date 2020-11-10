@@ -11,6 +11,7 @@ use \App\Http\Controllers\Admin\PostController;
 use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\ContactController;
+use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Site\HomeController;
 use \App\Http\Controllers\Site\UserController;
 /*
@@ -24,7 +25,11 @@ use \App\Http\Controllers\Site\UserController;
 |
 */
 
-Route::group(['prefix'=>'admin'], function (){
+//login
+Route::get('admin/login', [LoginController::class,'getLogin'])->name('admin.login');
+Route::post('admin/login', [LoginController::class,'postLogin']);
+
+Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function (){
 
     //dashboard
     Route::get('', [DashboardController::class, 'index']) ->name('admin.dashboard');
@@ -158,7 +163,7 @@ Route::group(['prefix'=>'admin'], function (){
         Route::delete('delete/{id}', [SliderController::class, 'delete'])->name('admin.slider.delete');
     });
 
-    //Slider
+    //Contact
     Route::group(['prefix'=>'contact'], function (){
 
         Route::get('', [ContactController::class, 'index'])->name('admin.contact.index');
