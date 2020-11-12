@@ -39,15 +39,24 @@
                     <div class="col-sm-6 col-md-3">
 
                         <ul class="list-inline f-right">
-                            <li>
-                                <a data-toggle="modal" data-target="#dangnhap" href="{{route('login')}}"><i
-                                        class="fa fa-user"></i> Đăng nhập</a>
+                                @if((Auth::user()))
+                                    <li>
+                                        <a href="{{route('site.login')}}"><i
+                                                class="fa fa-user"></i> Tên tài khoản</a>
 
-                            </li>
-                            <li><span>hoặc</span></li>
-                            <li><a data-toggle="modal" data-target="#dangky" href="{{route('register')}}">Đăng ký</a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{route('site.login')}}"><i
+                                                class="fa fa-user"></i> Đăng nhập</a>
 
-                            </li>
+                                    </li>
+                                    <li><span>hoặc</span></li>
+                                    <li><a href="{{route('site.register')}}">Đăng ký</a>
+
+                                    </li>
+                                @endif
+
                             <li class="li-search hidden">
                                 <a href="site/javscrript_%3b.html">
                                     <i class="fa fa-search"></i></a>
@@ -83,7 +92,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-3 text-lg-left">
                     <div class="logo inline-block">
-                        <a href="{{route('home')}}" class="logo-wrapper ">
+                        <a href="{{route('site.home')}}" class="logo-wrapper ">
                             <img src="/images/logo.png" data-lazyload="/images/logo.png"
                                  alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                         </a>
@@ -189,7 +198,7 @@
         <div class="container">
             <div class="hidden-sm hidden-xs">
                 <ul class="nav nav-left">
-                    <li class="nav-item "><a class="nav-link" href="{{route('home')}}">Trang chủ</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{route('site.home')}}">Trang chủ</a></li>
                     <li class="nav-item "><a class="nav-link" href="#">Giới thiệu</a></li>
                     <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>
                     <li class="nav-item "><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>
@@ -228,11 +237,11 @@
                     <ul class="list-inline">
 
                         <li>
-                            <a href="{{route('login')}}"><i class="fa fa-user"></i> Đăng nhập</a>
+                            <a href="{{route('site.login')}}"><i class="fa fa-user"></i> Đăng nhập</a>
 
                         </li>
                         <li><span>hoặc</span></li>
-                        <li><a href="{{route('register')}}">Đăng ký</a>
+                        <li><a href="{{route('site.register')}}">Đăng ký</a>
                         </li>
 
                         <li class="li-search">

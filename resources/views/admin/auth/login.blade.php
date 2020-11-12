@@ -1,88 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('adminlte/bower_components/font-awesome/css/font-awesome.min.css')}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{asset('adminlte/bower_components/Ionicons/css/ionicons.min.css')}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('adminlte/dist/css/AdminLTE.min.css')}}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{asset('adminlte/plugins/iCheck/square/blue.css')}}">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{asset('adminlte/login/style.css')}}">
+    <title>
+        Đăng nhập vào hệ thống
+    </title>
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <span>Đăng nhập hệ thống quản trị</span>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
 
-        <form action="" method="post">
-            @csrf
-            <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox"> Remember Me
-                        </label>
-                    </div>
+<body>
+<div id="container" class="container">
+    <!-- FORM SECTION -->
+    <div class="row">
+        <!-- SIGN UP -->
+        <div class="col align-items-center flex-col sign-up">
+{{--            <div class="form-wrapper align-items-center">--}}
+{{--                <div class="form sign-up">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <i class='bx bxs-user'></i>--}}
+{{--                        <input type="text" placeholder="Username">--}}
+{{--                    </div>--}}
+{{--                    <div class="input-group">--}}
+{{--                        <i class='bx bx-mail-send'></i>--}}
+{{--                        <input type="email" placeholder="Email">--}}
+{{--                    </div>--}}
+{{--                    <div class="input-group">--}}
+{{--                        <i class='bx bxs-lock-alt'></i>--}}
+{{--                        <input type="password" placeholder="Password">--}}
+{{--                    </div>--}}
+{{--                    <div class="input-group">--}}
+{{--                        <i class='bx bxs-lock-alt'></i>--}}
+{{--                        <input type="password" placeholder="Confirm password">--}}
+{{--                    </div>--}}
+{{--                    <button>--}}
+{{--                        Sign up--}}
+{{--                    </button>--}}
+{{--                    <p>--}}
+{{--							<span>--}}
+{{--								Already have an account?--}}
+{{--							</span>--}}
+{{--                        <b onclick="toggle()" class="pointer">--}}
+{{--                            Sign in here--}}
+{{--                        </b>--}}
+{{--                    </p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="form-wrapper">--}}
+{{--                <div class="social-list align-items-center sign-up">--}}
+{{--                    <div class="align-items-center facebook-bg">--}}
+{{--                        <i class='bx bxl-facebook'></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="align-items-center google-bg">--}}
+{{--                        <i class='bx bxl-google'></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="align-items-center twitter-bg">--}}
+{{--                        <i class='bx bxl-twitter'></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="align-items-center insta-bg">--}}
+{{--                        <i class='bx bxl-instagram-alt'></i>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+        </div>
+        <!-- END SIGN UP -->
+        <!-- SIGN IN -->
+        <div class="col align-items-center flex-col sign-in">
+            <div class="form-wrapper align-items-center">
+                <div class="form sign-in">
+                    <form action="" method="POST">
+                        @csrf
+                        <div class="input-group">
+                            <i class='bx bxs-user'></i>
+                            <input type="text" placeholder="Email">
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input type="password" placeholder="Mẩt khẩu">
+                        </div>
+                        <button type="submit">
+                            Đăng nhập
+                        </button>
+                    </form>
+{{--                    <p>--}}
+{{--                        <b>--}}
+{{--                            Forgot password?--}}
+{{--                        </b>--}}
+{{--                    </p>--}}
+{{--                    <p>--}}
+{{--							<span>--}}
+{{--								Don't have an account?--}}
+{{--							</span>--}}
+{{--                        <b onclick="toggle()" class="pointer">--}}
+{{--                            Sign up here--}}
+{{--                        </b>--}}
+{{--                    </p>--}}
                 </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
-                </div>
-                <!-- /.col -->
             </div>
-        </form>
-
-        <!-- /.social-auth-links -->
-
-        <a href="{{route('home')}}"><i class="fa fa-arrow-circle-left"></i> Trở về cửa hàng</a><br>
+{{--            <div class="form-wrapper">--}}
+{{--                <div class="social-list align-items-center sign-in">--}}
+{{--                    <div class="align-items-center facebook-bg">--}}
+{{--                        <i class='bx bxl-facebook'></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="align-items-center google-bg">--}}
+{{--                        <i class='bx bxl-google'></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="align-items-center twitter-bg">--}}
+{{--                        <i class='bx bxl-twitter'></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="align-items-center insta-bg">--}}
+{{--                        <i class='bx bxl-instagram-alt'></i>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+        </div>
+        <!-- END SIGN IN -->
     </div>
-    <!-- /.login-box-body -->
+    <!-- END FORM SECTION -->
+    <!-- CONTENT SECTION -->
+    <div class="row content-row">
+        <!-- SIGN IN CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="text sign-in">
+                <h2>
+                    Chào mừng bạn đã quay trở lại
+                </h2>
+                <p>
+                    Cửa hàng nông sản trực tuyến.
+                </p>
+            </div>
+            <div class="img sign-in">
+                <img src="{{asset('adminlte/login/assets/undraw_different_love_a3rg.svg')}}" alt="welcome">
+            </div>
+        </div>
+        <!-- END SIGN IN CONTENT -->
+        <!-- SIGN UP CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="img sign-up">
+                <img src="{{asset('adminlte/login/assets/undraw_creative_team_r90h.svg')}}" alt="welcome">
+            </div>
+            <div class="text sign-up">
+                <h2>
+                    Join with us
+                </h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit obcaecati, accusantium
+                    molestias, laborum, aspernatur deserunt officia voluptatum tempora dicta quo ab ullam. Assumenda
+                    enim harum minima possimus dignissimos deserunt rem.
+                </p>
+            </div>
+        </div>
+        <!-- END SIGN UP CONTENT -->
+    </div>
+    <!-- END CONTENT SECTION -->
 </div>
-<!-- /.login-box -->
 
-<!-- jQuery 3 -->
-<script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<!-- iCheck -->
-<script src="{{asset('adminlte/plugins/iCheck/icheck.min.js')}}"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
+<script src="{{asset('adminlte/login/index.js')}}"></script>
 </body>
+
 </html>

@@ -14,6 +14,10 @@ use \App\Http\Controllers\Admin\ContactController;
 use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Site\HomeController;
 use \App\Http\Controllers\Site\UserController;
+use \App\Http\Controllers\Site\AuthController;
+
+use \App\Http\Controllers\Site\ProductController as SiteProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +29,7 @@ use \App\Http\Controllers\Site\UserController;
 |
 */
 
-//login
+//login admin
 Route::get('admin/login', [LoginController::class,'getLogin'])->name('admin.login');
 Route::post('admin/login', [LoginController::class,'postLogin']);
 Route::get('admin/logout', [LoginController::class,'getLogout'])->name('admin.logout');
@@ -175,9 +179,16 @@ Route::group(['prefix'=>'admin'], function (){
 
 
 //website
-Route::get('',  [HomeController::class,'index'])->name('home');
-Route::get('home',  [HomeController::class,'index'])->name('home');
+Route::get('',  [HomeController::class,'index'])->name('site.home');
+Route::get('home',  [HomeController::class,'index'])->name('site.home');
 
-Route::get('login',  [UserController::class,'login'])->name('login');
-Route::get('register',  [UserController::class,'login'])->name('register');
+Route::get('login',  [AuthController::class,'login'])->name('site.login');
+Route::post('login',  [AuthController::class,'postLogin']);
+
+Route::get('logout',  [AuthController::class,'logout'])->name('site.logout');
+
+Route::get('register',  [AuthController::class,'register'])->name('site.register');
+
+
+Route::get('product',  [SiteProductController::class,'detail'])->name('detail');
 

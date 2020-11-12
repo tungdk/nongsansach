@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    use Authenticatable;
+//    use Authenticatable;
     public function getLogin(){
         return view('admin.auth.login');
     }
@@ -18,7 +18,7 @@ class LoginController extends Controller
         if (Auth::guard('admins')->attempt(['email'=>$request->email, 'password'=>$request->password])) {
             return redirect()->intended('/admin');
         }
-        return back()->withInput($request->only('email','remember'));
+        return back()->withInput($request->only('email'));
     }
 
     public function getLogout(){

@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function login(){
-        return view('site.login.index');
+        return view('site.auth.login');
+    }
+
+    public function postLogin(Request $request){
+
     }
 }

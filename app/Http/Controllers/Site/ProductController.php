@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProductController extends Controller
 {
-    public function index(){
-        return view('site.home.index');
+    public function detail(){
+        return view('site.product.detail');
     }
 }

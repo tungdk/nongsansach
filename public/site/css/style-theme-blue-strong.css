@@ -265,7 +265,7 @@ header nav {
 5. Footer
 ==============================================================================*/
 footer.footer {
-  background: #07689f; }
+  background: #80bb35; }
 
 @media (max-width: 1199px) {
   .footer-inner > .container > .row > div:nth-child(3) {
