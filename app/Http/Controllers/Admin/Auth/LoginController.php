@@ -12,10 +12,18 @@ class LoginController extends Controller
 {
 //    use Authenticatable;
     public function getLogin(){
+        $check_login = Auth::guard('admins')->check();
+        if($check_login){
+            return redirect()->route('admin.dashboard');
+        }
         return view('admin.auth.login');
     }
     public function postLogin(LoginRequest $request){
-        if (Auth::guard('admins')->attempt(['email'=>$request->email, 'password'=>$request->password])) {
+        $data = [
+            'email'=>$request->email,
+            'password'=>$request->password
+        ];
+        if (Auth::guard('admins')->attempt($data)) {
             return redirect()->intended('/admin');
         }
         return back()->withInput($request->only('email'));

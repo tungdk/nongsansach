@@ -40,7 +40,7 @@
 
             <li class="{{ request()->is('admin/category*') ? 'active' : '' }}">
                 <a href="{{route('admin.category.index')}}">
-                    <i class="fa fa-table " ></i> <span>Danh mục</span>
+                    <i class="fa fa-table "></i> <span>Danh mục</span>
                     <span class="pull-right-container">
             </span>
                 </a>
@@ -67,11 +67,12 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ request()->is('admin/post/category*') ? 'active' : '' }}" ><a href="{{route('admin.postcate.index')}}"><i class="fa fa-circle-o"></i> Danh mục</a></li>
-                    <li class="{{ request()->is('admin/post') ? 'active' : '' }}" ><a href="{{route('admin.post.index')}}"><i class="fa fa-circle-o"></i> Bài viêt</a></li>
+                    <li class="{{ request()->is('admin/post/category*') ? 'active' : '' }}"><a
+                            href="{{route('admin.postcate.index')}}"><i class="fa fa-circle-o"></i> Danh mục</a></li>
+                    <li class="{{ request()->is('admin/post') ? 'active' : '' }}"><a
+                            href="{{route('admin.post.index')}}"><i class="fa fa-circle-o"></i> Bài viêt</a></li>
                 </ul>
             </li>
-
 
 
             <li class="treeview">
@@ -128,13 +129,13 @@
                 </a>
             </li>
 
-{{--            <li>--}}
-{{--                <a href="{{route('admin.setting.index')}}">--}}
-{{--                    <i class="fa fa-cogs"></i> <span> Cài đặt chung</span>--}}
-{{--                    <span class="pull-right-container">--}}
-{{--            </span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            {{--            <li>--}}
+            {{--                <a href="{{route('admin.setting.index')}}">--}}
+            {{--                    <i class="fa fa-cogs"></i> <span> Cài đặt chung</span>--}}
+            {{--                    <span class="pull-right-container">--}}
+            {{--            </span>--}}
+            {{--                </a>--}}
+            {{--            </li>--}}
 
             <li class="treeview {{ request()->is('admin/setting*') ? 'active' : '' }}">
                 <a href="#">
@@ -144,9 +145,21 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ request()->is('admin/setting/admin') ? 'active' : '' }}" ><a href="{{route('admin.setting.admin')}}"><i class="fa fa-circle-o"></i> Quản trị viên</a></li>
-                    <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}" ><a href="{{route('admin.setting.website')}}"><i class="fa fa-circle-o"></i> Cài đặt hệ thống</a></li>
+                    <li class="{{ request()->is('admin/setting/admin') ? 'active' : '' }}"><a
+                            href="{{route('admin.setting.admin')}}"><i class="fa fa-circle-o"></i> Quản trị viên</a>
+                    </li>
+                    <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}"><a
+                            href="{{route('admin.setting.website')}}"><i class="fa fa-circle-o"></i> Cài đặt hệ
+                            thống</a></li>
                 </ul>
+            </li>
+
+            <li>
+                <a href="{{route('admin.logout')}}">
+                    <i class="fa fa-sign-out"></i> <span> Đăng xuất</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
             </li>
 
             <li>

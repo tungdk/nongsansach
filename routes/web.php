@@ -33,8 +33,8 @@ use \App\Http\Controllers\Site\ProductController as SiteProductController;
 Route::get('admin/login', [LoginController::class,'getLogin'])->name('admin.login');
 Route::post('admin/login', [LoginController::class,'postLogin']);
 Route::get('admin/logout', [LoginController::class,'getLogout'])->name('admin.logout');
-//, 'middleware'=>'check_login_admin'
-Route::group(['prefix'=>'admin'], function (){
+
+Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function (){
 
     //dashboard
     Route::get('', [DashboardController::class, 'index']) ->name('admin.dashboard');

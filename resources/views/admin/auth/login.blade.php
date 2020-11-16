@@ -74,11 +74,11 @@
                         @csrf
                         <div class="input-group">
                             <i class='bx bxs-user'></i>
-                            <input type="text" placeholder="Email">
+                            <input type="text" placeholder="Email" name="email">
                         </div>
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Mẩt khẩu">
+                            <input type="password" placeholder="Mẩt khẩu" name="password">
                         </div>
                         <button type="submit">
                             Đăng nhập
@@ -125,10 +125,10 @@
         <div class="col align-items-center flex-col">
             <div class="text sign-in">
                 <h2>
-                    Chào mừng bạn đã quay trở lại
+                    Hệ thống quản trị nông sản sạch
                 </h2>
                 <p>
-                    Cửa hàng nông sản trực tuyến.
+                    Chào mừng bạn đã quay trở lại.
                 </p>
             </div>
             <div class="img sign-in">

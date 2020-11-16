@@ -42,7 +42,7 @@
                                 @if((Auth::user()))
                                     <li>
                                         <a href="{{route('site.login')}}"><i
-                                                class="fa fa-user"></i> Tên tài khoản</a>
+                                                class="fa fa-user"></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
 
                                     </li>
                                 @else
