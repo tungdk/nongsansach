@@ -182,9 +182,14 @@ Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function ()
 Route::get('',  [HomeController::class,'index'])->name('site.home');
 Route::get('home',  [HomeController::class,'index'])->name('site.home');
 
+//login
 Route::get('login',  [AuthController::class,'login'])->name('site.login');
 Route::post('login',  [AuthController::class,'postLogin']);
 
+Route::get('login/social/{social}',[AuthController::class,'get_login_social']);
+Route::get('login/check-social/{social}',[AuthController::class,'check_login_social']);
+
+//logout
 Route::get('logout',  [AuthController::class,'logout'])->name('site.logout');
 
 Route::get('register',  [AuthController::class,'register'])->name('site.register');

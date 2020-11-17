@@ -27,8 +27,8 @@
 {{--                            </div>--}}
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng nhập</button>
                             <hr class="my-4">
-                            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Đăng nhập với Google</button>
-                            <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook mr-2"></i>  Đăng nhập với Facebook</button>
+                            <a href="{{url('login/social/facebook')}}" class="btn btn-lg btn-facebook btn-block text-uppercase" type="button"><i class="fab fa-facebook mr-2"></i>  Đăng nhập với Facebook</a>
+                            <a href="{{url('login/social/facebook')}}" class="btn btn-lg btn-google btn-block text-uppercase" type="button"><i class="fab fa-google mr-2"></i> Đăng nhập với Google</a>
                             <div class="form-wrapper">
                                 <div class="social-list align-items-center sign-up">
                                     <div class="align-items-center facebook-bg">
