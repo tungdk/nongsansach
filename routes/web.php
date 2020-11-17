@@ -15,6 +15,7 @@ use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Site\HomeController;
 use \App\Http\Controllers\Site\UserController;
 use \App\Http\Controllers\Site\AuthController;
+use \App\Http\Controllers\Site\Auth\SocialController;
 
 use \App\Http\Controllers\Site\ProductController as SiteProductController;
 
@@ -186,8 +187,13 @@ Route::get('home',  [HomeController::class,'index'])->name('site.home');
 Route::get('login',  [AuthController::class,'login'])->name('site.login');
 Route::post('login',  [AuthController::class,'postLogin']);
 
-Route::get('login/social/{social}',[AuthController::class,'get_login_social']);
-Route::get('login/check-social/{social}',[AuthController::class,'check_login_social']);
+//login facebook
+Route::get('login/social/{social}',[SocialController::class,'get_login_social']);
+Route::get('login/check-social/{social}',[SocialController::class,'check_login_social']);
+
+//login google
+Route::get('/auth/redirect/{provider}', [SocialController::class,'redirect']);
+Route::get('/callback/{provider}', [SocialController::class,'callback']);
 
 //logout
 Route::get('logout',  [AuthController::class,'logout'])->name('site.logout');

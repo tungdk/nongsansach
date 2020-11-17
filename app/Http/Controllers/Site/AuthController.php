@@ -31,12 +31,5 @@ class AuthController extends Controller
         return redirect()->route('site.home');
     }
 
-    public function get_login_social($social){
-        return Socialite::driver($social)->redirect();
-    }
 
-    public function check_login_social($social){
-        $info = Socialite::driver($social)->user();
-        dd($info);
-    }
 }

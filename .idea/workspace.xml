@@ -20,10 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="751157d4-fbd2-4f6c-ad78-a925fcd82dcc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/Auth/SocialController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/debugbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nongsansach.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nongsansach.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -151,6 +157,9 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
       <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
       <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
     </include_path>
   </component>
   <component name="ProjectId" id="1j9GBgPJCbhYQcmrmz6Gy9kBtws" />
@@ -222,7 +231,10 @@
       <workItem from="1605518850065" duration="3856000" />
       <workItem from="1605531444082" duration="2863000" />
       <workItem from="1605577257362" duration="2567000" />
-      <workItem from="1605580619318" duration="451000" />
+      <workItem from="1605580619318" duration="2405000" />
+      <workItem from="1605583255804" duration="1565000" />
+      <workItem from="1605599499593" duration="2000" />
+      <workItem from="1605617610524" duration="415000" />
     </task>
     <servers />
   </component>
@@ -253,10 +265,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="520" y="143" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738@0.0.1366.738" timestamp="1603639366410" />
-    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605025515107">
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605582066879">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1605025515107" />
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1605582066879" />
     <state x="518" y="291" key="NewPhpFileDialog" timestamp="1604890580441">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
