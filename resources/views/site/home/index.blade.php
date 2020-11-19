@@ -110,16 +110,22 @@
                                                                                         class="product-thumbnail flexbox-grid">
                                                                                         <a href="ten-san-pham-dang-ban-1.html"
                                                                                            title="{{$product->name}}">
-                                                                                            <img src="site/images/lazyload.svg" data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg" alt="{{$product->name}}">
+                                                                                            <img
+                                                                                                src="site/images/lazyload.svg"
+                                                                                                data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
+                                                                                                alt="{{$product->name}}">
                                                                                         </a>
                                                                                     </div>
                                                                                     <div class="product-info a-center">
                                                                                         <h3 class="product-name">
-                                                                                            <a href="ten-san-pham-dang-ban-1.html" title="{{$product->name}}">{{$product->name}}</a>
+                                                                                            <a href="ten-san-pham-dang-ban-1.html"
+                                                                                               title="{{$product->name}}">{{$product->name}}</a>
                                                                                         </h3>
                                                                                         <div class="price-box clearfix">
                                                                                             <div class="special-price">
-                                                                                                <a href="" class="price product-price"> {{number_format($product->sale, 0, ',', '.')}} Mua ngay</a>
+                                                                                                <a href=""
+                                                                                                   class="price product-price"> {{number_format($product->sale, 0, ',', '.')}}
+                                                                                                    Mua ngay</a>
                                                                                             </div>
                                                                                         </div>
 
@@ -182,16 +188,22 @@
                                                                                         class="product-thumbnail flexbox-grid">
                                                                                         <a href="ten-san-pham-dang-ban-1.html"
                                                                                            title="{{$product->name}}">
-                                                                                            <img src="site/images/lazyload.svg" data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg" alt="{{$product->name}}">
+                                                                                            <img
+                                                                                                src="site/images/lazyload.svg"
+                                                                                                data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
+                                                                                                alt="{{$product->name}}">
                                                                                         </a>
                                                                                     </div>
                                                                                     <div class="product-info a-center">
                                                                                         <h3 class="product-name">
-                                                                                            <a href="ten-san-pham-dang-ban-1.html" title="{{$product->name}}">{{$product->name}}</a>
+                                                                                            <a href="ten-san-pham-dang-ban-1.html"
+                                                                                               title="{{$product->name}}">{{$product->name}}</a>
                                                                                         </h3>
                                                                                         <div class="price-box clearfix">
                                                                                             <div class="special-price">
-                                                                                                <a href="" class="price product-price"> {{number_format($product->sale, 0, ',', '.')}} Mua ngay</a>
+                                                                                                <a href=""
+                                                                                                   class="price product-price"> {{number_format($product->sale, 0, ',', '.')}}
+                                                                                                    Mua ngay</a>
                                                                                             </div>
                                                                                         </div>
 
@@ -266,8 +278,10 @@
                                                 <div class="product-thumbnail flexbox-grid">
                                                     <a href="ten-san-pham-dang-ban-1.html"
                                                        title="Tên sản phẩm đang bán 1">
-                                                        <img data-src="http://nongsansachvietnam.vn/upload/products/thumb/1277694858_luu2.jpg" class="owl-lazy" alt="Tên sản phẩm đang bán 1"
-                                                             class="owl-lazy">
+                                                        <img
+                                                            data-src="http://nongsansachvietnam.vn/upload/products/thumb/1277694858_luu2.jpg"
+                                                            class="owl-lazy" alt="Tên sản phẩm đang bán 1"
+                                                            class="owl-lazy">
                                                     </a>
                                                 </div>
                                                 <div class="product-info a-center">
@@ -275,11 +289,12 @@
                                                                                 title="{{$product->name}}">{{$product->name}}</a>
                                                     </h3>
                                                     <div class="price-box clearfix">
-                                                        <div class="special-price">
-                                                            <span class="price product-price">Liên hệ</span>
+                                                        <div class="special-price" style="font-size: 30px;">
+                                                            <a href="" ><span class="price product-price"><i
+                                                                        class="fa fa-shopping-cart"></i></span></a>
+                                                            <a href=""><span class="price product-price"><i
+                                                                        class="fa fa-heart"></i></span></a>
                                                         </div>
-
-
                                                     </div>
 
                                                 </div>

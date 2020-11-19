@@ -20,10 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="751157d4-fbd2-4f6c-ad78-a925fcd82dcc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/CartController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/site/cart/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/banner_coltab2_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/banner_coltab3_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/banner_coltab3_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/brand1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/brand2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/brand3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/brand6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/policy1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/policy2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/site/images/policy3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/home/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/home/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +61,6 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
@@ -75,7 +83,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
@@ -126,7 +133,6 @@
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
@@ -228,7 +234,7 @@
       <workItem from="1605599499593" duration="2000" />
       <workItem from="1605617610524" duration="795000" />
       <workItem from="1605714988969" duration="728000" />
-      <workItem from="1605750480016" duration="8968000" />
+      <workItem from="1605750480016" duration="11443000" />
     </task>
     <servers />
   </component>
