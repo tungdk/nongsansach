@@ -27,28 +27,28 @@
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('name' ? 'has-danger' : '') }}">
                                 <label for="name">Tên mã giảm giá <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="name" placeholder="Nhập tên mã giảm giá">
+                                <input type="text" class="form-control" name="name" placeholder="Nhập tên mã giảm giá" value="{{old('name')}}">
                                 @if($errors->first('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group {{ $errors->first('code' ? 'has-danger' : '') }}">
                                 <label for="name">Mã code <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="code" placeholder="Nhập mã code">
+                                <input type="text" class="form-control" name="code" placeholder="Nhập mã code" value="{{old('code')}}">
                                 @if($errors->first('code'))
                                     <span class="text-danger">{{ $errors->first('code') }}</span>
                                 @endif
                             </div>
                             <div class="form-group {{ $errors->first('sale' ? 'has-danger' : '') }}">
                                 <label for="name">Phần trăm giảm giá <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="sale" placeholder="Nhập phần trăm giảm giá">
+                                <input type="text" class="form-control" name="sale" placeholder="Nhập phần trăm giảm giá" value="{{old('sale')}}">
                                 @if($errors->first('sale'))
                                     <span class="text-danger">{{ $errors->first('sale') }}</span>
                                 @endif
                             </div>
                             <div class="form-group {{ $errors->first('count' ? 'has-danger' : '') }}">
                                 <label for="name">Số lượt sử dụng <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="count" placeholder="Nhập số lưọt sử dụng">
+                                <input type="text" class="form-control" name="count" placeholder="Nhập số lưọt sử dụng" value="{{old('count')}}">
                                 @if($errors->first('count'))
                                     <span class="text-danger">{{ $errors->first('count') }}</span>
                                 @endif

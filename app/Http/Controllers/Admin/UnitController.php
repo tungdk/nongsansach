@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UnitRequest;
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UnitController extends Controller
 {
@@ -20,6 +21,10 @@ class UnitController extends Controller
         $unit = new Unit();
         $unit->name = $request->name;
         $unit->save();
+        Session::flash('toastr',[
+            'type'  =>  'success',
+            'message' => 'Thêm mới thành công'
+        ]);
         return redirect()->back();
     }
     public function edit($id){
@@ -30,6 +35,10 @@ class UnitController extends Controller
         $unit = Unit::findOrFail($id);
         $unit->name = $request->name;
         $unit->save();
+        Session::flash('toastr',[
+            'type'  =>  'success',
+            'message' => 'Cập nhật thành công'
+        ]);
         return redirect()->back();
     }
 

@@ -23,8 +23,15 @@ class PostCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        if($this->id){
+            $rules = [
+                'name' => 'required|unique:post_categories,name,'.$this->id
+            ];
+            return $rules;
+        }
+        $rules = [
+            'name' => 'required|unique:post_categories,name|max:50',
         ];
+        return $rules;
     }
 }

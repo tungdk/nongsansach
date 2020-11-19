@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\LoginRequest;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -24,9 +25,14 @@ class LoginController extends Controller
             'password'=>$request->password
         ];
         if (Auth::guard('admins')->attempt($data)) {
+            Session::flash('toastr',[
+                'type'  =>  'success',
+                'message' => 'Đăng nhập thành công'
+            ]);
             return redirect()->intended('/admin');
         }
-        return back()->withInput($request->only('email'));
+//        Session::flash('error', 'Tài khoản không đúng!');
+        return redirect()->back()->with('error', 'Tài khoản không đúng. Vui lòng thử lại!');
     }
 
     public function getLogout(){

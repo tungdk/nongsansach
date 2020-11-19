@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\CouponRequest;
 use App\Models\Coupon;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CouponController extends Controller
 {
@@ -23,13 +24,16 @@ class CouponController extends Controller
         $data = $request->except('_token');
         $data['created_at'] = Carbon::now();
         Coupon::insertGetId($data);
+        Session::flash('toastr',[
+            'type'  =>  'success',
+            'message' => 'Thêm mới dữ liệu thành công'
+        ]);
         return redirect()->back();
     }
 
     public function edit($id){
         $coupon = Coupon::find($id);
         return view('admin.coupon.update', compact('coupon'));
-
     }
 
     public function update(CouponRequest $request, $id){
@@ -37,6 +41,10 @@ class CouponController extends Controller
         $data = $request->except('_token');
         $data['updated_at'] = Carbon::now();
         $coupon->update($data);
+        Session::flash('toastr',[
+            'type'  =>  'success',
+            'message' => 'Cập nhật thành công'
+        ]);
         return redirect()->back();
     }
 

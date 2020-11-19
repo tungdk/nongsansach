@@ -9,6 +9,11 @@
     <title>
         Đăng nhập vào hệ thống
     </title>
+    <style>
+        .text-danger{
+            color: orange;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,12 +79,22 @@
                         @csrf
                         <div class="input-group">
                             <i class='bx bxs-user'></i>
-                            <input type="text" placeholder="Email" name="email">
+                            <input type="text" placeholder="Email" name="email" value="{{old('email')}}">
+
                         </div>
+                        @if($errors->first('email'))
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                        @endif
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Mẩt khẩu" name="password">
+                            <input type="password" placeholder="Mẩt khẩu" name="password" value="">
                         </div>
+                        @if($errors->first('password'))
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif
+                        @if (session('error'))
+                            <span class="text-danger">{{session('error')}}</span>
+                        @endif
                         <button type="submit">
                             Đăng nhập
                         </button>

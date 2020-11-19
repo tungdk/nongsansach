@@ -23,8 +23,15 @@ class UnitRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        if($this->id){
+            $rules = [
+                'name' => 'required|unique:units,name,'.$this->id
+            ];
+            return $rules;
+        }
+        $rules = [
+            'name' => 'required|unique:units,name|max:50',
         ];
+        return $rules;
     }
 }

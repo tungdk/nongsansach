@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostCategoryRequest;
 use App\Models\PostCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class PostCategoryController extends Controller
@@ -22,6 +23,10 @@ class PostCategoryController extends Controller
         $postcate->name = $request->name;
         $postcate->slug = Str::slug($request->name);
         $postcate->save();
+        Session::flash('toastr',[
+            'type'  =>  'success',
+            'message' => 'Thêm mới thành công'
+        ]);
         return redirect()->back();
     }
 
@@ -35,6 +40,10 @@ class PostCategoryController extends Controller
         $postcate->name = $request->name;
         $postcate->slug = Str::slug($request->name);
         $postcate->save();
+        Session::flash('toastr',[
+            'type'  =>  'success',
+            'message' => 'Cập nhật thành công'
+        ]);
         return redirect()->back();
     }
 
