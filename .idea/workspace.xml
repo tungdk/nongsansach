@@ -20,18 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="751157d4-fbd2-4f6c-ad78-a925fcd82dcc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/site/images/banner_coltab2_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/banner_coltab3_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/banner_coltab3_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/brand1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/brand2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/brand3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/brand6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/policy1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/policy2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site/images/policy3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/home/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/home/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +222,7 @@
       <workItem from="1605599499593" duration="2000" />
       <workItem from="1605617610524" duration="795000" />
       <workItem from="1605714988969" duration="728000" />
-      <workItem from="1605750480016" duration="11443000" />
+      <workItem from="1605750480016" duration="12044000" />
     </task>
     <servers />
   </component>

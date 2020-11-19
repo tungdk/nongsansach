@@ -309,7 +309,7 @@
                 </div>
             </div>
         </section>
-        <!-- end home_block_product_slide.php  --><!-- all_banner_2_col -->
+{{--        <!-- end home_block_product_slide.php  --><!-- all_banner_2_col -->--}}
         <section class="awe-section-7" id="awe-section-7">
             <div class="section_banner">
                 <div class="container">
