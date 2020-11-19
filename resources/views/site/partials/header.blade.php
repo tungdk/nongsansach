@@ -203,7 +203,7 @@
                     <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>
                     <li class="nav-item "><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>
                     <li class="nav-item "><a class="nav-link" href="tin-tuc.html">Tin tức</a></li>
-                    <li class="nav-item "><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{route('site.contact.index')}}">Liên hệ</a></li>
                 </ul>
 
                 <div class="menu-search f-right bbbbb">

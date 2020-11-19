@@ -20,22 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="751157d4-fbd2-4f6c-ad78-a925fcd82dcc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/ContactController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Site/ContactRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/site/contact/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CouponController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UnitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UnitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/CategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/CategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/CouponRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/CouponRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/LoginRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PostCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PostCategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/UnitRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/UnitRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/coupon/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/coupon/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/post_category/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post_category/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/layout_admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/layout_admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/index2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/index2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/website.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/website.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/unit/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/unit/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/partials/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,16 +176,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\nongsansach\resources\views\site\home" />
+      <recent name="C:\xampp\htdocs\nongsansach\app\Http\Controllers\Admin" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\nongsansach\public\site\login" />
       <recent name="C:\xampp\htdocs\nongsansach\resources\views\site\auth" />
       <recent name="C:\xampp\htdocs\nongsansach\resources\lang\en" />
       <recent name="C:\xampp\htdocs\nongsansach\resources\views\admin" />
       <recent name="C:\xampp\htdocs\nongsansach\resources\views\admin\setting" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\nongsansach\resources\views\site\home" />
-      <recent name="C:\xampp\htdocs\nongsansach\app\Http\Controllers\Admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -240,7 +233,7 @@
       <workItem from="1605599499593" duration="2000" />
       <workItem from="1605617610524" duration="795000" />
       <workItem from="1605714988969" duration="728000" />
-      <workItem from="1605750480016" duration="5518000" />
+      <workItem from="1605750480016" duration="8536000" />
     </task>
     <servers />
   </component>

@@ -12,7 +12,10 @@ use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\ContactController;
 use \App\Http\Controllers\Admin\Auth\LoginController;
+
 use \App\Http\Controllers\Site\HomeController;
+use \App\Http\Controllers\Site\ContactController as SiteContactController;
+
 use \App\Http\Controllers\Site\UserController;
 use \App\Http\Controllers\Site\AuthController;
 use \App\Http\Controllers\Site\Auth\SocialController;
@@ -203,3 +206,6 @@ Route::get('register',  [AuthController::class,'register'])->name('site.register
 
 Route::get('product',  [SiteProductController::class,'detail'])->name('detail');
 
+//contact
+Route::get('contact', [SiteContactController::class, 'index'])->name('site.contact.index');
+Route::post('contact', [SiteContactController::class, 'store'])->name('site.contact.store');

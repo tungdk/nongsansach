@@ -2,7 +2,7 @@
     @csrf
     <div class="col-md-12">
         <div class="form-group {{ $errors->first('config_key' ? 'has-danger' : '') }}">
-            <label for="name">Tên cài đặt <span class="text-danger">(*)</span></label>
+            <label for="name">Tên cửa hàng <span class="text-danger">(*)</span></label>
             <input type="text" class="form-control" name="name" placeholder="Nhập tên cài đặt" value="{{$name->config_value}}">
             @if($errors->first('config_key'))
                 <span class="text-danger">{{ $errors->first('config_key') }}</span>
