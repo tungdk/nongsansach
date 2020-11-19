@@ -16,6 +16,7 @@ use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Site\HomeController;
 use \App\Http\Controllers\Site\ContactController as SiteContactController;
 use \App\Http\Controllers\Site\CartController as SiteCartController;
+use \App\Http\Controllers\Site\CategoryController as SiteCategoryController;
 
 use \App\Http\Controllers\Site\UserController;
 use \App\Http\Controllers\Site\AuthController;
@@ -213,3 +214,6 @@ Route::post('contact', [SiteContactController::class, 'store'])->name('site.cont
 
 //cart
 Route::get('cart', [SiteCartController::class, 'index'])->name('site.cart.index');
+
+//category
+Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');

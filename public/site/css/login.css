@@ -26,6 +26,7 @@
     font-weight: bold;
     padding: 1rem;
     transition: all 0.2s;
+    line-height: 25px;
 }
 
 .form-item {

@@ -6,7 +6,7 @@
             Hotline:
             <span>
 
-					<a href="tel:0972782255"> 0972782255</a>
+					<a href="tel:0348520202"> 0348520202</a>
 
 				</span>
         </div>
@@ -23,14 +23,14 @@
                                 Hotline:
                                 <span>
 
-										<a href="tel:0972782255"> 0972782255</a>
+										<a href="tel:0348520202"> 0348520202</a>
 
 									</span>
                             </li>
                             <li class="margin-left-20">
                                 <i class="fa fa-map-marker"></i> <b>Địa chỉ</b>:
                                 <span>
-										299/3A Lý Thường Kiệt - P.15 - Q.Tân Bình - HCM									</span>
+										55 Giải Phóng - P.Đồng Tâm - Q.Hai Bà Trưng - HN</span>
 
                             </li>
                         </ul>
@@ -118,7 +118,7 @@
                             </a>
                             <div class="info a-left">
                                 <a href="#">Hỗ trợ 24/7</a>
-                                <p>Hotline: 0972782255</p>
+                                <p>Hotline: 0348520202</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
@@ -183,7 +183,7 @@
         </div>
 
         <div class="menu-bar hidden-md hidden-lg">
-            <img src="site/images/lazyload.svg" data-lazyload="https://shop1.jweb.com.vn/site/images/menu-bar.png"
+            <img src="site/images/lazyload.svg" data-lazyload="site/images/menu-bar.png"
                  alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng"/>
         </div>
         <div class="icon-cart-mobile hidden-md hidden-lg f-left absolute"
@@ -267,12 +267,12 @@
                     <li class="h3">
                         MENU
                     </li>
-                    <li class="nav-item "><a class="nav-link" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{route('site.home')}}">Trang chủ</a></li>
                     <li class="nav-item "><a class="nav-link" href="#">Giới thiệu</a></li>
                     <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>
                     <li class="nav-item "><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>
                     <li class="nav-item "><a class="nav-link" href="tin-tuc.html">Tin tức</a></li>
-                    <li class="nav-item "><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{route('site.contact.index')}}">Liên hệ</a></li>
                 </ul>
             </div>
         </div>
