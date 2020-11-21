@@ -27,28 +27,28 @@
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('title' ? 'has-danger' : '') }}">
                                 <label for="name">Tiêu đề<span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="title" placeholder="Nhập tiêu đề">
+                                <input type="text" class="form-control" name="title" placeholder="Nhập tiêu đề" value="{{old('title')}}">
                                 @if($errors->first('title'))
                                     <span class="text-danger">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
                             <div class="form-group {{ $errors->first('description' ? 'has-danger' : '') }}">
                                 <label for="name">Mô tả <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="description" placeholder="Nhập mô tả">
+                                <input type="text" class="form-control" name="description" placeholder="Nhập mô tả" value="{{old('description')}}">
                                 @if($errors->first('description'))
                                     <span class="text-danger">{{ $errors->first('description') }}</span>
                                 @endif
                             </div>
                             <div class="form-group {{ $errors->first('thumbnail' ? 'has-danger' : '') }}">
                                 <label for="name">Ảnh <span class="text-danger">(*)</span></label>
-                                <input type="file" class="form-control" name="thumbnail" placeholder="Nhập phần trăm giảm giá">
+                                <input type="file" class="form-control" name="thumbnail" placeholder="Nhập ảnh" value="{{old('thumbnail')}}">
                                 @if($errors->first('thumbnail'))
                                     <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label for="name">Trạng thái <span class="text-danger"><i>(Tích để hiển thị)</i></span></label>
-                                <input type="checkbox" name="status">
+                                <input type="checkbox" name="status" {{ old('status') == 'on' ? 'checked' : ''}} >
                             </div>
                         </div>
                         <div class="col-md-12">

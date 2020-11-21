@@ -17,7 +17,7 @@
     <!-- ================= Favicon ================== -->
 
 {{--    <link rel="icon" href="site/uploads/images/caidat/favicon.png" type="image/x-icon"/>--}}
-    <link rel="shortcut icon" type="image/png" href="/images/logo.png"/>
+    {{-- <link rel="shortcut icon" type="image/png" href="/images/logo.png"/> --}}
     <!-- Facebook Open Graph meta tags -->
 
     <meta property="og:type" content="website">

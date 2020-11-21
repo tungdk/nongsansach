@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-//    use Authenticatable;
     public function getLogin(){
+//        echo "ahihi";
+//        var_dump(Auth::user());
+//        die();
         $check_login = Auth::guard('admins')->check();
         if($check_login){
             return redirect()->route('admin.dashboard');

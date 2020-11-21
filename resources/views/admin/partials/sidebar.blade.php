@@ -7,7 +7,7 @@
                 <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Admin</p>
+                <p>{{ get_data_user('admins','name')}}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -89,7 +89,7 @@
             </li>
 
 
-            <li>
+            <li class="{{ request()->is('admin/coupon*') ? 'active' : '' }}">
                 <a href="{{route('admin.coupon.index')}}">
                     <i class="fa fa-tags"></i> <span> Mã giảm giá</span>
                     <span class="pull-right-container">
@@ -97,7 +97,7 @@
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('admin/slider*') ? 'active' : '' }}">
                 <a href="{{route('admin.slider.index')}}">
                     <i class="fa fa-calendar"></i> <span> Slider</span>
                     <span class="pull-right-container">
@@ -105,7 +105,7 @@
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
                 <a href="{{route('admin.unit.index')}}">
                     <i class="fa fa-users"></i> <span> Khách hàng</span>
                     <span class="pull-right-container">
@@ -113,7 +113,7 @@
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('admin/unit*') ? 'active' : '' }}">
                 <a href="{{route('admin.unit.index')}}">
                     <i class="fa fa-comments"></i> <span> Bình luận</span>
                     <span class="pull-right-container">
@@ -121,7 +121,7 @@
                 </a>
             </li>
 
-            <li>
+            <li class="{{ request()->is('admin/contact*') ? 'active' : '' }}">
                 <a href="{{route('admin.contact.index')}}">
                     <i class="fa fa-id-card"></i> <span> Phản hồi</span>
                     <span class="pull-right-container">

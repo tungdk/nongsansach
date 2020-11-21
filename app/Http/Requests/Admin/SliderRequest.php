@@ -23,8 +23,17 @@ class SliderRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'description' => 'required'
         ];
+        if($this->id){
+            $rules['title'] = 'required|unique:sliders,title,'.$this->id;
+            if(isset($rules['thumbnail']))
+                $rules['thumbnail'] = "required|mimes:jpeg,bmp,png,jpg";
+            return $rules;
+        }
+        $rules['title'] = 'required|unique:sliders,title';
+        $rules['logo'] = "required|mimes:jpeg,bmp,png,jpg";
+        return $rules;
     }
 }

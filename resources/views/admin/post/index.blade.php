@@ -30,7 +30,7 @@
             <div class="box-body">
                 <div class="col-md-12">
                     <div class="box">
-                        <table class="table">
+                        <table class="table table-hover">
                             <tbody>
                             <tr>
                                 <th>#</th>

@@ -31,5 +31,7 @@ class AuthController extends Controller
         return redirect()->route('site.home');
     }
 
-
+    public function register(){
+        return view('site.auth.login');
+    }
 }

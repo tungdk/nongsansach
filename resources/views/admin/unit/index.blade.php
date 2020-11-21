@@ -26,14 +26,16 @@
             <div class="box-body">
                 <div class="col-md-12">
                     <div class="box">
-                        <table class="table">
-                            <tbody>
+                        <table class="table table-hover">
+                            <thead>
                             <tr>
                                 <th style="width: 5%">#</th>
                                 <th style="width: 30%">Đơn vị tính</th>
-{{--                                <th style="width: 10%">Trạng thái</th>--}}
+                                {{--                                <th style="width: 10%">Trạng thái</th>--}}
                                 <th style="width: 20%">Thao tác</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             @if(isset($units))
                                 @foreach($units as $unit)
                                     <tr>
