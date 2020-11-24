@@ -27,10 +27,14 @@ class CouponRequest extends FormRequest
         $rules = [
           'name' => 'required',
           'sale' => 'required|numeric',
-          'count' => 'required|numeric'
+          'count' => 'required|numeric',
+          'start_time' => 'required|date|after:now',
+          'end_time' => 'required|date|after:start_time'
         ];
         if($this->id){
             $rules['code'] = 'required|unique:coupons,code,'.$this->id;
+            return $rules;
+
         }
         $rules['code'] = 'required|unique:coupons,code';
         return $rules;

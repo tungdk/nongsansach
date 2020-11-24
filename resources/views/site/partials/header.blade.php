@@ -137,7 +137,7 @@
                     <div class="top-cart-contain f-right ">
                         <div class="mini-cart text-xs-center">
                             <div class="heading-cart">
-                                <a href="gio-hang.html">
+                                <a href="{{route('site.cart.index')}}">
                                     <div class="icon f-left relative">
                                         <i class="fa fa-shopping-bag"></i>
                                         <span class="cartCount count_item_pr hidden-lg" id="cart-total">0</span>
@@ -163,7 +163,7 @@
                                             </li>
                                             <li class="li-fix-2" style="">
                                                 <div class="actions">
-                                                    <a href="gio-hang.html" class="btn btn-primary">
+                                                    <a href="{{route('site.cart.index')}}" class="btn btn-primary">
                                                         <span>Giỏ hàng</span>
                                                     </a>
                                                     <a href="gio-hang/thanh-toan.html"

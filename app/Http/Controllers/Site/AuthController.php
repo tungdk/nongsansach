@@ -21,7 +21,7 @@ class AuthController extends Controller
         if(Auth::check()){
             return redirect()->route('site.home');
         }
-        return view('site.auth.login');
+        return view('site.auth.master_login');
     }
 
     public function postLogin(LoginRequest $request){
@@ -39,7 +39,7 @@ class AuthController extends Controller
     }
 
     public function register(){
-        return view('site.auth.login');
+        return view('site.auth.master_login');
     }
 
     public function postRegister(RegisterRequest $request){
@@ -49,7 +49,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'phone' => $request->phone,
+//            'phone' => $request->phone,
             'confirmation_code' => $confirmation_code,
             'confirmed' => 0,
         ];
@@ -75,7 +75,10 @@ class AuthController extends Controller
 
         Mail::to($request->email)->send(new SendRegisterMail($request->name, $confirmation_code));
 
-        echo 'Gửi email xác thực thành công';
+        return redirect()->back()->with([
+            'status' => 'success',
+            'message' => 'Vui lòng kiểm tra hòm thư điện tử để xác nhận email'
+        ]);
 //        return redirect(route('login'))->with('status', 'Vui lòng xác nhận tài khoản email');
 
 //        $id = User::query()->insertGetId($data);
@@ -87,7 +90,6 @@ class AuthController extends Controller
 //            ]);
 //            Mail::to($request->email)->send(new SendRegisterMail($request->name));
 //        }
-        echo 'Đăng ký thành công';
     }
 
     public function verify_register($code){

@@ -18,7 +18,7 @@ class CouponNotification extends Mailable
      *
      * @return void
      */
-    public function __construct(Coupon $coupon, $user)
+    public function __construct($coupon, $user)
     {
         $this->code = $coupon->code;
         $this->sale = $coupon->sale;
@@ -35,7 +35,7 @@ class CouponNotification extends Mailable
     public function build()
     {
         return $this->from('nongsansach@gmail.com', 'Nông sản sạch')
-            ->subject($this->name)
+            ->subject('[nongsansach ]'.$this->name)
             ->markdown('mails.mail_coupon')
             ->with([
                 'name' => $this->name_user,

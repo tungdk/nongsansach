@@ -34,6 +34,8 @@
                                 <th>Mã code</th>
                                 <th>Giảm giá (%)</th>
                                 <th>Lượt sử dụng</th>
+                                <th>Bắt đầu <i class="fa fa-check"></i></th>
+                                <th>Kết thúc <i class="fa fa-times"></i></th>
                                 <th>Trạng thái</th>
                                 <th>Gửi mail</th>
                                 <th>Thao tác</th>
@@ -47,6 +49,8 @@
                                         <td>{{ $coupon->code }}</td>
                                         <td>{{ $coupon->sale }}</td>
                                         <td>{{ $coupon->count }}</td>
+                                        <td>{{ $coupon->start_time }}</td>
+                                        <td>{{ $coupon->end_time }}</td>
                                         <td>
                                             @if($coupon->status == 1)
                                                 <a href="{{route('admin.coupon.active', $coupon->id)}}" class="label label-info">Hiển thị</a>
@@ -55,7 +59,7 @@
                                             @endif
                                         </td>
                                         <td style="text-align: center">
-                                            <input type="checkbox" {{$coupon->send_mail == 1 ? 'checked' : ''}} onclick="return false;">
+                                            <input type="checkbox" {{$coupon->send_mail == 1 ? 'checked' : ''}} id="checkbox_{{$coupon->id}}" onclick="return false;">
                                         </td>
                                         <td>
                                             <a href="{{route('admin.coupon.edit', $coupon->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
@@ -99,14 +103,16 @@
                 confirmButtonText: 'Đồng ý!'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    const token = "{{ @csrf_token() }}";
                     $.ajax({
-                        method: "GET",
-                        url: "{{route('admin.coupon.sendMail', $coupon->id)}}",
+                        method: "POST",
+                        url: "{{route('admin.coupon.sendMail')}}",
                         data: {
-                            // _token: token,
+                            _token: token,
                             id: id,
                         },
                         success: function (data) {
+                            document.getElementById("checkbox_"+id).checked = true;
                             Swal.fire(
                                 "Mã giảm giá đang được gửi đi cho khách hàng",
                                 "",

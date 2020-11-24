@@ -106,7 +106,7 @@
             </li>
 
             <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
-                <a href="{{route('admin.unit.index')}}">
+                <a href="{{route('admin.user.index')}}">
                     <i class="fa fa-users"></i> <span> Khách hàng</span>
                     <span class="pull-right-container">
             </span>

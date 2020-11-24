@@ -4,14 +4,20 @@
     <meta charset="utf-8">
 </head>
 <body>
-<h2>Xác thực tài khoản qua email của bạn</h2>
+<br><br>
+<div class="container" style="margin-left: 20px">
+    <h2>Xác thực tài khoản qua email của bạn</h2>
 
-<div>
-    Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của chúng tôi. <br>
-    Hay click vào đường dẫn để xác nhận địa chỉ email <br>
-    {{ URL::to('register/verify/' . $code) }}<br/>
+    <div>
+        Cảm ơn bạn đã đăng ký tài khoản tại <b>Nông Sản Sạch</b>. <br><br>
+        Hãy click vào đường dẫn để xác nhận địa chỉ email. <br><br>
+        <a href="{{ URL::to('register/verify/' . $code) }}">Xác nhận tài khoản</a><br/><br>
 
+        Thanks,<br>
+        <span>Nông Sản Sạch</span>
+    </div>
 </div>
+
 
 </body>
 </html>

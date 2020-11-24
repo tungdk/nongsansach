@@ -54,14 +54,28 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group {{ $errors->first('start_time' ? 'has-danger' : '') }}">
+                                <label for="name">Thời gian bắt đầu <span class="text-danger">(*)</span></label>
+                                <input type="datetime-local" class="form-control" name="start_time" placeholder="Nhập thời gian bắt đầu" value="{{old('start_time')}}">
+                                @if($errors->first('start_time'))
+                                    <span class="text-danger">Thời gian bắt đầu không đúng</span>
+                                @endif
+                            </div>
+                            <div class="form-group {{ $errors->first('end_time' ? 'has-danger' : '') }}">
+                                <label for="name">Thời gian kết thúc <span class="text-danger">(*)</span></label>
+                                <input type="datetime-local" class="form-control" name="end_time" placeholder="Nhập thời gian kết thúc" value="{{old('end_time')}}">
+                                @if($errors->first('end_time'))
+                                    <span class="text-danger">Thời gian kết thúc không đúng</span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="box-footer text-center">
                                 <a href="{{route('admin.coupon.index')}}" class="btn btn-danger"><i class="fa fa-undo"></i> Quay lại</a>
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
                         </div>
-
-                        <!-- /.box-body -->
 
                     </form>
                     <!-- /.box -->

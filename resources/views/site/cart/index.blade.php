@@ -39,9 +39,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td colspan='6' class='text-center'>Chưa có sản phẩm nào trong giỏ hàng</td>
-                                </tr>
+                                {{--                                @if(isset($carts))--}}
+                                @forelse($carts as $cart)
+                                    <tr>
+
+                                        <td class='text-center'>{{$cart->product->image}}</td>
+                                        <td class='text-center'>{{$cart->product->name}}</td>
+                                        <td class='text-center'>{{$cart->product->price}}</td>
+                                        <td class='text-center'>{{$cart->quantity}}</td>
+                                        <td class='text-center'>{{$cart->product->price}} * {{$cart->quantity}}</td>
+                                        <td class='text-center'><i class="fa fa-times"></i></td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan='6' class='text-center'>Chưa có sản phẩm nào trong giỏ hàng</td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div>

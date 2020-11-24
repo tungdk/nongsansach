@@ -11,6 +11,7 @@ use \App\Http\Controllers\Admin\PostController;
 use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\ContactController;
+use \App\Http\Controllers\Admin\UserController;
 use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Admin\StatisticalController;
 
@@ -19,11 +20,12 @@ use \App\Http\Controllers\Site\ContactController as SiteContactController;
 use \App\Http\Controllers\Site\CartController as SiteCartController;
 use \App\Http\Controllers\Site\CategoryController as SiteCategoryController;
 
-use \App\Http\Controllers\Site\UserController;
+use \App\Http\Controllers\Site\UserController as SiteUserController;
 use \App\Http\Controllers\Site\AuthController;
 use \App\Http\Controllers\Site\Auth\SocialController;
 
 use \App\Http\Controllers\Site\ProductController as SiteProductController;
+use Laravel\Fortify\Http\Controllers\VerifyEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -145,7 +147,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function ()
         Route::get('active/{id}', [CouponController::class, 'active'])->name('admin.coupon.active');
         Route::delete('delete/{id}', [CouponController::class, 'delete'])->name('admin.coupon.delete');
 
-        Route::get('sendMail/{id}', [CouponController::class, 'sendMail'])->name('admin.coupon.sendMail');
+        Route::post('sendMail', [CouponController::class, 'sendMail'])->name('admin.coupon.sendMail');
     });
 
     //Setting
@@ -182,6 +184,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function ()
 
         Route::get('', [ContactController::class, 'index'])->name('admin.contact.index');
 
+    });
+
+    //User - khách hàng
+    Route::group(['prefix'=>'user'], function (){
+       Route::get('', [UserController::class, 'index'])->name('admin.user.index');
     });
 
     Route::group(['prefix'=>'statistical'], function (){
@@ -224,7 +231,12 @@ Route::get('contact', [SiteContactController::class, 'index'])->name('site.conta
 Route::post('contact', [SiteContactController::class, 'store'])->name('site.contact.store');
 
 //cart
-Route::get('cart', [SiteCartController::class, 'index'])->name('site.cart.index');
+Route::group(['prefix'=>'cart', 'middleware'=>'check_user_login'], function (){
+    Route::get('', [SiteCartController::class, 'index'])->name('site.cart.index');
+    Route::get('add/{id}/{quantity}', [SiteCartController::class, 'add'])->name('site.cart.add');
+});
+
+
 
 //category
 Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
@@ -251,3 +263,20 @@ Route::get('category',[SiteCategoryController::class, 'index'])->name('site.cate
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+    ->middleware(['signed', 'throttle:6,1'])
+    ->name('verification.verify');
+
+
+use Laravel\Fortify\Fortify;
+
+Fortify::loginView(function () {
+    return view('auth.login');
+});
+
+Fortify::registerView(function () {
+    return view('auth.register');
+});
+
+

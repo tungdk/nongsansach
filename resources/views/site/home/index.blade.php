@@ -123,9 +123,9 @@
                                                                                         </h3>
                                                                                         <div class="price-box clearfix">
                                                                                             <div class="special-price">
-                                                                                                <a href=""
-                                                                                                   class="price product-price"> {{number_format($product->sale, 0, ',', '.')}}
-                                                                                                    Mua ngay</a>
+                                                                                                <a href="" data-url="{{URL::to('cart/add/'.$product->id.'/1')}}"
+                                                                                                   class="price product-price add_to_cart"> {{number_format($product->sale, 0, ',', '.')}}
+                                                                                                    <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i></a>
                                                                                             </div>
                                                                                         </div>
 

@@ -47,7 +47,7 @@ class CouponController extends Controller
 
     public function update(CouponRequest $request, $id)
     {
-        $coupon = Coupon::find($id);
+        $coupon = Coupon::query()->findOrFail($id);
         $data = $request->except('_token');
         $data['updated_at'] = Carbon::now();
         $coupon->update($data);
@@ -66,9 +66,30 @@ class CouponController extends Controller
         return redirect()->back();
     }
 
-    public function sendMail($id)
+    public function sendMail(Request $request)
     {
-        $coupon = Coupon::query()->findOrFail($id);
+        $coupon = Coupon::query()
+            ->where('id', $request->id)->first();
+        if($coupon->status == 0){
+            return response()->json([
+                'status' => 0,
+                'message' =>'Mã giảm giá đang bị ẩn'
+            ]);
+        }
+        if($coupon->count == 0){
+            return response()->json([
+                'status' => 0,
+                'message' =>'Mã giảm giá đã hết lượt sử dụng'
+            ]);
+        }
+        $time_now = Carbon::now();
+//        if($coupon->start_time > $time_now || $time_now > $coupon->end_time){
+//            return response()->json([
+//                'status' => 0,
+//                'message' =>'Mã giảm giá đã hết thời gian sử dụng'
+//            ]);
+//        }
+
         $users = User::query()->where('active', 1)->get();
         SendCouponEmailJob::dispatch($coupon, $users)->onQueue('emails');
 
