@@ -247,3 +247,7 @@ Route::get('category',[SiteCategoryController::class, 'index'])->name('site.cate
 //
 //    return back()->with('status', 'verification-link-sent');
 //})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia\Inertia::render('Dashboard');
+})->name('dashboard');

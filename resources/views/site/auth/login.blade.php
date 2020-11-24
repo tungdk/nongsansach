@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword">Số điện thoại</label>
-                                    <input type="password" id="inputConfirmPassword" class="form-control" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
+                                    <input type="password" id="inputConfirmPassword" class="form-control" name="phone" placeholder="Nhập lại mật khẩu" required>
                                 </div>
 
                                 {{--                            <div class="custom-control custom-checkbox mb-3">--}}

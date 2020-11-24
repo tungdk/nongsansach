@@ -53,6 +53,8 @@ class AuthController extends Controller
             'confirmation_code' => $confirmation_code,
             'confirmed' => 0,
         ];
+//        dump($data);
+//        die();
         User::query()->create($data);
 //        dump($data) ;
 //        User::query()->create([

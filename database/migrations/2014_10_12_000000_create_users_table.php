@@ -19,16 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('confirmed')->default(0);
-            $table->string('confirmation_code')->nullable();
-//            $table->string('provider');
-//            $table->string('provider_id');
-            $table->string('phone');
-            $table->string('address')->nullable();
-            $table->string('avatar')->nullable();
-            $table->tinyInteger('active')->default(1);
-            $table->tinyInteger('level')->default(0);
-            $table->rememberToken()->nullable();
+            $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
     }
