@@ -35,7 +35,7 @@ class CouponNotification extends Mailable
     public function build()
     {
         return $this->from('nongsansach@gmail.com', 'Nông sản sạch')
-            ->subject('[nongsansach ]'.$this->name)
+            ->subject('[nongsansach] Mã giảm giá sự kiện: '.$this->name)
             ->markdown('mails.mail_coupon')
             ->with([
                 'name' => $this->name_user,

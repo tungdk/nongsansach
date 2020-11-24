@@ -54,6 +54,11 @@
     <link href="{{asset('site/css/style-theme-blue-strong.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
 
+    <!-- chat -->
+    <link href="{{asset('site/css/chat.css')}}" rel="stylesheet" type="text/css"/>
+
+    <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
+
     @yield('css')
     <!-- Header JS -->
     <script src="{{asset('site/js/jquery-2.2.3.min.js')}}" type="text/javascript"></script>
@@ -80,7 +85,8 @@
 {{--<div class="zalo-chat-widget" data-oaid="2874983549580581079" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420" style="float: left"></div>--}}
 
 {{--<script src="https://sp.zalo.me/plugins/sdk.js"></script>--}}
-
+<!-- chat -->
+@include('site.partials.chat')
 
 <!-- Plugin JS -->
 <script src="site/js/api.jquery.js" type="text/javascript"></script>

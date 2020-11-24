@@ -1,6 +1,6 @@
 /**
 Theme Name: DUALEO Base 1.0.0
-Theme URL: # 
+Theme URL: #
 Author: Dualeo
 Author URL: #
 Version: 1.0
@@ -1313,14 +1313,14 @@ footer {
     footer .back-to-top.show {
       position: fixed;
       right: 20px;
-      bottom: 20px; }
+      bottom: 60px; }
     @media (max-width: 1199px) {
       footer .back-to-top {
         width: 40px;
         height: 40px;
         line-height: 40px; }
         footer .back-to-top.show {
-          bottom: 20px; } }
+          bottom: 60px; } }
     @media (max-width: 767px) {
       footer .back-to-top.show {
         bottom: 20px; } }
@@ -3555,8 +3555,8 @@ footer .footer-info-widget p.hotline a {
     display: -ms-flexbox;
     display: flex; }
 
-    
-  
+
+
 /* Bo sung them */
 .owl-carousel{
   touch-action: manipulation;
