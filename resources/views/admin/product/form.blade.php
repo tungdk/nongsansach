@@ -106,7 +106,8 @@
             </div>
             <div class="box-body">
                 <div class="form-group">
-                    <input type="text" data-role="tagsinput" name="tags" class="form-control" value="{{ $product->tags ?? '' }}">
+                    <input type="text" data-role="tagsinput" name="tags" class="form-control"
+                           value="{{ $product->tags ?? '' }}">
                 </div>
             </div>
         </div>
@@ -156,7 +157,6 @@
             </div>
         </div>
     </div>
-
 
 
     <div class="col-sm-12 clearfix">

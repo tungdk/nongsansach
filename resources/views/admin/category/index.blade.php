@@ -38,10 +38,9 @@
                             @if(isset($categories))
                                 @foreach($categories as $cate)
                                     <tr>
-
                                         <td>{{ $cate->id }}</td>
                                         <td>{{ $cate->name }}</td>
-                                        <td>{{ $cate->name }}</td>
+                                        <td>{{ $cate->parent_id == 0 ? '' : $cate->parent_cate()->name }}</td>
                                         <td>
                                             @if($cate->status == 1)
                                                 <a href="{{route('admin.category.active', $cate->id)}}" class="label label-info">Hiển thị</a>

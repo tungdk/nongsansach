@@ -35,6 +35,7 @@
                                 <th>Giảm giá (%)</th>
                                 <th>Lượt sử dụng</th>
                                 <th>Trạng thái</th>
+                                <th>Gửi mail</th>
                                 <th>Thao tác</th>
                             </tr>
                             @if(isset($coupons))
@@ -53,10 +54,16 @@
                                                 <a href="{{route('admin.coupon.active', $coupon->id)}}" class="label label-default">Ẩn</a>
                                             @endif
                                         </td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" {{$coupon->send_mail == 1 ? 'checked' : ''}} onclick="return false;">
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.coupon.edit', $coupon->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                                                 Sửa</a>
                                             <a href="{{route('admin.coupon.delete', $coupon->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
+                                            @if($coupon->status == 1 && $coupon->count > 0)
+                                                <button class="btn btn-xs btn-default" onclick="send_mail({{$coupon->id}})"><i class="fa fa-mail-forward"></i> Gửi mail</button>
+                                            @endif
                                         </td>
 
                                     </tr>
@@ -78,4 +85,37 @@
 
     </section>
     <!-- /.content -->
+@endsection
+@section('js')
+    <script>
+        function send_mail(id){
+            Swal.fire({
+                title: 'Bạn thực sự muốn gửi mail',
+                text: "Quá trình gửi mail có thể sẽ diễn ra trong 5 - 10 phút",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đồng ý!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "GET",
+                        url: "{{route('admin.coupon.sendMail', $coupon->id)}}",
+                        data: {
+                            // _token: token,
+                            id: id,
+                        },
+                        success: function (data) {
+                            Swal.fire(
+                                "Mã giảm giá đang được gửi đi cho khách hàng",
+                                "",
+                                "success"
+                            )
+                        }
+                    })
+                }
+            })
+        }
+    </script>
 @endsection

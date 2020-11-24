@@ -129,6 +129,14 @@
                 </a>
             </li>
 
+            <li class="{{ request()->is('admin/statistical*') ? 'active' : '' }}">
+                <a href="{{route('admin.statistical.index')}}">
+                    <i class="fa fa-id-card"></i> <span> Thống kê</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
             {{--            <li>--}}
             {{--                <a href="{{route('admin.setting.index')}}">--}}
             {{--                    <i class="fa fa-cogs"></i> <span> Cài đặt chung</span>--}}

@@ -12,6 +12,7 @@ use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\ContactController;
 use \App\Http\Controllers\Admin\Auth\LoginController;
+use \App\Http\Controllers\Admin\StatisticalController;
 
 use \App\Http\Controllers\Site\HomeController;
 use \App\Http\Controllers\Site\ContactController as SiteContactController;
@@ -143,6 +144,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function ()
 
         Route::get('active/{id}', [CouponController::class, 'active'])->name('admin.coupon.active');
         Route::delete('delete/{id}', [CouponController::class, 'delete'])->name('admin.coupon.delete');
+
+        Route::get('sendMail/{id}', [CouponController::class, 'sendMail'])->name('admin.coupon.sendMail');
     });
 
     //Setting
@@ -181,6 +184,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function ()
 
     });
 
+    Route::group(['prefix'=>'statistical'], function (){
+        Route::get('', [StatisticalController::class, 'index'])->name('admin.statistical.index');
+    });
+
 });
 
 
@@ -190,7 +197,11 @@ Route::get('home',  [HomeController::class,'index'])->name('site.home');
 
 //login
 Route::get('login',  [AuthController::class,'login'])->name('site.login');
-Route::post('login',  [AuthController::class,'postLogin']);
+Route::post('login',  [AuthController::class,'postLogin'])->name('site.auth.login');
+
+Route::get('register', [AuthController::class, 'register'])->name('site.register');
+Route::post('register', [AuthController::class, 'postRegister'])->name('site.auth.register');
+Route::get('register/verify/{code}', [AuthController::class, 'verify_register']);
 
 //login facebook
 Route::get('login/social/{social}',[SocialController::class,'get_login_social']);
@@ -217,3 +228,22 @@ Route::get('cart', [SiteCartController::class, 'index'])->name('site.cart.index'
 
 //category
 Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
+
+
+//Route::get('/email/verify', function () {
+//    return view('auth.verify-email');
+//})->middleware(['auth'])->name('verification.notice');
+//
+//use Illuminate\Foundation\Auth\EmailVerificationRequest;
+//use Illuminate\Http\Request;
+//Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//    $request->fulfill();
+//
+//    return redirect('/home');
+//})->middleware(['auth', 'signed'])->name('verification.verify');
+//
+//Route::post('/email/verification-notification', function (Request $request) {
+//    $request->user()->sendEmailVerificationNotification();
+//
+//    return back()->with('status', 'verification-link-sent');
+//})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
