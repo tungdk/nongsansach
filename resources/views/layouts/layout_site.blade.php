@@ -5,8 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>
-        Nông sản sạch </title>
+    <title>@yield('pageTitle') | Nông sản sạch</title>
     <!-- ================= Page description ================== -->
     <meta name="description" content="Giới thiệu cửa hàng bán nông sản sạch tươi ngon giá tiết kiệm và nhanh chóng">
     <!-- ================= Meta ================== -->
@@ -15,7 +14,7 @@
     <meta name='revisit-after' content='1 days'/>
     <meta name="robots" content="noodp,index,follow"/>
     <!-- ================= Favicon ================== -->
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 {{--    <link rel="icon" href="site/uploads/images/caidat/favicon.png" type="image/x-icon"/>--}}
     {{-- <link rel="shortcut icon" type="image/png" href="/images/logo.png"/> --}}
     <!-- Facebook Open Graph meta tags -->
@@ -59,10 +58,11 @@
 
     <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
 
-    @yield('css')
+    <link href="{{asset('css/modal_login_register.css')}}" rel="stylesheet" />
+
     <!-- Header JS -->
     <script src="{{asset('site/js/jquery-2.2.3.min.js')}}" type="text/javascript"></script>
-
+    @yield('css')
 </head>
 
 <body>
@@ -89,6 +89,7 @@
 <!-- chat -->
 @include('site.partials.chat')
 
+@include('site.auth.modal_login_register')
 <!-- Plugin JS -->
 <script src="{{asset('site/js/api.jquery.js')}}" type="text/javascript"></script>
 <script src="{{asset('site/js/bootstrap.min.js')}}"></script>
@@ -103,6 +104,7 @@
 <script src="{{asset('site/js/dl_main.js')}}" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{asset('js/modal_login_register.js')}}" type="text/javascript"></script>
 @yield('js')
 </body>
 

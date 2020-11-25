@@ -11,7 +11,7 @@ Last update: 1/1/2017
 1. MIXIN
 2. TYPOGRAPHY VARIABLE
 3. VARIABLE
-4. RESERT	
+4. RESERT
 4.1 Gerenal
 4.2 Partials | Typography styles
 4.3 Use em() Sass function to declare font-size
@@ -27,10 +27,10 @@ Last update: 1/1/2017
 4.13 Error styles
 4.14 Input Group
 4.15 Module | Rich Text Editor
-5. HELP		
+5. HELP
 6. BUTTON
-7. POPUP		
-8. SWATCH VARIANT		
+7. POPUP
+8. SWATCH VARIANT
 9. CUSTOM OWL CAROUSEL
 10. TAB
 11. ACCORDION
@@ -294,7 +294,7 @@ img {
   border: 0 none;
   max-width: 100%;
   max-height: auto; }
-  
+
 svg:not(:root) {
   overflow: hidden; }
 
@@ -625,7 +625,7 @@ label.error {
   .rte.rte-summary img {
     display: none; }
   .details-product .rte h1, .details-product .rte .h1, .details-product .rte h2, .details-product .rte .h2, .details-product .rte h3, .details-product .rte .h3, .details-product .rte h4, .details-product .rte .h4, .details-product .rte h5, .details-product .rte .h5, .details-product .rte h6, .details-product .rte .h6 {
-      margin-top: 0.75em; 
+      margin-top: 0.75em;
   }
 /*============================================================================
 5. HELP
@@ -2049,7 +2049,7 @@ svg rect {
 /*============================================================================
 8. SWATCH VARIANT
 ==============================================================================*/
-/* 
+/*
 Swatches Styles
 */
 .swatch {
@@ -3005,7 +3005,7 @@ ul.tabs li {
   outline: 0; }
 
 .modal-header {
-  background-color: #fbbf22;
+  /*background-color: #fbbf22;*/
   color: #fff;
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
@@ -3036,7 +3036,7 @@ button.close {
   filter: alpha(opacity=20); }
 
 .modal-header .modal-title {
-  padding-left: 6rem;
+  /*padding-left: 6rem;*/
   position: relative;
   min-height: 44px;
   font-weight: normal;
@@ -3309,7 +3309,7 @@ body {
   color: #fe9705;
 }
 @media (max-width: 1200px) {
-  
+
   .dropdown-backdrop {
     position: unset;
   }

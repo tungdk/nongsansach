@@ -242,7 +242,7 @@ Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product
 //category
 Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
 
-Route::group(['prefix'=>'user', 'middleware'=>'check_user_login'], function (){
+Route::group(['prefix'=>'user'], function (){
     Route::get('', [SiteUserController::class, 'index'])->name('site.user.index');
     Route::group(['prefix'=>'account'], function (){
         Route::get('profile', [SiteUserController::class, 'profile'])->name('site.user.account.profile');
@@ -251,6 +251,8 @@ Route::group(['prefix'=>'user', 'middleware'=>'check_user_login'], function (){
 
     });
     Route::get('purchase', [SiteUserController::class, 'purchase'])->name('site.user.purchase');
+    Route::get('comment', [SiteUserController::class, 'comment'])->name('site.user.comment');
+    Route::get('favourite', [SiteUserController::class, 'favourite'])->name('site.user.favourite');
 
 });
 

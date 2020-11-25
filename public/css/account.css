@@ -1,0 +1,54 @@
+.account-body-avatar .media-object{
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+
+}
+.avatar-account img{
+    width: 150px;
+    height: 150px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+
+}
+.account-body-post-title{
+    font-size: 15px;
+    color: #4f4f4f;
+    font-weight: 700;
+}
+.account-body-comment{
+    margin-top: 5px;
+    color: #222;
+    font-size: 15px;
+    line-height: 25px;
+}
+.account-body-created_at{
+    color: #828282;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.info_user .item-fill-user {
+    width: 100%;
+    float: left;
+}
+.info_user .item-fill-user .label_fill {
+    width: 130px;
+    float: left;
+    font-size: 15px;
+    color: #828282;
+}
+.info_user .item-fill-user .ctn_fill {
+    float: right;
+    position: relative;
+    width: calc(100% - 130px);
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.info_user{
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}

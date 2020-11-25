@@ -70,7 +70,7 @@ $('#submit_Login').click(function (e) {
         });
         $.ajax({
             type: 'POST',
-            url: "/katunblog/login",
+            url: "login",
             data: {
                 'email': $email,
                 'password': $password,
@@ -105,7 +105,7 @@ $('#submit_Register').click(function (e) {
     $name = $('#regis-name').val();
     $email = $('#regis-email').val();
     $password = $('#regis-password').val();
-    $password_confirmation = $('#regis-password_confirmation').val();
+    $confirm_password = $('#regis-password_confirmation').val();
     $('.error').hide();
     if (!$name) {
         $('.errorName').show().text('Bạn chưa điền tên');
@@ -119,15 +119,15 @@ $('#submit_Register').click(function (e) {
         $('.errorPassword').show().text('Bạn chưa điền mật khẩu');
         $(':input[type="submit"]').prop('disabled', false);
     }
-    if(!$password_confirmation){
+    if(!$confirm_password){
         $('.errorPasswordConfirm').show().text('Bạn chưa điền nhập lại mật khẩu');
         $(':input[type="submit"]').prop('disabled', false);
     }
-    if($password != $password_confirmation){
+    if($password != $confirm_password){
         $('.errorPasswordConfirm').show().text('Nhập lại mật khẩu không chính xác');
         $(':input[type="submit"]').prop('disabled', false);
     }
-    if ($name && $email && $password && $password_confirmation==$password) {
+    if ($name && $email && $password && $confirm_password==$password) {
         e.preventDefault();
         $.ajaxSetup({
             headers: {
@@ -136,12 +136,12 @@ $('#submit_Register').click(function (e) {
         });
         $.ajax({
             type: 'POST',
-            url: "/katunblog/register",
+            url: "register",
             data: {
                 'name':$name,
                 'email': $email,
                 'password': $password,
-                'password_confirmation' : $password_confirmation
+                'confirm_password' : $confirm_password
             },
             success: function (data) {
                 console.log(data);
@@ -157,8 +157,8 @@ $('#submit_Register').click(function (e) {
                     if (data.message.password != undefined) {
                         $('.errorPassword').show().text(data.message.password[0]);
                     }
-                    if (data.message.password_confirmation != undefined) {
-                        $('.errorPasswordConfirm').show().text(data.message.password_confirmation[0]);
+                    if (data.message.confirm_password != undefined) {
+                        $('.errorPasswordConfirm').show().text(data.message.confirm_password[0]);
                     }
                     if (data.message.errorRegister != undefined) {
                         $('.errorRegister').show().text(data.message.errorRegister[0]);
@@ -182,3 +182,6 @@ $('#submit_Register').click(function (e) {
 //     }, 1000 );
 // }
 
+$('#closemodal').click(function() {
+    $('#loginModal').modal('hide');
+});
