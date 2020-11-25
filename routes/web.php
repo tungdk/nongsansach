@@ -46,8 +46,8 @@ Route::get('admin/logout', [LoginController::class,'getLogout'])->name('admin.lo
 Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function (){
 
     //dashboard
-    Route::get('', [DashboardController::class, 'index']) ->name('admin.dashboard');
-    Route::get('dashboard', [DashboardController::class, 'index']) ->name('admin.dashboard');
+    Route::get('', [DashboardController::class, 'index']) ->name('admin.home');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     //Category
     Route::group(['prefix'=>'category'], function (){
@@ -199,15 +199,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>'check_login_admin'], function ()
 
 
 //website
-Route::get('',  [HomeController::class,'index'])->name('site.home');
+Route::get('',  [HomeController::class,'index']);
 Route::get('home',  [HomeController::class,'index'])->name('site.home');
 
 //login
-Route::get('login',  [AuthController::class,'login'])->name('site.login');
-Route::post('login',  [AuthController::class,'postLogin'])->name('site.auth.login');
+Route::get('login',  [AuthController::class,'login'])->name('site.login.get');
+Route::post('login',  [AuthController::class,'postLogin'])->name('site.login.post');
 
-Route::get('register', [AuthController::class, 'register'])->name('site.register');
-Route::post('register', [AuthController::class, 'postRegister'])->name('site.auth.register');
+Route::get('register', [AuthController::class, 'register'])->name('site.register.get');
+Route::post('register', [AuthController::class, 'postRegister'])->name('site.register.post');
 Route::get('register/verify/{code}', [AuthController::class, 'verify_register']);
 
 //login facebook
@@ -236,11 +236,23 @@ Route::group(['prefix'=>'cart', 'middleware'=>'check_user_login'], function (){
     Route::get('add/{id}/{quantity}', [SiteCartController::class, 'add'])->name('site.cart.add');
 });
 
+Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product'])->name('site.product.detail');
 
 
 //category
 Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
 
+Route::group(['prefix'=>'user', 'middleware'=>'check_user_login'], function (){
+    Route::get('', [SiteUserController::class, 'index'])->name('site.user.index');
+    Route::group(['prefix'=>'account'], function (){
+        Route::get('profile', [SiteUserController::class, 'profile'])->name('site.user.account.profile');
+        Route::get('address', [SiteUserController::class, 'address'])->name('site.user.account.address');
+        Route::get('password', [SiteUserController::class, 'password'])->name('site.user.account.password');
+
+    });
+    Route::get('purchase', [SiteUserController::class, 'purchase'])->name('site.user.purchase');
+
+});
 
 //Route::get('/email/verify', function () {
 //    return view('auth.verify-email');
@@ -278,5 +290,4 @@ Fortify::loginView(function () {
 Fortify::registerView(function () {
     return view('auth.register');
 });
-
 

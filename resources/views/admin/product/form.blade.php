@@ -82,7 +82,7 @@
             <div class="box-body">
 
             </div>
-        </div> --}}
+{{--        </div> --}}
         <div class="box box-warning">
             <div class="box-header with-border">
                 <h3 class="box-title">Mô tả sản phẩm</h3>
@@ -95,6 +95,7 @@
                     @if ($errors->first('description'))
                         <span class="text-danger">{{ $errors->first('description') }}</span>
                     @endif
+
                 </div>
             </div>
         </div>
@@ -158,7 +159,7 @@
         </div>
     </div>
 
-
+    <div class="clearfix"></div>
     <div class="col-sm-12 clearfix">
         <div class="box-footer text-center">
             <div class="col-sm-12">
@@ -169,17 +170,20 @@
         </div>
     </div>
 </form>
-<script src="{{asset('adminlte/ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<script>
-    var options = {
-        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
-        entities_latin: false
-    };
-    CKEDITOR.replace('idContent', options);
+@section('js')
+    <script src="{{asset('adminlte/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+            entities_latin: false
+        };
+        CKEDITOR.replace('idContent', options);
 
-</script>
+    </script>
+@endsection
+

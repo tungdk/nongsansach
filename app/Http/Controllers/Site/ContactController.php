@@ -7,7 +7,7 @@ use App\Http\Requests\Site\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class ContactController extends SiteController
 {
     public function index(){
         return view('site.contact.index');

@@ -1,7 +1,7 @@
 <div class="card card-signin my-5">
     <div class="card-body">
         <h5 class="card-title text-center">Đăng nhập</h5>
-        <form class="form-signin" method="POST" action="{{route('site.auth.login')}}">
+        <form class="form-signin" method="POST" action="{{route('site.login.post')}}">
             @csrf
             <div class="form-group">
                 <label for="inputEmail">Email</label>

@@ -108,7 +108,7 @@
                                                                                 <div class="product-box">
                                                                                     <div
                                                                                         class="product-thumbnail flexbox-grid">
-                                                                                        <a href="ten-san-pham-dang-ban-1.html"
+                                                                                        <a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
                                                                                            title="{{$product->name}}">
                                                                                             <img
                                                                                                 src="site/images/lazyload.svg"

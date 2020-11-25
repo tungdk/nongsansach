@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div id="login">
-                            <form action="" id="contact" method="post">
+                            <form action="{{}}" id="contact" method="post">
                                 @csrf
                                 <p id="errorFills" style="margin-bottom:10px; color: red;"></p>
                                 <div id="emtry_contact" class="form-signup form_contact clearfix">

@@ -2,7 +2,7 @@
     <div class="card-body">
         {{ (session('status')) ? 'Gửi email xác nhận thành công' : '' }}
         <h5 class="card-title text-center">Đăng ký</h5>
-        <form class="form-signin" method="POST" action="{{route('site.auth.register')}}">
+        <form class="form-signin" method="POST" action="{{route('site.register.post')}}">
             @csrf
             <div class="form-group">
                 <label for="inputEmail">Họ và tên <span class="text-danger">(*)</span></label>
@@ -53,7 +53,7 @@
             <hr class="my-4">
             <a href="{{url('login/social/facebook')}}" class="btn btn-lg btn-facebook btn-block text-uppercase" type="button"><i class="fa fa-facebook mr-2"></i>  Đăng nhập với Facebook</a>
             <a href="{{ url('/auth/redirect/google') }}" class="btn btn-lg btn-google btn-block text-uppercase" type="button"><i class="fa fa-google-plus mr-2"></i> Đăng nhập với Google</a>
-            <p style="text-align: center; padding-top: 15px">Bạn đã có tài khoản? <a href="{{ route('site.login') }}" style="color: orangered">Đăng nhập</a></p>
+            <p style="text-align: center; padding-top: 15px">Bạn đã có tài khoản? <a href="{{ route('site.login.get') }}" style="color: orangered">Đăng nhập</a></p>
         </form>
     </div>
 </div>

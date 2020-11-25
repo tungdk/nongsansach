@@ -62,6 +62,7 @@
     @yield('css')
     <!-- Header JS -->
     <script src="{{asset('site/js/jquery-2.2.3.min.js')}}" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -75,8 +76,8 @@
 
 @yield('content')
 
-<div class="container">
-</div>
+{{--<div class="container">--}}
+{{--</div>--}}
 
 <!-- footer.php -->
 @include('site.partials.footer')
@@ -89,19 +90,19 @@
 @include('site.partials.chat')
 
 <!-- Plugin JS -->
-<script src="site/js/api.jquery.js" type="text/javascript"></script>
-<script src="site/js/bootstrap.min.js"></script>
-<script src="site/js/lightslider.min.js" type="text/javascript"></script>
-<script src="site/js/lightgallery-all.min.js" type="text/javascript"></script>
-<script src="site/js/owl.carousel.min.js" type="text/javascript"></script>
+<script src="{{asset('site/js/api.jquery.js')}}" type="text/javascript"></script>
+<script src="{{asset('site/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('site/js/lightslider.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('site/js/lightgallery-all.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('site/js/owl.carousel.min.js')}}" type="text/javascript"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="js/cart.js"></script>
+
+<script src="{{asset('js/cart.js')}}"></script>
 <!-- Main JS -->
-<script src="site/js/appear.js"></script>
-<script src="site/js/dl_main.js" type="text/javascript"></script>
-<script src="../ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-
+<script src="{{asset('site/js/appear.js')}}"></script>
+<script src="{{asset('site/js/dl_main.js')}}" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @yield('js')
 </body>
 

@@ -6,8 +6,9 @@ $(function () {
             type: 'GET',
             url: urlRequest,
             success: function (data) {
-                var data2 = JSON.parse(data);
-                if (data2.success == true) {
+                // var data2 = JSON.parse(data);
+                if (data.success == true) {
+
                     var count_cart = $('#count_cart')
                     var count = count_cart.text();
                     var x = parseInt(count);
@@ -29,7 +30,7 @@ $(function () {
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: data2.message,
+                        title: data.message,
                     })
                 }
             },

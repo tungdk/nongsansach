@@ -5,9 +5,7 @@
                style=" font-size: 20px; display: inline-block; position: relative; transform: translateY(2px); "></i>
             Hotline:
             <span>
-
 					<a href="tel:0348520202"> 0348520202</a>
-
 				</span>
         </div>
     </div>
@@ -22,16 +20,13 @@
                                    style=" font-size: 20px; display: inline-block; position: relative; transform: translateY(2px); "></i>
                                 Hotline:
                                 <span>
-
 										<a href="tel:0348520202"> 0348520202</a>
-
 									</span>
                             </li>
                             <li class="margin-left-20">
                                 <i class="fa fa-map-marker"></i> <b>Địa chỉ</b>:
                                 <span>
 										55 Giải Phóng - P.Đồng Tâm - Q.Hai Bà Trưng - HN</span>
-
                             </li>
                         </ul>
 
@@ -39,23 +34,20 @@
                     <div class="col-sm-6 col-md-3">
 
                         <ul class="list-inline f-right">
-                                @if((Auth::user()))
-                                    <li>
-                                        <a href="{{route('site.login')}}"><i
-                                                class="fa fa-user"></i> {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
-
-                                    </li>
-                                @else
-                                    <li>
-                                        <a href="{{route('site.login')}}"><i
-                                                class="fa fa-user"></i> Đăng nhập</a>
-
-                                    </li>
-                                    <li><span>hoặc</span></li>
-                                    <li><a href="{{route('site.register')}}">Đăng ký</a>
-
-                                    </li>
-                                @endif
+                            @if((Auth::user()))
+                                <li>
+                                    <a href="{{route('site.user.index')}}"><i
+                                            class="fa fa-user"></i> {{\Illuminate\Support\Facades\Auth::user()->name}}
+                                    </a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{route('site.login.get')}}"><i
+                                            class="fa fa-user"></i> Đăng nhập</a>
+                                </li>
+                                <li><span>hoặc</span></li>
+                                <li><a href="{{route('site.register')}}">Đăng ký</a></li>
+                            @endif
 
                             <li class="li-search hidden">
                                 <a href="site/javscrript_%3b.html">
@@ -93,7 +85,7 @@
                 <div class="col-xs-12 col-md-3 text-lg-left">
                     <div class="logo inline-block">
                         <a href="{{route('site.home')}}" class="logo-wrapper ">
-                            <img src="/images/logo.png" data-lazyload="/images/logo.png"
+                            <img src="{{asset('/images/logo.png')}}" data-lazyload="/images/logo.png"
                                  alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                         </a>
 
@@ -102,30 +94,30 @@
                 <div class="col-xs-12 col-md-8 col-lg-7 hidden-xs">
                     <div class="policy d-flex justify-content-around">
                         <div class="item-policy d-flex align-items-center">
-                            <a href="#">
-                                <img src="site/images/lazyload.svg" data-lazyload="/site/images/policy1.png"
+{{--                            <a href="#">--}}
+                                <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('site/images/policy1.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
+{{--                            </a>--}}
                             <div class="info a-left">
                                 <a href="#">Miễn phí vận chuyển</a>
                                 <p>Bán kính 100 km</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
-                            <a href="#">
-                                <img src="site/images/lazyload.svg" data-lazyload="/site/images/policy2.png"
+{{--                            <a href="#">--}}
+                                <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('site/images/policy2.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
+{{--                            </a>--}}
                             <div class="info a-left">
                                 <a href="#">Hỗ trợ 24/7</a>
                                 <p>Hotline: 0348520202</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
-                            <a href="#">
-                                <img src="site/images/lazyload.svg" data-lazyload="/site/images/policy3.png"
+{{--                            <a href="#">--}}
+                                <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('/site/images/policy3.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
+{{--                            </a>--}}
                             <div class="info a-left">
                                 <a href="#"> Giờ làm việc</a>
                                 <p>T2 - T7 Giờ hành chính</p>
@@ -144,38 +136,38 @@
                                     </div>
                                     <div class="right-content hidden-md">
                                         <span class="label">Giỏ hàng</span> (
-                                        <span class="cartCount2">0</span>)
+                                        <span class="cartCount2">{{isset($count_cart) ? $count_cart : 0}}</span>)
                                     </div>
                                 </a>
                             </div>
-                            <div class="top-cart-content">
-                                <ul id="cart-sidebar" class="mini-products-list count_li">
-                                    <li class="list-item">
-                                        <ul></ul>
-                                    </li>
-                                    <li class="action">
-                                        <ul>
-                                            <li class="li-fix-1">
-                                                <div class="top-subtotal">
-                                                    Tổng tiền thanh toán:
-                                                    <span class="price"></span>
-                                                </div>
-                                            </li>
-                                            <li class="li-fix-2" style="">
-                                                <div class="actions">
-                                                    <a href="{{route('site.cart.index')}}" class="btn btn-primary">
-                                                        <span>Giỏ hàng</span>
-                                                    </a>
-                                                    <a href="gio-hang/thanh-toan.html"
-                                                       class="btn btn-checkout btn-gray">
-                                                        <span>Thanh toán</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+{{--                            <div class="top-cart-content">--}}
+{{--                                <ul id="cart-sidebar" class="mini-products-list count_li">--}}
+{{--                                    <li class="list-item">--}}
+{{--                                        <ul></ul>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="action">--}}
+{{--                                        <ul>--}}
+{{--                                            <li class="li-fix-1">--}}
+{{--                                                <div class="top-subtotal">--}}
+{{--                                                    Tổng tiền thanh toán:--}}
+{{--                                                    <span class="price"></span>--}}
+{{--                                                </div>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="li-fix-2" style="">--}}
+{{--                                                <div class="actions">--}}
+{{--                                                    <a href="{{route('site.cart.index')}}" class="btn btn-primary">--}}
+{{--                                                        <span>Giỏ hàng</span>--}}
+{{--                                                    </a>--}}
+{{--                                                    <a href="gio-hang/thanh-toan.html"--}}
+{{--                                                       class="btn btn-checkout btn-gray">--}}
+{{--                                                        <span>Thanh toán</span>--}}
+{{--                                                    </a>--}}
+{{--                                                </div>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -183,14 +175,14 @@
         </div>
 
         <div class="menu-bar hidden-md hidden-lg">
-            <img src="site/images/lazyload.svg" data-lazyload="site/images/menu-bar.png"
+            <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('site/images/menu-bar.png')}}"
                  alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng"/>
         </div>
         <div class="icon-cart-mobile hidden-md hidden-lg f-left absolute"
-             onclick="window.location.href='gio-hang.html'">
+             onclick="window.location.href='{{route('site.cart.index')}}'">
             <div class="icon relative">
                 <i class="fa fa-shopping-bag"></i>
-                <span class="cartCount count_item_pr">0</span>
+                <span class="cartCount count_item_pr">{{isset($count_cart) ? $count_cart : 0}}</span>
             </div>
         </div>
     </div>
@@ -232,13 +224,10 @@
                 </div>
             </div>
             <div class="hidden-lg hidden-md menu-offcanvas">
-
                 <div class="head-menu clearfix">
                     <ul class="list-inline">
-
                         <li>
-                            <a href="{{route('site.login')}}"><i class="fa fa-user"></i> Đăng nhập</a>
-
+                            <a href="{{route('site.login.get')}}"><i class="fa fa-user"></i> Đăng nhập</a>
                         </li>
                         <li><span>hoặc</span></li>
                         <li><a href="{{route('site.register')}}">Đăng ký</a>

@@ -1318,7 +1318,8 @@ footer {
       footer .back-to-top {
         width: 40px;
         height: 40px;
-        line-height: 40px; }
+        line-height: 40px;
+      margin-bottom: 40px}
         footer .back-to-top.show {
           bottom: 60px; } }
     @media (max-width: 767px) {
@@ -3582,4 +3583,17 @@ footer .footer-info-widget p.hotline a {
 }
 .comment .fa.fa-star, .star-rating .fa.fa-star {
     color: #ffbe00;
+}
+.policy .item-policy > img {
+    margin-right: 15px;
+}
+.product-price-sale{
+    font-size: 1.25rem;
+    color: #fff!important;
+    text-transform: uppercase;
+    background: #ee4d2d;
+    border-radius: 2px;
+    padding: 2px 4px;
+    font-weight: 600 !important;
+    line-height: 1;
 }
