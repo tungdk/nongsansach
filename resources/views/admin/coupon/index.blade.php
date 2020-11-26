@@ -93,35 +93,9 @@
 @section('js')
     <script>
         function send_mail(id){
-            Swal.fire({
-                title: 'Bạn thực sự muốn gửi mail',
-                text: "Quá trình gửi mail có thể sẽ diễn ra trong 5 - 10 phút",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Đồng ý!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const token = "{{ @csrf_token() }}";
-                    $.ajax({
-                        method: "POST",
-                        url: "{{route('admin.coupon.sendMail')}}",
-                        data: {
-                            _token: token,
-                            id: id,
-                        },
-                        success: function (data) {
-                            document.getElementById("checkbox_"+id).checked = true;
-                            Swal.fire(
-                                "Mã giảm giá đang được gửi đi cho khách hàng",
-                                "",
-                                "success"
-                            )
-                        }
-                    })
-                }
-            })
+            const token = "{{ @csrf_token() }}";
+            send_mail_information(id, token);
         }
     </script>
+    <script src="{{ asset("js/admin/send_mail.js") }}"></script>
 @endsection

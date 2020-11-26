@@ -5,15 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Components\Recusive;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
+use App\Jobs\SendProductMailJob;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+    public $adminController;
+    public function __construct(AdminController $adminController)
+    {
+        $this->adminController = $adminController;
+    }
     public function index(){
         if(request()->type === 'active'){
             $products = Product::where('status', 1)->where('quantity', '>', 10)->orderByDesc('created_at')->paginate(10);
@@ -89,5 +96,33 @@ class ProductController extends Controller
         $product->hot = ! $product->hot;
         $product->save();
         return redirect()->back();
+    }
+
+    public function sendMail(Request $request)
+    {
+        $product = Product::query()
+            ->where('id', $request->id)->first();
+        if($product->status == 0){
+            return response()->json([
+                'status' => 0,
+                'message' =>'Mã giảm giá đang bị ẩn'
+            ]);
+        }
+
+        $time_now = Carbon::now();
+//        if($coupon->start_time > $time_now || $time_now > $coupon->end_time){
+//            return response()->json([
+//                'status' => 0,
+//                'message' =>'Mã giảm giá đã hết thời gian sử dụng'
+//            ]);
+//        }
+
+        $users = $this->adminController->get_email_user_subscribe();
+        SendProductMailJob::dispatch($product, $users);
+
+        if ($product->send_mail == 0) {
+            $product->send_mail = 1;
+            $product->save();
+        }
     }
 }

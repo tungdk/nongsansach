@@ -4,14 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
+use App\Jobs\SendCouponEmailJob;
+use App\Jobs\SendPostMailJob;
+use App\Mail\SendPostMail;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\Subscribe;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    public $adminController;
+    public function __construct(AdminController $adminController)
+    {
+        $this->adminController = $adminController;
+    }
+
     public function index(){
         $posts = Post::query()->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.post.index', compact('posts'));
@@ -73,4 +84,35 @@ class PostController extends Controller
         if($post) $post->delete();
         return redirect()->back();
     }
+
+    public function sendMail(Request $request)
+    {
+        $post = Post::query()
+            ->where('id', $request->id)->first();
+        if($post->status == 0){
+            return response()->json([
+                'status' => 0,
+                'message' =>'Mã giảm giá đang bị ẩn'
+            ]);
+        }
+
+        $time_now = Carbon::now();
+//        if($coupon->start_time > $time_now || $time_now > $coupon->end_time){
+//            return response()->json([
+//                'status' => 0,
+//                'message' =>'Mã giảm giá đã hết thời gian sử dụng'
+//            ]);
+//        }
+
+        $users = $this->adminController->get_email_user_subscribe();
+
+        SendPostMailJob::dispatch($post, $users);
+
+        if ($post->send_mail == 0) {
+            $post->send_mail = 1;
+            $post->save();
+        }
+    }
+
+
 }

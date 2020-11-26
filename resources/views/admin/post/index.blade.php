@@ -75,9 +75,9 @@
                                                 Sửa</a>
                                             <a href="{{route('admin.post.active', $post->id)}}"
                                                class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                            <a href="{{route('admin.post.active', $post->id)}}"
-                                               class="btn btn-xs btn-default"><i class="fa fa-mail-forward"></i> Gửi
-                                                mail</a>
+                                            @if($post->status == 1)
+                                                <button class="btn btn-xs btn-default" onclick="send_mail({{$post->id}})"><i class="fa fa-mail-forward"></i> Gửi mail</button>
+                                            @endif
                                         </td>
 
                                     </tr>
@@ -99,4 +99,13 @@
 
     </section>
     <!-- /.content -->
+@endsection
+@section('js')
+    <script>
+        function send_mail(id){
+            const token = "{{ @csrf_token() }}";
+            send_mail_information(id, token);
+        }
+    </script>
+    <script src="{{ asset("js/admin/send_mail.js") }}"></script>
 @endsection

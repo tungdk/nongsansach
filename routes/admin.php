@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
         Route::delete('delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
 
+        Route::post('sendMail', [ProductController::class, 'sendMail'])->name('admin.product.sendMail');
 
     });
 
@@ -106,6 +107,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 //Post trash
         Route::get('trash', [PostController::class, 'trash'])->name('admin.post.trash');
+
+        Route::post('sendMail', [PostController::class, 'sendMail'])->name('admin.post.sendMail');
 
     });
 
@@ -168,6 +171,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'statistical'], function () {
         Route::get('', [StatisticalController::class, 'index'])->name('admin.statistical.index');
     });
+
+
+    Route::get('test', [PostController::class, 'test']);
 });
 
 

@@ -49,7 +49,7 @@
                                 <th>Giá</th>
                                 <th>Giá sale</th>
                                 <th>Số lượng</th>
-                                <th>Trạng thái</th>
+{{--                                <th>Trạng thái</th>--}}
                                 <th>Nổi bật</th>
                                 <th>Gửi mail</th>
                                 <th>Thao tác</th>
@@ -85,13 +85,13 @@
                                         <td>{{ number_format($product->price, 0,',','.') }} đ</td>
                                         <td>{{ number_format($product->sale, 0,',','.') }} đ</td>
                                         <td>{{ $product->quantity }}</td>
-                                        <td>
-                                            @if($product->status == 1)
-                                                <a href="{{route('admin.product.active', $product->id)}}" class="label label-info">Hiển thị</a>
-                                            @else
-                                                <a href="{{route('admin.product.active', $product->id)}}" class="label label-default">Ẩn</a>
-                                            @endif
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            @if($product->status == 1)--}}
+{{--                                                <a href="{{route('admin.product.active', $product->id)}}" class="label label-info">Hiển thị</a>--}}
+{{--                                            @else--}}
+{{--                                                <a href="{{route('admin.product.active', $product->id)}}" class="label label-default">Ẩn</a>--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
                                         <td>
                                             @if($product->hot == 1)
                                                 <a href="{{route('admin.product.hot', $product->id)}}" class="label label-info">Nổi bật</a>
@@ -106,7 +106,9 @@
                                             <a href="{{route('admin.product.edit', $product->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                                                 Sửa</a>
                                             <a href="{{route('admin.product.delete', $product->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                            <a href="{{route('admin.product.delete', $product->id)}}" class="btn btn-xs btn-default"><i class="fa fa-mail-forward"></i> Gửi mail</a>
+                                            @if($product->status == 1)
+                                                <button class="btn btn-xs btn-default" onclick="send_mail({{$product->id}})"><i class="fa fa-mail-forward"></i> Gửi mail</button>
+                                            @endif
                                         </td>
 
                                     </tr>
@@ -130,4 +132,13 @@
 
     </section>
     <!-- /.content -->
+@endsection
+@section('js')
+    <script>
+        function send_mail(id){
+            const token = "{{ @csrf_token() }}";
+            send_mail_information(id, token);
+        }
+    </script>
+    <script src="{{ asset("js/admin/send_mail.js") }}"></script>
 @endsection

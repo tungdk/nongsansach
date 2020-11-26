@@ -91,7 +91,7 @@ class CouponController extends Controller
 //        }
 
         $users = User::query()->where('active', 1)->get();
-        SendCouponEmailJob::dispatch($coupon, $users)->onQueue('emails');
+        SendCouponEmailJob::dispatch($coupon, $users);
 
         if ($coupon->send_mail == 0) {
             $coupon->send_mail = 1;
