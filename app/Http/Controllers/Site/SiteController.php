@@ -13,7 +13,10 @@ class SiteController extends Controller
     {
         if(Auth::check()){
             $user_id = Auth::id();
+            dd('ahihi' . $user_id);
+            die();
             $count_cart = Cart::query()->where('user_id', $user_id)->count();
+            dd($count_cart);
             View::share('count_cart', $count_cart);
         }
     }

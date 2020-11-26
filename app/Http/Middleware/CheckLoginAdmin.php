@@ -16,7 +16,7 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(get_data_user('admins')){
+        if(get_data_user('admin')){
             return $next($request);
         }
         return redirect()->to('admin/login');

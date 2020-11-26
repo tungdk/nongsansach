@@ -15,7 +15,7 @@ class LoginController extends Controller
 //        echo "ahihi";
 //        var_dump(Auth::user());
 //        die();
-        $check_login = Auth::guard('admins')->check();
+        $check_login = Auth::guard('admin')->check();
         if($check_login){
             return redirect()->route('admin.dashboard');
         }
@@ -26,7 +26,7 @@ class LoginController extends Controller
             'email'=>$request->email,
             'password'=>$request->password
         ];
-        if (Auth::guard('admins')->attempt($data)) {
+        if (Auth::guard('admin')->attempt($data)) {
             Session::flash('toastr',[
                 'type'  =>  'success',
                 'message' => 'Đăng nhập thành công'
@@ -38,7 +38,7 @@ class LoginController extends Controller
     }
 
     public function getLogout(){
-        Auth::guard('admins')->logout();
+        Auth::guard('admin')->logout();
         return redirect()->to('/admin/login');
     }
 }
