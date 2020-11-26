@@ -46,4 +46,5 @@ class SiteController extends Controller
             'message' => 'Đăng kí thành công'
         ]);
     }
+
 }

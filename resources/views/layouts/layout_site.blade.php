@@ -100,6 +100,7 @@
 
 <script src="{{asset('js/cart.js')}}"></script>
 <script src="{{asset('js/subscribe.js')}}"></script>
+<script src="{{asset('js/favourite.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('site/js/appear.js')}}"></script>
 <script src="{{asset('site/js/dl_main.js')}}" type="text/javascript"></script>

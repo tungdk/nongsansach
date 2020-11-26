@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Site\FavouriteController;
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\Site\HomeController;
@@ -89,6 +90,10 @@ Route::group(['prefix'=>'user'], function (){
 
 Route::post('subscribe', [SiteController::class, 'subscribe'])->name('site.subscribe');
 
+Route::group(['prefix'=>'favourite', 'middleware'=>'auth:web'], function (){
+    Route::get('add/{id}', [FavouriteController::class, 'add'])->name('site.favourite');
+
+});
 //Route::get('/email/verify', function () {
 //    return view('auth.verify-email');
 //})->middleware(['auth'])->name('verification.notice');

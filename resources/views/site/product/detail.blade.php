@@ -139,22 +139,23 @@
                                 <div class="col-md-12">
                                     <label for="quantity">Số lượng</label>
                                     <input type="text" name="quantity">
-                                    <button type="button"
-                                            class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy add_to_cart"
-                                            title="Thêm vào giỏ hàng">
-                                        <span><i class="fa fa-cart-arrow-down"></i>Thêm vào giỏ hàng</span>
-                                    </button>
+{{--                                    <button type="button"--}}
+{{--                                            class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy add_to_cart"--}}
+{{--                                            title="Thêm vào giỏ hàng">--}}
+{{--                                        <span><i class="fa fa-cart-arrow-down"></i>Thêm vào giỏ hàng</span>--}}
+{{--                                    </button>--}}
+                                    <a href="" data-url="{{URL::to('cart/add/'.$product->id.'/1')}}"
+                                       class="price product-price add_to_cart">
+                                        <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i></a>
                                 </div>
                                 <button type="button"
-                                        class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy add_to_cart"
+                                        class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy"
                                         title="Mua ngay">
                                     <span>Mua ngay</span>
                                 </button>
-                                <button type="button"
-                                        class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy add_to_cart"
-                                        title="Thêm vào yêu thích">
-                                    <span><i class="fa fa-heart-o"></i></span>
-                                </button>
+                                <a href="" data-url="{{URL::to('favourite/add/'.$product->id)}}"
+                                   class="price product-price add_to_favourite">
+                                    <i class="fa fa-heart-o" title="Thêm vào yêu thích"></i></a>
                             </div>
                         </div>
                         <div class="row" style="padding-top: 30px">

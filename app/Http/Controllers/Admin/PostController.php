@@ -17,12 +17,6 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    public $adminController;
-    public function __construct(AdminController $adminController)
-    {
-        $this->adminController = $adminController;
-    }
-
     public function index(){
         $posts = Post::query()->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.post.index', compact('posts'));
@@ -104,8 +98,10 @@ class PostController extends Controller
 //            ]);
 //        }
 
-        $users = $this->adminController->get_email_user_subscribe();
+//        $users = $this->adminController->get_email_user_subscribe();
 
+        $adminController = new AdminController();
+        $users = $adminController->get_email_user_subscribe();
         SendPostMailJob::dispatch($post, $users);
 
         if ($post->send_mail == 0) {

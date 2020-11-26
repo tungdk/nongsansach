@@ -16,11 +16,6 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public $adminController;
-    public function __construct(AdminController $adminController)
-    {
-        $this->adminController = $adminController;
-    }
     public function index(){
         if(request()->type === 'active'){
             $products = Product::where('status', 1)->where('quantity', '>', 10)->orderByDesc('created_at')->paginate(10);
@@ -117,7 +112,8 @@ class ProductController extends Controller
 //            ]);
 //        }
 
-        $users = $this->adminController->get_email_user_subscribe();
+        $adminController = new AdminController();
+        $users = $adminController->get_email_user_subscribe();
         SendProductMailJob::dispatch($product, $users);
 
         if ($product->send_mail == 0) {

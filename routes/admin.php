@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ChatController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\ProductController;
@@ -172,6 +173,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('', [StatisticalController::class, 'index'])->name('admin.statistical.index');
     });
 
+
+    //chat
+    Route::group(['prefix'=>'chat'], function (){
+        Route::get('', [ChatController::class, 'index'])->name('admin.chat.index');
+    });
 
     Route::get('test', [PostController::class, 'test']);
 });

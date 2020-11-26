@@ -135,8 +135,8 @@
                                         <span class="cartCount count_item_pr hidden-lg" id="cart-total">0</span>
                                     </div>
                                     <div class="right-content hidden-md">
-                                        <span class="label">Giỏ hàng</span> (
-                                        <span class="cartCount2">{{isset($count_cart) ? $count_cart : 0}}</span>)
+                                        <span class="label">Giỏ hàng</span>(
+                                        <span class="cartCount2" id="count_cart">{{isset($count_cart) ? $count_cart : 0}}</span>)
                                     </div>
                                 </a>
                             </div>
