@@ -80,8 +80,11 @@
                                     <div><i class="fa fa-map-marker"></i>
                                         <div class="info">
                                             <label>Địa chỉ liên hệ</label>
-                                            Chúng tôi chuyên cung cấp các sản phẩm thực phẩm sạch an toàn cho sức khỏe con người                                    </div>
-                                    </div>
+                                            Chúng tôi chuyên cung cấp các sản phẩm thực phẩm sạch an toàn cho sức khỏe con người
+                                        </div>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.233882486378!2d106.00525871426781!3d21.103239790608892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135093744b86b21%3A0xf38545808d0b318e!2zWGUgTsOibmcgQuG6r2MgTmluaA!5e0!3m2!1svi!2s!4v1591957554823!5m2!1svi!2s" width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+                                </div>
 
                                     <div>
                                         <i class="fa fa-phone"></i>
@@ -122,18 +125,6 @@
     </div>
 
 @endsection
-@section('js')
-    <!-- Plugin JS -->
-    <script src="themes/default/assets/js/api.jquery.js" type="text/javascript"></script>
-    <script src="themes/default/assets/js/bootstrap.min.js"></script>
-    <script src="themes/default/assets/js/lightslider.min.js" type="text/javascript"></script>
-    <script src="themes/default/assets/js/lightgallery-all.min.js" type="text/javascript"></script>
-    <script src="themes/default/assets/js/owl.carousel.min.js" type="text/javascript"></script>
 
-    <!-- Main JS -->
-    <script src="themes/default/assets/js/appear.js"></script>
-    <script src="themes/default/assets/js/dl_main.js" type="text/javascript"></script>
-    <script src="../ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-@endsection
 
 

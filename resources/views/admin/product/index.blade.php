@@ -51,6 +51,7 @@
                                 <th>Số lượng</th>
                                 <th>Trạng thái</th>
                                 <th>Nổi bật</th>
+                                <th>Gửi mail</th>
                                 <th>Thao tác</th>
                             </tr>
                             @if(isset($products))
@@ -98,10 +99,14 @@
                                                 <a href="{{route('admin.product.hot', $product->id)}}" class="label label-default">Ẩn</a>
                                             @endif
                                         </td>
+                                        <td style="text-align: center">
+                                            <input type="checkbox" {{$product->send_mail == 1 ? 'checked' : ''}} id="checkbox_{{$product->id}}" onclick="return false;">
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.product.edit', $product->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                                                 Sửa</a>
                                             <a href="{{route('admin.product.delete', $product->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
+                                            <a href="{{route('admin.product.delete', $product->id)}}" class="btn btn-xs btn-default"><i class="fa fa-mail-forward"></i> Gửi mail</a>
                                         </td>
 
                                     </tr>

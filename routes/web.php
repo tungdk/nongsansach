@@ -10,6 +10,7 @@ use \App\Http\Controllers\Site\CategoryController as SiteCategoryController;
 use \App\Http\Controllers\Site\UserController as SiteUserController;
 use \App\Http\Controllers\Site\AuthController;
 use \App\Http\Controllers\Site\Auth\SocialController;
+use \App\Http\Controllers\Site\SiteController;
 
 use \App\Http\Controllers\Site\ProductController as SiteProductController;
 use Laravel\Fortify\Http\Controllers\VerifyEmailController;
@@ -86,6 +87,8 @@ Route::group(['prefix'=>'user'], function (){
 
 });
 
+Route::post('subscribe', [SiteController::class, 'subscribe'])->name('site.subscribe');
+
 //Route::get('/email/verify', function () {
 //    return view('auth.verify-email');
 //})->middleware(['auth'])->name('verification.notice');
@@ -123,4 +126,4 @@ Route::group(['prefix'=>'user'], function (){
 //    return view('auth.register');
 //});
 
-Route::get('test', [\App\Http\Controllers\TestController::class, 'test']);
+Route::get('test', [SiteController::class, 'test']);

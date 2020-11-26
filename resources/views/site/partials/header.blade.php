@@ -85,7 +85,7 @@
                 <div class="col-xs-12 col-md-3 text-lg-left">
                     <div class="logo inline-block">
                         <a href="{{route('site.home')}}" class="logo-wrapper ">
-                            <img src="{{asset('/images/logo.png')}}" data-lazyload="/images/logo.png"
+                            <img src="{{asset('/images/logo.png')}}"
                                  alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                         </a>
 
@@ -95,7 +95,7 @@
                     <div class="policy d-flex justify-content-around">
                         <div class="item-policy d-flex align-items-center">
 {{--                            <a href="#">--}}
-                                <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('site/images/policy1.png')}}"
+                                <img src="{{asset('site/images/policy1.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
                             <div class="info a-left">
@@ -105,7 +105,7 @@
                         </div>
                         <div class="item-policy d-flex align-items-center">
 {{--                            <a href="#">--}}
-                                <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('site/images/policy2.png')}}"
+                                <img src="{{asset('site/images/policy2.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
                             <div class="info a-left">
@@ -115,7 +115,7 @@
                         </div>
                         <div class="item-policy d-flex align-items-center">
 {{--                            <a href="#">--}}
-                                <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('/site/images/policy3.png')}}"
+                                <img src="{{asset('site/images/policy2.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
                             <div class="info a-left">
@@ -175,7 +175,7 @@
         </div>
 
         <div class="menu-bar hidden-md hidden-lg">
-            <img src="{{asset('site/images/lazyload.svg')}}" data-lazyload="{{asset('site/images/menu-bar.png')}}"
+            <img src="{{asset('site/images/menu-bar.png')}}"
                  alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng"/>
         </div>
         <div class="icon-cart-mobile hidden-md hidden-lg f-left absolute"

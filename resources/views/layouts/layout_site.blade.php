@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>@yield('pageTitle') | Nông sản sạch</title>
+    <title>@yield('pageTitle') Nông sản sạch</title>
     <!-- ================= Page description ================== -->
     <meta name="description" content="Giới thiệu cửa hàng bán nông sản sạch tươi ngon giá tiết kiệm và nhanh chóng">
     <!-- ================= Meta ================== -->
@@ -99,6 +99,7 @@
 
 
 <script src="{{asset('js/cart.js')}}"></script>
+<script src="{{asset('js/subscribe.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('site/js/appear.js')}}"></script>
 <script src="{{asset('site/js/dl_main.js')}}" type="text/javascript"></script>

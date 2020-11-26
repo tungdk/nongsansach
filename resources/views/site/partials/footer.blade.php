@@ -5,7 +5,7 @@
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
                             <div class="footer-widget">
                                 <h3 class="hastog"><span>Liên hệ</span></h3>
                                 <ul class="list-menu list-showroom">
@@ -30,48 +30,31 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-3">
-                            <div class="footer-widget">
-                                <h3 class="hastog"><span>Danh mục</span></h3>
-                                <ul class="list-menu list-blogs">
 
-                                    <li><a
-                                            href="danh-muc/aaaaa.html">AAAAA</a>
-                                    </li>
-                                    <li><a
-                                            href="danh-muc/aaaaa.html">AAAAA</a>
-                                    </li>
-                                    <li><a
-                                            href="danh-muc/aaaaa.html">AAAAA</a>
-                                    </li>
-                                    <li><a
-                                            href="danh-muc/aaaaa.html">AAAAA</a>
-                                    </li>
-                                    <li><a
-                                            href="danh-muc/aaaaa.html">AAAAA</a>
-                                    </li>
-                                    <li><a
-                                            href="danh-muc/aaaaa.html">AAAAA</a>
-                                    </li>
+{{--                        <div class="col-xs-12 col-sm-6 col-lg-3">--}}
+{{--                            <div class="footer-widget">--}}
+{{--                                <h3 class="margin-bottom-20 hastog"><span>Địa chỉ cửa hàng</span></h3>--}}
+{{--                                <div class="list-menu">--}}
+{{--                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.233882486378!2d106.00525871426781!3d21.103239790608892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135093744b86b21%3A0xf38545808d0b318e!2zWGUgTsOibmcgQuG6r2MgTmluaA!5e0!3m2!1svi!2s!4v1591957554823!5m2!1svi!2s" width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>                                    </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-lg-3">
-                            <div class="footer-widget">
-                                <h3 class="margin-bottom-20 hastog"><span>Địa chỉ cửa hàng</span></h3>
-                                <div class="list-menu">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.233882486378!2d106.00525871426781!3d21.103239790608892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135093744b86b21%3A0xf38545808d0b318e!2zWGUgTsOibmcgQuG6r2MgTmluaA!5e0!3m2!1svi!2s!4v1591957554823!5m2!1svi!2s" width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>                                    </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
                             <div class="footer-widget">
                                 <h3 class="margin-bottom-20 hastog"><span>Kết nối với chúng tôi</span></h3>
                                 <div class="list-menu">
                                     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FKatun-ChatBot-113649023651172%2F&amp;tabs&amp;width=340&amp;height=214&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="340" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>                                    </div>
                             </div>
+                        </div>
 
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            <div class="footer-widget">
+                                <h3 class="hastog"><span>Đăng ký nhận thông tin</span></h3>
+                                <form action="">
+                                    <input type="email" name="email_subscribe" id="email_subscribe" required>
+                                    <button type="button" onclick="subscribe()">Gửi</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -81,7 +64,7 @@
                 <div class="container">
                     <div class="inner clearfix">
                         <div class="row">
-                            <div class="col-md-4 text-center text-lg-left">
+                            <div class="col-md-4    text-center text-lg-left">
                                 © Bản quyền thuộc về <b>Đinh Khắc Tùng</b>                                </div>
 {{--                            <div class="col-md-8 text-center text-lg-right hidden-xs">--}}
 {{--                                <ul class="list-menu-footer">--}}

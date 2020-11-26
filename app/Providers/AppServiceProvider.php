@@ -27,7 +27,4 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    protected function mapAdminRoutes(){
-        Route::group(base_path('routes/admin.php'));
-    }
 }
