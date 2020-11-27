@@ -11,8 +11,7 @@
     <div>
         Cảm ơn bạn đã đăng ký tài khoản tại <b>Nông Sản Sạch</b>. <br><br>
         Hãy click vào đường dẫn để xác nhận địa chỉ email. <br><br>
-        <a href="{{ URL::to('register/verify/' . $code) }}">Xác nhận tài khoản</a><br/><br>
-
+        <a href="http://127.0.0.1:8000/register/verify/{{ $code }}">Xác nhận tài khoản</a><br/><br>
         Thanks,<br>
         <span>Nông Sản Sạch</span>
     </div>

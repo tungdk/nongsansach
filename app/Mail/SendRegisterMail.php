@@ -16,10 +16,10 @@ class SendRegisterMail extends Mailable
      *
      * @return void
      */
-    private $name;
-    public function __construct($name, $code)
+
+    private $code;
+    public function __construct( $code)
     {
-        $this->name = $name;
         $this->code = $code;
     }
 
@@ -31,10 +31,9 @@ class SendRegisterMail extends Mailable
     public function build()
     {
         return $this->from('nongsansach@gmail.com', 'Nông sản sạch')
-            ->subject($this->name)
+            ->subject('Xác thực đăng ký tài khoản')
             ->markdown('mails.mail_register')
             ->with([
-                'name' => $this->name,
                 'code' => $this->code
             ]);
     }

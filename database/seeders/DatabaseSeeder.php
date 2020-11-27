@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
            'name' => 'Đinh Khắc Tùng',
            'email' => 'tungdk228@gmail.com',
+           'address' => 'Hà Nội',
+           'phone' => '012345678',
            'password' => Hash::make('123456'),
            'created_at' => Carbon::now()
         ]);

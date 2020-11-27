@@ -40,7 +40,13 @@ Route::post('login',  [AuthController::class,'postLogin'])->name('site.login.pos
 
 Route::get('register', [AuthController::class, 'register'])->name('site.register.get');
 Route::post('register', [AuthController::class, 'postRegister'])->name('site.register.post');
+
+
+//Xác thực link đã gửi qua mail
 Route::get('register/verify/{code}', [AuthController::class, 'verify_register']);
+
+//Gửi lại mail xác thực
+Route::post('resend/verify/email', [AuthController::class, 'resend_email'])->name('site.resend.email');
 
 //login facebook
 Route::get('login/social/{social}',[SocialController::class,'get_login_social']);
@@ -94,6 +100,8 @@ Route::group(['prefix'=>'favourite', 'middleware'=>'auth:web'], function (){
     Route::get('add/{id}', [FavouriteController::class, 'add'])->name('site.favourite');
 
 });
+
+Route::get('auth/email/verify', [AuthController::class, 'verify'])->name('auth.email.verify');
 //Route::get('/email/verify', function () {
 //    return view('auth.verify-email');
 //})->middleware(['auth'])->name('verification.notice');
