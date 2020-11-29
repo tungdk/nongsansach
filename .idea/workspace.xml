@@ -20,16 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="017f3d35-9b11-4ccc-b618-6dbebf35903d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendEmailVerifyRegisterJob.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/2020/11/29/2020-11-29__ca-chua.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/2020/11/29/2020-11-29__pd-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/supplier/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/SendRegisterMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/SendRegisterMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_26_141759_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_26_141759_create_products_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mails/mail_register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mails/mail_register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/auth/verify-email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/auth/verify-email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +219,7 @@
       <workItem from="1606365081210" duration="134000" />
       <workItem from="1606365296991" duration="19431000" />
       <workItem from="1606397917254" duration="7465000" />
+      <workItem from="1606657705400" duration="4453000" />
     </task>
     <servers />
   </component>
@@ -237,10 +242,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606452668972">
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606661171483">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1606452668972" />
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1606661171483" />
     <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1606374361391">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

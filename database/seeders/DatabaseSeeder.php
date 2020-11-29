@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
            'email' => 'tungdk228@gmail.com',
            'address' => 'Hà Nội',
            'phone' => '012345678',
+           'confirmed' => 1,
            'password' => Hash::make('123456'),
            'created_at' => Carbon::now()
         ]);

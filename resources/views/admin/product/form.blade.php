@@ -103,6 +103,19 @@
     <div class="col-sm-4">
         <div class="box box-warning">
             <div class="box-header with-border">
+                <h3 class="box-title">Trạng thái hiển thị sản phẩm</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label>
+                        <input type="radio" class="radio" value="1" name="status" checked/>Hiển thị</label>
+                    <label>
+                        <input type="radio" class="radio" value="0" name="status" @if(isset($product->status) && $product->status == 0) checked @endif/>Ẩn</label>
+                </div>
+            </div>
+        </div>
+        <div class="box box-warning">
+            <div class="box-header with-border">
                 <h3 class="box-title">Gắn thẻ</h3>
             </div>
             <div class="box-body">

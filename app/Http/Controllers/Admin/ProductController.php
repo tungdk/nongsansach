@@ -12,6 +12,7 @@ use App\Models\Unit;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -55,7 +56,13 @@ class ProductController extends Controller
             if($image['code'] == 1)
                 $data['avatar'] = $image['name'];
         }
-        Product::insertGetId($data);
+        $success = Product::insertGetId($data);
+        if($success){
+            Session::flash('toastr',[
+                'type'  =>  'success',
+                'message' => 'Thêm danh mục thành công'
+            ]);
+        }
         return redirect()->back();
 
     }

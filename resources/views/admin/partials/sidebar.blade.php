@@ -56,6 +56,15 @@
             </span>
                 </a>
             </li>
+
+            <li class="{{ request()->is('admin/supplier*') ? 'active' : '' }}">
+                <a href="{{route('admin.supplier.index')}}">
+                    <i class="fa fa-truck"></i> <span>Nhà cung cấp</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
             <li class="{{ request()->is('admin/product*') ? 'active' : '' }}">
                 <a href="{{route('admin.product.index')}}">
                     <i class="fa fa-product-hunt"></i> <span>Sản phẩm</span>
@@ -173,6 +182,14 @@
                 </ul>
             </li>
 
+
+            <li class="header">BÁO CÁO THỐNG KÊ</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Thống kê nhập xuất</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Thống kê doanh thu</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+
+            <li class="header">THÔNG TIN QUẢN TRỊ</li>
+            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Thống kê nhập xuất</span></a></li>
             <li>
                 <a href="{{route('admin.logout')}}">
                     <i class="fa fa-sign-out"></i> <span> Đăng xuất</span>
@@ -180,12 +197,6 @@
             </span>
                 </a>
             </li>
-
-
-            <li class="header">LABELS</li>
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

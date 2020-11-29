@@ -40,6 +40,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
         $category->slug = Str::slug($request->name);
+        $category->status = 1;
         $success = $category->save();
         if($success){
             Session::flash('toastr',[

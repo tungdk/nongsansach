@@ -17,20 +17,20 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('description');
+            $table->text('description');
             $table->double('price');
             $table->double('sale');
             $table->integer('quantity');
             $table->string('avatar');
-            $table->integer('views');
-            $table->integer('buyed');
-            $table->double('rating');
-            $table->tinyInteger('hot');
+            $table->integer('views')->default(0);
+            $table->integer('buyed')->default(0);
+            $table->double('rating')->default(0);
+            $table->tinyInteger('hot')->default(0);
             $table->tinyInteger('status');
             $table->integer('category_id');
             $table->integer('unit_id');
-            $table->mediumText('tags');
-            $table->tinyInteger('send_mail');
+            $table->mediumText('tags')->nullable();
+            $table->tinyInteger('send_mail')->default(0);
             $table->timestamps();
         });
     }
