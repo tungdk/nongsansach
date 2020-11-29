@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\SupplierController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\CategoryController;
@@ -197,4 +198,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('test', [PostController::class, 'test']);
 });
 
+Route::group(['prefix' => 'partner'], function () {
 
+    Route::get('', [PartnerController::class, 'index'])->name('admin.partner.index');
+    Route::get('create', [PartnerController::class, 'create'])->name('admin.partner.create');
+    Route::post('create', [PartnerController::class, 'store']);
+
+    Route::get('edit/{id}', [PartnerController::class, 'edit'])->name('admin.partner.edit');
+    Route::post('edit/{id}', [PartnerController::class, 'update']);
+
+    Route::get('active/{id}', [PartnerController::class, 'active'])->name('admin.partner.active');
+    Route::delete('delete/{id}', [PartnerController::class, 'delete'])->name('admin.partner.delete');
+});

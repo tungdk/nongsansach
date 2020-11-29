@@ -60,7 +60,7 @@ class ProductController extends Controller
         if($success){
             Session::flash('toastr',[
                 'type'  =>  'success',
-                'message' => 'Thêm danh mục thành công'
+                'message' => 'Thêm sản phẩm thành công'
             ]);
         }
         return redirect()->back();

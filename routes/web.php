@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\FavouriteController;
 use Illuminate\Support\Facades\Route;
 
@@ -102,6 +103,11 @@ Route::group(['prefix'=>'favourite', 'middleware'=>'auth:web'], function (){
 });
 
 Route::get('auth/email/verify', [AuthController::class, 'verify'])->name('auth.email.verify');
+
+Route::group(['middleware'=>'auth:web'], function (){
+    Route::get('check-out', [CheckoutController::class, 'index'])->name('site.checkout.index');
+
+});
 //Route::get('/email/verify', function () {
 //    return view('auth.verify-email');
 //})->middleware(['auth'])->name('verification.notice');

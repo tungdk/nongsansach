@@ -57,6 +57,14 @@
                 </a>
             </li>
 
+            <li class="{{ request()->is('admin/unit*') ? 'active' : '' }}">
+                <a href="{{route('admin.unit.index')}}">
+                    <i class="fa fa-balance-scale"></i> <span>Đơn vị tính</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
             <li class="{{ request()->is('admin/supplier*') ? 'active' : '' }}">
                 <a href="{{route('admin.supplier.index')}}">
                     <i class="fa fa-truck"></i> <span>Nhà cung cấp</span>
@@ -71,13 +79,7 @@
                     <span class="pull-right-container"></span>
                 </a>
             </li>
-            <li class="{{ request()->is('admin/unit*') ? 'active' : '' }}">
-                <a href="{{route('admin.unit.index')}}">
-                    <i class="fa fa-balance-scale"></i> <span>Đơn vị</span>
-                    <span class="pull-right-container">
-            </span>
-                </a>
-            </li>
+
 
             <li class="treeview {{ request()->is('admin/post*') ? 'active' : '' }}">
                 <a href="#">
@@ -128,6 +130,14 @@
             <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
                 <a href="{{route('admin.user.index')}}">
                     <i class="fa fa-users"></i> <span> Khách hàng</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
+            <li class="{{ request()->is('admin/partner*') ? 'active' : '' }}">
+                <a href="{{route('admin.partner.index')}}">
+                    <i class="fa fa-handshake-o"></i> <span> Đối tác</span>
                     <span class="pull-right-container">
             </span>
                 </a>

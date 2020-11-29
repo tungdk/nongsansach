@@ -85,7 +85,7 @@
                                         <td class="hidden-xs text-center"><strong>Tổng tiền 500.000 đ</strong>
                                         </td>
 
-                                        <td><a href="http://hocwebgiare.com/" class="btn btn-success btn-block">Thanh
+                                        <td><a href="{{route('site.checkout.index')}}" class="btn btn-success btn-block">Thanh
                                                 toán
                                                 <i class="fa fa-angle-right"></i></a>
                                         </td>
