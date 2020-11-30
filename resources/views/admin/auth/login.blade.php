@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{asset('adminlte/login/style.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>
         Đăng nhập vào hệ thống
     </title>
@@ -79,15 +80,15 @@
                         @csrf
                         <div class="input-group">
                             <i class='bx bxs-user'></i>
-                            <input type="text" placeholder="Email" name="email" value="{{old('email')}}">
-
+                            <input type="text" placeholder="Email" name="email" id="email" value="{{old('email')}}">
+                            <p style="color:red; dislay:none;" class="error errorEmail"></p>
                         </div>
                         @if($errors->first('email'))
                             <span class="text-danger">{{ $errors->first('email') }}</span>
                         @endif
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Mẩt khẩu" name="password" value="">
+                            <input type="password" placeholder="Mẩt khẩu" name="password" id="password" value="">
                         </div>
                         @if($errors->first('password'))
                             <span class="text-danger">{{ $errors->first('password') }}</span>
@@ -95,9 +96,13 @@
                         @if (session('error'))
                             <span class="text-danger">{{session('error')}}</span>
                         @endif
-                        <button type="submit">
+                        <p style="color:red; dislay:none;" class="error errorPassword"></p>
+                        <p style="color:red; dislay:none" class="error errorLogin"></p>
+                        <button type="button" id="submit_Login">
                             Đăng nhập
                         </button>
+{{--                        <input class="btn btn-default btn-login" type="button" value="Đăng nhập"--}}
+{{--                               id="submit_Login">--}}
                     </form>
 {{--                    <p>--}}
 {{--                        <b>--}}
@@ -171,8 +176,12 @@
     </div>
     <!-- END CONTENT SECTION -->
 </div>
-
+<script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 <script src="{{asset('adminlte/login/index.js')}}"></script>
+<script src="{{asset('js/admin/login_admin.js')}}"></script>
 </body>
 
 </html>
