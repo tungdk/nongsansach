@@ -1,8 +1,8 @@
 <h1>Đồ án tốt nghiệp</h1>
 
-Sinh viên thực hiện: <b>Đinh Khắc Tùng - 256961</b>
-Lớp 61PM1
-Giảng viên hướng dẫn: <b>Nguyễn Thanh Bản</b>
+Sinh viên thực hiện: <b>Đinh Khắc Tùng - 256961</b> <br>
+Lớp 61PM1 <br>
+Giảng viên hướng dẫn: <b>Nguyễn Thanh Bản</b><br>
 Sinh viên thực hiện: <b>Đinh Khắc Tùng - 256961</b><br>
 Lớp 61PM1<br>
 Giảng viên hướng dẫn: <b>Nguyễn Thanh Bản</b><br>
