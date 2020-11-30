@@ -30,34 +30,36 @@
                             <tbody>
                             <tr>
                                 <th style="width: 5%">#</th>
-                                <th>Tiêu đề</th>
+                                <th>Tên</th>
                                 <th>Ảnh</th>
+                                <th>Ngày tạo</th>
                                 <th>Trang thái</th>
                                 <th>Thao tác</th>
                             </tr>
-{{--                            @if(isset($supplier))--}}
-{{--                                @foreach($sliders as $slider)--}}
-{{--                                    <tr>--}}
+                            @if(isset($suppliers))
+                                @foreach($suppliers as $supplier)
+                                    <tr>
 
-{{--                                        <td>{{ $slider->id }}</td>--}}
-{{--                                        <td>{{ $slider->title }}</td>--}}
-{{--                                        <td>{{ $slider->image }}</td>--}}
-{{--                                        <td>--}}
-{{--                                            @if($slider->status == 1)--}}
-{{--                                                <a href="{{route('admin.slider.active', $slider->id)}}" class="label label-info">Hiển thị</a>--}}
-{{--                                            @else--}}
-{{--                                                <a href="{{route('admin.slider.active', $slider->id)}}" class="label label-default">Ẩn</a>--}}
-{{--                                            @endif--}}
-{{--                                        </td>--}}
-{{--                                        <td>--}}
-{{--                                            <a href="{{route('admin.slider.edit', $slider->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>--}}
-{{--                                                Sửa</a>--}}
-{{--                                            <a href="{{route('admin.slider.delete', $slider->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>--}}
-{{--                                        </td>--}}
+                                        <td>{{ $supplier->id }}</td>
+                                        <td>{{ $supplier->name }}</td>
+                                        <td>{{ $supplier->logo }}</td>
+                                        <td>{{ $supplier->created_at }}</td>
+                                        <td>
+                                            @if($supplier->status == 1)
+                                                <a href="{{route('admin.supplier.active', $supplier->id)}}" class="label label-info">Hiển thị</a>
+                                            @else
+                                                <a href="{{route('admin.supplier.active', $supplier->id)}}" class="label label-default">Ẩn</a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.supplier.edit', $supplier->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
+                                                Sửa</a>
+                                            <a href="{{route('admin.supplier.delete', $supplier->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
+                                        </td>
 
-{{--                                    </tr>--}}
-{{--                                @endforeach--}}
-{{--                            @endif--}}
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <!-- /.box-body -->
@@ -67,7 +69,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-{{--                {{ $sliders->links('vendor/pagination/bootstrap-4') }}--}}
+                {{ $suppliers->links('vendor/pagination/bootstrap-4') }}
             </div>
         </div>
         <!-- /.box -->

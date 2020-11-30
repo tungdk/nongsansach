@@ -22,7 +22,7 @@
             <div class="box-header with-border">
 
                 <div class="box-body">
-                    <form role="form" action="" method="POST">
+                    <form role="form" action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('title' ? 'has-danger' : '') }}">
