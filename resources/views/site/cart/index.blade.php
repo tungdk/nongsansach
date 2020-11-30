@@ -14,10 +14,9 @@
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
                         <li>
-                            <a itemprop="url" href="gio-hang.html"><span itemprop="title">Giỏ hàng</span></a>
-                            <span> <i class="fa fa-angle-right"></i> </span>
+                            <strong><span itemprop="title">Giỏ hàng</span></strong>
                         </li>
-                        <li><strong><span itemprop="title">Thanh toán</span></strong></li>
+{{--                        <li><strong><span itemprop="title">Thanh toán</span></strong></li>--}}
                     </ul>
                 </div>
             </div>

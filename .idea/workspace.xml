@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,23 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="017f3d35-9b11-4ccc-b618-6dbebf35903d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PartnerRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/SupplierRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/partner/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/partner/update.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/supplier/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/supplier/update.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/SliderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/SliderRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Partner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_30_091958_create_suppliers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_30_091958_create_suppliers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_30_092146_create_partners_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_30_092146_create_partners_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partner/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partner/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/slider/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/slider/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/slider/update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/slider/update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/supplier/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/supplier/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/CheckoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_26_142132_create_order_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_26_142132_create_order_details_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_26_142220_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_26_142220_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/cart/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/cart/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/checkout/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/checkout/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/partials/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +223,7 @@
       <workItem from="1606365296991" duration="19431000" />
       <workItem from="1606397917254" duration="7465000" />
       <workItem from="1606657705400" duration="6996000" />
-      <workItem from="1606700695982" duration="7564000" />
+      <workItem from="1606700695982" duration="14377000" />
     </task>
     <servers />
   </component>
@@ -277,9 +270,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="159" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1606292164729" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1606356022540">
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1606709080137">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1606356022540" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1606709080137" />
   </component>
 </project>

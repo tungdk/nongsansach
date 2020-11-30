@@ -108,14 +108,14 @@
                                 <img src="{{asset('site/images/policy2.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
-                            <div class="info a-left">
+                            <div class="info a-lcheckeft">
                                 <a href="#">Hỗ trợ 24/7</a>
                                 <p>Hotline: 0348520202</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
 {{--                            <a href="#">--}}
-                                <img src="{{asset('site/images/policy2.png')}}"
+                                <img src="{{asset('site/images/policy3.png')}}"
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
                             <div class="info a-left">
