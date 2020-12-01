@@ -9,42 +9,31 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
 {
-    public function get_login_social($social){
-        return Socialite::driver($social)->redirect();
-    }
-
-    public function check_login_social($social){
-        $info = Socialite::driver($social)->user();
-        dd($info);
-    }
-
     public function redirect($provider)
     {
         return Socialite::driver($provider)->redirect();
     }
+
     public function callback($provider)
     {
-
         $getInfo = Socialite::driver($provider)->user();
-
-        $user = $this->createUser($getInfo,$provider);
-
+        $user = $this->createUser($getInfo, $provider);
         auth()->login($user);
+        return redirect()->to('home');
 
-        return redirect()->to('/home');
     }
 
-    function createUser($getInfo,$provider){
-
-        $user = User::query()->where('provider_id', $getInfo->id)->first();
-
+    function createUser($getInfo, $provider)
+    {
+        $user = User::query()->where('email', $getInfo->email)->first();
         if (!$user) {
-            $user = User::query()->create([
-                'name'     => $getInfo->name,
-                'email'    => $getInfo->email,
-                'provider' => $provider,
-                'provider_id' => $getInfo->id
-            ]);
+            $user = new User();
+            $user->name = $getInfo->name;
+            $user->email = $getInfo->email;
+            $user->confirmed = 1;
+            $user->provider = $provider;
+            $user->provider_id = $getInfo->id;
+            $user->save();
         }
         return $user;
     }

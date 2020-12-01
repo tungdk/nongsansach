@@ -61,4 +61,49 @@ class CartController extends SiteController
         ]);
     }
 
+    public function update(Request $request){
+        $product_id = $request->product_id;
+        $quantity = $request->quantity;
+        $user_id = Auth::id();
+        $cart = Cart::query()
+            ->where('user_id', $user_id)
+            ->where('product_id', $product_id)
+            ->first();
+        if($cart){
+            $cart->quantity = $quantity;
+            $cart->save();
+            return response()->json([
+                'status' => true,
+                'message' => 'Cập nhật thành công'
+            ]);
+        }
+        else{
+            return response()->json([
+               'status' => false,
+               'message' => 'Sản phẩm không tồn tại trong giỏ hàng'
+            ]);
+        }
+    }
+
+    public function delete(Request $request){
+        $product_id = $request->product_id;
+        $user_id = Auth::id();
+        $cart = Cart::query()
+            ->where('user_id', $user_id)
+            ->where('product_id', $product_id)
+            ->first();
+        if($cart){
+            $cart->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Xoá thành công'
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Sản phẩm không tồn tại trong giỏ hàng'
+            ]);
+        }
+    }
 }

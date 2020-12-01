@@ -20,7 +20,27 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title pull-right"><a href="{{route('admin.product.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
+                <div class="box-header">
+                    <form class="form-inline">
+                        <input type="text" name="id" value="{{ Request::get('id')}}" placeholder="ID" class="form-control">
+                        <input type="text" name="name" value="{{ Request::get('name')}}" placeholder="Name..." class="form-control">
+                        <select name="type" id="" class="form-control">
+                            <option value="">Danh mục</option>
+                            <option value="2" {{ Request::get('type')==2 ? "selected='selected'" : ""}}>Khách</option>
+                            <option value="1" {{ Request::get('type')==1 ? "selected='selected'" : ""}}>Thành viên</option>
+                        </select>
+                        <select name="status" id="" class="form-control">
+                            <option value="0">Trạng thái</option>
+                            <option value="1" {{ Request::get('status')==1 ? "selected='selected'" : ""}}>Tiếp nhận</option>
+                            <option value="2" {{ Request::get('status')==2 ? "selected='selected'" : ""}}>Đang vận chuyển</option>
+                            <option value="3" {{ Request::get('status')==3 ? "selected='selected'" : ""}}>Đã bàn giao</option>
+                            <option value="-1" {{ Request::get('status')==-1 ? "selected='selected'" : ""}} >Hủy bỏ</option>
+                        </select>
+                        <button type="submit" class="btn btn-info"><i class="fa fa-search"> Tìm kiếm</i></button>
+                    </form>
+                </div>
+                <h3 class="box-title pull-right">
+                    <a href="{{route('admin.product.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
                 </h3>
                 <ul class="nav nav-tabs">
                     <li class="nav-item @if(request()->type === 'all') active @endif">
@@ -47,7 +67,6 @@
                                 <th>Sản phẩm</th>
 {{--                                <th>Ảnh</th>--}}
                                 <th>Giá</th>
-                                <th>Giá sale</th>
                                 <th>Số lượng</th>
 {{--                                <th>Trạng thái</th>--}}
                                 <th>Nổi bật</th>
@@ -82,8 +101,9 @@
 {{--                                        <td>--}}
 {{--                                            <img src="{{pare_url_file($product->avatar) }}" style="width: 80px; height: 80px" alt="">--}}
 {{--                                        </td>--}}
-                                        <td>{{ number_format($product->price, 0,',','.') }} đ</td>
-                                        <td>{{ number_format($product->sale, 0,',','.') }} đ</td>
+                                        <td><del>{{ number_format($product->price, 0,',','.') }} đ</del>
+                                            <br>
+                                        {{ number_format($product->sale, 0,',','.') }} đ</td>
                                         <td>{{ $product->quantity }}</td>
 {{--                                        <td>--}}
 {{--                                            @if($product->status == 1)--}}

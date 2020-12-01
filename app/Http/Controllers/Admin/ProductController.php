@@ -17,17 +17,18 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function index(){
-        if(request()->type === 'active'){
+    public function index(Request $request)
+    {
+        $products = Product::with('category:id, c_name');
+        if ($id = $request->id) $products->where('id', $id);
+        if ($name = $request->name) $products->where('name', 'like', '%' . $name . '%');
+        if (request()->type === 'active') {
             $products = Product::where('status', 1)->where('quantity', '>', 10)->orderByDesc('created_at')->paginate(10);
-        }
-        elseif(request()->type === 'soldout'){
+        } elseif (request()->type === 'soldout') {
             $products = Product::where('quantity', '<=', 10)->orderByDesc('created_at')->paginate(10);
-        }
-        elseif(request()->type === 'unlisted'){
+        } elseif (request()->type === 'unlisted') {
             $products = Product::where('status', 0)->orderByDesc('created_at')->paginate(10);
-        }
-        else{
+        } else {
             $products = Product::orderByDesc('created_at')->paginate(10);
         }
         $viewData = [
@@ -36,30 +37,34 @@ class ProductController extends Controller
         return view('admin.product.index', $viewData);
     }
 
-    public function create(){
+    public function create()
+    {
         $htmlOption = $this->getCategory($parentId = '');
         $units = Unit::all();
         return view('admin.product.create', compact('htmlOption', 'units'));
     }
-    public function getCategory($parentId){
+
+    public function getCategory($parentId)
+    {
         $data = Category::all();
         $recusive = new Recusive($data);
         $htmlOption = $recusive->categoryRecusive($parentId);
         return $htmlOption;
     }
 
-    public function store(ProductRequest $request){
+    public function store(ProductRequest $request)
+    {
         $data = $request->except('_token', 'avatar');
         $data['slug'] = Str::slug($request->name);
-        if($request->avatar){
+        if ($request->avatar) {
             $image = upload_image('avatar');
-            if($image['code'] == 1)
+            if ($image['code'] == 1)
                 $data['avatar'] = $image['name'];
         }
         $success = Product::insertGetId($data);
-        if($success){
-            Session::flash('toastr',[
-                'type'  =>  'success',
+        if ($success) {
+            Session::flash('toastr', [
+                'type' => 'success',
                 'message' => 'Thêm sản phẩm thành công'
             ]);
         }
@@ -67,35 +72,42 @@ class ProductController extends Controller
 
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $product = Product::findOrFail($id);
         $categories = Category::all();
-        $units=Unit::all();
+        $units = Unit::all();
         return view('admin.product.update', compact('product', 'categories', 'units'));
     }
-    public function update(ProductRequest $request, $id){
+
+    public function update(ProductRequest $request, $id)
+    {
         $product = Product::find($id);
         $data = $request->except('_token', 'avatar');
         $data['slug'] = Str::slug($request->name);
         $data['updated_at'] = Carbon::now();
-        if($request->avatar){
+        if ($request->avatar) {
             $image = upload_image('avatar');
-            if($image['code'] == 1)
+            if ($image['code'] == 1)
                 $data['avatar'] = $image['name'];
         }
         $product->update($data);
 
         return redirect()->back();
     }
-    public function active($id){
+
+    public function active($id)
+    {
         $product = Product::find($id);
-        $product->status = ! $product->status;
+        $product->status = !$product->status;
         $product->save();
         return redirect()->back();
     }
-    public function hot($id){
+
+    public function hot($id)
+    {
         $product = Product::find($id);
-        $product->hot = ! $product->hot;
+        $product->hot = !$product->hot;
         $product->save();
         return redirect()->back();
     }
@@ -104,10 +116,10 @@ class ProductController extends Controller
     {
         $product = Product::query()
             ->where('id', $request->id)->first();
-        if($product->status == 0){
+        if ($product->status == 0) {
             return response()->json([
                 'status' => 0,
-                'message' =>'Mã giảm giá đang bị ẩn'
+                'message' => 'Mã giảm giá đang bị ẩn'
             ]);
         }
 

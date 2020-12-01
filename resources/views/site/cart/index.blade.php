@@ -16,7 +16,7 @@
                         <li>
                             <strong><span itemprop="title">Giỏ hàng</span></strong>
                         </li>
-{{--                        <li><strong><span itemprop="title">Thanh toán</span></strong></li>--}}
+                        {{--                        <li><strong><span itemprop="title">Thanh toán</span></strong></li>--}}
                     </ul>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @forelse($carts as $cart)
+                                    @forelse($carts as $key => $cart)
                                         <tr>
                                             <td data-th="Product">
                                                 <div class="row">
@@ -57,16 +57,20 @@
                                             <td data-th="Price">{{$cart->product->price}} đ</td>
                                             <td data-th="Quantity">
                                                 <input class="form-control text-center" value="{{$cart->quantity}}"
-                                                       type="number">
+                                                       type="number" min="1" style="width: 100px" id="quantity">
                                             </td>
                                             <td data-th="Subtotal" class="text-center">{{$cart->product->price}}
                                                 * {{$cart->quantity}} đ
                                             </td>
                                             <td class="actions" data-th="">
-                                                <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-                                                </button>
+                                                <a href="" data-id="{{$cart->product_id}}"
+                                                   class="btn btn-info btn-sm edit-update-cart"><i
+                                                        class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="" data-id="{{$cart->product_id}}"
+                                                   class="btn btn-danger btn-sm delete-update-cart"><i
+                                                        class="fa fa-trash-o"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -84,7 +88,8 @@
                                         <td class="hidden-xs text-center"><strong>Tổng tiền 500.000 đ</strong>
                                         </td>
 
-                                        <td><a href="{{route('site.checkout.index')}}" class="btn btn-success btn-block">Thanh
+                                        <td><a href="{{route('site.checkout.index')}}"
+                                               class="btn btn-success btn-block">Thanh
                                                 toán
                                                 <i class="fa fa-angle-right"></i></a>
                                         </td>
@@ -117,4 +122,62 @@
         </div>
     </div>
 
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        $(function () {
+            $('.edit-update-cart').click(function (e) {
+                e.preventDefault();
+                const _token = '{{@csrf_field()}}';
+                let $this = $(this);
+                let id = $this.attr('data-id');
+                let quantity = $('#quantity').val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route('site.cart.update')}}',
+                    data: {
+                        'product_id': id,
+                        'quantity': quantity
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function () {
+
+                    }
+                })
+            });
+
+            $('.delete-update-cart').click(function (e) {
+                e.preventDefault();
+                const _token = '{{@csrf_field()}}';
+                let $this = $(this);
+                let id = $this.attr('data-id');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route('site.cart.delete')}}',
+                    data: {
+                        'product_id': id,
+                    },
+                    success: function (data) {
+                        $(this).closest("tr").remove();
+                    },
+                    error: function () {
+
+                    }
+                })
+            });
+        });
+    </script>
 @endsection

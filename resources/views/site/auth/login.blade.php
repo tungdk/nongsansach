@@ -19,8 +19,8 @@
             </div>
             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onclick="login()">Đăng nhập</button>
             <hr class="my-4">
-            <a href="{{url('login/social/facebook')}}" class="btn btn-lg btn-facebook btn-block text-uppercase" type="button"><i class="fa fa-facebook mr-2"></i>  Đăng nhập với Facebook</a>
-            <a href="{{ url('/auth/redirect/google') }}" class="btn btn-lg btn-google btn-block text-uppercase" type="button"><i class="fa fa-google-plus mr-2"></i> Đăng nhập với Google</a>
+            <a href="{{ URL::to('/auth/redirect/facebook') }}" class="btn btn-lg btn-facebook btn-block text-uppercase" type="button"><i class="fa fa-facebook mr-2"></i>  Đăng nhập với Facebook</a>
+            <a href="{{ URL::to('/auth/redirect/google') }}" class="btn btn-lg btn-google btn-block text-uppercase" type="button"><i class="fa fa-google-plus mr-2"></i> Đăng nhập với Google</a>
             <p style="text-align: center; padding-top: 15px">Bạn chưa có tài khoản? <a href="{{ route('site.register') }}" style="color: orangered">Đăng ký</a></p>
         </form>
     </div>

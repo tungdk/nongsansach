@@ -1,4 +1,7 @@
 @extends('layouts.layout_site')
+@section('css')
+    <link href="{{asset('css/increase_input.css')}}" rel="stylesheet"/>
+@endsection
 @section('content')
     <section class="bread_crumb py-4">
         <div class="container">
@@ -111,17 +114,16 @@
                                 </div>
 
                                 <div class="status clearfix">
-                                    SKU: <span class="inventory"></span>
                                 </div>
                                 <div class="price-box clearfix">
                                     <div class="special-price">
                                         <span class="price product-price">
                                             <span class="product-price-old"
                                                   style="font-size: 1.5rem !important; color: #929292!important;">
-                                                <del>₫Giá cũ</del>
+                                                <del>₫{{number_format($product->price, 0, ',', '.')}}</del>
                                             </span>
                                             <span class="product-price-new">
-                                                ₫{{$product->price}}
+                                                ₫{{number_format($product->sale, 0, ',', '.')}}
                                             </span>
                                             <span class="product-price-sale"
                                                   style="margin-left: 20px; margin-bottom: 2px">
@@ -138,24 +140,55 @@
                                 {{--                                </div>--}}
                                 <div class="col-md-12">
                                     <label for="quantity">Số lượng</label>
-                                    <input type="text" name="quantity">
-{{--                                    <button type="button"--}}
-{{--                                            class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy add_to_cart"--}}
-{{--                                            title="Thêm vào giỏ hàng">--}}
-{{--                                        <span><i class="fa fa-cart-arrow-down"></i>Thêm vào giỏ hàng</span>--}}
-{{--                                    </button>--}}
-                                    <a href="" data-url="{{URL::to('cart/add/'.$product->id.'/1')}}"
-                                       class="price product-price add_to_cart">
-                                        <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i></a>
+                                    {{--                                    <div class="input-group">--}}
+                                    {{--                                        <span class="input-group-btn">--}}
+                                    {{--                                            <button type="button" class="btn btn-danger btn-number" data-type="minus"--}}
+                                    {{--                                                    data-field="quant[2]">--}}
+                                    {{--                                            <span class="glyphicon glyphicon-minus"></span>--}}
+                                    {{--                                          </button>--}}
+                                    {{--                                        </span>--}}
+                                    {{--                                        <input type="text" name="quantity" class="form-control input-number" value="10"--}}
+                                    {{--                                               min="1" max="100">--}}
+                                    {{--                                        <span class="input-group-btn">--}}
+                                    {{--                                            <button type="button" class="btn btn-success btn-number" data-type="plus"--}}
+                                    {{--                                                  data-field="quant[2]">--}}
+                                    {{--                                                <span class="glyphicon glyphicon-plus"></span>--}}
+                                    {{--                                          </button>--}}
+                                    {{--                                        </span>--}}
+                                    {{--                                        <a href="" data-url="{{URL::to('cart/add/'.$product->id.'/1')}}"--}}
+                                    {{--                                           class="price product-price add_to_cart">--}}
+                                    {{--                                            <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i></a>--}}
+                                    {{--                                    </div>--}}
+                                    <div class="qty-input">
+                                        <button class="qty-count qty-count--minus" data-action="minus" type="button"
+                                                disabled>-
+                                        </button>
+                                        <input class="product-qty" type="number" name="product-qty" min="1"
+                                               value="1">
+                                        <button class="qty-count qty-count--add" data-action="add" type="button">+
+                                        </button>
+                                        <a href="" data-url="{{URL::to('favourite/add/'.$product->id)}}"
+                                           class="add_to_favourite float-right" style="padding-left: 60px;">
+                                            <i class="fa fa-heart-o" title="Thêm vào yêu thích"></i> Yêu Thích
+                                        </a>
+                                    </div>
                                 </div>
-                                <button type="button"
-                                        class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy"
-                                        title="Mua ngay">
-                                    <span>Mua ngay</span>
-                                </button>
-                                <a href="" data-url="{{URL::to('favourite/add/'.$product->id)}}"
-                                   class="price product-price add_to_favourite">
-                                    <i class="fa fa-heart-o" title="Thêm vào yêu thích"></i></a>
+                                <div class="status clearfix">
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="button"
+                                            class="btn btn-lg btn-primary add_to_cart btn-add-cart"
+                                            title="Thêm vào giỏ hàng">
+                                        <span><i class="fa fa-cart-arrow-down"></i> Thêm Vào Giỏ Hàng</span>
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy"
+                                            title="Mua ngay">
+                                        <span>Mua Ngay</span>
+                                    </button>
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="row" style="padding-top: 30px">
@@ -409,7 +442,9 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('js/increase_input.js')}}" type="text/javascript"></script>
     <script>
+
         $(document).ready(function () {
             $('#imageGallery').lightSlider({
                 gallery: true,

@@ -70,11 +70,11 @@ $('#submit_Login').click(function (e) {
         });
         $.ajax({
             type: 'POST',
-            url: "login",
+            url: "/login",
             data: {
                 'email': $email,
-                'password': $password,
-            },
+                'password': $password }
+            ,
             success: function (data) {
                 console.log(data);
                 if (data.error == true) {

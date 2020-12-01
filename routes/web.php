@@ -49,20 +49,16 @@ Route::get('register/verify/{code}', [AuthController::class, 'verify_register'])
 //Gửi lại mail xác thực
 Route::post('resend/verify/email', [AuthController::class, 'resend_email'])->name('site.resend.email');
 
-//login facebook
-Route::get('login/social/{social}',[SocialController::class,'get_login_social']);
-Route::get('login/check-social/{social}',[SocialController::class,'check_login_social']);
-
-//login google
-Route::get('/auth/redirect/{provider}', [SocialController::class,'redirect']);
-Route::get('/callback/{provider}', [SocialController::class,'callback']);
+//login social (facebook + google)
+Route::get('/auth/redirect/{provider}', [SocialController::class, 'redirect']);
+Route::get('/callback/{provider}', [SocialController::class, 'callback']);
 
 //logout
 Route::get('logout',  [AuthController::class,'logout'])->name('site.logout');
 
 Route::get('register',  [AuthController::class,'register'])->name('site.register');
 
-
+//product
 Route::get('product',  [SiteProductController::class,'detail'])->name('detail');
 
 //contact
@@ -73,6 +69,8 @@ Route::post('contact', [SiteContactController::class, 'store'])->name('site.cont
 Route::group(['prefix'=>'cart', 'middleware'=>'auth:web'], function (){
     Route::get('', [SiteCartController::class, 'index'])->name('site.cart.index');
     Route::get('add/{id}/{quantity}', [SiteCartController::class, 'add'])->name('site.cart.add');
+    Route::post('update', [SiteCartController::class, 'update'])->name('site.cart.update');
+    Route::post('delete', [SiteCartController::class, 'delete'])->name('site.cart.delete');
 });
 
 
