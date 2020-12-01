@@ -75,6 +75,7 @@ Route::group(['prefix'=>'cart', 'middleware'=>'auth:web'], function (){
     Route::get('add/{id}/{quantity}', [SiteCartController::class, 'add'])->name('site.cart.add');
 });
 
+
 Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product'])->name('site.product.detail');
 
 
