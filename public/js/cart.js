@@ -35,10 +35,11 @@ $(function () {
                 }
             },
             error: function (data) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Bạn cần đăng nhập để mua hàng',
-                })
+                openLoginModal();
+                // Swal.fire({
+                //     icon: 'error',
+                //     title: 'Bạn cần đăng nhập để mua hàng',
+                // })
             }
         });
 

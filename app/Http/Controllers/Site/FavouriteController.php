@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class FavouriteController extends Controller
 {
     public function add($id){
+        return response()->json(Auth::id());
         $user_id = Auth::id();
         $product = Product::find($id);
         if(!$product) return response(['messages'=>'Không tồn tại sản phầm','status'=>false]);

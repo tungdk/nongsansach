@@ -99,7 +99,7 @@
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
                             <div class="info a-left">
-                                <a href="#">Miễn phí vận chuyển</a>
+                                <span style="font-size: 15px"><b>Miễn phí vận chuyển</b></span>
                                 <p>Bán kính 100 km</p>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
                             <div class="info a-lcheckeft">
-                                <a href="#">Hỗ trợ 24/7</a>
+                                <span style="font-size: 15px"><b>Hỗ trợ 24/7</b></span>
                                 <p>Hotline: 0348520202</p>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                      alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
 {{--                            </a>--}}
                             <div class="info a-left">
-                                <a href="#"> Giờ làm việc</a>
+                                <span style="font-size: 15px"><b>Giờ làm việc</b></span>
                                 <p>T2 - T7 Giờ hành chính</p>
                             </div>
                         </div>
@@ -192,9 +192,10 @@
                 <ul class="nav nav-left">
                     <li class="nav-item "><a class="nav-link" href="{{route('site.home')}}">Trang chủ</a></li>
                     <li class="nav-item "><a class="nav-link" href="#">Giới thiệu</a></li>
-                    <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>
+{{--                    <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>--}}
                     <li class="nav-item "><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>
                     <li class="nav-item "><a class="nav-link" href="tin-tuc.html">Tin tức</a></li>
+                    <li class="nav-item "><a class="nav-link" href="tin-tuc.html">Chính sách</a></li>
                     <li class="nav-item "><a class="nav-link" href="{{route('site.contact.index')}}">Liên hệ</a></li>
                 </ul>
 

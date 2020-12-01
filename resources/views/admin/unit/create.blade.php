@@ -25,7 +25,7 @@
                         @csrf
                         <div class="col-md-6">
                             <div class="form-group {{ $errors->first('name' ? 'has-danger' : '') }}">
-                                <label for="name">Tên danh mục <span class="text-danger">(*)</span></label>
+                                <label for="name">Tên đơn vị <span class="text-danger">(*)</span></label>
                                 <input type="text" class="form-control" name="name" placeholder="Nhập tên đơn vị" value="{{old('name')}}">
                                 @if($errors->first('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>

@@ -26,19 +26,22 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="col-md-12 panel">
-                    <div class="col-md-12 header">
-                        <i class="fa fa-map-marker"></i> Địa chỉ nhận hàng:
+                    <div class="col-md-12 header" style="display: flex; justify-content: space-between;">
+                        <div>
+                            <i class="fa fa-map-marker"></i> Địa chỉ nhận hàng:
+                        </div>
+                        <span onclick="$('.form_address').show()">Thay đổi >></span>
                     </div>
                     <div class="col-md-12 content">
                         {{$user->name . ' | ' . $user->phone}} <br>
                         {{$user->address}}
 
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 form_address" hidden>
                         <form action="">
-                            <input type="text" name="name" placeholder="Nhập họ tên người nhận">
-                            <input type="text" name="phone" placeholder="Nhập số điện thoại người nhận">
-                            <input type="text" name=address"" placeholder="Nhập địa chỉ nhận hàng">
+                            <input type="text" name="name" placeholder="Nhập họ tên người nhận" value="{{ $user->name }}">
+                            <input type="text" name="phone" placeholder="Nhập số điện thoại người nhận" value="{{ $user->phone }}">
+                            <input type="text" name=address"" placeholder="Nhập địa chỉ nhận hàng" value="{{ $user->address }}">
                         </form>
                     </div>
                 </div>
@@ -90,6 +93,15 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div>
+                            Mã giảm giá của shop
+                            <input type="text" name="sale">
+                        </div>
+                        <div>
+                            Tạm tính <br>
+                            Mã giảm giá <br>
+                            Phí vận chuyển <br>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12 panel">

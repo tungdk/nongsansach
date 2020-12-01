@@ -30,7 +30,8 @@
                             <thead>
                             <tr>
                                 <th style="width: 5%">#</th>
-                                <th style="width: 30%">Đơn vị tính</th>
+                                <th style="width: 40%">Đơn vị tính</th>
+                                <th style="width: 40%">Ngày tạo</th>
                                 {{--                                <th style="width: 10%">Trạng thái</th>--}}
                                 <th style="width: 20%">Thao tác</th>
                             </tr>
@@ -42,6 +43,7 @@
 
                                         <td>{{ $unit->id }}</td>
                                         <td>{{ $unit->name }}</td>
+                                        <td>{{ $unit->created_at }}</td>
 {{--                                        <td>--}}
 {{--                                            @if($unit->status == 1)--}}
 {{--                                                <a href="{{route('admin.unit.active', $unit->id)}}" class="label label-info">Hiển thị</a>--}}

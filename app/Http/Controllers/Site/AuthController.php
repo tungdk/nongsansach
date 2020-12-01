@@ -52,6 +52,9 @@ class AuthController extends Controller
 
     public function register()
     {
+        if (Auth::check()) {
+            return redirect()->route('site.home');
+        }
         return view('site.auth.master_login');
     }
 

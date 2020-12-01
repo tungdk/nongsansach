@@ -21,10 +21,11 @@ $(document).on('click', '.add_to_favourite', function (e) {
             }
         },
         error: function (data) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Bạn chưa đăng nhập',
-            })
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'Bạn chưa đăng nhập',
+            // })
+                openLoginModal();
         }
     });
 

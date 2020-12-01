@@ -146,30 +146,30 @@
                 </div>
             </div>
         </div>
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title">Ảnh khác</h3>
-            </div>
-            <div>
-                <a href="#" onclick="">Thêm ảnh</a>
-            </div>
-            <div class="box-body block-images add_image">
-                <div style="margin-bottom: 10px">
-                    <img src="{{url('/')}}/public/uploads/brand/" class="img-thumbnail"
-                         onerror="this.onerror=null;this.src='{{asset('images/no-image.jpg')}}" alt=""
-                         style="width:200px; height:200px">
-                </div>
-                <div style="position: relative;">
-                    <a href="javascript:;" class="btn btn-primary">Choose File....
-                        <input type="file"
-                               style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"
-                               name="avatar" size="40" class="js-upload">
-                    </a>
-                    &nbsp;
-                    <span class="label label-info" id="upload-file-info"></span>
-                </div>
-            </div>
-        </div>
+{{--        <div class="box box-warning">--}}
+{{--            <div class="box-header with-border">--}}
+{{--                <h3 class="box-title">Ảnh khác</h3>--}}
+{{--            </div>--}}
+{{--            <div>--}}
+{{--                <a href="#" onclick="">Thêm ảnh</a>--}}
+{{--            </div>--}}
+{{--            <div class="box-body block-images add_image">--}}
+{{--                <div style="margin-bottom: 10px">--}}
+{{--                    <img src="{{url('/')}}/public/uploads/brand/" class="img-thumbnail"--}}
+{{--                         onerror="this.onerror=null;this.src='{{asset('images/no-image.jpg')}}" alt=""--}}
+{{--                         style="width:200px; height:200px">--}}
+{{--                </div>--}}
+{{--                <div style="position: relative;">--}}
+{{--                    <a href="javascript:;" class="btn btn-primary">Choose File....--}}
+{{--                        <input type="file"--}}
+{{--                               style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"--}}
+{{--                               name="avatar-other" size="40" class="js-upload">--}}
+{{--                    </a>--}}
+{{--                    &nbsp;--}}
+{{--                    <span class="label label-info" id="upload-file-info"></span>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 
     <div class="clearfix"></div>
