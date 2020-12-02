@@ -7,13 +7,20 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class CartController extends SiteController
 {
     public function index(){
         $user_id = Auth::id();
-        $carts = Cart::query()->where('user_id', $user_id)->get();
+//        $carts = Cart::query()->where('user_id', $user_id)->orderByDesc('created_at')->get();
+        $carts = DB::table('carts')
+            ->leftJoin('products', 'carts.product_id', '=', 'products.id')
+            ->select('carts.product_id', 'products.avatar', 'products.name', 'products.price',
+                'carts.quantity', DB::raw('products.price * carts.quantity as TongTien'))
+            ->where('user_id' ,$user_id)
+            ->orderByDesc('carts.created_at')->get();
         return view('site.cart.index', compact('carts'));
     }
 
@@ -72,9 +79,20 @@ class CartController extends SiteController
         if($cart){
             $cart->quantity = $quantity;
             $cart->save();
+//            $carts = Cart::query()->where('user_id', $user_id)->orderByDesc('created_at')->get();
+
+            $carts = DB::table('carts')
+                ->leftJoin('products', 'carts.product_id', '=', 'products.id')
+                ->select('carts.product_id', 'products.avatar', 'products.name', 'products.price',
+                    'carts.quantity', DB::raw('products.price * carts.quantity as TongTien'))
+                ->where('user_id' ,$user_id)
+                ->orderByDesc('carts.created_at')->get();
             return response()->json([
                 'status' => true,
-                'message' => 'Cập nhật thành công'
+                'message' => 'Cập nhật giỏ hàng thành công',
+                'view' => view('site.cart.components.cart', [
+                    'carts' => $carts
+                ])->render()
             ]);
         }
         else{
@@ -94,9 +112,18 @@ class CartController extends SiteController
             ->first();
         if($cart){
             $cart->delete();
+            $carts = DB::table('carts')
+                ->leftJoin('products', 'carts.product_id', '=', 'products.id')
+                ->select('carts.product_id', 'products.avatar', 'products.name', 'products.price',
+                    'carts.quantity', DB::raw('products.price * carts.quantity as TongTien'))
+                ->where('user_id' ,$user_id)
+                ->orderByDesc('carts.created_at')->get();
             return response()->json([
                 'status' => true,
-                'message' => 'Xoá thành công'
+                'message' => 'Xoá giỏ hàng thành công',
+                'view' => view('site.cart.components.cart', [
+                    'carts' => $carts
+                ])->render()
             ]);
         }
         else{

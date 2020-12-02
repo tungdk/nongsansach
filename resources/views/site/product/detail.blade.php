@@ -15,7 +15,7 @@
                         </li>
 
                         <li>
-                            <a itemprop="url" href="danh-muc/aaaaa.html"><span itemprop="title">{{$product->category_id->name}}</span></a>
+                            <a itemprop="url" href="danh-muc/aaaaa.html"><span itemprop="title">{{$product->category->name}}</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
                         <li><strong><span itemprop="title">{{$product->name}}</span></strong></li>
@@ -199,16 +199,16 @@
                                         <div class="row col-md-12">
                                             <div class="item px-4 mb-4 col-md-6">
                                                 <a href="banner-2-col-1.html">
-                                                    <img src="site/images/lazyload.svg"
-                                                         data-lazyload="/site/images/banner_coltab3_1.png"
+                                                    <img src="{{ asset('site/images/lazyload.svg') }}"
+                                                         data-lazyload="{{ asset('site/images/banner_coltab3_1.png') }}"
                                                          class="img-responsive"
                                                          alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                                                 </a>
                                             </div>
                                             <div class="item px-4 mb-4 col-md-6">
                                                 <a href="banner-2-col-2.html">
-                                                    <img src="site/images/lazyload.svg"
-                                                         data-lazyload="/site/images/banner_coltab3_2.png"
+                                                    <img src="{{ asset('site/images/lazyload.svg') }}"
+                                                         data-lazyload="{{ asset('site/images/banner_coltab3_2.png') }}"
                                                          class="img-responsive"
                                                          alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                                                 </a>
@@ -246,12 +246,12 @@
                                             <h4>Đánh giá sản phẩm</h4>
                                         </div>
                                         <div class="product-comment">
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}"
+                                                   id="product_id">
                                             @if(\Auth::check())
                                                 <form action="{{route('site.comment.store')}}" method="post"
                                                       class="form-horizontal" id="form-comment">
                                                     @csrf
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}"
-                                                           id="product_id">
                                                     {{--                                                <input type="hidden" name="commentLevel" id="input-commentLevel"--}}
                                                     {{--                                                       value="0">--}}
                                                     {{--                                                <input type="hidden" name="commentParent" id="input-commentParent"--}}
@@ -307,16 +307,11 @@
                                                 <div class="title-bl">
                                                     <h4>Đánh giá</h4>
                                                 </div>
-                                                <p>Không có đánh giá nào cho sản phẩm này.</p>
+
                                             </div>
                                             <div class="comment-view">
                                                 {{--                                                list comment--}}
                                             </div>
-                                            @if($count_comments > 5)
-                                                <div class="load-more" style="text-align: center">
-                                                    <button class="btn btn-primary align-items-center" onclick="load_more_comment()">Xem thêm bình luận</button>
-                                                </div>
-                                            @endif
                                         </div>
                                     </div>
 
@@ -445,8 +440,8 @@
     <script src="{{asset('js/increase_input.js')}}" type="text/javascript"></script>
     <script>
         window.onload = function () {
-            load_more_comment();
-            get_last_id();
+            load_comment();
+            // get_last_id();
         };
         function add_comment() {
             {{--const _token = {{csrf_token()}};--}}
@@ -466,7 +461,6 @@
                     'product_id': product_id,
                     'commentContent': commentContent,
                     'rating': rating
-
                 },
                 success: function (data) {
                     $('.comment-view').empty();
@@ -491,21 +485,21 @@
             });
         }
 
-        let last_id;
-        function get_last_id(){
-            $.ajax({
-                type: 'GET',
-                url: '{{ route('site.comment.get_last_id') }}',
-                success: function (data) {
-                    console.log(data);
-                    last_id = data;
-                },
-                error: function (data) {
+        {{--let last_id;--}}
+        {{--function get_last_id(){--}}
+        {{--    $.ajax({--}}
+        {{--        type: 'GET',--}}
+        {{--        url: '{{ route('site.comment.get_last_id') }}',--}}
+        {{--        success: function (data) {--}}
+        {{--            console.log(data);--}}
+        {{--            last_id = data;--}}
+        {{--        },--}}
+        {{--        error: function (data) {--}}
 
-                }
-            });
-        }
-        function load_more_comment() {
+        {{--        }--}}
+        {{--    });--}}
+        {{--}--}}
+        function load_comment() {
             let product_id = $('#product_id').val();
             $.ajaxSetup({
                 headers: {
@@ -518,12 +512,12 @@
                 data: {
                     // 'token' : token,
                     'product_id': product_id,
-                    'last_id' : last_id
                 },
                 success: function (data) {
                     $('.comment-view').append(data.view);
                 },
                 error: function (data) {
+
                 }
             });
         }
@@ -560,10 +554,7 @@
                     })
                 },
                 error: function (data) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: data.message,
-                    })
+                    openLoginModal();
                 }
             });
         }
@@ -583,10 +574,7 @@
                     window.location.href = "/cart";
                 },
                 error: function (data) {
-                    // Swal.fire({
-                    //     icon: 'error',
-                    //     title: data.message,
-                    // })
+                    openLoginModal();
                 }
             });
         }
