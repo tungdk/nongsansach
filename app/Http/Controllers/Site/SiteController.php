@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\SubscribeRequest;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Subscribe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -14,6 +15,9 @@ class SiteController extends Controller
 {
     public function __construct()
     {
+        $categories = Category::query()->where('status', 1)->orderByDesc('created_at')->get();
+
+        View::share('categories', $categories);
 //        if ($this->middleware('auth:web')) {
 ////            $this->middleware(function () {
 //                $user_id = Auth::id();

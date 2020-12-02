@@ -167,8 +167,8 @@
                 </a>
             </li>
 
-            <li class="{{ request()->is('admin/policies*') ? 'active' : '' }}">
-                <a href="{{route('admin.statistical.index')}}">
+            <li class="{{ request()->is('admin/policy*') ? 'active' : '' }}">
+                <a href="{{route('admin.policy.index')}}">
                     <i class="fa fa-dot-circle-o"></i> <span> Chính sách</span>
                     <span class="pull-right-container">
             </span>

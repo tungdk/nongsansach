@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\SliderRequest;
 use App\Models\Slider;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SliderController extends Controller
 {
@@ -24,7 +25,13 @@ class SliderController extends Controller
         $data = $request->except('_token', 'status');
         $data['status'] = $request->status ? '1' : '0';
         $data['created_at'] = Carbon::now();
-        Slider::insertGetId($data);
+        $success = Slider::insertGetId($data);
+        if($success){
+            Session::flash('toastr',[
+                'type'  =>  'success',
+                'message' => 'Thêm slider thành công'
+            ]);
+        }
         return redirect()->back();
     }
 

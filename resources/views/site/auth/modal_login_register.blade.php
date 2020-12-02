@@ -57,10 +57,10 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{url('login/social/facebook')}}" class="btn btn-lg btn-facebook btn-block text-uppercase"
-                   type="button"><i class="fa fa-facebook mr-2"></i> Đăng nhập với Facebook</a>
-                <a href="{{ url('/auth/redirect/google') }}" class="btn btn-lg btn-google btn-block text-uppercase"
-                   type="button"><i class="fa fa-google-plus mr-2"></i> Đăng nhập với Google</a>
+                <a href="{{ URL::to('/auth/redirect/facebook')}}" class="btn btn-lg btn-facebook btn-block text-uppercase"
+                   type="button" style="color: white; background-color: #3b5998"><i class="fa fa-facebook mr-2"></i> Đăng nhập với Facebook</a>
+                <a href="{{ URL::to('/auth/redirect/google') }}" class="btn btn-lg btn-google btn-block text-uppercase"
+                   type="button" style="color: white; background-color: #ea4335"><i class="fa fa-google-plus mr-2"></i> Đăng nhập với Google</a>
 
             </div>
 

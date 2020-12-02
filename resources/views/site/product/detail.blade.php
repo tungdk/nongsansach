@@ -242,81 +242,91 @@
                                     </div>
 
                                     <div class="tab-2 tab-content tab-comment-product">
+                                        <div class="title-bl">
+                                            <h4>Đánh giá sản phẩm</h4>
+                                        </div>
+                                        <div class="product-comment">
+                                            @if(\Auth::check())
+                                                <form action="{{route('site.comment.store')}}" method="post"
+                                                      class="form-horizontal" id="form-comment">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                    {{--                                                <input type="hidden" name="commentLevel" id="input-commentLevel"--}}
+                                                    {{--                                                       value="0">--}}
+                                                    {{--                                                <input type="hidden" name="commentParent" id="input-commentParent"--}}
+                                                    {{--                                                       value="">--}}
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12 star-rating">
+                                                            <label class="control-label">Đánh giá chất lượng</label>
+                                                            <span class="fa fa-star fa-2x" data-rating="1"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="2"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="3"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="4"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="5"></span>
+                                                            <input type="hidden"
+                                                                   class="rating-value" value="5" name="rating">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <label class="control-label" for="input-commentContent">Nội
+                                                                dung
+                                                                đánh giá</label>
+                                                            <textarea name="commentContent" rows="5"
+                                                                      id="input-commentContent"
+                                                                      class="form-control"></textarea>
+                                                            <div class="help-block"><span
+                                                                    class="text-danger">Chú ý:</span>
+                                                                Không sử dụng các định dạng
+                                                                HTML!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="buttons clearfix">
+                                                        <div class="pull-right">
+                                                            <button type="submit" id="button-review"
+                                                                    data-loading-text="Đang tải..."
+                                                                    class="btn btn-primary">Tiếp tục
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            @else
+                                                <p>Bạn cần đăng nhập để bình luận.</p>
+                                            @endif
+                                        </div>
                                         <div id="product-reviews" class="product-reviews">
                                             <div>
                                                 <div class="title-bl">
-                                                    <h4>Đánh giá sản phẩm</h4>
+                                                    <h4>Đánh giá</h4>
                                                 </div>
                                                 <p>Không có đánh giá nào cho sản phẩm này.</p>
                                             </div>
-                                        </div>
-                                        <div class="product-comment">
-                                            <form action="https://shop1.jweb.com.vn/binh-luan.html" method="post"
-                                                  class="form-horizontal" id="form-comment">
-                                                @csrf
-                                                <input type="hidden" name="contentID" value=1>
-                                                <input type="hidden" name="commentLevel" id="input-commentLevel"
-                                                       value="0">
-                                                <input type="hidden" name="commentParent" id="input-commentParent"
-                                                       value="">
-                                                <div class="form-group">
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="input-customerFullName">Họ &
-                                                            Tên*</label>
-                                                        <input type="text" name="customerFullName" value=""
-                                                               id="input-customerFullName"
-                                                               class="form-control" required/>
+                                            @foreach($comments as $cmt)
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        <img src="{{asset('images/no-avatar.jpg')}}" alt=""
+                                                             style="width: 55px; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;">
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="input-customerPhone">Điện
-                                                            thoại*</label>
-                                                        <input type="text" name="customerPhone" value=""
-                                                               id="input-customerPhone" class="form-control"
-                                                               required/>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label"
-                                                               for="input-customerEmail">Email*</label>
-                                                        <input type="email" name="customerEmail" value=""
-                                                               id="input-customerEmail" class="form-control"
-                                                               required/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12 star-rating">
-                                                        <label class="control-label">Đánh giá chất lượng</label>
-                                                        <span class="fa fa-star fa-2x" data-rating="1"></span>
-                                                        <span class="fa fa-star fa-2x" data-rating="2"></span>
-                                                        <span class="fa fa-star fa-2x" data-rating="3"></span>
-                                                        <span class="fa fa-star fa-2x" data-rating="4"></span>
-                                                        <span class="fa fa-star fa-2x" data-rating="5"></span>
-                                                        <input type="hidden" name="orderrattingValue"
-                                                               class="rating-value" value="4">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12">
-                                                        <label class="control-label" for="input-commentContent">Nội dung
-                                                            đánh giá</label>
-                                                        <textarea name="commentContent" rows="5"
-                                                                  id="input-commentContent"
-                                                                  class="form-control"></textarea>
-                                                        <div class="help-block"><span class="text-danger">Chú ý:</span>
-                                                            Không sử dụng các định dạng
-                                                            HTML!
+                                                    <div class="col-md-11">
+                                                        {{ $cmt->user->name }} <br>
+                                                        <div class="star-rating" style="font-size: 7px">
+                                                            <span class="fa fa-star fa-2x" data-rating="1"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="2"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="3"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="4"></span>
+                                                            <span class="fa fa-star fa-2x" data-rating="5"></span>
+                                                            <input type="hidden"
+                                                                   class="rating-value" value="5" name="rating">
+                                                        </div>
+                                                        <div class="comment-content" style="font-size: 15px">
+                                                            {{$cmt->content}}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input type="hidden" value="5" name="rating"/>
-                                                <div class="buttons clearfix">
-                                                    <div class="pull-right">
-                                                        <button type="submit" id="button-review"
-                                                                data-loading-text="Đang tải..."
-                                                                class="btn btn-primary">Tiếp tục
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                                <hr>
+
+                                            @endforeach
                                         </div>
                                     </div>
 

@@ -17,6 +17,7 @@ use \App\Http\Controllers\Admin\ContactController;
 use \App\Http\Controllers\Admin\UserController;
 use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Admin\StatisticalController;
+use \App\Http\Controllers\Admin\PolicyController;
 
 
 //login admin
@@ -209,4 +210,23 @@ Route::group(['prefix' => 'partner'], function () {
 
     Route::get('active/{id}', [PartnerController::class, 'active'])->name('admin.partner.active');
     Route::delete('delete/{id}', [PartnerController::class, 'delete'])->name('admin.partner.delete');
+});
+
+//Policy
+Route::group(['prefix' => 'policy'], function () {
+
+    Route::get('', [PolicyController::class, 'index'])->name('admin.policy.index');
+    Route::get('create', [PolicyController::class, 'create'])->name('admin.policy.create');
+    Route::post('create', [PolicyController::class, 'store']);
+
+    Route::get('edit/{id}', [PolicyController::class, 'edit'])->name('admin.policy.edit');
+    Route::post('edit/{id}', [PolicyController::class, 'update']);
+
+    Route::get('active/{id}', [PolicyController::class, 'active'])->name('admin.policy.active');
+    Route::get('hot/{id}', [PolicyController::class, 'hot'])->name('admin.policy.hot');
+
+    Route::delete('delete/{id}', [PolicyController::class, 'delete'])->name('admin.policy.delete');
+
+    Route::post('sendMail', [PolicyController::class, 'sendMail'])->name('admin.policy.sendMail');
+
 });

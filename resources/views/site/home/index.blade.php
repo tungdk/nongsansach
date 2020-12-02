@@ -13,12 +13,14 @@
                         <div class="col-md-9 col-md-push-3 px-md-4 px-0 mt-md-5 mb-5">
                             <div class="home-slider owl-carousel" data-lg-items="1" data-md-items="1" data-sm-items="1"
                                  data-xs-items="1" data-margin="0" data-nav="true">
-                                <div class="item">
-                                    <a href="#" class="clearfix">
-                                        <img data-src="https://shop1.jweb.com.vn/uploads/images/banner/tao-web.png"
-                                             alt="Mô tả slider 1" class="owl-lazy">
-                                    </a>
-                                </div>
+                                @foreach($sliders as $slider)
+                                    <div class="item">
+                                        <a href="#" class="clearfix">
+                                            <img data-src="https://shop1.jweb.com.vn/uploads/images/banner/tao-web.png"
+                                                 alt="Mô tả slider 1" class="owl-lazy">
+                                        </a>
+                                    </div>
+                                @endforeach
 
                             </div>
                         </div>
@@ -31,11 +33,18 @@
                                 <div class="aside-content">
                                     <div class="nav-category  navbar-toggleable-md">
                                         <ul class="nav navbar-pills">
-                                            @foreach($categories as $cate)
+                                            @foreach($categories as $key => $cate)
                                                 <li class="nav-item">
                                                     <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                                    <a href="danh-muc/aaaaa.html" class="nav-link">{{$cate->name}}</a>
+                                                    <a href="{{route('site.category.detail', ['id'=>$cate->id, 'slug' => $cate->slug])}}" class="nav-link">{{$cate->name}}</a>
                                                 </li>
+                                                @if($key == 6)
+                                                        <li class="nav-item">
+                                                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                            <a href="{{route('site.category.index')}}" class="nav-link">Xem thêm</a>
+                                                        </li>
+                                                        @break
+                                                @endif
                                             @endforeach
                                         </ul>
                                     </div>
@@ -81,167 +90,11 @@
             </div>
         </section>
 
-        <section class="awe-section-6" id="awe-section-6">
-            <div class="section section-collection section-collection-3">
-                <div class="container">
-                    <div class="collection-border">
-                        <div class="collection-main">
-                            <div class="row ">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="e-tabs not-dqtab ajax-tab-3" data-section="ajax-tab-3"
-                                         data-view="grid_8">
-                                        <div class="row row-noGutter">
-                                            <div class="col-sm-12">
-                                                <div class="content">
-                                                    <div class="section-title">
-                                                        <h2>Sản phẩm nổi bật</h2>
-                                                    </div>
-                                                    <div>
-                                                        <div class="tab-1 tab-content">
-                                                            <div class="products products-view-grid">
-                                                                <div class="row">
-                                                                    @if(isset($recent_products))
-                                                                        @forelse($recent_products as $product)
-                                                                            <div
-                                                                                class="col-xs-6 col-xss-6 col-sm-4 col-md-3 col-lg-3">
-                                                                                <!-- product item -->
-                                                                                <div class="product-box">
-                                                                                    <div
-                                                                                        class="product-thumbnail flexbox-grid">
-                                                                                        <a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
-                                                                                           title="{{$product->name}}">
-                                                                                            <img
-                                                                                                src="site/images/lazyload.svg"
-                                                                                                data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
-                                                                                                alt="{{$product->name}}">
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div class="product-info a-center">
-                                                                                        <h3 class="product-name">
-                                                                                            <a href="ten-san-pham-dang-ban-1.html"
-                                                                                               title="{{$product->name}}">{{$product->name}}</a>
-                                                                                        </h3>
-                                                                                        <div class="price-box clearfix">
-                                                                                            <div class="special-price">
-                                                                                                {{number_format($product->sale, 0, ',', '.')}}
-                                                                                                <a href="" data-url="{{URL::to('cart/add/'.$product->id.'/1')}}"
-                                                                                                   class="price product-price add_to_cart">
-                                                                                                    <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i></a>
-                                                                                                <a href="" data-url="{{URL::to('favourite/add/'.$product->id)}}"
-                                                                                                   class="price product-price add_to_favourite">
-                                                                                                    <i class="fa fa-heart-o" title="Thêm vào yêu thích"></i></a>
-                                                                                            </div>
-                                                                                        </div>
+        @include('site.home.components.hot')
 
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- end product item -->
-                                                                            </div>
-                                                                        @empty
-                                                                            <p>Không có dữ liệu</p>
-                                                                        @endforelse
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                            <!-- /.products -->
+        @include('site.home.components.new_product')
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- end all_banner_3_col --><!-- home_block_product.php -->
-        <section class="awe-section-6" id="awe-section-6">
-            <div class="section section-collection section-collection-3">
-                <div class="container">
-                    <div class="collection-border">
-                        <div class="collection-main">
-                            <div class="row ">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="e-tabs not-dqtab ajax-tab-3" data-section="ajax-tab-3"
-                                         data-view="grid_8">
-                                        <div class="row row-noGutter">
-                                            <div class="col-sm-12">
-                                                <div class="content">
-                                                    <div class="section-title">
-                                                        <h2>Sản phẩm mới</h2>
-                                                    </div>
-                                                    <div>
-                                                        <div class="tab-1 tab-content">
-                                                            <div class="products products-view-grid">
-                                                                <div class="row">
-                                                                    @if(isset($recent_products))
-                                                                        @forelse($recent_products as $product)
-                                                                            <div
-                                                                                class="col-xs-6 col-xss-6 col-sm-4 col-md-3 col-lg-3">
-                                                                                <!-- product item -->
-                                                                                <div class="product-box">
-                                                                                    <div
-                                                                                        class="product-thumbnail flexbox-grid">
-                                                                                        <a href="ten-san-pham-dang-ban-1.html"
-                                                                                           title="{{$product->name}}">
-                                                                                            <img
-                                                                                                src="site/images/lazyload.svg"
-                                                                                                data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
-                                                                                                alt="{{$product->name}}">
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div class="product-info a-center">
-                                                                                        <h3 class="product-name">
-                                                                                            <a href="ten-san-pham-dang-ban-1.html"
-                                                                                               title="{{$product->name}}">{{$product->name}}</a>
-                                                                                        </h3>
-                                                                                        <div class="price-box clearfix">
-                                                                                            <div class="special-price">
-                                                                                                <a href=""
-                                                                                                   class="price product-price"> {{number_format($product->sale, 0, ',', '.')}}
-                                                                                                    Mua ngay</a>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- end product item -->
-                                                                            </div>
-                                                                        @empty
-                                                                            <p>Không có dữ liệu</p>
-                                                                        @endforelse
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                            <!-- /.products -->
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end home_block_product.php --><!-- all_banner_1_col -->
-
-
+{{--        banner--}}
         <section class="awe-section-5">
             <div class="section_banner">
                 <div class="container">
@@ -262,57 +115,58 @@
             </div>
         </section>
 
+        @include('site.home.components.category_product')
         <!-- end all_banner_1_col --><!-- home_block_product_slide.php -->
-        <section class="awe-section-3" id="awe-section-3">
-            <div class="section section-collection section-collection-1">
-                <div class="container">
-                    <div class="collection-border">
-                        <div class="collection-main">
-                            <div class="row ">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="content">
-                                        <div class="section-title">
-                                            <h2>Sàn nhựa Glotex</h2>
-                                        </div>
-                                    </div>
-                                    <div class="products owl-carousel">
-                                    @foreach($recent_products as $product)
-                                        <!-- product item -->
-                                            <div class="product-box">
-                                                <div class="product-thumbnail flexbox-grid">
-                                                    <a href="ten-san-pham-dang-ban-1.html"
-                                                       title="Tên sản phẩm đang bán 1">
-                                                        <img
-                                                            data-src="http://nongsansachvietnam.vn/upload/products/thumb/1277694858_luu2.jpg"
-                                                            class="owl-lazy" alt="Tên sản phẩm đang bán 1"
-                                                            class="owl-lazy">
-                                                    </a>
-                                                </div>
-                                                <div class="product-info a-center">
-                                                    <h3 class="product-name"><a href="ten-san-pham-dang-ban-1.html"
-                                                                                title="{{$product->name}}">{{$product->name}}</a>
-                                                    </h3>
-                                                    <div class="price-box clearfix">
-                                                        <div class="special-price" style="font-size: 30px;">
-                                                            <a href="" ><span class="price product-price"><i
-                                                                        class="fa fa-shopping-cart"></i></span></a>
-                                                            <a href=""><span class="price product-price"><i
-                                                                        class="fa fa-heart"></i></span></a>
-                                                        </div>
-                                                    </div>
+{{--        <section class="awe-section-3" id="awe-section-3">--}}
+{{--            <div class="section section-collection section-collection-1">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="collection-border">--}}
+{{--                        <div class="collection-main">--}}
+{{--                            <div class="row ">--}}
+{{--                                <div class="col-lg-12 col-sm-12">--}}
+{{--                                    <div class="content">--}}
+{{--                                        <div class="section-title">--}}
+{{--                                            <h2>Sàn nhựa Glotex</h2>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="products owl-carousel">--}}
+{{--                                    @foreach($recent_products as $product)--}}
+{{--                                        <!-- product item -->--}}
+{{--                                            <div class="product-box">--}}
+{{--                                                <div class="product-thumbnail flexbox-grid">--}}
+{{--                                                    <a href="ten-san-pham-dang-ban-1.html"--}}
+{{--                                                       title="Tên sản phẩm đang bán 1">--}}
+{{--                                                        <img--}}
+{{--                                                            data-src="http://nongsansachvietnam.vn/upload/products/thumb/1277694858_luu2.jpg"--}}
+{{--                                                            class="owl-lazy" alt="Tên sản phẩm đang bán 1"--}}
+{{--                                                            class="owl-lazy">--}}
+{{--                                                    </a>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="product-info a-center">--}}
+{{--                                                    <h3 class="product-name"><a href="ten-san-pham-dang-ban-1.html"--}}
+{{--                                                                                title="{{$product->name}}">{{$product->name}}</a>--}}
+{{--                                                    </h3>--}}
+{{--                                                    <div class="price-box clearfix">--}}
+{{--                                                        <div class="special-price" style="font-size: 30px;">--}}
+{{--                                                            <a href="" ><span class="price product-price"><i--}}
+{{--                                                                        class="fa fa-shopping-cart"></i></span></a>--}}
+{{--                                                            <a href=""><span class="price product-price"><i--}}
+{{--                                                                        class="fa fa-heart"></i></span></a>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
 
-                                                </div>
-                                            </div>
-                                            <!-- end product item -->
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <!-- end product item -->--}}
+{{--                                        @endforeach--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
 {{--        <!-- end home_block_product_slide.php  --><!-- all_banner_2_col -->--}}
         <section class="awe-section-7" id="awe-section-7">
             <div class="section_banner">
@@ -340,98 +194,88 @@
             </div>
         </section>
         <!-- end all_banner_2_col --><!-- home_block_product.php -->
-        <section class="awe-section-6" id="awe-section-6">
+{{--        <section class="awe-section-6" id="awe-section-6">--}}
 
-            <div class="section section-collection section-collection-3">
-                <div class="container">
+{{--            <div class="section section-collection section-collection-3">--}}
+{{--                <div class="container">--}}
 
-                    <div class="collection-border">
+{{--                    <div class="collection-border">--}}
 
-                        <div class="collection-main">
-                            <div class="row ">
+{{--                        <div class="collection-main">--}}
+{{--                            <div class="row ">--}}
 
-                                <div class="col-lg-12 col-sm-12">
+{{--                                <div class="col-lg-12 col-sm-12">--}}
 
-                                    <div class="e-tabs not-dqtab ajax-tab-3" data-section="ajax-tab-3"
-                                         data-view="grid_8">
-                                        <div class="row row-noGutter">
-                                            <div class="col-sm-12">
-                                                <div class="content">
-                                                    <div class="section-title">
-                                                        <h2>Sàn gỗ ngoài trời</h2>
-                                                    </div>
-                                                    <div>
-                                                        <div class="tab-1 tab-content">
+{{--                                    <div class="e-tabs not-dqtab ajax-tab-3" data-section="ajax-tab-3"--}}
+{{--                                         data-view="grid_8">--}}
+{{--                                        <div class="row row-noGutter">--}}
+{{--                                            <div class="col-sm-12">--}}
+{{--                                                <div class="content">--}}
+{{--                                                    <div class="section-title">--}}
+{{--                                                        <h2>Sàn gỗ ngoài trời</h2>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div>--}}
+{{--                                                        <div class="tab-1 tab-content">--}}
 
-                                                            <div class="products products-view-grid">
-                                                                <div class="row">
-                                                                    <div
-                                                                        class="col-xs-6 col-xss-6 col-sm-4 col-md-3 col-lg-3">
-                                                                        <!-- product item -->
-                                                                        <div class="product-box">
-                                                                            <div class="product-thumbnail flexbox-grid">
-                                                                                <a href="ten-san-pham-dang-ban-1.html"
-                                                                                   title="Tên sản phẩm đang bán 1">
-                                                                                    <img src="site/images/lazyload.svg"
-                                                                                         data-lazyload=""
-                                                                                         alt="Tên sản phẩm đang bán 1">
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="product-info a-center">
-                                                                                <h3 class="product-name"><a
-                                                                                        href="ten-san-pham-dang-ban-1.html"
-                                                                                        title="Tên sản phẩm đang bán 1">Tên
-                                                                                        sản phẩm đang bán 1</a></h3>
-                                                                                <div class="price-box clearfix">
-                                                                                    <div class="special-price">
-                                                                                        <span
-                                                                                            class="price product-price">Liên hệ</span>
-                                                                                    </div>
+{{--                                                            <div class="products products-view-grid">--}}
+{{--                                                                <div class="row">--}}
+{{--                                                                    <div--}}
+{{--                                                                        class="col-xs-6 col-xss-6 col-sm-4 col-md-3 col-lg-3">--}}
+{{--                                                                        <!-- product item -->--}}
+{{--                                                                        <div class="product-box">--}}
+{{--                                                                            <div class="product-thumbnail flexbox-grid">--}}
+{{--                                                                                <a href="ten-san-pham-dang-ban-1.html"--}}
+{{--                                                                                   title="Tên sản phẩm đang bán 1">--}}
+{{--                                                                                    <img src="site/images/lazyload.svg"--}}
+{{--                                                                                         data-lazyload=""--}}
+{{--                                                                                         alt="Tên sản phẩm đang bán 1">--}}
+{{--                                                                                </a>--}}
+{{--                                                                            </div>--}}
+{{--                                                                            <div class="product-info a-center">--}}
+{{--                                                                                <h3 class="product-name"><a--}}
+{{--                                                                                        href="ten-san-pham-dang-ban-1.html"--}}
+{{--                                                                                        title="Tên sản phẩm đang bán 1">Tên--}}
+{{--                                                                                        sản phẩm đang bán 1</a></h3>--}}
+{{--                                                                                <div class="price-box clearfix">--}}
+{{--                                                                                    <div class="special-price">--}}
+{{--                                                                                        <span--}}
+{{--                                                                                            class="price product-price">Liên hệ</span>--}}
+{{--                                                                                    </div>--}}
 
 
-                                                                                </div>
+{{--                                                                                </div>--}}
 
-                                                                            </div>
-                                                                        </div>
-                                                                        <!-- end product item -->
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /.products -->
+{{--                                                                            </div>--}}
+{{--                                                                        </div>--}}
+{{--                                                                        <!-- end product item -->--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
+{{--                                                            </div>--}}
+{{--                                                            <!-- /.products -->--}}
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                </div>
+{{--                                </div>--}}
 
-                            </div>
-                        </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                    </div>
-                </div>
-            </div>
-        </section>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
         <!-- end home_block_product.php --><!-- home_news_slide.php -->
-        <section class="awe-section-8" id="awe-section-8">
-            <div class="section section_blog">
-                <div class="container">
-                    <div class="section-title a-center">
-                        <h2><a href="#">Tin tức</a></h2>
-                        <p>Tin tức về các sản phẩm</p>
-                    </div>
-                    <div class="section-content">
-                        <div class="blog-slider owl-carousel" data-lg-items='4' data-md-items='3' data-sm-items='2'
-                             data-xs-items="2" data-nav="true">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+        @include('site.home.components.post')
         <!-- end home_news_slide.php --><!-- home_customer.php -->
+
+
+
         <section class="awe-section-9" id="awe-section-9">
             <div class="section section_testimonial">
                 <div class="container">

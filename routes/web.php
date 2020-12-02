@@ -13,6 +13,7 @@ use \App\Http\Controllers\Site\UserController as SiteUserController;
 use \App\Http\Controllers\Site\AuthController;
 use \App\Http\Controllers\Site\Auth\SocialController;
 use \App\Http\Controllers\Site\SiteController;
+use \App\Http\Controllers\Site\CommentController as SiteCommentController;
 
 use \App\Http\Controllers\Site\ProductController as SiteProductController;
 use Laravel\Fortify\Http\Controllers\VerifyEmailController;
@@ -78,6 +79,7 @@ Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product
 
 
 //category
+Route::get('category/{id}/{slug}',[SiteCategoryController::class, 'detail'])->name('site.category.detail');
 Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
 
 Route::group(['prefix'=>'user'], function (){
@@ -107,41 +109,10 @@ Route::group(['middleware'=>'auth:web'], function (){
     Route::get('check-out', [CheckoutController::class, 'index'])->name('site.checkout.index');
 
 });
-//Route::get('/email/verify', function () {
-//    return view('auth.verify-email');
-//})->middleware(['auth'])->name('verification.notice');
-//
-//use Illuminate\Foundation\Auth\EmailVerificationRequest;
-//use Illuminate\Http\Request;
-//Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//    $request->fulfill();
-//
-//    return redirect('/home');
-//})->middleware(['auth', 'signed'])->name('verification.verify');
-//
-//Route::post('/email/verification-notification', function (Request $request) {
-//    $request->user()->sendEmailVerificationNotification();
-//
-//    return back()->with('status', 'verification-link-sent');
-//})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//    return Inertia\Inertia::render('Dashboard');
-//})->name('dashboard');
-//
-//Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-//    ->middleware(['signed', 'throttle:6,1'])
-//    ->name('verification.verify');
-//
-//
-//use Laravel\Fortify\Fortify;
-//
-//Fortify::loginView(function () {
-//    return view('auth.login');
-//});
-//
-//Fortify::registerView(function () {
-//    return view('auth.register');
-//});
+Route::group(['middleware' => 'auth:web'], function (){
+    Route::post('comment', [SiteCommentController::class, 'store'])->name('site.comment.store');
+});
+
 
 Route::get('test', [SiteController::class, 'test']);

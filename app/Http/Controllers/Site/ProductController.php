@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,11 @@ class ProductController extends Controller
     {
         $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
         $product = Product::query()->findOrFail($id);
+        $comments = Comment::query()->where('product_id', $id)->where('status', 1)->orderByDesc('created_at')->get();
         $data = [
             'recent_products' => $recent_products,
-            'product' => $product
+            'product' => $product,
+            'comments' => $comments
         ];
         if($product->slug == $slug){
             return view('site.product.detail', $data);
