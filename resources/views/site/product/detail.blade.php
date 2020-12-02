@@ -15,7 +15,7 @@
                         </li>
 
                         <li>
-                            <a itemprop="url" href="danh-muc/aaaaa.html"><span itemprop="title">AAAAA</span></a>
+                            <a itemprop="url" href="danh-muc/aaaaa.html"><span itemprop="title">{{$product->category_id->name}}</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
                         <li><strong><span itemprop="title">{{$product->name}}</span></strong></li>
@@ -163,7 +163,7 @@
                                         <button class="qty-count qty-count--minus" data-action="minus" type="button"
                                                 disabled>-
                                         </button>
-                                        <input class="product-qty" type="number" name="product-qty" min="1"
+                                        <input class="product-qty" type="number" name="quantity" min="1"
                                                value="1">
                                         <button class="qty-count qty-count--add" data-action="add" type="button">+
                                         </button>
@@ -177,13 +177,13 @@
                                 </div>
                                 <div class="col-md-12">
                                     <button type="button"
-                                            class="btn btn-lg btn-primary add_to_cart btn-add-cart"
-                                            title="Thêm vào giỏ hàng">
+                                            class="btn btn-lg btn-primary btn-add-cart"
+                                            title="Thêm vào giỏ hàng" onclick="add_to_cart_detail()">
                                         <span><i class="fa fa-cart-arrow-down"></i> Thêm Vào Giỏ Hàng</span>
                                     </button>
                                     <button type="button"
-                                            class="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy"
-                                            title="Mua ngay">
+                                            class="btn btn-lg btn-primary btn-cart btn-cart2 btn_buy"
+                                            title="Mua ngay" onclick="buy_now()">
                                         <span>Mua Ngay</span>
                                     </button>
 
@@ -250,7 +250,8 @@
                                                 <form action="{{route('site.comment.store')}}" method="post"
                                                       class="form-horizontal" id="form-comment">
                                                     @csrf
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                    <input type="hidden" name="product_id" value="{{$product->id}}"
+                                                           id="product_id">
                                                     {{--                                                <input type="hidden" name="commentLevel" id="input-commentLevel"--}}
                                                     {{--                                                       value="0">--}}
                                                     {{--                                                <input type="hidden" name="commentParent" id="input-commentParent"--}}
@@ -264,7 +265,8 @@
                                                             <span class="fa fa-star fa-2x" data-rating="4"></span>
                                                             <span class="fa fa-star fa-2x" data-rating="5"></span>
                                                             <input type="hidden"
-                                                                   class="rating-value" value="5" name="rating">
+                                                                   class="rating-value" value="5" name="rating"
+                                                                   id="rating">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -274,7 +276,7 @@
                                                                 đánh giá</label>
                                                             <textarea name="commentContent" rows="5"
                                                                       id="input-commentContent"
-                                                                      class="form-control"></textarea>
+                                                                      class="form-control" required></textarea>
                                                             <div class="help-block"><span
                                                                     class="text-danger">Chú ý:</span>
                                                                 Không sử dụng các định dạng
@@ -284,15 +286,20 @@
                                                     </div>
                                                     <div class="buttons clearfix">
                                                         <div class="pull-right">
-                                                            <button type="submit" id="button-review"
+                                                            <button type="button" id="button-review"
                                                                     data-loading-text="Đang tải..."
-                                                                    class="btn btn-primary">Tiếp tục
+                                                                    class="btn btn-primary btn-comment"
+                                                                    onclick="add_comment()">Bình luận
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </form>
                                             @else
-                                                <p>Bạn cần đăng nhập để bình luận.</p>
+                                                <p>Bạn cần đăng nhập để bình luận.
+                                                    <button class="btn btn-success" onclick="openLoginModal()">Đăng
+                                                        nhập
+                                                    </button>
+                                                </p>
                                             @endif
                                         </div>
                                         <div id="product-reviews" class="product-reviews">
@@ -302,31 +309,14 @@
                                                 </div>
                                                 <p>Không có đánh giá nào cho sản phẩm này.</p>
                                             </div>
-                                            @foreach($comments as $cmt)
-                                                <div class="row">
-                                                    <div class="col-md-1">
-                                                        <img src="{{asset('images/no-avatar.jpg')}}" alt=""
-                                                             style="width: 55px; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;">
-                                                    </div>
-                                                    <div class="col-md-11">
-                                                        {{ $cmt->user->name }} <br>
-                                                        <div class="star-rating" style="font-size: 7px">
-                                                            <span class="fa fa-star fa-2x" data-rating="1"></span>
-                                                            <span class="fa fa-star fa-2x" data-rating="2"></span>
-                                                            <span class="fa fa-star fa-2x" data-rating="3"></span>
-                                                            <span class="fa fa-star fa-2x" data-rating="4"></span>
-                                                            <span class="fa fa-star fa-2x" data-rating="5"></span>
-                                                            <input type="hidden"
-                                                                   class="rating-value" value="5" name="rating">
-                                                        </div>
-                                                        <div class="comment-content" style="font-size: 15px">
-                                                            {{$cmt->content}}
-                                                        </div>
-                                                    </div>
+                                            <div class="comment-view">
+                                                {{--                                                list comment--}}
+                                            </div>
+                                            @if($count_comments > 5)
+                                                <div class="load-more" style="text-align: center">
+                                                    <button class="btn btn-primary align-items-center" onclick="load_more_comment()">Xem thêm bình luận</button>
                                                 </div>
-                                                <hr>
-
-                                            @endforeach
+                                            @endif
                                         </div>
                                     </div>
 
@@ -454,7 +444,154 @@
 @section('js')
     <script src="{{asset('js/increase_input.js')}}" type="text/javascript"></script>
     <script>
+        window.onload = function () {
+            load_more_comment();
+            get_last_id();
+        };
+        function add_comment() {
+            {{--const _token = {{csrf_token()}};--}}
+            let product_id = $('#product_id').val();
+            let commentContent = $('#input-commentContent').val();
+            let rating = $('#rating').val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('site.comment.store') }}',
+                data: {
+                    // 'token' : token,
+                    'product_id': product_id,
+                    'commentContent': commentContent,
+                    'rating': rating
 
+                },
+                success: function (data) {
+                    $('.comment-view').empty();
+                    $('.comment-view').append(data.view);
+                    if (data.status == true) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: data.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                    $('#input-commentContent').val(null);
+                },
+                error: function (data) {
+                    Swal.fire({
+                        icon: 'error',
+                        text: 'Có lỗi xảy ra!',
+                    })
+                }
+            });
+        }
+
+        let last_id;
+        function get_last_id(){
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('site.comment.get_last_id') }}',
+                success: function (data) {
+                    console.log(data);
+                    last_id = data;
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+        function load_more_comment() {
+            let product_id = $('#product_id').val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('site.comment.load') }}',
+                data: {
+                    // 'token' : token,
+                    'product_id': product_id,
+                    'last_id' : last_id
+                },
+                success: function (data) {
+                    $('.comment-view').append(data.view);
+                },
+                error: function (data) {
+                }
+            });
+        }
+
+        function add_to_cart_detail(){
+            let product_id = $('#product_id').val();
+            let quantity =  $('.product-qty').val();
+            $.ajax({
+                type: 'GET',
+                url: '/cart/add/' + product_id + '/' + quantity,
+                data: {
+                    // 'token' : token,
+                    'id': product_id,
+                    'quantity': quantity
+                },
+                success: function (data) {
+                    var count_cart = $('#count_cart')
+                    var count = count_cart.text();
+                    var x = parseInt(count);
+                    var y = x + 1;
+                    var element = document.getElementById('count_cart');
+                    element.innerHTML = y;
+                    Swal.fire({
+                        title: 'Thêm vào giỏ hàng thành công',
+                        icon: 'success',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: 'Tiếp tục mua hàng',
+                        confirmButtonText: 'Đi đến giỏ hàng',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/cart";
+                        }
+                    })
+                },
+                error: function (data) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: data.message,
+                    })
+                }
+            });
+        }
+
+        function buy_now(){
+            let product_id = $('#product_id').val();
+            let quantity =  $('.product-qty').val();
+            $.ajax({
+                type: 'GET',
+                url: '/cart/add/' + product_id + '/' + quantity,
+                data: {
+                    // 'token' : token,
+                    'id': product_id,
+                    'quantity': quantity
+                },
+                success: function (data) {
+                    window.location.href = "/cart";
+                },
+                error: function (data) {
+                    // Swal.fire({
+                    //     icon: 'error',
+                    //     title: data.message,
+                    // })
+                }
+            });
+        }
+    </script>
+    <script>
         $(document).ready(function () {
             $('#imageGallery').lightSlider({
                 gallery: true,

@@ -13,11 +13,11 @@ class ProductController extends Controller
     {
         $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
         $product = Product::query()->findOrFail($id);
-        $comments = Comment::query()->where('product_id', $id)->where('status', 1)->orderByDesc('created_at')->get();
+        $count_comments = Comment::query()->where('product_id', $id)->where('status', 1)->orderByDesc('created_at')->count();
         $data = [
             'recent_products' => $recent_products,
             'product' => $product,
-            'comments' => $comments
+            'count_comments' => $count_comments
         ];
         if($product->slug == $slug){
             return view('site.product.detail', $data);

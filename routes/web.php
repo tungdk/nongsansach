@@ -114,5 +114,8 @@ Route::group(['middleware' => 'auth:web'], function (){
     Route::post('comment', [SiteCommentController::class, 'store'])->name('site.comment.store');
 });
 
+Route::post('load_comment', [SiteCommentController::class, 'load_comment'])->name('site.comment.load');
+Route::get('get_last_id', [SiteCommentController::class, 'get_last_id'])->name('site.comment.get_last_id');
+
 
 Route::get('test', [SiteController::class, 'test']);
