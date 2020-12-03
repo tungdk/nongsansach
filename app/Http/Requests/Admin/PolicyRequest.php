@@ -13,7 +13,7 @@ class PolicyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,14 @@ class PolicyRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'policy_content'=>'required'
         ];
+        if ($this->id) {
+            $rules['name'] = "required|unique:policies,name," . $this->id;
+            return $rules;
+        }
+        $rules['name'] = "required|unique:policies,name";
+        return $rules;
     }
 }

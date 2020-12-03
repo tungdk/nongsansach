@@ -9,4 +9,5 @@ class Policy extends Model
 {
     use HasFactory;
     protected $table = 'policies';
+    protected $guarded = [];
 }
