@@ -22,89 +22,144 @@
             </div>
         </div>
     </section>
-    <div class="container">
-        <div class="row">
-            <div id="content" class="col-sm-12">
-                <h3>Giỏ hàng</h3>
-                <div class="table-responsive table-cart-content">
-                    <div style="overflow-x: auto">
-                        <div style="overflow-x: auto" class="show_cart">
-                            @include('site.cart.components.cart')
+    @if(\Auth::check())
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-sm-12">
+                    <h3>Giỏ hàng</h3>
+                    <div class="table-responsive table-cart-content">
+                        <div style="overflow-x: auto">
+                            <div style="overflow-x: auto" class="show_cart">
+                                @include('site.cart.components.cart')
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @else
+        <div class="container" style="margin-top: 50px">
+            <h3 style="color: red"><i>Bạn chưa đăng nhập</i></h3>
+        </div>
+    @endif
 
 @endsection
 
 @section('js')
     <script type="text/javascript">
-        function update_cart(product_id, key){
-            const _token = '{{@csrf_field()}}';
-            let quantity = $('#quantity_' + key).val();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: 'POST',
-                url: '{{route('site.cart.update')}}',
-                data: {
-                    'product_id': product_id,
-                    'quantity': quantity
-                },
-                success: function (data) {
-                    if (data.status == true) {
-                        $('.show_cart').empty();
-                        $('.show_cart').append(data.view);
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: data.message,
-                            showConfirmButton: false,
-                            timer: 1500
+            @if(session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: '{{session('error')}}'
+                })
+            @endif
+            @if(!Auth::check())
+                $(window).load(function () {
+                    openLoginModal();
+                });
+            @endif
+
+            function update_cart(product_id, key) {
+                const _token = '{{@csrf_field()}}';
+                let quantity = $('#quantity_' + key).val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route('site.cart.update')}}',
+                    data: {
+                        'product_id': product_id,
+                        'quantity': quantity
+                    },
+                    success: function (data) {
+                        if (data.status == true) {
+                            $('.show_cart').empty();
+                            $('.show_cart').append(data.view);
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+
+                            Toast.fire({
+                                icon: 'success',
+                                title: data.message
+                            })
+                        }
+                        else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: data.message
+                            })
+                        }
+                    },
+                    error: function () {
+
+                    }
+                })
+            }
+
+            function delete_cart(product_id) {
+                Swal.fire({
+                    title: 'Bạn muốn xoá sản phẩm khỏi giỏ hàng?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Đồng ý!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const _token = '{{@csrf_field()}}';
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{route('site.cart.delete')}}',
+                            data: {
+                                'product_id': product_id,
+                            },
+                            success: function (data) {
+                                if (data.status == true) {
+                                    $('.show_cart').empty();
+                                    $('.show_cart').append(data.view);
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 3000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
+
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: data.message
+                                    })
+                                }
+
+                            },
+                            error: function () {
+
+                            }
                         })
                     }
-                },
-                error: function () {
+                })
 
-                }
-            })
-        }
-        function delete_cart(product_id){
-            const _token = '{{@csrf_field()}}';
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: 'POST',
-                url: '{{route('site.cart.delete')}}',
-                data: {
-                    'product_id': product_id,
-                },
-                success: function (data) {
-                    if (data.status == true) {
-                        $('.show_cart').empty();
-                        $('.show_cart').append(data.view);
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: data.message,
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
-
-                },
-                error: function () {
-
-                }
-            })
-        }
+            }
     </script>
 @endsection

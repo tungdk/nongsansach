@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Site\CartRequest;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -21,6 +22,8 @@ class CartController extends SiteController
                 'carts.quantity', DB::raw('products.price * carts.quantity as TongTien'))
             ->where('user_id' ,$user_id)
             ->orderByDesc('carts.created_at')->get();
+//        dump($carts);
+//        $total = SU
         return view('site.cart.index', compact('carts'));
     }
 
@@ -68,10 +71,20 @@ class CartController extends SiteController
         ]);
     }
 
-    public function update(Request $request){
+    public function update(CartRequest $request){
         $product_id = $request->product_id;
         $quantity = $request->quantity;
         $user_id = Auth::id();
+
+        //check quantity
+        $product = Product::query()->findOrFail($product_id);
+        if($product->quantity < $quantity){
+            return response()->json([
+                'status' => false,
+                'message' => 'Sản phẩm không đủ số lượng'
+            ]);
+        }
+
         $cart = Cart::query()
             ->where('user_id', $user_id)
             ->where('product_id', $product_id)
@@ -79,7 +92,6 @@ class CartController extends SiteController
         if($cart){
             $cart->quantity = $quantity;
             $cart->save();
-//            $carts = Cart::query()->where('user_id', $user_id)->orderByDesc('created_at')->get();
 
             $carts = DB::table('carts')
                 ->leftJoin('products', 'carts.product_id', '=', 'products.id')

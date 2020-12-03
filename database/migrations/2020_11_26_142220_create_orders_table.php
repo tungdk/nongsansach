@@ -19,9 +19,11 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('phone');
             $table->text('address');
-            $table->text('note');
+            $table->string('note')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('payment_method');
+            $table->integer('sale');
+            $table->double('total_money');
             $table->timestamps();
         });
     }

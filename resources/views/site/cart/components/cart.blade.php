@@ -10,7 +10,9 @@
         </tr>
         </thead>
         <tbody>
+        @php $total = 0 @endphp
         @forelse($carts as $key => $cart)
+            @php $total += $cart->TongTien @endphp
             <tr>
                 <td data-th="Product">
                     <div class="row">
@@ -53,7 +55,7 @@
                         class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
             </td>
             <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Tổng tiền {{number_format($cart->TongTien, 0, ',', '.')}} đ</strong>
+            <td class="hidden-xs text-center"><strong>Tổng tiền {{number_format($total, 0, ',', '.')}} đ</strong>
             </td>
 
             <td><a href="{{route('site.checkout.index')}}"

@@ -66,13 +66,44 @@ Route::get('product',  [SiteProductController::class,'detail'])->name('detail');
 Route::get('contact', [SiteContactController::class, 'index'])->name('site.contact.index');
 Route::post('contact', [SiteContactController::class, 'store'])->name('site.contact.store');
 
-//cart
-Route::group(['prefix'=>'cart', 'middleware'=>'auth:web'], function (){
-    Route::get('', [SiteCartController::class, 'index'])->name('site.cart.index');
-    Route::get('add/{id}/{quantity}', [SiteCartController::class, 'add'])->name('site.cart.add');
-    Route::post('update', [SiteCartController::class, 'update'])->name('site.cart.update');
-    Route::post('delete', [SiteCartController::class, 'delete'])->name('site.cart.delete');
+Route::group(['middleware'=>'auth:web'], function (){
+
+    //cart
+    Route::group(['prefix'=>'cart'], function (){
+        Route::get('', [SiteCartController::class, 'index'])->name('site.cart.index');
+        Route::get('add/{id}/{quantity}', [SiteCartController::class, 'add'])->name('site.cart.add');
+        Route::post('update', [SiteCartController::class, 'update'])->name('site.cart.update');
+        Route::post('delete', [SiteCartController::class, 'delete'])->name('site.cart.delete');
+    });
+
+    //user
+    Route::group(['prefix'=>'user'], function (){
+        Route::get('', [SiteUserController::class, 'index'])->name('site.user.index');
+        Route::group(['prefix'=>'account'], function (){
+            Route::get('profile', [SiteUserController::class, 'profile'])->name('site.user.account.profile');
+            Route::get('address', [SiteUserController::class, 'address'])->name('site.user.account.address');
+            Route::get('password', [SiteUserController::class, 'password'])->name('site.user.account.password');
+
+        });
+        Route::get('purchase', [SiteUserController::class, 'purchase'])->name('site.user.purchase');
+        Route::get('comment', [SiteUserController::class, 'comment'])->name('site.user.comment');
+        Route::get('favourite', [SiteUserController::class, 'favourite'])->name('site.user.favourite');
+    });
+
+
+    Route::group(['prefix'=>'favourite'], function (){
+        Route::get('add/{id}', [FavouriteController::class, 'add'])->name('site.favourite');
+    });
+
+    Route::get('check-out', [CheckoutController::class, 'index'])->name('site.checkout.index');
+    Route::post('check-out', [CheckoutController::class, 'check_out'])->name('site.checkout.post');
+
+    Route::post('check_coupon', [CheckoutController::class, 'check_coupon'])->name('site.check_coupon');
+
+    Route::post('comment', [SiteCommentController::class, 'store'])->name('site.comment.store');
+
 });
+
 
 
 Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product'])->name('site.product.detail');
@@ -82,40 +113,11 @@ Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product
 Route::get('category/{id}/{slug}',[SiteCategoryController::class, 'detail'])->name('site.category.detail');
 Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
 
-Route::group(['prefix'=>'user'], function (){
-    Route::get('', [SiteUserController::class, 'index'])->name('site.user.index');
-    Route::group(['prefix'=>'account'], function (){
-        Route::get('profile', [SiteUserController::class, 'profile'])->name('site.user.account.profile');
-        Route::get('address', [SiteUserController::class, 'address'])->name('site.user.account.address');
-        Route::get('password', [SiteUserController::class, 'password'])->name('site.user.account.password');
-
-    });
-    Route::get('purchase', [SiteUserController::class, 'purchase'])->name('site.user.purchase');
-    Route::get('comment', [SiteUserController::class, 'comment'])->name('site.user.comment');
-    Route::get('favourite', [SiteUserController::class, 'favourite'])->name('site.user.favourite');
-
-});
 
 Route::post('subscribe', [SiteController::class, 'subscribe'])->name('site.subscribe');
 
-Route::group(['prefix'=>'favourite', 'middleware'=>'auth:web'], function (){
-    Route::get('add/{id}', [FavouriteController::class, 'add'])->name('site.favourite');
-
-});
-
 Route::get('auth/email/verify', [AuthController::class, 'verify'])->name('auth.email.verify');
 
-Route::group(['middleware'=>'auth:web'], function (){
-    Route::get('check-out', [CheckoutController::class, 'index'])->name('site.checkout.index');
-
-});
-
-Route::group(['middleware' => 'auth:web'], function (){
-    Route::post('comment', [SiteCommentController::class, 'store'])->name('site.comment.store');
-});
-
 Route::post('load_comment', [SiteCommentController::class, 'load_comment'])->name('site.comment.load');
-Route::get('get_last_id', [SiteCommentController::class, 'get_last_id'])->name('site.comment.get_last_id');
-
 
 Route::get('test', [SiteController::class, 'test']);
