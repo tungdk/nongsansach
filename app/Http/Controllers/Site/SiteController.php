@@ -16,7 +16,6 @@ class SiteController extends Controller
     public function __construct()
     {
         $categories = Category::query()->where('status', 1)->orderByDesc('created_at')->get();
-
         View::share('categories', $categories);
 //        if ($this->middleware('auth:web')) {
 ////            $this->middleware(function () {
@@ -27,20 +26,25 @@ class SiteController extends Controller
 ////                View::share('count_cart', $count_cart);
 ////            });
 //        }
-        $this->share_count_cart();
     }
 
-    function share_count_cart(){
-//        dd(Auth::id());
+    function count_cart()
+    {
+        $user_id = Auth::id();
+        $count_cart = Cart::query()->where('user_id', $user_id)->count();
+        return $count_cart;
     }
-    public function test(){
+
+    public function test()
+    {
         return view('errors.404');
     }
 
-    public function subscribe(SubscribeRequest $request){
+    public function subscribe(SubscribeRequest $request)
+    {
         $email = $request->email;
         $findEmail = Subscribe::query()->where('email', $email)->first();
-        if(!$findEmail){
+        if (!$findEmail) {
             $newSubscribe = new Subscribe();
             $newSubscribe->email = $email;
             $newSubscribe->save();

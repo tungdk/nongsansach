@@ -106,22 +106,40 @@ class CheckoutController extends Controller
                     'message' => 'Mã giảm giá không hợp lệ'
                 ]);
             }
-            $data['sale'] = $coupon->sale;
+            $coupon_sale = $coupon->sale;
+            $data['sale'] = $coupon_sale;
         }
 
-        //
-        $data['user_id'] = $user_id;
-        $data['name'] = $name;
-        $data['phone'] = $phone;
-        $data['address'] = $address;
-        $data['note'] = $note;
-        $data['payment_method'] = $payment_method;
-        $data['created_at'] = Carbon::now();
+        //tính tổng tiền
+        $carts = DB::table('carts')
+            ->leftJoin('products', 'carts.product_id', '=', 'products.id')
+            ->select('products.quantity as product_quantity', 'carts.product_id', 'products.avatar', 'products.name', 'products.price_new',
+                'carts.quantity', DB::raw('products.price_new * carts.quantity as thanhtien'))
+            ->where('user_id', $user_id)
+            ->orderByDesc('carts.created_at')->get();
+
+        $total_money = 0;
+        foreach ($carts as $cart){
+            $total_money = $total_money + $cart->thanhtien;
+        }
+        if(isset($coupon_sale)){
+            $total_money = $total_money - ($coupon_sale * $total_money)/100;
+        }
+
+        $data = [
+            'user_id' => $user_id,
+            'name' => $name,
+            'phone' => $phone,
+            'address' => $address,
+            'note' => $note,
+            'payment_method' => $payment_method,
+            'total_money' => $total_money,
+            'created_at' => Carbon::now()
+        ];
         $orderID = Order::query()->insertGetId($data);
         if ($orderID) {
-            $carts = Cart::query()->where('user_id', $user_id)->get();
             foreach ($carts as $cart) {
-                if ($cart->quantity > $cart->product->quantity) {
+                if ($cart->quantity > $cart->product_quantity) {
                     return response()->json([
                         'status' => false,
                         'message' => 'Số lượng sản phẩm không đủ',
@@ -133,9 +151,9 @@ class CheckoutController extends Controller
                     $order_detail = new Order_detail();
                     $order_detail->order_id = $orderID;
                     $order_detail->product_id = $cart->product_id;
-                    $order_detail->name = $cart->product->name;
+                    $order_detail->name = $cart->name;
                     $order_detail->quantity = $cart->quantity;
-                    $order_detail->price = $cart->product->price_new;
+                    $order_detail->price = $cart->price_new;
                     $order_detail->save();
 
                     //trừ đi số lượng bên bảng sản phẩm
@@ -154,7 +172,7 @@ class CheckoutController extends Controller
                 ]);
             }
 
-            $carts->toQuery()->delete();
+            Cart::query()->where('user_id', $user_id)->delete();
 
             //Gửi mail
             $user = User::query()->where([

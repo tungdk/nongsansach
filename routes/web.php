@@ -120,4 +120,6 @@ Route::get('auth/email/verify', [AuthController::class, 'verify'])->name('auth.e
 
 Route::post('load_comment', [SiteCommentController::class, 'load_comment'])->name('site.comment.load');
 
+Route::post('count_cart', [SiteController::class, 'count_cart'])->name('site.count.cart');
+
 Route::get('test', [SiteController::class, 'test']);

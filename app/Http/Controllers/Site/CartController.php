@@ -126,8 +126,8 @@ class CartController extends SiteController
             $cart->delete();
             $carts = DB::table('carts')
                 ->leftJoin('products', 'carts.product_id', '=', 'products.id')
-                ->select('carts.product_id', 'products.avatar', 'products.name', 'products.price',
-                    'carts.quantity', DB::raw('products.price * carts.quantity as TongTien'))
+                ->select('carts.product_id', 'products.avatar', 'products.name', 'products.price_new',
+                    'carts.quantity', DB::raw('products.price_new * carts.quantity as TongTien'))
                 ->where('user_id' ,$user_id)
                 ->orderByDesc('carts.created_at')->get();
             return response()->json([

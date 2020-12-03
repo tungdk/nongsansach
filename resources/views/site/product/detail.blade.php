@@ -8,14 +8,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <ul class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-
                         <li class="home">
                             <a itemprop="url" href="{{route('site.home')}}"><span itemprop="title">Trang chủ</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
 
                         <li>
-                            <a itemprop="url" href="danh-muc/aaaaa.html"><span
+                            <a itemprop="url" href="{{ route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->category->slug]) }}"><span
                                     itemprop="title">{{$product->category->name}}</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
@@ -378,8 +377,8 @@
                                                     <div class="product-mini-item clearfix on-sale">
                                                         <div class="product-img relative">
                                                             <a href="{{route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->slug])}}">
-                                                                <img src="site/images/lazyload.svg"
-                                                                     data-lazyload="site/images/lazyload.svg"
+                                                                <img src="{{ asset('site/images/lazyload.svg') }}"
+                                                                     data-lazyload="{{ asset('site/images/lazyload.svg') }}"
                                                                      alt="{{$product->name}}">
 
                                                             </a>

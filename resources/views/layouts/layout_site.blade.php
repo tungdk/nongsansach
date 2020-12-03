@@ -16,8 +16,8 @@
     <!-- ================= Favicon ================== -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 {{--    <link rel="icon" href="site/uploads/images/caidat/favicon.png" type="image/x-icon"/>--}}
-    {{-- <link rel="shortcut icon" type="image/png" href="/images/logo.png"/> --}}
-    <!-- Facebook Open Graph meta tags -->
+{{-- <link rel="shortcut icon" type="image/png" href="/images/logo.png"/> --}}
+<!-- Facebook Open Graph meta tags -->
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
@@ -58,11 +58,33 @@
 
     <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
 
-    <link href="{{asset('css/modal_login_register.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/modal_login_register.css')}}" rel="stylesheet"/>
 
     <!-- Header JS -->
     <script src="{{asset('site/js/jquery-2.2.3.min.js')}}" type="text/javascript"></script>
     @yield('css')
+    <script>
+        @if(\Auth::check())
+        $(window).on('load', function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('site.count.cart') }}',
+                success: function(data){
+                    var element = document.getElementById('count_cart');
+                    element.innerHTML = data;
+                },
+                error: function(){
+
+                }
+            })
+        })
+        @endif
+    </script>
 </head>
 
 <body>
@@ -108,6 +130,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{{asset('js/modal_login_register.js')}}" type="text/javascript"></script>
 @yield('js')
+
+
 </body>
 
 <!-- Mirrored from shop1.jweb.com.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Nov 2020 07:31:55 GMT -->

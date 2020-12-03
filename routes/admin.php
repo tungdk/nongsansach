@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -190,43 +191,60 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('', [StatisticalController::class, 'index'])->name('admin.statistical.index');
     });
 
+    Route::group(['prefix' => 'partner'], function () {
+
+        Route::get('', [PartnerController::class, 'index'])->name('admin.partner.index');
+        Route::get('create', [PartnerController::class, 'create'])->name('admin.partner.create');
+        Route::post('create', [PartnerController::class, 'store']);
+
+        Route::get('edit/{id}', [PartnerController::class, 'edit'])->name('admin.partner.edit');
+        Route::post('edit/{id}', [PartnerController::class, 'update']);
+
+        Route::get('active/{id}', [PartnerController::class, 'active'])->name('admin.partner.active');
+        Route::delete('delete/{id}', [PartnerController::class, 'delete'])->name('admin.partner.delete');
+    });
+
+//Policy
+    Route::group(['prefix' => 'policy'], function () {
+
+        Route::get('', [PolicyController::class, 'index'])->name('admin.policy.index');
+        Route::get('create', [PolicyController::class, 'create'])->name('admin.policy.create');
+        Route::post('create', [PolicyController::class, 'store']);
+
+        Route::get('edit/{id}', [PolicyController::class, 'edit'])->name('admin.policy.edit');
+        Route::post('edit/{id}', [PolicyController::class, 'update']);
+
+        Route::get('active/{id}', [PolicyController::class, 'active'])->name('admin.policy.active');
+        Route::get('hot/{id}', [PolicyController::class, 'hot'])->name('admin.policy.hot');
+
+        Route::delete('delete/{id}', [PolicyController::class, 'delete'])->name('admin.policy.delete');
+
+        Route::post('sendMail', [PolicyController::class, 'sendMail'])->name('admin.policy.sendMail');
+
+    });
+
+//order
+    Route::group(['prefix' => 'order'], function () {
+
+        Route::get('', [OrderController::class, 'index'])->name('admin.order.index');
+
+        Route::post('view-order', [OrderController::class, 'view_order'])->name('admin.order.view');
+
+        Route::get('create', [OrderController::class, 'create'])->name('admin.order.create');
+        Route::post('create', [OrderController::class, 'store']);
+
+        Route::get('edit/{id}', [OrderController::class, 'edit'])->name('admin.order.edit');
+        Route::post('edit/{id}', [OrderController::class, 'update']);
+
+        Route::get('active/{id}', [OrderController::class, 'active'])->name('admin.order.active');
+        Route::delete('delete/{id}', [OrderController::class, 'delete'])->name('admin.order.delete');
+    });
 
     //chat
-    Route::group(['prefix'=>'chat'], function (){
+    Route::group(['prefix' => 'chat'], function () {
         Route::get('', [ChatController::class, 'index'])->name('admin.chat.index');
     });
 
     Route::get('test', [PostController::class, 'test']);
 });
 
-Route::group(['prefix' => 'partner'], function () {
-
-    Route::get('', [PartnerController::class, 'index'])->name('admin.partner.index');
-    Route::get('create', [PartnerController::class, 'create'])->name('admin.partner.create');
-    Route::post('create', [PartnerController::class, 'store']);
-
-    Route::get('edit/{id}', [PartnerController::class, 'edit'])->name('admin.partner.edit');
-    Route::post('edit/{id}', [PartnerController::class, 'update']);
-
-    Route::get('active/{id}', [PartnerController::class, 'active'])->name('admin.partner.active');
-    Route::delete('delete/{id}', [PartnerController::class, 'delete'])->name('admin.partner.delete');
-});
-
-//Policy
-Route::group(['prefix' => 'policy'], function () {
-
-    Route::get('', [PolicyController::class, 'index'])->name('admin.policy.index');
-    Route::get('create', [PolicyController::class, 'create'])->name('admin.policy.create');
-    Route::post('create', [PolicyController::class, 'store']);
-
-    Route::get('edit/{id}', [PolicyController::class, 'edit'])->name('admin.policy.edit');
-    Route::post('edit/{id}', [PolicyController::class, 'update']);
-
-    Route::get('active/{id}', [PolicyController::class, 'active'])->name('admin.policy.active');
-    Route::get('hot/{id}', [PolicyController::class, 'hot'])->name('admin.policy.hot');
-
-    Route::delete('delete/{id}', [PolicyController::class, 'delete'])->name('admin.policy.delete');
-
-    Route::post('sendMail', [PolicyController::class, 'sendMail'])->name('admin.policy.sendMail');
-
-});
