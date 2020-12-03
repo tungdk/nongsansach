@@ -56,6 +56,7 @@ class ProductController extends Controller
     {
         $data = $request->except('_token', 'avatar');
         $data['slug'] = Str::slug($request->name);
+        $data['created_at'] = Carbon::now();
         if ($request->avatar) {
             $image = upload_image('avatar');
             if ($image['code'] == 1)

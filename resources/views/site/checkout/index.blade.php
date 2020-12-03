@@ -86,7 +86,7 @@
                                                     font-weight: 500;
                                                     line-height: 1.4;
                                                     color: #e5101d;">
-                                            <strong>{{$cart->price}}đ</strong></div>
+                                            <strong>{{$cart->price_new}}đ</strong></div>
                                         <span class="quantity" style="font-size: 1.4rem;
                                                 font-weight: 500;
                                                 color: #000;">x {{$cart->quantity}}

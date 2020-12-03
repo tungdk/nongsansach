@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
-            $table->double('price');
-            $table->double('sale');
+            $table->double('price_old');
+            $table->double('price_new');
             $table->integer('quantity');
             $table->string('avatar');
             $table->integer('views')->default(0);

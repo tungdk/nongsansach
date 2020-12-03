@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </td>
-                <td data-th="Price">{{number_format($cart->price, 0, ',', '.') }} đ</td>
+                <td data-th="Price">{{number_format($cart->price_new, 0, ',', '.') }} đ</td>
                 <td data-th="Quantity">
                     <input class="form-control text-center" value="{{$cart->quantity}}"
                            type="number" min="1" style="width: 100px" id="quantity_{{$key}}">

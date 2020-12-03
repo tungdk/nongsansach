@@ -18,16 +18,16 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Giá bán</label>
-                            <input type="number" class="form-control" name="price" placeholder="150.000"
-                                   value="{{ $product->price ?? old('price',0) }}">
-                            @if ($errors->first('price'))
-                                <span class="text-danger">{{ $errors->first('price') }}</span>
+                            <input type="number" class="form-control" name="price_old" placeholder="150.000"
+                                   value="{{ $product->price_old ?? old('price_old',0) }}">
+                            @if ($errors->first('price_old'))
+                                <span class="text-danger">{{ $errors->first('price_old') }}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Giảm giá</label>
-                            <input type="number" class="form-control" name="sale" placeholder="5%"
-                                   value="{{ $product->sale ?? old('sale',0) }}">
+                            <label for="exampleInputPassword1">Giá mới</label>
+                            <input type="number" class="form-control" name="price_new" placeholder="5%"
+                                   value="{{ $product->price_new ?? old('price_new',0) }}">
                         </div>
                     </div>
                     <div class="col-sm-6">

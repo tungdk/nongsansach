@@ -64,13 +64,13 @@
                             <tbody>
                             <tr>
                                 <th>#</th>
-                                <th>Sản phẩm</th>
+                                <th style="width: 60%">Sản phẩm</th>
 {{--                                <th>Ảnh</th>--}}
-                                <th>Giá</th>
-                                <th>Số lượng</th>
+                                <th style="width: 10%">Giá</th>
+                                <th style="width: 5%">Số lượng</th>
 {{--                                <th>Trạng thái</th>--}}
-                                <th>Nổi bật</th>
-                                <th>Gửi mail</th>
+                                <th style="width: 5%">Nổi bật</th>
+                                <th style="width: 5%">Gửi mail</th>
                                 <th>Thao tác</th>
                             </tr>
                             @if(isset($products))
@@ -101,9 +101,9 @@
 {{--                                        <td>--}}
 {{--                                            <img src="{{pare_url_file($product->avatar) }}" style="width: 80px; height: 80px" alt="">--}}
 {{--                                        </td>--}}
-                                        <td><del>{{ number_format($product->price, 0,',','.') }} đ</del>
+                                        <td><del>{{ number_format($product->price_old, 0,',','.') }} đ</del>
                                             <br>
-                                        {{ number_format($product->sale, 0,',','.') }} đ</td>
+                                        <span style="color: red">{{ number_format($product->price_new, 0,',','.') }} đ</span></td>
                                         <td>{{ $product->quantity }}</td>
 {{--                                        <td>--}}
 {{--                                            @if($product->status == 1)--}}

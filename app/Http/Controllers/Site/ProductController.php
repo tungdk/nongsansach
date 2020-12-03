@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function detail_product($id, $slug)
     {
+        Product::find($id)->increment('views');
         $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
-        $product = Product::query()->findOrFail($id);
+        $product = Product::query()->select('products.*', DB::raw('(price_old - price_new)/price_old * 100 as percent'))->findOrFail($id);
         $count_comments = Comment::query()->where('product_id', $id)->where('status', 1)->orderByDesc('created_at')->count();
         $data = [
             'recent_products' => $recent_products,

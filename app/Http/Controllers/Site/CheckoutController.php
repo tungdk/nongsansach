@@ -23,8 +23,8 @@ class CheckoutController extends Controller
         $user = User::query()->findOrFail($id);
         $carts = DB::table('carts')
             ->leftJoin('products', 'carts.product_id', '=', 'products.id')
-            ->select('products.quantity as product_quantity', 'carts.product_id', 'products.avatar', 'products.name', 'products.price',
-                'carts.quantity', DB::raw('products.price * carts.quantity as TongTien'))
+            ->select('products.quantity as product_quantity', 'carts.product_id', 'products.avatar', 'products.name', 'products.price_new',
+                'carts.quantity', DB::raw('products.price_new * carts.quantity as TongTien'))
             ->where('user_id', $id)
             ->orderByDesc('carts.created_at')->get();
         foreach ($carts as $cart) {
@@ -39,7 +39,7 @@ class CheckoutController extends Controller
         $total = DB::table('carts')
             ->leftJoin('products', 'products.id', '=', 'carts.product_id')
             ->where('carts.user_id', $id)
-            ->select(DB::raw('SUM(carts.quantity * products.price) AS thanhtien'))
+            ->select(DB::raw('SUM(carts.quantity * products.price_new) AS thanhtien'))
             ->get();
         $data = [
             'user' => $user,
@@ -135,7 +135,7 @@ class CheckoutController extends Controller
                     $order_detail->product_id = $cart->product_id;
                     $order_detail->name = $cart->product->name;
                     $order_detail->quantity = $cart->quantity;
-                    $order_detail->price = $cart->product->price;
+                    $order_detail->price = $cart->product->price_new;
                     $order_detail->save();
 
                     //trừ đi số lượng bên bảng sản phẩm

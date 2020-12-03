@@ -15,7 +15,8 @@
                         </li>
 
                         <li>
-                            <a itemprop="url" href="danh-muc/aaaaa.html"><span itemprop="title">{{$product->category->name}}</span></a>
+                            <a itemprop="url" href="danh-muc/aaaaa.html"><span
+                                    itemprop="title">{{$product->category->name}}</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
                         <li><strong><span itemprop="title">{{$product->name}}</span></strong></li>
@@ -86,25 +87,23 @@
                                         <div class="product-reviews-badge" data-id="11480175">
                                             <div class="product-reviews-star" data-score="4.7" data-number="5"
                                                  title="gorgeous" style="color: rgb(255, 190, 0);">
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star-o fa-stack-1x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star-o fa-stack-1x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star-o fa-stack-1x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star-o fa-stack-1x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star-o fa-stack-1x"></i>
-                                                </span>
+                                                @for($i=1; $i<=5; $i++)
+                                                    @if($i <= $product->rating)
+                                                        <span class="fa fa-stack">
+                                                            <i class="fa fa-star fa-stack-1x"></i>
+                                                        </span>
+                                                    @else
+                                                        <span class="fa fa-stack">
+                                                            <i class="fa fa-star-o fa-stack-1x"></i>
+                                                        </span>
+                                                    @endif
+                                                @endfor
+
                                                 {{--                                                <a href="#" onclick="$('a[href=\'#tab-comment\']').trigger('click'); return false;">0 đánh giá</a>--}}
                                                 {{--                                                / <a href="#" onclick="$('a[href=\'#tab-comment\']').trigger('click'); return false;">Viết đánh giá</a>--}}
 
-                                                <a href="#" onclick="show_tab_comment()">0 đánh giá</a>
+                                                <a href="#" onclick="show_tab_comment()">{{ $count_comments }} đánh
+                                                    giá</a>
                                                 /
                                                 <a href="#" id="write_comment" onclick="show_tab_comment()">Viết
                                                     đánh giá</a>
@@ -120,14 +119,14 @@
                                         <span class="price product-price">
                                             <span class="product-price-old"
                                                   style="font-size: 1.5rem !important; color: #929292!important;">
-                                                <del>₫{{number_format($product->price, 0, ',', '.')}}</del>
+                                                <del>₫{{number_format($product->price_old, 0, ',', '.')}}</del>
                                             </span>
                                             <span class="product-price-new">
-                                                ₫{{number_format($product->sale, 0, ',', '.')}}
+                                                ₫{{number_format($product->price_new, 0, ',', '.')}}
                                             </span>
                                             <span class="product-price-sale"
                                                   style="margin-left: 20px; margin-bottom: 2px">
-                                                {{$product->sale}}% GIẢM
+                                                -{{number_format($product->percent)}}% GIẢM
                                             </span>
                                         </span>
                                     </div>
@@ -443,6 +442,7 @@
             load_comment();
             // get_last_id();
         };
+
         function add_comment() {
             {{--const _token = {{csrf_token()}};--}}
             let product_id = $('#product_id').val();
@@ -531,9 +531,9 @@
             });
         }
 
-        function add_to_cart_detail(){
+        function add_to_cart_detail() {
             let product_id = $('#product_id').val();
-            let quantity =  $('.product-qty').val();
+            let quantity = $('.product-qty').val();
             $.ajax({
                 type: 'GET',
                 url: '/cart/add/' + product_id + '/' + quantity,
@@ -568,9 +568,9 @@
             });
         }
 
-        function buy_now(){
+        function buy_now() {
             let product_id = $('#product_id').val();
-            let quantity =  $('.product-qty').val();
+            let quantity = $('.product-qty').val();
             $.ajax({
                 type: 'GET',
                 url: '/cart/add/' + product_id + '/' + quantity,
