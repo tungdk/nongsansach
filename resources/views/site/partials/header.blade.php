@@ -132,7 +132,7 @@
                                 <a href="{{route('site.cart.index')}}">
                                     <div class="icon f-left relative">
                                         <i class="fa fa-shopping-bag"></i>
-                                        <span class="cartCount count_item_pr hidden-lg" id="cart-total">0</span>
+                                        <span class="cartCount count_item_pr hidden-lg" id="count_cart">0</span>
                                     </div>
                                     <div class="right-content hidden-md">
                                         <span class="label">Giỏ hàng</span>(
@@ -182,7 +182,7 @@
              onclick="window.location.href='{{route('site.cart.index')}}'">
             <div class="icon relative">
                 <i class="fa fa-shopping-bag"></i>
-                <span class="cartCount count_item_pr">{{isset($count_cart) ? $count_cart : 0}}</span>
+                <span class="cartCount count_item_pr" id="count_cart">{{isset($count_cart) ? $count_cart : 0}}</span>
             </div>
         </div>
     </div>

@@ -462,9 +462,9 @@
                     'rating': rating
                 },
                 success: function (data) {
-                    $('.comment-view').empty();
-                    $('.comment-view').append(data.view);
                     if (data.status == true) {
+                        $('.comment-view').empty();
+                        $('.comment-view').append(data.view);
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -481,8 +481,15 @@
                             icon: 'success',
                             title: data.message
                         })
+                        $('#input-commentContent').val(null);
                     }
-                    $('#input-commentContent').val(null);
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            text: data.message,
+                        })
+                    }
+
                 },
                 error: function (data) {
                     Swal.fire({

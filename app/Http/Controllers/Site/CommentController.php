@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\CommentRequest;
 use App\Models\Comment;
 use App\Models\Order;
+use App\Models\Order_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,10 +36,26 @@ class CommentController extends Controller
         $product_id = $request->product_id;
         $content = $request->commentContent;
         $rating = $request->rating;
-//        $order = Order::query()
-//            ->where('user_id', $user_id)
-//            ->where('product_id', $product_id)
-//            ->first();
+        $orders = Order::query()->select('id')
+            ->where('user_id', $user_id)
+            ->get();
+        $tg = 0;
+        foreach ($orders as $order){
+            $order_details = Order_detail::query()
+                ->where('order_id', $order->id)
+                ->where('product_id', $product_id)
+                ->first();
+            if($order_details){
+                $tg = 1;
+                break;
+            }
+        }
+        if($tg == 0){
+            return response()->json([
+                'status' => false,
+                'message' => 'Không thể bình luận do chưa mua sản phẩm này ',
+            ]);
+        }
         $comment = new Comment();
         $comment->user_id = $user_id;
         $comment->product_id = $product_id;

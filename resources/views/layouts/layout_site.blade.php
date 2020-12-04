@@ -106,6 +106,7 @@
 
 
 @include('site.auth.modal_login_register')
+
 <!-- Plugin JS -->
 <script src="{{asset('site/js/api.jquery.js')}}" type="text/javascript"></script>
 <script src="{{asset('site/js/bootstrap.min.js')}}"></script>
