@@ -21,9 +21,13 @@ class SendOrderJob implements ShouldQueue
      * @return void
      */
     protected $email;
-    public function __construct($email)
+    protected $order;
+    protected $order_details;
+    public function __construct($email, $order, $order_details)
     {
         $this->email = $email;
+        $this->order = $order;
+        $this->order_details = $order_details;
     }
 
     /**
@@ -33,6 +37,6 @@ class SendOrderJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->email)->send(new SendOrderMail());
+        Mail::to($this->email)->send(new SendOrderMail($this->order, $this->order_details));
     }
 }

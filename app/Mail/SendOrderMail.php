@@ -16,9 +16,12 @@ class SendOrderMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    protected $order;
+    protected $order_details;
+    public function __construct($order, $order_details)
     {
-        //
+        $this->order = $order;
+        $this->order_details = $order_details;
     }
 
     /**
@@ -32,8 +35,8 @@ class SendOrderMail extends Mailable
             ->subject('[nongsansach] Tạo đơn hàng thành công.')
             ->markdown('mails.mail_order')
             ->with([
-//                'name' => $this->name_user,
-//                'code' => $this->code,
+                'order' => $this->order,
+                'order_details' => $this->order_details,
 //                'sale' => $this->sale,
 //                'count' => $this->count,
             ]);

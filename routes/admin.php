@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\SupplierController;
@@ -230,14 +231,26 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
         Route::post('view-order', [OrderController::class, 'view_order'])->name('admin.order.view');
 
-        Route::get('create', [OrderController::class, 'create'])->name('admin.order.create');
-        Route::post('create', [OrderController::class, 'store']);
+        Route::get('action/{action}/{id}', [OrderController::class, 'getAction'])->name('admin.order.action');
 
-        Route::get('edit/{id}', [OrderController::class, 'edit'])->name('admin.order.edit');
-        Route::post('edit/{id}', [OrderController::class, 'update']);
-
-        Route::get('active/{id}', [OrderController::class, 'active'])->name('admin.order.active');
         Route::delete('delete/{id}', [OrderController::class, 'delete'])->name('admin.order.delete');
+    });
+
+    //Comment
+    Route::group(['prefix' => 'comment'], function () {
+
+        Route::get('', [CommentController::class, 'index'])->name('admin.comment.index');
+        Route::get('create', [CommentController::class, 'create'])->name('admin.comment.create');
+        Route::post('create', [CommentController::class, 'store']);
+
+        Route::get('edit/{id}', [CommentController::class, 'edit'])->name('admin.comment.edit');
+        Route::post('edit/{id}', [CommentController::class, 'update']);
+
+        Route::get('active/{id}', [CommentController::class, 'active'])->name('admin.comment.active');
+        Route::get('hot/{id}', [CommentController::class, 'hot'])->name('admin.comment.hot');
+
+        Route::delete('delete/{id}', [CommentController::class, 'delete'])->name('admin.comment.delete');
+
     });
 
     //chat

@@ -1306,14 +1306,14 @@ footer {
     text-align: center;
     line-height: 40px;
     right: 20px;
-    bottom: 70px;
+    bottom: 100px;
     top: auto !important;
     font-size: 20px;
     cursor: pointer; }
     footer .back-to-top.show {
       position: fixed;
       right: 20px;
-      bottom: 60px; }
+      bottom: 100px; }
     @media (max-width: 1199px) {
       footer .back-to-top {
         width: 40px;
@@ -1321,7 +1321,7 @@ footer {
         line-height: 40px;
       margin-bottom: 40px}
         footer .back-to-top.show {
-          bottom: 60px; } }
+          bottom: 100px; } }
     @media (max-width: 767px) {
       footer .back-to-top.show {
         bottom: 20px; } }

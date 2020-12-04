@@ -13,19 +13,23 @@ class Order extends Model
     protected $o_status = [
         '1' => [
             'class' => 'default',
-            'name' => 'Tiếp nhận'
+            'name' => 'Chờ xử lý'
         ],
         '2' => [
+            'class' => 'success',
+            'name' => 'Xác nhận'
+        ],
+        '3' => [
             'class' => 'primary',
             'name' => 'Đang vận chuyển'
         ],
-        '3' => [
+        '4' => [
             'class' => 'success',
             'name' => 'Đã giao hàng'
         ],
         '0' => [
             'class' => 'danger',
-            'name' => 'Tiếp nhận'
+            'name' => 'Huỷ'
         ],
     ];
     public function getStatus(){

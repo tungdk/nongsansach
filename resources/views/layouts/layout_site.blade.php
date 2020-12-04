@@ -54,7 +54,7 @@
     <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
 
     <!-- chat -->
-    <link href="{{asset('site/css/chat.css')}}" rel="stylesheet" type="text/css"/>
+{{--    <link href="{{asset('site/css/chat.css')}}" rel="stylesheet" type="text/css"/>--}}
 
     <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
 
@@ -74,11 +74,11 @@
             $.ajax({
                 type: 'POST',
                 url: '{{ route('site.count.cart') }}',
-                success: function(data){
+                success: function (data) {
                     var element = document.getElementById('count_cart');
                     element.innerHTML = data;
                 },
-                error: function(){
+                error: function () {
 
                 }
             })
@@ -105,12 +105,6 @@
 @include('site.partials.footer')
 
 
-{{--<div class="zalo-chat-widget" data-oaid="2874983549580581079" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420" style="float: left"></div>--}}
-
-{{--<script src="https://sp.zalo.me/plugins/sdk.js"></script>--}}
-<!-- chat -->
-@include('site.partials.chat')
-
 @include('site.auth.modal_login_register')
 <!-- Plugin JS -->
 <script src="{{asset('site/js/api.jquery.js')}}" type="text/javascript"></script>
@@ -131,7 +125,19 @@
 <script src="{{asset('js/modal_login_register.js')}}" type="text/javascript"></script>
 @yield('js')
 
-
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/5fc9acee920fc91564cd4b2a/default';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 
 <!-- Mirrored from shop1.jweb.com.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Nov 2020 07:31:55 GMT -->

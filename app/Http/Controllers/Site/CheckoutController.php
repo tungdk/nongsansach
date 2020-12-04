@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckoutRequest;
 use App\Jobs\SendOrderJob;
 use App\Models\Cart;
 use App\Models\Coupon;
@@ -82,7 +83,7 @@ class CheckoutController extends Controller
         ]);
     }
 
-    public function check_out(Request $request)
+    public function check_out(CheckoutRequest $request)
     {
         $user_id = Auth::id();
         $name = $request->name;
@@ -179,11 +180,17 @@ class CheckoutController extends Controller
                 ['active', 1],
                 ['id', $user_id]
             ])->first();
-            SendOrderJob::dispatch($user->email);
+            $order = Order::query()->find($orderID);
+            $order_details = Order_detail::query()->select('*', DB::raw('price * quantity as thanhtien'))->where('order_id', $orderID)->get();
+            SendOrderJob::dispatch($user->email, $order, $order_details);
+
             return response()->json([
                 'status' => true,
                 'message' => 'Đặt hàng thành công',
-                'view' => view('site.checkout.checkout_success')->render()
+                'view' => view('site.checkout.checkout_success',[
+                    'order' => $order,
+                    'order_details' => $order_details
+                ])->render()
             ]);
         }
     }
