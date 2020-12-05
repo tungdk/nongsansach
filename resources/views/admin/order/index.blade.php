@@ -50,7 +50,7 @@
                                 <th>Thông tin</th>
                                 <th>Số tiền</th>
                                 <th>Ngày tạo</th>
-                                <th>Trang thái</th>
+                                <th>Trạng thái</th>
                                 <th>Thao tác</th>
                             </tr>
                             @if(isset($orders))

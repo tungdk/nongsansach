@@ -28,17 +28,17 @@
                 <td data-th="Price">{{number_format($cart->price_new, 0, ',', '.') }} đ</td>
                 <td data-th="Quantity">
                     <input class="form-control text-center" value="{{$cart->quantity}}"
-                           type="number" min="1" style="width: 100px" id="quantity_{{$key}}">
+                           type="number" min="1" style="width: 100px" id="quantity_{{$key}}" max="{{ $cart->product_quantity }}">
                 </td>
                 <td data-th="Subtotal" class="text-center">{{ number_format($cart->TongTien, 0, ',', '.') }}đ
                 </td>
                 <td class="actions" data-th="">
                     <button onclick="update_cart({{$cart->product_id}}, {{$key}})"
-                       class="btn btn-info btn-sm edit-update-cart"><i
+                            class="btn btn-info btn-sm edit-update-cart"><i
                             class="fa fa-edit"></i>
                     </button>
-                    <button onclick = "delete_cart({{ $cart->product_id }})"
-                       class="btn btn-danger btn-sm delete-update-cart"><i
+                    <button onclick="delete_cart({{ $cart->product_id }})"
+                            class="btn btn-danger btn-sm delete-update-cart"><i
                             class="fa fa-trash-o"></i>
                     </button>
                 </td>

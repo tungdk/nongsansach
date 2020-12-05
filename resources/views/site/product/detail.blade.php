@@ -14,7 +14,8 @@
                         </li>
 
                         <li>
-                            <a itemprop="url" href="{{ route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->category->slug]) }}"><span
+                            <a itemprop="url"
+                               href="{{ route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->category->slug]) }}"><span
                                     itemprop="title">{{$product->category->name}}</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
@@ -116,17 +117,23 @@
                                 <div class="price-box clearfix">
                                     <div class="special-price">
                                         <span class="price product-price">
-                                            <span class="product-price-old"
-                                                  style="font-size: 1.5rem !important; color: #929292!important;">
+                                            @if($product->price_old != $product->price_new)
+                                                <span class="product-price-old"
+                                                      style="font-size: 1.5rem !important; color: #929292!important;">
                                                 <del>₫{{number_format($product->price_old, 0, ',', '.')}}</del>
-                                            </span>
-                                            <span class="product-price-new">
-                                                ₫{{number_format($product->price_new, 0, ',', '.')}}
-                                            </span>
-                                            <span class="product-price-sale"
-                                                  style="margin-left: 20px; margin-bottom: 2px">
-                                                -{{number_format($product->percent)}}% GIẢM
-                                            </span>
+                                                </span>
+                                                <span class="product-price-new">
+                                                    ₫{{number_format($product->price_new, 0, ',', '.')}}
+                                                </span>
+                                                <span class="product-price-sale"
+                                                      style="margin-left: 20px; margin-bottom: 2px">
+                                                - {{number_format($product->percent)}}% GIẢM
+                                                </span>
+                                            @else
+                                                <span class="product-price-new">
+                                                    ₫{{number_format($product->price_new, 0, ',', '.')}}
+                                                </span>
+                                            @endif
                                         </span>
                                     </div>
                                     <!-- Giá -->
@@ -482,8 +489,7 @@
                             title: data.message
                         })
                         $('#input-commentContent').val(null);
-                    }
-                    else {
+                    } else {
                         Swal.fire({
                             icon: 'error',
                             text: data.message,

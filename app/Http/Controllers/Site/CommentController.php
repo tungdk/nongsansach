@@ -7,6 +7,7 @@ use App\Http\Requests\Site\CommentRequest;
 use App\Models\Comment;
 use App\Models\Order;
 use App\Models\Order_detail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,6 +64,12 @@ class CommentController extends Controller
         $comment->rating = $rating;
         $comment->status = 1;
         $comment->save();
+
+        //tính tổng đánh giá
+        $avg_rating = Comment::query()->where('product_id', $product_id)->avg('rating');
+        $product = Product::query()->where('id', $product_id)->first();
+        $product->rating = number_format($avg_rating);
+        $product->save();
 
         $count_comments = Comment::query()->where('product_id', $product_id)->where('status', 1)->orderByDesc('created_at')->count();
         $comments = Comment::query()->where('product_id', $product_id)->where('status', 1)->orderByDesc('created_at')->limit(5)->get();

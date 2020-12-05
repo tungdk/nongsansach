@@ -30,7 +30,7 @@ class CheckoutController extends Controller
             ->orderByDesc('carts.created_at')->get();
         foreach ($carts as $cart) {
             if ($cart->quantity > $cart->product_quantity) {
-                return redirect()->to('/cart')->with('error', 'Số lượng sản phẩm không đủ.');
+                return redirect()->to('/cart')->with('error', 'Số lượng sản phẩm '. $cart->name .' không đủ.');
             }
         }
         if (count($carts) == 0) {
