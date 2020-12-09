@@ -49,14 +49,14 @@
                                                 </h3>
                                                 <div class="price-box clearfix">
                                                     <div class="special-price">
-                                                        @if($product->price == $product->sale)
+                                                        @if($product->price_old == $product->price_new)
                                                             <span
-                                                                style="font-size: 25px"> ₫{{number_format($product->sale, 0, ',', '.')}}</span>
+                                                                style="font-size: 25px"> ₫{{number_format($product->price_new, 0, ',', '.')}}</span>
                                                         @else
                                                             <del style="font-size: 15px">
-                                                                ₫{{number_format($product->price, 0, ',', '.')}}</del>
+                                                                ₫{{number_format($product->price_new, 0, ',', '.')}}</del>
                                                             <span
-                                                                style="font-size: 25px"> ₫{{number_format($product->sale, 0, ',', '.')}}</span>
+                                                                style="font-size: 25px"> ₫{{number_format($product->price_new, 0, ',', '.')}}</span>
                                                         @endif
                                                     </div>
                                                     <br>

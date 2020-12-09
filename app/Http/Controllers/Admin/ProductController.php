@@ -62,7 +62,7 @@ class ProductController extends Controller
             if ($image['code'] == 1)
                 $data['avatar'] = $image['name'];
         }
-        $success = Product::insertGetId($data);
+        $success = Product::query()->insertGetId($data);
         if ($success) {
             Session::flash('toastr', [
                 'type' => 'success',

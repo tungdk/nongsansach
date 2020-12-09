@@ -94,30 +94,30 @@
                 <div class="col-xs-12 col-md-8 col-lg-7 hidden-xs">
                     <div class="policy d-flex justify-content-around">
                         <div class="item-policy d-flex align-items-center">
-{{--                            <a href="#">--}}
-                                <img src="{{asset('site/images/policy1.png')}}"
-                                     alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-{{--                            </a>--}}
+                            {{--                            <a href="#">--}}
+                            <img src="{{asset('site/images/policy1.png')}}"
+                                 alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
+                            {{--                            </a>--}}
                             <div class="info a-left">
                                 <span style="font-size: 15px"><b>Miễn phí vận chuyển</b></span>
                                 <p>Bán kính 100 km</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
-{{--                            <a href="#">--}}
-                                <img src="{{asset('site/images/policy2.png')}}"
-                                     alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-{{--                            </a>--}}
+                            {{--                            <a href="#">--}}
+                            <img src="{{asset('site/images/policy2.png')}}"
+                                 alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
+                            {{--                            </a>--}}
                             <div class="info a-lcheckeft">
                                 <span style="font-size: 15px"><b>Hỗ trợ 24/7</b></span>
                                 <p>Hotline: 0348520202</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
-{{--                            <a href="#">--}}
-                                <img src="{{asset('site/images/policy3.png')}}"
-                                     alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-{{--                            </a>--}}
+                            {{--                            <a href="#">--}}
+                            <img src="{{asset('site/images/policy3.png')}}"
+                                 alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
+                            {{--                            </a>--}}
                             <div class="info a-left">
                                 <span style="font-size: 15px"><b>Giờ làm việc</b></span>
                                 <p>T2 - T7 Giờ hành chính</p>
@@ -136,38 +136,39 @@
                                     </div>
                                     <div class="right-content hidden-md">
                                         <span class="label">Giỏ hàng</span>(
-                                        <span class="cartCount2" id="count_cart">{{isset($count_cart) ? $count_cart : 0}}</span>)
+                                        <span class="cartCount2"
+                                              id="count_cart">{{isset($count_cart) ? $count_cart : 0}}</span>)
                                     </div>
                                 </a>
                             </div>
-{{--                            <div class="top-cart-content">--}}
-{{--                                <ul id="cart-sidebar" class="mini-products-list count_li">--}}
-{{--                                    <li class="list-item">--}}
-{{--                                        <ul></ul>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="action">--}}
-{{--                                        <ul>--}}
-{{--                                            <li class="li-fix-1">--}}
-{{--                                                <div class="top-subtotal">--}}
-{{--                                                    Tổng tiền thanh toán:--}}
-{{--                                                    <span class="price"></span>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-{{--                                            <li class="li-fix-2" style="">--}}
-{{--                                                <div class="actions">--}}
-{{--                                                    <a href="{{route('site.cart.index')}}" class="btn btn-primary">--}}
-{{--                                                        <span>Giỏ hàng</span>--}}
-{{--                                                    </a>--}}
-{{--                                                    <a href="gio-hang/thanh-toan.html"--}}
-{{--                                                       class="btn btn-checkout btn-gray">--}}
-{{--                                                        <span>Thanh toán</span>--}}
-{{--                                                    </a>--}}
-{{--                                                </div>--}}
-{{--                                            </li>--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="top-cart-content">--}}
+                            {{--                                <ul id="cart-sidebar" class="mini-products-list count_li">--}}
+                            {{--                                    <li class="list-item">--}}
+                            {{--                                        <ul></ul>--}}
+                            {{--                                    </li>--}}
+                            {{--                                    <li class="action">--}}
+                            {{--                                        <ul>--}}
+                            {{--                                            <li class="li-fix-1">--}}
+                            {{--                                                <div class="top-subtotal">--}}
+                            {{--                                                    Tổng tiền thanh toán:--}}
+                            {{--                                                    <span class="price"></span>--}}
+                            {{--                                                </div>--}}
+                            {{--                                            </li>--}}
+                            {{--                                            <li class="li-fix-2" style="">--}}
+                            {{--                                                <div class="actions">--}}
+                            {{--                                                    <a href="{{route('site.cart.index')}}" class="btn btn-primary">--}}
+                            {{--                                                        <span>Giỏ hàng</span>--}}
+                            {{--                                                    </a>--}}
+                            {{--                                                    <a href="gio-hang/thanh-toan.html"--}}
+                            {{--                                                       class="btn btn-checkout btn-gray">--}}
+                            {{--                                                        <span>Thanh toán</span>--}}
+                            {{--                                                    </a>--}}
+                            {{--                                                </div>--}}
+                            {{--                                            </li>--}}
+                            {{--                                        </ul>--}}
+                            {{--                                    </li>--}}
+                            {{--                                </ul>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -188,14 +189,100 @@
     </div>
     <nav>
         <div class="container">
-            <div class="hidden-sm hidden-xs">
+            <style>
+                /*#menu ul {*/
+                /*    list-style-type: none;*/
+                /*    text-align: center;*/
+                /*}*/
+
+                /*#menu li {*/
+                /*    color: #fff;*/
+                /*    display: inline-block;*/
+                /*    width: 120px;*/
+                /*    height: 40px;*/
+                /*    line-height: 40px;*/
+                /*    margin-left: -5px;*/
+                /*}*/
+
+                /*#menu a {*/
+                /*    text-decoration: none;*/
+                /*    color: #fff;*/
+                /*    display: block;*/
+                /*}*/
+
+                /*#menu a:hover {*/
+                /*    background: #80bb35;*/
+                /*    color: #333;*/
+                /*}*/
+
+                /*==Dropdown Menu==*/
+                .sub-menu {
+                    display: none;
+                    position: absolute;
+                }
+
+                #menu li {
+                    position: relative;
+                }
+
+                #menu li:hover .sub-menu {
+                    display: block;
+                    z-index: 1000;
+                }
+
+                .sub-menu li {
+                    margin-left: 0 !important;
+                    background-color: #80bb35;
+                    width: 250px;
+                    height: 40px;
+                    color: #fff;
+                }
+
+                /*==Menu cấp 3==*/
+                .sub-menu > ul {
+                    display: none ! mportant;
+                }
+                .has-sub{
+                    color: #fff;
+                }
+            </style>
+            <div class="hidden-sm hidden-xs" id="menu">
                 <ul class="nav nav-left">
-                    <li class="nav-item "><a class="nav-link" href="{{route('site.home')}}">Trang chủ</a></li>
-                    <li class="nav-item "><a class="nav-link" href="#">Giới thiệu</a></li>
-{{--                    <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>--}}
-                    <li class="nav-item "><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>
-                    <li class="nav-item "><a class="nav-link" href="tin-tuc.html">Tin tức</a></li>
-                    <li class="nav-item "><a class="nav-link" href="tin-tuc.html">Chính sách</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('site.home')}}">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Giới thiệu</a></li>
+                    {{--                    <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="san-pham.html">Sản phẩm</a>
+                        <ul class="sub-menu">
+{{--                            @foreach($categories as $key => $cate)--}}
+{{--                                @if($key > 5)--}}
+{{--                                    <li class="has-sub">Xem thêm--}}
+{{--                                        <ul>--}}
+{{--                                            @foreach($cate as $ca)--}}
+{{--                                                <li></li>--}}
+{{--                                            @endforeach--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                @else--}}
+{{--                                    <li class="has-sub"><a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}">{{$cate->name}}</a></li>--}}
+
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="tin-tuc.html">Tin tức</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tin-tuc.html">Chính sách</a>
+                        <ul class="sub-menu">
+{{--                            @foreach($policies as $policy)--}}
+{{--                                <li class="has-sub"><a--}}
+{{--                                        href="{{route('site.policy.detail',['id'=>$policy->id, 'slug'=>$policy->slug])}}"--}}
+{{--                                        title="{{$policy->name}}">{{$policy->name}}</a>--}}
+{{--                                    <div style="clear:both"></div>--}}
+{{--                                </li>--}}
+{{--                            @endforeach--}}
+                        </ul>
+                    </li>
                     <li class="nav-item "><a class="nav-link" href="{{route('site.contact.index')}}">Liên hệ</a></li>
                 </ul>
 
