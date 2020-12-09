@@ -242,7 +242,8 @@
                 .sub-menu > ul {
                     display: none ! mportant;
                 }
-                .has-sub{
+
+                .has-sub {
                     color: #fff;
                 }
             </style>
@@ -254,33 +255,42 @@
                     <li class="nav-item">
                         <a class="nav-link" href="san-pham.html">Sản phẩm</a>
                         <ul class="sub-menu">
-{{--                            @foreach($categories as $key => $cate)--}}
-{{--                                @if($key > 5)--}}
-{{--                                    <li class="has-sub">Xem thêm--}}
-{{--                                        <ul>--}}
-{{--                                            @foreach($cate as $ca)--}}
-{{--                                                <li></li>--}}
-{{--                                            @endforeach--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
-{{--                                @else--}}
-{{--                                    <li class="has-sub"><a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}">{{$cate->name}}</a></li>--}}
-
-{{--                                @endif--}}
-{{--                            @endforeach--}}
+                            @if(isset($categories))
+                                @foreach($categories as $key => $cate)
+                                    @if($key == 5)
+                                        <li class="has-sub">Xem thêm
+                                            <ul class="sub-menu">
+                                                @endif
+                                                @if($key < 5)
+                                                    <li class="has-sub">
+                                                        <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}">{{$cate->name}}</a>
+                                                    </li>
+                                                @else
+                                                    <li class="has-sub hidden">
+                                                        <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}">{{$cate->name}}</a>
+                                                    </li>
+                                                @endif
+                                                @if($key == 5)
+                                            </ul>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="tin-tuc.html">Tin tức</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="tin-tuc.html">Chính sách</a>
                         <ul class="sub-menu">
-{{--                            @foreach($policies as $policy)--}}
-{{--                                <li class="has-sub"><a--}}
-{{--                                        href="{{route('site.policy.detail',['id'=>$policy->id, 'slug'=>$policy->slug])}}"--}}
-{{--                                        title="{{$policy->name}}">{{$policy->name}}</a>--}}
-{{--                                    <div style="clear:both"></div>--}}
-{{--                                </li>--}}
-{{--                            @endforeach--}}
+                            @if(isset($policies))
+                                @foreach($policies as $policy)
+                                    <li class="has-sub"><a
+                                            href="{{route('site.policy.detail',['id'=>$policy->id, 'slug'=>$policy->slug])}}"
+                                            title="{{$policy->name}}">{{$policy->name}}</a>
+                                        <div style="clear:both"></div>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
                     <li class="nav-item "><a class="nav-link" href="{{route('site.contact.index')}}">Liên hệ</a></li>

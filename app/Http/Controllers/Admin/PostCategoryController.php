@@ -22,12 +22,14 @@ class PostCategoryController extends Controller
         $postcate = new PostCategory();
         $postcate->name = $request->name;
         $postcate->slug = Str::slug($request->name);
+        $postcate->status = $request->status ?? 0;
+
         $postcate->save();
         Session::flash('toastr',[
             'type'  =>  'success',
             'message' => 'Thêm mới thành công'
         ]);
-        return redirect()->back();
+        return back();
     }
 
     public function edit($id){

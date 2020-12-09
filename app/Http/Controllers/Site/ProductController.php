@@ -12,7 +12,7 @@ class ProductController extends SiteController
 {
     public function detail_product($id, $slug)
     {
-        Product::find($id)->increment('views');
+        Product::query()->findOrFail($id)->increment('views');
         $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
         $product = Product::query()->select('products.*', DB::raw('(price_old - price_new)/price_old * 100 as percent'))->findOrFail($id);
         $count_comments = Comment::query()->where('product_id', $id)->where('status', 1)->orderByDesc('created_at')->count();

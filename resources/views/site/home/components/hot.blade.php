@@ -19,12 +19,10 @@
                                                         <div class="row">
                                                             @if(isset($recent_products))
                                                                 @forelse($recent_products as $product)
-                                                                    <div
-                                                                        class="col-xs-6 col-xss-6 col-sm-4 col-md-3 col-lg-3">
+                                                                    <div class="col-xs-6 col-xss-6 col-sm-4 col-md-3 col-lg-3">
                                                                         <!-- product item -->
                                                                         <div class="product-box">
-                                                                            <div
-                                                                                class="product-thumbnail flexbox-grid">
+                                                                            <div class="product-thumbnail flexbox-grid">
                                                                                 <a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
                                                                                    title="{{$product->name}}">
                                                                                     <img

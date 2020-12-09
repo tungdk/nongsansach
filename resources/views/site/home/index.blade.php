@@ -274,93 +274,11 @@
         @include('site.home.components.post')
         <!-- end home_news_slide.php --><!-- home_customer.php -->
 
+        @include('site.home.components.customer_comment')
 
+        @include('site.home.components.brand')
 
-        <section class="awe-section-9" id="awe-section-9">
-            <div class="section section_testimonial">
-                <div class="container">
-                    <div class="section-title a-center">
-                        <h2><a href="#">Phản hồi của khách hàng</a></h2>
-                        <p>Phản hồi của những khách hàng đã và đang sử dụng sản phẩm trong suốt năm qua.</p>
-                    </div>
-                    <div class="section-content">
-                        <div class="testimonial-slider owl-carousel" data-lg-items='3' data-md-items='3'
-                             data-sm-items='2' data-xs-items="2" data-nav="true">
-
-                            <div class="testimonial-item text-center p-4 mb-5">
-                                <div class="image-avata">
-                                    <img data-src="/site/images/testimonial_1.jpg" class="owl-lazy"
-                                         alt="Khách hàng thân thiết">
-                                </div>
-                                <h4 class="name">Khách hàng thân thiết</h4>
-                                <p class="designation m-0">Phản hồi của những khách hàng đã và đang sử dụng sản phẩm
-                                    trong suốt năm qua.</p>
-                            </div>
-                            <div class="testimonial-item text-center p-4 mb-5">
-                                <div class="image-avata">
-                                    <img data-src="/site/images/testimonial_2.jpg" class="owl-lazy"
-                                         alt="Khách hàng thân thiết">
-                                </div>
-                                <h4 class="name">Khách hàng thân thiết</h4>
-                                <p class="designation m-0">Phản hồi của những khách hàng đã và đang sử dụng sản phẩm
-                                    trong suốt năm qua.</p>
-                            </div>
-                            <div class="testimonial-item text-center p-4 mb-5">
-                                <div class="image-avata">
-                                    <img data-src="/site/images/testimonial_3.jpg" class="owl-lazy"
-                                         alt="Khách hàng thân thiết">
-                                </div>
-                                <h4 class="name">Khách hàng thân thiết</h4>
-                                <p class="designation m-0">Phản hồi của những khách hàng đã và đang sử dụng sản phẩm
-                                    trong suốt năm qua.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- end home_customer.php --><!-- home_brand.php -->
-        <section class="awe-section-10" id="awe-section-10">
-            <div class="section section-brand mb-5">
-                <div class="container">
-                    <h2 class="hidden">Thương hiệu</h2>
-                    <div class="owl-carousel owl-theme" data-lg-items="6" data-md-items="5" data-sm-items="4"
-                         data-xs-items="3" data-xss-items="2" data-margin="30">
-                        <div class="brand-item">
-                            <a href="#" class="img25"><img data-src="/site/images/brand1.png" class="owl-lazy"
-                                                           alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
-                        </div>
-                        <div class="brand-item">
-                            <a href="#" class="img25"><img data-src="/site/images/brand2.png" class="owl-lazy"
-                                                           alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
-                        </div>
-                        <div class="brand-item">
-                            <a href="#" class="img25"><img data-src="/site/images/brand3.png" class="owl-lazy"
-                                                           alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
-                        </div>
-                        <div class="brand-item">
-                            <a href="#" class="img25"><img data-src="/site/images/brand4.png" class="owl-lazy"
-                                                           alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
-                        </div>
-                        <div class="brand-item">
-                            <a href="#" class="img25"><img data-src="/site/images/brand5.png" class="owl-lazy"
-                                                           alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
-                        </div>
-                        <div class="brand-item">
-                            <a href="#" class="img25"><img data-src="/site/images/brand6.png" class="owl-lazy"
-                                                           alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end home_brand.php -->    </section>
+    </section>
     <!-- end section layoutContent -->
 @endsection
