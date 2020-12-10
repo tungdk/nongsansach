@@ -11,13 +11,7 @@
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
 
-                        <li>
-                            <a itemprop="url"
-                               href="{{ route('site.policy.index')}}"><span
-                                    itemprop="title">Chính sách</span></a>
-                            <span> <i class="fa fa-angle-right"></i> </span>
-                        </li>
-                        <li><strong><span itemprop="title">{{ $policy->name }}</span></strong></li>
+                        <li><strong><span itemprop="title">Chính sách</span></strong></li>
                     </ul>
                 </div>
             </div>
@@ -48,10 +42,18 @@
                     <!-- begin layoutContent -->
                     <!-- begin product.php -->
                     <div class="details-product">
-                        <div class="row">
-                            {!! $policy->content !!}
-                        </div>
-
+                        @if(isset($policies))
+                            @foreach($policies as $policy)
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        {{ $policy->name }}
+                                    </div>
+                                    <div class="col-md-5">
+                                        {{ $policy->description }}
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                     <!-- end product.php -->                <!-- end layoutContent -->
                     <section class="section featured-product wow fadeInUp mb-4">

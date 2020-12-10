@@ -1,5 +1,4 @@
 @extends('layouts.layout_site')
-@section('title', 'Chính sách')
 @section('content')
     <section class="bread_crumb py-4">
         <div class="container">
@@ -11,13 +10,7 @@
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
 
-                        <li>
-                            <a itemprop="url"
-                               href="{{ route('site.policy.index')}}"><span
-                                    itemprop="title">Chính sách</span></a>
-                            <span> <i class="fa fa-angle-right"></i> </span>
-                        </li>
-                        <li><strong><span itemprop="title">{{ $policy->name }}</span></strong></li>
+                        <li><strong><span itemprop="title">Tin tức</span></strong></li>
                     </ul>
                 </div>
             </div>
@@ -48,9 +41,7 @@
                     <!-- begin layoutContent -->
                     <!-- begin product.php -->
                     <div class="details-product">
-                        <div class="row">
-                            {!! $policy->content !!}
-                        </div>
+                        <div class="row">Đây là danh sách các tin tức</div>
 
                     </div>
                     <!-- end product.php -->                <!-- end layoutContent -->

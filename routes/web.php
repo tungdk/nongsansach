@@ -124,8 +124,10 @@ Route::post('load_comment', [SiteCommentController::class, 'load_comment'])->nam
 
 Route::post('count_cart', [SiteController::class, 'count_cart'])->name('site.count.cart');
 
+Route::get('policy', [PolicyController::class, 'index'])->name('site.policy.index');
 Route::get('policy/{id}/{slug}', [PolicyController::class, 'detail'])->name('site.policy.detail');
 
+Route::get('post', [PostController::class, 'index'])->name('site.post.index');
 Route::get('post/{id}/{slug}', [PostController::class, 'detail'])->name('site.post.detail');
 
 Route::get('test', [SiteController::class, 'test']);

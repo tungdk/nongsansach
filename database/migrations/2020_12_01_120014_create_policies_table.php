@@ -17,6 +17,7 @@ class CreatePoliciesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->string('description');
             $table->text('content');
             $table->tinyInteger('status');
             $table->timestamps();

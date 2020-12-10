@@ -17,7 +17,7 @@
                                 </div>
                                 <h4 class="name">{{ $post->title }}</h4>
 {{--                                <p class="designation m-0">{{ $post->description }}</p>--}}
-                                <p class="designation m-0"><a href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">Xem thêm</a></p>
+                                <p class="designation m-0"><a href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">Xem thêm <i class="fa fa-long-arrow-right"></i> </a></p>
                             </div>
                         @endforeach
                     @endif

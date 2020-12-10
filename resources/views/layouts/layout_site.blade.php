@@ -116,8 +116,8 @@
 
 
 <script src="{{asset('js/cart.js')}}"></script>
-<script src="{{asset('js/subscribe.js')}}"></script>
 <script src="{{asset('js/favourite.js')}}"></script>
+<script src="{{asset('js/subscribe.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('site/js/appear.js')}}"></script>
 <script src="{{asset('site/js/dl_main.js')}}" type="text/javascript"></script>
@@ -137,6 +137,42 @@
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
     })();
+    // function subscribe() {
+    //     $email = $('#email_subscribe').val();
+    //     $.ajaxSetup({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         }
+    //     });
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'subscribe',
+    //         data: {
+    //             'email': $email
+    //         },
+    //         success: function (data) {
+    //             if (data.status == true) {
+    //                 document.getElementById('email_subscribe').value = "";
+    //                 Swal.fire({
+    //                     icon: 'success',
+    //                     title: 'Cảm ơn bạn đã đăng ký',
+    //                     text: 'Chúng tôi sẽ gửi thông tin qua email của bạn',
+    //                 })
+    //             } else {
+    //                 Swal.fire({
+    //                     icon: 'error',
+    //                     title: data.message,
+    //                 })
+    //             }
+    //         },
+    //         error: function (data) {
+    //             Swal.fire({
+    //                 icon: 'error',
+    //                 title: 'Có lỗi xảy ra',
+    //             })
+    //         }
+    //     });
+    // }
 </script>
 <!--End of Tawk.to Script-->
 </body>

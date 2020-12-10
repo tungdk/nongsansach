@@ -4,11 +4,19 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PostController extends Controller
+class PostController extends SiteController
 {
+    public function index(){
+        $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
+        $viewData = [
+            'recent_products' =>   $recent_products
+        ];
+        return view('site.post.index', $viewData);
+    }
     public function detail($id, $slug){
         Post::query()->findOrFail($id)->increment('views');
         $post = Post::query()->findOrFail($id);
