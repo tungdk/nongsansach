@@ -14,12 +14,7 @@ class ContactController extends SiteController
     }
 
     public function store(ContactRequest $request){
-        $contact = new Contact();
-        $contact->name = $request->name;
-        $contact->phone = $request->phone;
-        $contact->email = $request->email;
-        $contact->message = $request->message;
-        $contact->save();
-        return redirect()->back()->with('success', 'Gửi liên hệ thành công');
+        Contact::query()->create($request->only(['name', 'phone', 'email', 'message']));
+        return back()->with('success', 'Gửi liên hệ thành công');
     }
 }

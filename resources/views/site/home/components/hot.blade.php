@@ -17,8 +17,8 @@
                                                 <div class="tab-1 tab-content">
                                                     <div class="products products-view-grid">
                                                         <div class="row">
-                                                            @if(isset($recent_products))
-                                                                @forelse($recent_products as $product)
+                                                            @if(isset($hot_products))
+                                                                @forelse($hot_products as $product)
                                                                     <div class="col-xs-6 col-xss-6 col-sm-4 col-md-3 col-lg-3">
                                                                         <!-- product item -->
                                                                         <div class="product-box">

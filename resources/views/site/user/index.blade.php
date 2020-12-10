@@ -10,7 +10,13 @@
                 <div class="col-md-3 account-left">
                     <div class="info-account" style="text-align: center">
                         <div class="avatar-account">
-                            <img src="{{URL::to('public/uploads/imageAuthor/'.$user->avatar)}}">
+                            <img src="
+                            @if(isset($user->avatar))
+                                {{ asset('uploads/imageAuthor/'.$user->avatar) }}
+                            @else
+                                {{ asset('images/no-avatar.jpg') }}
+                            @endif
+                                ">
                         </div>
                         <div class="name-account">
                             <p>{{$user->name}}</p>

@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Session;
 class SupplierController extends Controller
 {
     public function index(){
-        $suppliers = Supplier::paginate(10);
+        $suppliers = Supplier::query()
+            ->paginate(10, ['id', 'name', 'logo', 'status', 'created_at']);
         return view('admin.supplier.index', compact('suppliers'));
     }
     public function create(){
@@ -33,7 +34,7 @@ class SupplierController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return back();
     }
 
     public function edit($id){
@@ -42,7 +43,7 @@ class SupplierController extends Controller
     }
 
     public function update(SupplierRequest $request, $id){
-        $supplier = Supplier::find($id);
+        $supplier = Supplier::query()->findOrFail($id);
         $data = $request->except('_token', 'status', 'logo');
         $data['status'] = $request->status ? '1' : '0';
         if(isset($request->logo)){
@@ -56,13 +57,13 @@ class SupplierController extends Controller
                 'message' => 'Cập nhật thông tin nhà cung cấp thành công'
             ]);
         }
-        return redirect()->back();
+        return back();
     }
 
     public function active($id){
-        $supplier = Supplier::find($id);
+        $supplier = Supplier::query()->findOrFail($id);
         $supplier->status = ! $supplier->status;
         $supplier->save();
-        return redirect()->back();
+        return back();
     }
 }

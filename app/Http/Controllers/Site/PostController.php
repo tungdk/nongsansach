@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\DB;
 class PostController extends SiteController
 {
     public function index(){
-        $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
+        $recent_products = Product::query()
+            ->where('status', 1)
+            ->orderByDesc('updated_at')
+            ->limit(5)
+            ->get();
         $viewData = [
             'recent_products' =>   $recent_products
         ];

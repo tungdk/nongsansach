@@ -64,7 +64,7 @@
                             <tbody>
                             <tr>
                                 <th>#</th>
-                                <th style="width: 60%">Sản phẩm</th>
+                                <th style="width: 55%">Sản phẩm</th>
 {{--                                <th>Ảnh</th>--}}
                                 <th style="width: 10%">Giá</th>
                                 <th style="width: 5%">Số lượng</th>

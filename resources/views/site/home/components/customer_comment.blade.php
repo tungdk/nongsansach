@@ -11,7 +11,7 @@
 
                     <div class="testimonial-item text-center p-4 mb-5">
                         <div class="image-avata">
-                            <img data-src="https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78" class="owl-lazy"
+                            <img data-src="https://shop1.jweb.com.vn/themes/default/assets/images/testimonial_3.jpg" class="owl-lazy"
                                  alt="Khách hàng thân thiết">
                         </div>
                         <h4 class="name">Khách hàng thân thiết</h4>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="testimonial-item text-center p-4 mb-5">
                         <div class="image-avata">
-                            <img data-src="/site/images/testimonial_2.jpg" class="owl-lazy"
+                            <img data-src="https://shop1.jweb.com.vn/themes/default/assets/images/testimonial_3.jpg" class="owl-lazy"
                                  alt="Khách hàng thân thiết">
                         </div>
                         <h4 class="name">Khách hàng thân thiết</h4>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="testimonial-item text-center p-4 mb-5">
                         <div class="image-avata">
-                            <img data-src="/site/images/testimonial_3.jpg" class="owl-lazy"
+                            <img data-src="https://shop1.jweb.com.vn/themes/default/assets/images/testimonial_3.jpg" class="owl-lazy"
                                  alt="Khách hàng thân thiết">
                         </div>
                         <h4 class="name">Khách hàng thân thiết</h4>

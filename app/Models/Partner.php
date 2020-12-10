@@ -9,5 +9,9 @@ class Partner extends Model
 {
     use HasFactory;
     protected $table = 'partners';
-    protected $guarded =[];
+    protected $fillable =[
+        'name',
+        'logo',
+        'status'
+    ];
 }

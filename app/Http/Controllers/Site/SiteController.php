@@ -16,8 +16,17 @@ class SiteController extends Controller
 {
     public function __construct()
     {
-        $categories = Category::query()->where('status', 1)->orderByDesc('created_at')->get();
-        $policies = Policy::query()->where('status', 1)->orderByDesc('created_at')->get();
+        //lấy danh mục
+        $categories = Category::query()
+            ->where('status', 1)
+            ->orderByDesc('created_at')
+            ->get(['id', 'name', 'slug']);
+
+        //lấy danh sách chính sách
+        $policies = Policy::query()
+            ->where('status', 1)
+            ->orderByDesc('created_at')
+            ->get(['id', 'name', 'slug']);
 
         View::share([
             'categories' => $categories,

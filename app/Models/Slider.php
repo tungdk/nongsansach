@@ -9,5 +9,10 @@ class Slider extends Model
 {
     use HasFactory;
     protected $table = 'sliders';
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'description',
+        'thumbnail',
+        'status'
+    ];
 }

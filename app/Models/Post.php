@@ -9,7 +9,17 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = 'posts';
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'thumbnail',
+        'content',
+        'views',
+        'post_category_id',
+        'status',
+        'send_mail'
+    ];
 
     public function postcate()
     {

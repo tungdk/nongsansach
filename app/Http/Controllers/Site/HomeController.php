@@ -15,29 +15,77 @@ class HomeController extends SiteController
 {
     public function index()
     {
+        //sản phẩm theo danh mục
         $categories_random = Category::query()->where('status', 1)->inRandomOrder()->limit(3)->get();
         $products_cate = [];
         foreach ($categories_random as $cate) {
             $products_cate[$cate->name] = [
                 'id' => $cate->id,
                 'slug' => $cate->slug,
-                'products' => Product::query()->where('status', 1)->orderByDesc('created_at')->where('category_id', $cate->id)->limit(4)->get(),
+                'products' => Product::query()
+                    ->where([
+                        ['status', 1],
+                        ['category_id', $cate->id],
+                        ['quantity', '>', 0]
+                    ])
+                    ->orderByDesc('created_at')
+                    ->limit(4)
+                    ->get(['id', 'name', 'price_old', 'price_new', 'slug', 'avatar'])
             ];
         }
-        $recent_products = Product::query()->where('status', 1)->orderByDesc('created_at')->limit(8)->get();
-        $sliders = Slider::query()->where('status', 1)->orderByDesc('created_at')->get();
-        $partners = Partner::query()->where('status', 1)->orderByDesc('created_at')->get();
-        $posts = Post::query()->where('status', 1)->orderByDesc('updated_at')->limit(8)->get();
 
-        $data = [
+        //sản phẩm gần đây
+        $recent_products = Product::query()
+            ->where([
+                ['status', 1],
+                ['quantity', '>', 0]
+            ])
+            ->orderByDesc('created_at')
+            ->limit(8)
+            ->get(['id', 'name', 'price_old', 'price_new', 'slug', 'avatar']);
+
+        //sản phẩm nổi bật
+        $hot_products = Product::query()
+            ->where([
+                ['status', 1],
+                ['quantity', '>', 0],
+                ['hot', 1]
+            ])
+            ->orderByDesc('created_at')
+            ->limit(8)
+            ->get(['id', 'name', 'price_old', 'price_new', 'slug', 'avatar']);
+
+        //slider trang chủ
+        $sliders = Slider::query()
+            ->where('status', 1)
+            ->orderByDesc('created_at')
+            ->get(['id', 'title', 'description', 'thumbnail']);
+
+        //Đối tác
+        $partners = Partner::query()
+            ->where('status', 1)
+            ->orderByDesc('created_at')
+            ->get('logo');
+
+        //Bài viết
+        $posts = Post::query()
+            ->where('status', 1)
+            ->orderByDesc('updated_at')
+            ->limit(8)
+            ->get(['id', 'title', 'slug', 'thumbnail']);
+
+
+        //dữ liệu cần show
+        $viewData = [
             'recent_products' => $recent_products,
             'categories_random' => $categories_random,
             'sliders' => $sliders,
             'partner' => $partners,
             'products_cate' => $products_cate,
-            'posts' => $posts
+            'posts' => $posts,
+            'hot_products' => $hot_products
         ];
-        return view('site.home.index', $data);
+        return view('site.home.index', $viewData);
     }
 
 

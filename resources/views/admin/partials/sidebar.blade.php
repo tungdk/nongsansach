@@ -38,16 +38,16 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="{{route('admin.chat.index')}}">
-                    <i class="fa fa-envelope"></i> <span>Chat</span>
-                    <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                </a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="{{route('admin.chat.index')}}">--}}
+{{--                    <i class="fa fa-envelope"></i> <span>Chat</span>--}}
+{{--                    <span class="pull-right-container">--}}
+{{--              <small class="label pull-right bg-yellow">12</small>--}}
+{{--              <small class="label pull-right bg-green">16</small>--}}
+{{--              <small class="label pull-right bg-red">5</small>--}}
+{{--            </span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
             <li class="{{ request()->is('admin/category*') ? 'active' : '' }}">
                 <a href="{{route('admin.category.index')}}">
@@ -204,10 +204,10 @@
 {{--            </li>--}}
 
 
-            <li class="header">BÁO CÁO THỐNG KÊ</li>
-            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Thống kê nhập xuất</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Thống kê doanh thu</span></a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+{{--            <li class="header">BÁO CÁO THỐNG KÊ</li>--}}
+{{--            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Thống kê nhập xuất</span></a></li>--}}
+{{--            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Thống kê doanh thu</span></a></li>--}}
+{{--            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>--}}
 
             <li class="header">THÔNG TIN QUẢN TRỊ</li>
 

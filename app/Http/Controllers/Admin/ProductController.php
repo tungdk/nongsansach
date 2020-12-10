@@ -17,6 +17,11 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+    function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
+
     public function index(Request $request)
     {
         $products = Product::with('category:id, c_name');
@@ -75,7 +80,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
+        $product = $this->product->findOrFailProduct($id);
         $categories = Category::all();
         $units = Unit::all();
         return view('admin.product.update', compact('product', 'categories', 'units'));
@@ -83,7 +88,7 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, $id)
     {
-        $product = Product::find($id);
+        $product = $this->product->findOrFailProduct($id);
         $data = $request->except('_token', 'avatar');
         $data['slug'] = Str::slug($request->name);
         $data['updated_at'] = Carbon::now();
@@ -99,7 +104,7 @@ class ProductController extends Controller
 
     public function active($id)
     {
-        $product = Product::find($id);
+        $product = $this->product->findOrFailProduct($id);
         $product->status = !$product->status;
         $product->save();
         return redirect()->back();
@@ -107,7 +112,7 @@ class ProductController extends Controller
 
     public function hot($id)
     {
-        $product = Product::find($id);
+        $product = $this->product->findOrFailProduct($id);
         $product->hot = !$product->hot;
         $product->save();
         return redirect()->back();

@@ -15,8 +15,9 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     public function index(){
-//        $categories = DB::table('categories')->paginate(1);
-        $categories = Category::query()->orderByDesc('created_at')->paginate(10);
+        $categories = Category::query()
+            ->orderByDesc('created_at')
+            ->get(['id', 'name', 'parent_id', 'status']);
         $data = [
             'categories' => $categories
         ];
@@ -52,12 +53,12 @@ class CategoryController extends Controller
     }
 
     public function edit($id){
-        $category = Category::find($id);
+        $category = Category::query()->findOrFail($id);
         $htmlOption = $this->getCategory($category->parent_id);
         return view('admin.category.update', compact('category','htmlOption'));
     }
     public function update(Request $request, $id){
-        $category = Category::find($id);
+        $category = Category::query()->findOrFail($id);
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
         $category->slug = Str::slug($request->name);
@@ -72,7 +73,7 @@ class CategoryController extends Controller
     }
 
     public function active($id){
-        $category = Category::find($id);
+        $category = Category::query()->findOrFail($id);
         $category->status = ! $category->status;
         $category->save();
         return redirect()->back();
