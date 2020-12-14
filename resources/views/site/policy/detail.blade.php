@@ -49,7 +49,9 @@
                     <!-- begin product.php -->
                     <div class="details-product">
                         <div class="row">
-                            {!! $policy->content !!}
+                            <div class="col-md-12">
+                                {!! $policy->content !!}
+                            </div>
                         </div>
 
                     </div>

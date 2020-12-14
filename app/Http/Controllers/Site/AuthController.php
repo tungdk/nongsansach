@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-class AuthController extends Controller
+class AuthController extends SiteController
 {
     public function login()
     {

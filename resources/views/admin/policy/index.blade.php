@@ -32,16 +32,17 @@
                                 <th style="width: 5%">#</th>
                                 <th>Tên chính sách</th>
                                 <th>Ngày tạo</th>
+                                <th>Ngày cập nhật</th>
                                 <th>Trạng thái</th>
                                 <th>Thao tác</th>
                             </tr>
                             @if(isset($policies))
                                 @foreach($policies as $policy)
                                     <tr>
-
                                         <td>{{ $policy->id }}</td>
                                         <td>{{ $policy->name }}</td>
                                         <td>{{ $policy->created_at }}</td>
+                                        <td>{{ $policy->updated_at }}</td>
                                         <td>
                                             @if($policy->status == 1)
                                                 <a href="{{route('admin.policy.active', $policy->id)}}" class="label label-info">Hiển thị</a>
