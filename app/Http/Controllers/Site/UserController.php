@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Favourite;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +27,13 @@ class UserController extends SiteController
 
     public function index()
     {
+        $orders = Order::query()->findOrFail(Auth::id());
+
         if (Auth::check()) {
             $user = $this->get_user();
-            return view('site.user.index', compact('user'));
+            return view('site.user.index', compact('user', 'orders'));
         }
-        return view('site.user.index');
+        return view('site.user.index', compact('orders'));
     }
 
     public function profile(Request $request)
@@ -113,13 +116,16 @@ class UserController extends SiteController
 
     public function purchase(Request $request)
     {
+        $orders = Order::query()->findOrFail(Auth::id());
         if ($request->ajax()) {
             return response()->json([
-                'view' => view('site.user.components.purchase')->render()
+                'view' => view('site.user.components.purchase', [
+                    'orders' => $orders
+                ])->render()
             ]);
         }
         $user = $this->get_user();
-        return view('site.user.index', compact('user'));
+        return view('site.user.index', compact('user', 'orders'));
     }
 
     public function comment(Request $request)

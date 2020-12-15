@@ -39,7 +39,7 @@
     font-weight:700;
 }
 .active-item{
-    border-left: 5px solid #9f224e;
+    /*border-left: 5px solid #9f224e;*/
     color: #9f224e;
 }
 .title-item-body{

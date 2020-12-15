@@ -5,7 +5,7 @@
 @section('content')
 
     @if((Auth::user()))
-        <div class="section" style="margin-top: 50px">
+        <div class="section" style="margin-top: 50px; margin-bottom: 50px">
             <div class="container">
                 <div class="col-md-3 account-left">
                     <div class="info-account" style="text-align: center">
@@ -30,26 +30,22 @@
                     <div class="list-action">
                         <ul>
                             <li class="item-action">
-                                <a href="" data-url="{{route('site.user.account.profile')}}" class="change_data_view">Tài
-                                    khoản
-                                    của tôi</a>
+                                <a href="" data-url="{{route('site.user.account.profile')}}" class="change_data_view {{ request()->is('user/account/profile') ? 'active-item' : '' }}">Tài khoản của tôi</a>
                             </li>
                             <li class="item-action">
                                 <a href="" data-url="{{route('site.user.account.password')}}"
-                                   class="change_data_view">Đổi
-                                    mật khẩu</a>
+                                   class="change_data_view {{ request()->is('user/account/password') ? 'active-item' : '' }}">Đổi mật khẩu</a>
                             </li>
                             <li class="item-action">
-                                <a href="" data-url="{{route('site.user.purchase')}}" class="change_data_view">Đơn
-                                    mua</a>
+                                <a href="" data-url="{{route('site.user.purchase')}}" class="change_data_view {{ request()->is('user/purchase') || request()->is('user') ? 'active-item' : '' }}">Đơn mua</a>
                             </li>
                             <li class="item-action">
                                 <a href="" data-url="{{route('site.user.comment')}}"
-                                   class="change_data_view">Hoạt động bình luận</a>
+                                   class="change_data_view {{ request()->is('user/comment') ? 'active-item' : '' }}">Hoạt động bình luận</a>
                             </li>
                             <li class="item-action">
                                 <a href="" data-url="{{route('site.user.favourite')}}"
-                                   class="change_data_view">Sản phẩm yêu thích</a>
+                                   class="change_data_view {{ request()->is('user/favourite') ? 'active-item' : '' }}">Sản phẩm yêu thích</a>
                             </li>
                             <li class="item-action">
                                 <a href="{{route('site.logout')}}">Đăng xuất</a>
@@ -98,38 +94,6 @@
     @endif
 @endsection
 
-{{--    @if((Auth::user()))--}}
-{{--        <div class="container">--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-md-5">--}}
-{{--                <ul id="navigation"> <!-- the navigation menu -->--}}
-{{--                    <li><a href="{{route('site.user.account.profile')}}">Tài khoản</a>--}}
-{{--                        <ul>--}}
-{{--                            <li><a href="" data-url="{{route('site.user.account.profile')}}" class="change_data_view">Hồ--}}
-{{--                                    sơ</a></li>--}}
-{{--                            <li><a href="" data-url="{{route('site.user.account.address')}}" class="change_data_view">Địa--}}
-{{--                                    chỉ</a></li>--}}
-{{--                            <li><a href="" data-url="{{route('site.user.account.password')}}" class="change_data_view">Đổi--}}
-{{--                                    mật khẩu</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li> <!-- các nút bấm -->--}}
-{{--                    <li><a href="" data-url="{{route('site.user.purchase')}}" class="change_data_view">Đơn mua</a></li>--}}
-{{--                    <li><a href="{{route('site.logout')}}">Đăng xuất</a></li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-7">--}}
-{{--                <div id="pageContent">--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    @else--}}
-{{--        <div class="container" style="margin-top: 50px">--}}
-{{--            <h3 style="color: red"><i>Bạn chưa đăng nhập</i></h3>--}}
-{{--        </div>--}}
-{{--    @endif--}}
-
-
 @section('js')
     <script type="text/javascript">
         @if(!Auth::check())
@@ -140,6 +104,8 @@
     </script>
     <script>
         $(document).on('click', '.change_data_view', function (e) {
+            $('.active-item').removeClass();
+            $(this).addClass('active-item');
             e.preventDefault();
             let urlRequest = $(this).data('url');
             $.ajax({
