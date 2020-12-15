@@ -91,6 +91,7 @@ Route::group(['middleware'=>'auth:web'], function (){
         Route::get('purchase', [SiteUserController::class, 'purchase'])->name('site.user.purchase');
         Route::get('comment', [SiteUserController::class, 'comment'])->name('site.user.comment');
         Route::get('favourite', [SiteUserController::class, 'favourite'])->name('site.user.favourite');
+        Route::post('delete-favourite', [SiteUserController::class, 'delete_favourite'])->name('site.user.delete_favourite');
     });
 
 

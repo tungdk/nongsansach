@@ -15,12 +15,15 @@
                 <div class="account-body-item account-body-comment">
                     <p>{{$favorite->content}}</p>
                 </div>
-                <div class="account-body-item account-body-created_at">
-                    <span class="time">{{$favorite->created_at}}</span>
-                </div>
                 <div class="account-body-item account-body-post-title">
                     <a href="">{{$favorite->product->name}}</a>
                 </div>
+                <div class="account-body-item account-body-created_at">
+                    <span class="time">{{$favorite->created_at}}</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-danger" onclick="delete_favourite({{$favorite->id}})">Xoá</button>
             </div>
             <div class="clearfix"></div>
             <hr>
@@ -34,7 +37,7 @@
     @endif
 </div>
 <script>
-    function save_change_password() {
+    function delete_favourite(id) {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -48,11 +51,9 @@
         })
         $.ajax({
             type: 'POST',
-            url: '{{ route('site.user.account.change_password') }}',
+            url: '{{ route('site.user.delete_favourite') }}',
             data: {
-                'password_old': $('#password_old').val(),
-                'password_new': $('#password_new').val(),
-                'password_confirm': $('#password_confirm').val()
+                'id': id
             },
             success: function (data) {
                 if (data.status == true) {
@@ -60,6 +61,7 @@
                         icon: 'success',
                         title: data.message
                     })
+                    appendData(data.view);
                 } else {
                     Toast.fire({
                         icon: 'error',
@@ -75,5 +77,10 @@
                 })
             }
         });
+    }
+    function appendData(data) {
+        $('#pageContent').empty();
+        $('#pageContent').append(data);
+        processAjaxData(data, urlRequest)
     }
 </script>

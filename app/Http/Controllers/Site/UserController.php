@@ -151,4 +151,16 @@ class UserController extends SiteController
         return view('site.user.index', compact('user', 'favourites'));
     }
 
+    public function delete_favourite(Request $request){
+        $favourite = Favourite::query()->findOrFail($request->id);
+        $favourite->delete();
+        $favourites = Favourite::query()->where('user_id', Auth::id())->orderByDesc('created_at')->get();
+        return response()->json([
+            'status' => true,
+            'message' => 'Xoá thành công',
+            'view' => view('site.user.components.favourite',[
+                'favourites' => $favourites
+            ])->render()
+        ]);
+    }
 }
