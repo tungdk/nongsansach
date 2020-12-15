@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+use App\Models\Favourite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends SiteController
 {
@@ -45,15 +48,24 @@ class UserController extends SiteController
         return view('site.user.index', compact('user'));
     }
 
-    public function address(Request $request)
+    public function update_profile(Request $request)
     {
-        if ($request->ajax()) {
+        $user = User::query()->findOrFail(Auth::id());
+        $user->phone = $request->phone;
+        $user->name = $request->name;
+        $user->address = $request->address;
+        try {
+            $user->save();
+        } catch (\Exception $e) {
             return response()->json([
-                'view' => view('site.user.components.address')->render()
+                'status' => false,
+                'message' => 'Có lỗi xảy ra'
             ]);
         }
-        $user = $this->get_user();
-        return view('site.user.index', compact('user'));
+        return response()->json([
+            'status' => true,
+            'message' => 'Cập nhật thông tin thành công'
+        ]);
     }
 
     public function password(Request $request)
@@ -65,6 +77,38 @@ class UserController extends SiteController
         }
         $user = $this->get_user();
         return view('site.user.index', compact('user'));
+    }
+
+    public function change_password(Request $request)
+    {
+        $user = User::query()->findOrFail(Auth::id());
+        $password_old = $request->password_old;
+        $password_new = $request->password_new;
+        $password_confirm = $request->password_confirm;
+
+        $check_pass = Hash::check($password_old, $user->password);
+        if($check_pass){
+            $user->password = Hash::make($password_new);
+            try {
+                $user->save();
+            }
+            catch (\Exception $e) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Có lỗi xảy ra'
+                ]);
+            }
+            return response()->json([
+                'status' => true,
+                'message' => 'Đổi mật khẩu thành công'
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Mật khẩu cũ không đúng'
+            ]);
+        }
     }
 
     public function purchase(Request $request)
@@ -80,24 +124,31 @@ class UserController extends SiteController
 
     public function comment(Request $request)
     {
+        $comments = Comment::query()->where('user_id', Auth::id())->orderByDesc('created_at')->get();
         if ($request->ajax()) {
             return response()->json([
-                'view' => view('site.user.components.comment')->render()
+                'view' => view('site.user.components.comment', [
+                    'comments' => $comments
+                ])->render()
             ]);
         }
         $user = $this->get_user();
-        return view('site.user.index', compact('user'));
+        return view('site.user.index', compact('user', 'comments'));
     }
 
     public function favourite(Request $request)
     {
+        $favourites = Favourite::query()->where('user_id', Auth::id())->orderByDesc('created_at')->get();
+
         if ($request->ajax()) {
             return response()->json([
-                'view' => view('site.user.components.favourite')->render()
+                'view' => view('site.user.components.favourite',[
+                    'favourites' => $favourites
+                ])->render()
             ]);
         }
         $user = $this->get_user();
-        return view('site.user.index', compact('user'));
+        return view('site.user.index', compact('user', 'favourites'));
     }
 
 }

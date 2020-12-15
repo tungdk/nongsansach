@@ -83,8 +83,9 @@ Route::group(['middleware'=>'auth:web'], function (){
         Route::get('', [SiteUserController::class, 'index'])->name('site.user.index');
         Route::group(['prefix'=>'account'], function (){
             Route::get('profile', [SiteUserController::class, 'profile'])->name('site.user.account.profile');
-            Route::get('address', [SiteUserController::class, 'address'])->name('site.user.account.address');
+            Route::post('profile', [SiteUserController::class, 'update_profile'])->name('site.user.account.update_profile');
             Route::get('password', [SiteUserController::class, 'password'])->name('site.user.account.password');
+            Route::post('password', [SiteUserController::class, 'change_password'])->name('site.user.account.change_password');
 
         });
         Route::get('purchase', [SiteUserController::class, 'purchase'])->name('site.user.purchase');

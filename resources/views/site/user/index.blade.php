@@ -33,25 +33,11 @@
                                 <a href="" data-url="{{route('site.user.account.profile')}}" class="change_data_view">Tài
                                     khoản
                                     của tôi</a>
-                                <div class="list-action">
-                                    <ul>
-                                        <li class="item-action">
-                                            <a href="" data-url="{{route('site.user.account.profile')}}"
-                                               class="change_data_view">Hồ
-                                                sơ</a>
-                                        </li>
-                                        <li class="item-action">
-                                            <a href="" data-url="{{route('site.user.account.address')}}"
-                                               class="change_data_view">Địa
-                                                chỉ</a>
-                                        </li>
-                                        <li class="item-action">
-                                            <a href="" data-url="{{route('site.user.account.password')}}"
-                                               class="change_data_view">Đổi
-                                                mật khẩu</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            </li>
+                            <li class="item-action">
+                                <a href="" data-url="{{route('site.user.account.password')}}"
+                                   class="change_data_view">Đổi
+                                    mật khẩu</a>
                             </li>
                             <li class="item-action">
                                 <a href="" data-url="{{route('site.user.purchase')}}" class="change_data_view">Đơn
@@ -66,7 +52,7 @@
                                    class="change_data_view">Sản phẩm yêu thích</a>
                             </li>
                             <li class="item-action">
-                                <a href="{{route('site.logout')}}">Thoát</a>
+                                <a href="{{route('site.logout')}}">Đăng xuất</a>
                             </li>
                         </ul>
                     </div>
@@ -93,8 +79,6 @@
                     @endif
                     @if(request()->is('user/account/profile'))
                         @include('site.user.components.profile')
-                    @elseif(request()->is('user/account/address'))
-                        @include('site.user.components.address')
                     @elseif(request()->is('user/account/password'))
                         @include('site.user.components.password')
                     @elseif(request()->is('user/comment'))
