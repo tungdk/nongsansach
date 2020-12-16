@@ -17,8 +17,8 @@
                 <td data-th="Product">
                     <div class="row">
                         <div class="col-sm-2 hidden-xs"><img
-                                src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/090.jpg"
-                                alt="Sản phẩm 1" class="img-responsive" width="100">
+                                src="{{ asset('uploads/products/'.$cart->avatar) }}"
+                                alt="{{ $cart->name }}" class="img-responsive" width="100">
                         </div>
                         <div class="col-sm-10">
                             <h4 class="nomargin">{{$cart->name}}</h4>

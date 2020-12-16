@@ -180,6 +180,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'contact'], function () {
 
         Route::get('', [ContactController::class, 'index'])->name('admin.contact.index');
+        Route::get('status', [ContactController::class, 'status'])->name('admin.contact.status');
 
     });
 

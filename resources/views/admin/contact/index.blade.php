@@ -9,7 +9,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
-            <li><a href="{{route('admin.contact.index')}}">Phản hồi</a></li>
+{{--            <li><a href="{{ route('admin.contact.index') }}">Phản hồi</a></li>--}}
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -20,7 +20,7 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><a href="{{route('admin.category.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
+                <h3 class="box-title"><a href="{{ route('admin.category.create') }}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
                 </h3>
             </div>
             <div class="box-body">
