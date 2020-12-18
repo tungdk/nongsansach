@@ -18,6 +18,5 @@ class Setting extends Model
     {
         $this->timestamps = false;
     }
-    protected $fillable = [];
 
 }
