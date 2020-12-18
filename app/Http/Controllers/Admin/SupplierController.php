@@ -13,7 +13,8 @@ class SupplierController extends Controller
 {
     public function index(){
         $suppliers = Supplier::query()
-            ->paginate(10, ['id', 'name', 'logo', 'status', 'created_at']);
+            ->orderByDesc('created_at')
+            ->get(['id', 'name', 'logo', 'status', 'created_at']);
         return view('admin.supplier.index', compact('suppliers'));
     }
     public function create(){

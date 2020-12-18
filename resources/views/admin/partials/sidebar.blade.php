@@ -24,30 +24,14 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
-                <a href="#">
+            <li class="header">QUẢN LÝ</li>
+            <li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                <a href="{{route('admin.dashboard')}}">
                     <i class="fa fa-dashboard"></i> <span>Bảng tin</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-circle-o"></i> Bảng tin</a></li>
-                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                </ul>
             </li>
-
-{{--            <li>--}}
-{{--                <a href="{{route('admin.chat.index')}}">--}}
-{{--                    <i class="fa fa-envelope"></i> <span>Chat</span>--}}
-{{--                    <span class="pull-right-container">--}}
-{{--              <small class="label pull-right bg-yellow">12</small>--}}
-{{--              <small class="label pull-right bg-green">16</small>--}}
-{{--              <small class="label pull-right bg-red">5</small>--}}
-{{--            </span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
 
             <li class="{{ request()->is('admin/category*') ? 'active' : '' }}">
                 <a href="{{route('admin.category.index')}}">
@@ -155,14 +139,6 @@
             <li class="{{ request()->is('admin/contact*') ? 'active' : '' }}">
                 <a href="{{route('admin.contact.index')}}">
                     <i class="fa fa-id-card"></i> <span> Phản hồi</span>
-                    <span class="pull-right-container">
-            </span>
-                </a>
-            </li>
-
-            <li class="{{ request()->is('admin/statistical*') ? 'active' : '' }}">
-                <a href="{{route('admin.statistical.index')}}">
-                    <i class="fa fa-id-card"></i> <span> Thống kê</span>
                     <span class="pull-right-container">
             </span>
                 </a>

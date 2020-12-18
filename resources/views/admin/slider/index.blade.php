@@ -20,14 +20,13 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><a href="{{route('admin.slider.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
+                <h3 class="box-title"><a href="{{route('admin.slider.create')}}" class="btn btn-success">Thêm mới <i
+                            class="fa fa-plus-circle"></i></a>
                 </h3>
             </div>
             <div class="box-body">
-                <div class="col-md-12">
-                    <div class="box">
-                        <table class="table table-hover">
-                            <tbody>
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
                             <tr>
                                 <th style="width: 5%">#</th>
                                 <th>Tiêu đề</th>
@@ -35,24 +34,31 @@
                                 <th>Trang thái</th>
                                 <th>Thao tác</th>
                             </tr>
+                            </thead>
+                            <tbody>
+
                             @if(isset($sliders))
+                                @php $i=1; @endphp
                                 @foreach($sliders as $slider)
                                     <tr>
-
-                                        <td>{{ $slider->id }}</td>
+                                        <td>{{ $i++ }}</td>
                                         <td>{{ $slider->title }}</td>
                                         <td>{{ $slider->image }}</td>
                                         <td>
                                             @if($slider->status == 1)
-                                                <a href="{{route('admin.slider.active', $slider->id)}}" class="label label-info">Hiển thị</a>
+                                                <a href="{{route('admin.slider.active', $slider->id)}}"
+                                                   class="label label-info">Hiển thị</a>
                                             @else
-                                                <a href="{{route('admin.slider.active', $slider->id)}}" class="label label-default">Ẩn</a>
+                                                <a href="{{route('admin.slider.active', $slider->id)}}"
+                                                   class="label label-default">Ẩn</a>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.slider.edit', $slider->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
+                                            <a href="{{route('admin.slider.edit', $slider->id)}}"
+                                               class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                                                 Sửa</a>
-                                            <a href="{{route('admin.slider.delete', $slider->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
+                                            <a href="{{route('admin.slider.delete', $slider->id)}}"
+                                               class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
                                         </td>
 
                                     </tr>
@@ -62,13 +68,7 @@
                         </table>
                         <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
-                </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                {{ $sliders->links('vendor/pagination/bootstrap-4') }}
-            </div>
+
         </div>
         <!-- /.box -->
 

@@ -5,11 +5,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Phản hồi từ khách hàng
+            Quản lý phản hồi từ khách hàng
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
-{{--            <li><a href="{{ route('admin.contact.index') }}">Phản hồi</a></li>--}}
+            <li><a href="{{route('admin.contact.index')}}">Phản hồi</a></li>
             <li class="active">Danh sách</li>
         </ol>
     </section>
@@ -20,61 +20,80 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><a href="{{ route('admin.category.create') }}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
-                </h3>
             </div>
+
+            <!-- /.box-header -->
             <div class="box-body">
-                <div class="col-md-12">
-                    <div class="box">
-                        <table class="table table-hover">
-                            <tbody>
+                <table id="example1" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 3%">#</th>
+                        <th style="width: 30%">Thông tin</th>
+                        <th style="width: 35%">Lời nhắn</th>
+                        <th style="width: 10%">Ngày gửi</th>
+                        <th style="width: 15%">Trạng thái</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if(isset($contacts))
+                        @php $i = 1;@endphp
+                        @foreach($contacts as $contact)
                             <tr>
-                                <th style="width: 5%">#</th>
-                                <th style="width: 30%">Tên</th>
-                                <th style="width: 30%">Email</th>
-                                <th style="width: 10%">Nội dung</th>
-                                <th style="width: 20%">Ngày tạo</th>
-                                <th style="width: 20%">Thao tác</th>
+                                <td>{{ $i++ }}</td>
+                                <td>
+                                    <ul>
+                                        <li>Tên: {{ $contact->name }}</li>
+                                        <li>Điện thoại: {{ $contact->phone }}</li>
+                                        <li>Email: {{ $contact->email }}</li>
+                                    </ul>
+                                </td>
+                                <td>{{ $contact->message }}</td>
+                                <td>{{ $contact->created_at }}</td>
+                                <td>
+                                    @if($contact->status == 1)
+                                        <span class="label label-info"><i class="fa fa-spinner"></i> Chờ xử lý</span>
+                                    @elseif($contact->status == 0)
+                                        <span class="label label-danger"><i class="fa fa-times-circle"></i> Huỷ</span>
+                                    @elseif($contact->status == 2)
+                                        <span class="label label-success"><i class="fa fa-check"></i> Hoàn thành</span>
+                                    @endif
+                                    @if($contact->status == 1)
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success btn-xs">Thao tác</button>
+                                            <button type="button" class="btn btn-success btn-xs dropdown-toggle"
+                                                    data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Xác nhận</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="{{route('admin.contact.status', [$contact->id, 2])}}"><i
+                                                            class="fa fa-check"></i> Hoàn thành</a></li>
+                                                <li><a href="{{route('admin.contact.status', [$contact->id, 0])}}"><i
+                                                            class="fa fa-times-circle"></i> Huỷ</a></li>
+                                            </ul>
+                                        </div>
+                                    @endif
+                                </td>
+
+                                {{--                                <td>--}}
+                                {{--                                    <a href="{{route('admin.category.edit', $contact->id)}}"--}}
+                                {{--                                       class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>--}}
+                                {{--                                        Sửa</a>--}}
+                                {{--                                    <a href="{{route('admin.category.delete', $contact->id)}}"--}}
+                                {{--                                       class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>--}}
+                                {{--                                </td>--}}
+
                             </tr>
-                            @if(isset($contacts))
-                                @foreach($contacts as $contact)
-                                    <tr>
+                        @endforeach
+                    @endif
 
-                                        <td>{{ $contact->id }}</td>
-                                        <td>{{ $contact->name }}</td>
-                                        <td>{{ $contact->email }}</td>
-                                        <td>{{ $contact->message }}</td>
-                                        <td>{{ $contact->created_at }}</td>
-                                        <td>
-                                            @if($contact->status == 1)
-                                                <a href="{{route('admin.contact.active', $contact->id)}}" class="label label-info">Hiển thị</a>
-                                            @else
-                                                <a href="{{route('admin.contact.active', $contact->id)}}" class="label label-default">Ẩn</a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{route('admin.contact.edit', $contact->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                                Sửa</a>
-                                            <a href="{{route('admin.contact.delete', $contact->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                        </td>
+                    </tbody>
 
-                                    </tr>
-                                @endforeach
-                            @endif
-                            </tbody>
-                        </table>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                </table>
             </div>
             <!-- /.box-body -->
-            <div class="box-footer">
-                {{ $contacts->links('vendor/pagination/bootstrap-4') }}
-            </div>
         </div>
-        <!-- /.box -->
-
     </section>
     <!-- /.content -->
 @endsection
+

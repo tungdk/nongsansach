@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class UnitController extends Controller
 {
     public function index(){
-        $units = Unit::query()->orderByDesc('created_at')->paginate(10);
+        $units = Unit::query()->orderByDesc('created_at')->get(['id', 'name', 'created_at']);
         return view('admin.unit.index', compact('units'));
     }
     public function create(){

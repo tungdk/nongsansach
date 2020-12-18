@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class PolicyController extends Controller
 {
     public function index(){
-        $policies = Policy::query()->paginate(10);
+        $policies = Policy::query()->get();
         return view('admin.policy.index', compact('policies'));
     }
 

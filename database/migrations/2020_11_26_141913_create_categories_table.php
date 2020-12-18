@@ -17,8 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->integer('parent_id');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status', 1);
             $table->timestamps();
         });
     }

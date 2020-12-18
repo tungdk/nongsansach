@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class PartnerController extends Controller
 {
     public function index(){
-        $partners = Partner::paginate(10);
+        $partners = Partner::query()->get();
         return view('admin.partner.index', compact('partners'));
     }
     public function create(){

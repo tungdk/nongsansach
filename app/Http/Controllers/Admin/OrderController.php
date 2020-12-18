@@ -16,7 +16,7 @@ class OrderController extends Controller
         if($request->id) $orders->where('id', $request->id);
         if($phone = $request->phone) $orders->where('phone', $phone);
         if($status = $request->status) $orders->where('status', $status);
-        $orders = $orders->orderByDesc('created_at')->paginate(10);
+        $orders = $orders->orderByDesc('created_at')->get();
         $viewData = [
             'orders' => $orders
         ];

@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class PostCategoryController extends Controller
 {
     public function index(){
-        $postcates = PostCategory::query()->orderByDesc('created_at')->paginate(10);
+        $postcates = PostCategory::query()->orderByDesc('created_at')->get();
         return view('admin.post_category.index', compact('postcates'));
     }
     public function create(){

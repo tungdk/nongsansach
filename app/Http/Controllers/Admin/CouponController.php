@@ -17,7 +17,7 @@ class CouponController extends Controller
 {
     public function index()
     {
-        $coupons = Coupon::query()->orderByDesc('created_at')->paginate(10);
+        $coupons = Coupon::query()->orderByDesc('created_at')->get();
         return view('admin.coupon.index', compact('coupons'));
     }
 

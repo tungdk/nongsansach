@@ -30,11 +30,11 @@ class ProductController extends Controller
         if (request()->type === 'active') {
             $products = Product::where('status', 1)->where('quantity', '>', 10)->orderByDesc('created_at')->paginate(10);
         } elseif (request()->type === 'soldout') {
-            $products = Product::where('quantity', '<=', 10)->orderByDesc('created_at')->paginate(10);
+            $products = Product::where('quantity', '<=', 10)->orderByDesc('created_at')->get();
         } elseif (request()->type === 'unlisted') {
-            $products = Product::where('status', 0)->orderByDesc('created_at')->paginate(10);
+            $products = Product::where('status', 0)->orderByDesc('created_at')->get();
         } else {
-            $products = Product::orderByDesc('created_at')->paginate(10);
+            $products = Product::orderByDesc('created_at')->get();
         }
         $viewData = [
             'products' => $products

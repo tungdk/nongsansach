@@ -30,70 +30,71 @@
                 </h3>
             </div>
             <div class="box-body">
-                <div class="col-md-12">
-                    <div class="box">
-                        <table class="table table-hover">
-                            <tbody>
-                            <tr>
-                                <th>#</th>
-                                <th>Tiêu đề</th>
-                                <th>Ảnh</th>
-                                <th>Danh mục</th>
-                                <th>Lượt xem</th>
-                                <th>Ngày đăng</th>
-                                <th>Trạng thái</th>
-                                <th>Gửi mail</th>
-                                <th>Thao tác</th>
-                            </tr>
-                            @if(isset($posts))
-                                @foreach($posts as $post)
-                                    <tr>
-                                        <td>{{ $post->id }}</td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>
-                                            <img src="{{pare_url_file($post->thumbnail) }}"
-                                                 style="width: 80px; height: 80px" alt="">
-                                        </td>
-                                        <td>{{ $post->postcate->name }}</td>
-                                        <td>{{ $post->views }}</td>
-                                        <td>{{ $post->created_at }}</td>
-                                        <td>
-                                            @if($post->status == 1)
-                                                <a href="{{route('admin.post.active', $post->id)}}"
-                                                   class="label label-info">Hiển thị</a>
-                                            @else
-                                                <a href="{{route('admin.post.active', $post->id)}}"
-                                                   class="label label-default">Ẩn</a>
-                                            @endif
-                                        </td>
-                                        <td style="text-align: center">
-                                            <input type="checkbox" {{$post->send_mail == 1 ? 'checked' : ''}} id="checkbox_{{$post->id}}" onclick="return false;">
-                                        </td>
-                                        <td>
-                                            <a href="{{route('admin.post.edit', $post->id)}}"
-                                               class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                                Sửa</a>
-                                            <a href="{{route('admin.post.active', $post->id)}}"
-                                               class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                            @if($post->status == 1)
-                                                <button class="btn btn-xs btn-default" onclick="send_mail({{$post->id}})"><i class="fa fa-mail-forward"></i> Gửi mail</button>
-                                            @endif
-                                        </td>
+                <table id="example1" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tiêu đề</th>
+                        <th>Ảnh</th>
+                        <th>Danh mục</th>
+                        <th>Lượt xem</th>
+                        <th>Ngày đăng</th>
+                        <th>Trạng thái</th>
+                        <th>Gửi mail</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                                    </tr>
-                                @endforeach
-                            @endif
-                            </tbody>
-                        </table>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                    @if(isset($posts))
+                        @php $i=1; @endphp
+                        @foreach($posts as $post)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $post->title }}</td>
+                                <td>
+                                    <img src="{{pare_url_file($post->thumbnail) }}"
+                                         style="width: 80px; height: 80px" alt="">
+                                </td>
+                                <td>{{ $post->postcate->name }}</td>
+                                <td>{{ $post->views }}</td>
+                                <td>{{ $post->created_at }}</td>
+                                <td>
+                                    @if($post->status == 1)
+                                        <a href="{{route('admin.post.active', $post->id)}}"
+                                           class="label label-info">Hiển thị</a>
+                                    @else
+                                        <a href="{{route('admin.post.active', $post->id)}}"
+                                           class="label label-default">Ẩn</a>
+                                    @endif
+                                </td>
+                                <td style="text-align: center">
+                                    <input type="checkbox"
+                                           {{$post->send_mail == 1 ? 'checked' : ''}} id="checkbox_{{$post->id}}"
+                                           onclick="return false;">
+                                </td>
+                                <td>
+                                    <a href="{{route('admin.post.edit', $post->id)}}"
+                                       class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
+                                        Sửa</a>
+                                    <a href="{{route('admin.post.active', $post->id)}}"
+                                       class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
+                                    @if($post->status == 1)
+                                        <button class="btn btn-xs btn-default" onclick="send_mail({{$post->id}})"><i
+                                                class="fa fa-mail-forward"></i> Gửi mail
+                                        </button>
+                                    @endif
+                                </td>
+
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                {{ $posts->links('vendor/pagination/bootstrap-4') }}
-            </div>
+            <!-- /.box -->
+
         </div>
         <!-- /.box -->
 
@@ -102,7 +103,7 @@
 @endsection
 @section('js')
     <script>
-        function send_mail(id){
+        function send_mail(id) {
             const token = "{{ @csrf_token() }}";
             send_mail_information(id, token);
         }

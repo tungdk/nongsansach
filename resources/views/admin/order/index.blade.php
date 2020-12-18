@@ -41,80 +41,77 @@
                 </form>
             </div>
             <div class="box-body">
-                <div class="col-md-12">
-                    <div class="box">
-                        <table class="table table-hover">
-                            <tbody>
+                <table id="example1" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 5%">#</th>
+                        <th>Thông tin</th>
+                        <th>Số tiền</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @if(isset($orders))
+                        @php $i=1; @endphp
+                        @foreach($orders as $order)
                             <tr>
-                                <th style="width: 5%">#</th>
-                                <th>Thông tin</th>
-                                <th>Số tiền</th>
-                                <th>Ngày tạo</th>
-                                <th>Trạng thái</th>
-                                <th>Thao tác</th>
-                            </tr>
-                            @if(isset($orders))
-                                @foreach($orders as $order)
-                                    <tr>
-                                        <td>{{ $order->id }}</td>
-                                        <td>
-                                            <ul>
-                                                <li>Tên: {{ $order->name }}</li>
-                                                <li>Sđt: {{ $order->phone }}</li>
-                                                <li>Đ/c: {{ $order->address }}</li>
-                                            </ul>
-                                        </td>
-                                        <td><span style="color: red">{{ number_format($order->total_money, 0, ',', '.') }} đ</span>
-                                        </td>
-                                        <td>{{ $order->created_at }}</td>
-                                        <td>
+                                <td>{{ $i++ }}</td>
+                                <td>
+                                    <ul>
+                                        <li>Tên: {{ $order->name }}</li>
+                                        <li>Sđt: {{ $order->phone }}</li>
+                                        <li>Đ/c: {{ $order->address }}</li>
+                                    </ul>
+                                </td>
+                                <td><span
+                                        style="color: red">{{ number_format($order->total_money, 0, ',', '.') }} đ</span>
+                                </td>
+                                <td>{{ $order->created_at }}</td>
+                                <td>
                                             <span class="label label-{{ $order->getStatus($order->status)['class'] }}">
                                                 {{ $order->getStatus($order->status)['name'] }}
                                             </span>
-                                        </td>
-                                        <td>
-                                            <button onclick="view_order({{$order->id}})"
-                                                    class="btn btn-xs btn-primary"><i class="fa fa-eye"></i> Xem
-                                            </button>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-success btn-xs">Thao tác</button>
-                                                <button type="button" class="btn btn-success btn-xs dropdown-toggle"
-                                                        data-toggle="dropdown">
-                                                    <span class="caret"></span>
-                                                    <span class="sr-only">Xác nhận</span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li>
-                                                        <a href="{{route('admin.order.action', ['confirm', $order->id])}}"><i
-                                                                class="fa fa-clipboard"></i> Xác nhận</a></li>
-                                                    <li>
-                                                        <a href="{{route('admin.order.action', ['transport', $order->id])}}"><i
-                                                                class="fa fa-truck"></i> Đang vận chuyển</a></li>
-                                                    <li>
-                                                        <a href="{{route('admin.order.action', ['delivered', $order->id])}}"><i
-                                                                class="fa fa-check"></i> Đã giao hàng</a></li>
-                                                    <li class="divider"></li>
-                                                    <li>
-                                                        <a href="{{route('admin.order.action', ['cancel', $order->id])}}">Huỷ</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
+                                </td>
+                                <td>
+                                    <button onclick="view_order({{$order->id}})"
+                                            class="btn btn-xs btn-primary"><i class="fa fa-eye"></i> Xem
+                                    </button>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success btn-xs">Thao tác</button>
+                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle"
+                                                data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Xác nhận</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="{{route('admin.order.action', ['confirm', $order->id])}}"><i
+                                                        class="fa fa-clipboard"></i> Xác nhận</a></li>
+                                            <li>
+                                                <a href="{{route('admin.order.action', ['transport', $order->id])}}"><i
+                                                        class="fa fa-truck"></i> Đang vận chuyển</a></li>
+                                            <li>
+                                                <a href="{{route('admin.order.action', ['delivered', $order->id])}}"><i
+                                                        class="fa fa-check"></i> Đã giao hàng</a></li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <a href="{{route('admin.order.action', ['cancel', $order->id])}}">Huỷ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
 
-                                    </tr>
-                                @endforeach
-                            @endif
-                            </tbody>
-                        </table>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                {{ $orders->links('vendor/pagination/bootstrap-4') }}
-            </div>
+
             <div class="overlay" hidden>
                 <i class="fa fa-refresh fa-spin"></i>
             </div>
@@ -152,6 +149,7 @@
 @endsection
 @section('js')
     <script>
+
         function view_order(order_id) {
             $('.overlay').show();
             $.ajaxSetup({

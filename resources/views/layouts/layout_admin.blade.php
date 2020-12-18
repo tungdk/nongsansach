@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="{{ asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -85,8 +86,18 @@
 <!-- page script -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
+<!-- DataTables -->
+<script src="{{asset('adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
 <script type="text/javascript">
+    $(function () {
+        $('#example1').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            }
+        })
+    })
     // To make Pace works on Ajax calls
     if (typeof TYPE_MESSAGE!="undefined") {
         switch (TYPE_MESSAGE) {

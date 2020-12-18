@@ -180,7 +180,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'contact'], function () {
 
         Route::get('', [ContactController::class, 'index'])->name('admin.contact.index');
-        Route::get('status', [ContactController::class, 'status'])->name('admin.contact.status');
+        Route::get('status/{id}/{status}', [ContactController::class, 'status'])->name('admin.contact.status');
 
     });
 
@@ -189,9 +189,6 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('', [UserController::class, 'index'])->name('admin.user.index');
     });
 
-    Route::group(['prefix' => 'statistical'], function () {
-        Route::get('', [StatisticalController::class, 'index'])->name('admin.statistical.index');
-    });
 
     Route::group(['prefix' => 'partner'], function () {
 

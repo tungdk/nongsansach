@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class SliderController extends Controller
 {
     public function index(){
-        $sliders = Slider::paginate(10);
+        $sliders = Slider::query()->get();
         return view('admin.slider.index', compact('sliders'));
     }
 

@@ -23,9 +23,7 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            'parent_id'=>'required|numeric'
-        ];
+        $rules = [];
         if ($this->id) {
             $rules['name'] = "required|unique:categories,name," . $this->id;
             return $rules;

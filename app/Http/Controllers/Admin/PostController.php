@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::query()->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::query()->orderBy('created_at', 'desc')->get();
         return view('admin.post.index', compact('posts'));
     }
 

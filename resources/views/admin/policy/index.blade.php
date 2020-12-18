@@ -20,56 +20,56 @@
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><a href="{{route('admin.policy.create')}}" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></a>
+                <h3 class="box-title"><a href="{{route('admin.policy.create')}}" class="btn btn-success">Thêm mới <i
+                            class="fa fa-plus-circle"></i></a>
                 </h3>
             </div>
             <div class="box-body">
-                <div class="col-md-12">
-                    <div class="box">
-                        <table class="table table-hover">
-                            <tbody>
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width: 5%">#</th>
+                        <th>Tên chính sách</th>
+                        <th>Ngày tạo</th>
+                        <th>Ngày cập nhật</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if(isset($policies))
+                        @php $i=1; @endphp
+                        @foreach($policies as $policy)
                             <tr>
-                                <th style="width: 5%">#</th>
-                                <th>Tên chính sách</th>
-                                <th>Ngày tạo</th>
-                                <th>Ngày cập nhật</th>
-                                <th>Trạng thái</th>
-                                <th>Thao tác</th>
-                            </tr>
-                            @if(isset($policies))
-                                @foreach($policies as $policy)
-                                    <tr>
-                                        <td>{{ $policy->id }}</td>
-                                        <td>{{ $policy->name }}</td>
-                                        <td>{{ $policy->created_at }}</td>
-                                        <td>{{ $policy->updated_at }}</td>
-                                        <td>
-                                            @if($policy->status == 1)
-                                                <a href="{{route('admin.policy.active', $policy->id)}}" class="label label-info">Hiển thị</a>
-                                            @else
-                                                <a href="{{route('admin.policy.active', $policy->id)}}" class="label label-default">Ẩn</a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{route('admin.policy.edit', $policy->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                                Sửa</a>
-                                            <a href="{{route('admin.policy.delete', $policy->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                        </td>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $policy->name }}</td>
+                                <td>{{ $policy->created_at }}</td>
+                                <td>{{ $policy->updated_at }}</td>
+                                <td>
+                                    @if($policy->status == 1)
+                                        <a href="{{route('admin.policy.active', $policy->id)}}"
+                                           class="label label-info">Hiển thị</a>
+                                    @else
+                                        <a href="{{route('admin.policy.active', $policy->id)}}"
+                                           class="label label-default">Ẩn</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{route('admin.policy.edit', $policy->id)}}"
+                                       class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
+                                        Sửa</a>
+                                    <a href="{{route('admin.policy.delete', $policy->id)}}"
+                                       class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
+                                </td>
 
-                                    </tr>
-                                @endforeach
-                            @endif
-                            </tbody>
-                        </table>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                {{ $policies->links('vendor/pagination/bootstrap-4') }}
-            </div>
+            <!-- /.box -->
         </div>
         <!-- /.box -->
 
@@ -78,7 +78,8 @@
 @endsection
 @section('js')
     <script>
-        function send_mail(id){
+
+        function send_mail(id) {
             const token = "{{ @csrf_token() }}";
             send_mail_information(id, token);
         }

@@ -32,13 +32,6 @@
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group">
-                                <label>Chọn danh mục cha</label>
-                                <select class="custom-select form-control" name="parent_id">
-                                    <option value="0">Chọn danh mục cha</option>
-                                    {!! $htmlOption !!}
-                                </select>
-                            </div>
                         </div>
                         <div class="col-md-12">
                             <div class="box-footer text-center">
