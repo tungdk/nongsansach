@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\ChatController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PartnerController;
-use App\Http\Controllers\Admin\SupplierController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\ProductController;
@@ -47,21 +46,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 
     });
-    //Nhà cung cấp
-    Route::group(['prefix' => 'supplier'], function () {
 
-        Route::get('', [SupplierController::class, 'index'])->name('admin.supplier.index');
-        Route::get('create', [SupplierController::class, 'create'])->name('admin.supplier.create');
-        Route::post('create', [SupplierController::class, 'store']);
-
-        Route::get('edit/{id}', [SupplierController::class, 'edit'])->name('admin.supplier.edit');
-        Route::post('edit/{id}', [SupplierController::class, 'update']);
-
-        Route::get('active/{id}', [SupplierController::class, 'active'])->name('admin.supplier.active');
-        Route::delete('delete/{id}', [SupplierController::class, 'delete'])->name('admin.supplier.delete');
-
-
-    });
 //Unit
     Route::group(['prefix' => 'unit'], function () {
 

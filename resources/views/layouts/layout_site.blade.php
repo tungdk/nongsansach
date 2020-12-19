@@ -1,33 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@yield('pageTitle') Nông sản sạch</title>
-    <!-- ================= Page description ================== -->
-    <meta name="description" content="Giới thiệu cửa hàng bán nông sản sạch tươi ngon giá tiết kiệm và nhanh chóng">
-    <!-- ================= Meta ================== -->
-    <meta name="keywords" content=""/>
-    <link rel="canonical" href="index.html"/>
-    <meta name='revisit-after' content='1 days'/>
-    <meta name="robots" content="noodp,index,follow"/>
-    <!-- ================= Favicon ================== -->
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 {{--    <link rel="icon" href="site/uploads/images/caidat/favicon.png" type="image/x-icon"/>--}}
 {{-- <link rel="shortcut icon" type="image/png" href="/images/logo.png"/> --}}
-<!-- Facebook Open Graph meta tags -->
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-    <meta property="og:image" content="uploads/images/caidat/logo-aznet_250.png">
-    <meta property="og:image:secure_url" content="uploads/images/caidat/logo-aznet_250.png">
-
-    <meta property="og:description" content="Giới thiệu cửa hàng bán sản phẩm giá tiết kiệm và nhanh chóng">
-    <meta property="og:url" content="index.html">
-    <meta property="og:site_name" content="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-
 
     <!-- ================= Fonts ================== -->
 

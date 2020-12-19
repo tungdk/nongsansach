@@ -49,14 +49,6 @@
                 </a>
             </li>
 
-            <li class="{{ request()->is('admin/supplier*') ? 'active' : '' }}">
-                <a href="{{route('admin.supplier.index')}}">
-                    <i class="fa fa-truck"></i> <span>Nhà cung cấp</span>
-                    <span class="pull-right-container">
-            </span>
-                </a>
-            </li>
-
             <li class="{{ request()->is('admin/product*') ? 'active' : '' }}">
                 <a href="{{route('admin.product.index')}}">
                     <i class="fa fa-product-hunt"></i> <span>Sản phẩm</span>
@@ -89,7 +81,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ request()->is('admin/order') ? 'active' : '' }}"><a href="{{route('admin.order.index')}}"><i class="fa fa-circle-o"></i> Tất cả</a></li>
+                    <li class="{{ request()->is('admin/order') ? 'active' : '' }}"><a
+                            href="{{route('admin.order.index')}}"><i class="fa fa-circle-o"></i> Tất cả</a></li>
                     <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-circle-o"></i> Chờ xác nhận</a></li>
                     <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Đã huỷ</a></li>
                 </ul>
@@ -128,8 +121,8 @@
                 </a>
             </li>
 
-            <li class="{{ request()->is('admin/unit*') ? 'active' : '' }}">
-                <a href="{{route('admin.unit.index')}}">
+            <li class="{{ request()->is('admin/comment*') ? 'active' : '' }}">
+                <a href="{{route('admin.comment.index')}}">
                     <i class="fa fa-comments"></i> <span> Bình luận</span>
                     <span class="pull-right-container">
             </span>
@@ -162,28 +155,28 @@
 
 
 
-{{--            <li class="treeview {{ request()->is('admin/setting*') ? 'active' : '' }}">--}}
-{{--                <a href="#">--}}
-{{--                    <i class="fa fa-cogs"></i> <span> Cài đặt</span>--}}
-{{--                    <span class="pull-right-container">--}}
-{{--              <i class="fa fa-angle-left pull-right"></i>--}}
-{{--            </span>--}}
-{{--                </a>--}}
-{{--                <ul class="treeview-menu">--}}
-{{--                    <li class="{{ request()->is('admin/setting/admin') ? 'active' : '' }}"><a--}}
-{{--                            href="{{route('admin.setting.admin')}}"><i class="fa fa-circle-o"></i> Quản trị viên</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}"><a--}}
-{{--                            href="{{route('admin.setting.website')}}"><i class="fa fa-circle-o"></i> Cài đặt hệ--}}
-{{--                            thống</a></li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
+            {{--            <li class="treeview {{ request()->is('admin/setting*') ? 'active' : '' }}">--}}
+            {{--                <a href="#">--}}
+            {{--                    <i class="fa fa-cogs"></i> <span> Cài đặt</span>--}}
+            {{--                    <span class="pull-right-container">--}}
+            {{--              <i class="fa fa-angle-left pull-right"></i>--}}
+            {{--            </span>--}}
+            {{--                </a>--}}
+            {{--                <ul class="treeview-menu">--}}
+            {{--                    <li class="{{ request()->is('admin/setting/admin') ? 'active' : '' }}"><a--}}
+            {{--                            href="{{route('admin.setting.admin')}}"><i class="fa fa-circle-o"></i> Quản trị viên</a>--}}
+            {{--                    </li>--}}
+            {{--                    <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}"><a--}}
+            {{--                            href="{{route('admin.setting.website')}}"><i class="fa fa-circle-o"></i> Cài đặt hệ--}}
+            {{--                            thống</a></li>--}}
+            {{--                </ul>--}}
+            {{--            </li>--}}
 
 
-{{--            <li class="header">BÁO CÁO THỐNG KÊ</li>--}}
-{{--            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Thống kê nhập xuất</span></a></li>--}}
-{{--            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Thống kê doanh thu</span></a></li>--}}
-{{--            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>--}}
+            {{--            <li class="header">BÁO CÁO THỐNG KÊ</li>--}}
+            {{--            <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Thống kê nhập xuất</span></a></li>--}}
+            {{--            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Thống kê doanh thu</span></a></li>--}}
+            {{--            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>--}}
 
             <li class="header">THÔNG TIN QUẢN TRỊ</li>
 
