@@ -7,7 +7,7 @@
                     <ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 
                         <li class="home">
-                            <a itemprop="url" href="https://dualeo-x.bizwebvietnam.net/" ><span itemprop="title">Trang chủ</span></a>
+                            <a itemprop="url" href="{{ route('site.home') }}" ><span itemprop="title">Trang chủ</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
 
@@ -80,7 +80,7 @@
                                     <div><i class="fa fa-map-marker"></i>
                                         <div class="info">
                                             <label>Địa chỉ liên hệ</label>
-                                            Chúng tôi chuyên cung cấp các sản phẩm thực phẩm sạch an toàn cho sức khỏe con người
+                                            {{ $setting->slogan }}
                                         </div>
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.233882486378!2d106.00525871426781!3d21.103239790608892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135093744b86b21%3A0xf38545808d0b318e!2zWGUgTsOibmcgQuG6r2MgTmluaA!5e0!3m2!1svi!2s!4v1591957554823!5m2!1svi!2s" width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
@@ -90,15 +90,15 @@
                                         <i class="fa fa-phone"></i>
                                         <div class="info">
                                             <label>Số điện thoại</label>
-                                            <a href="tel:0972782255">0972782255</a>
-                                            <p>Thứ 2 - Chủ nhật: 9:00 - 18:00</p>
+                                            <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                                            <p>{{ $setting->time_work }}</p>
                                         </div>
                                     </div>
 
                                     <div><i class="fa fa-envelope"></i>
                                         <div class="info">
                                             <label>Email</label>
-                                            <a href="mailto:sale@jweb.vn">sale@jweb.vn
+                                            <a href="mailto:{{ $setting->email }}">{{ $setting->email }}
                                             </a>
                                         </div>
                                     </div>

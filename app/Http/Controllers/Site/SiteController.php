@@ -7,6 +7,7 @@ use App\Http\Requests\Site\SubscribeRequest;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Policy;
+use App\Models\Setting;
 use App\Models\Subscribe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -28,9 +29,13 @@ class SiteController extends Controller
             ->orderByDesc('created_at')
             ->get(['id', 'name', 'slug']);
 
+        //Lấy thông tin website
+        $setting = Setting::query()->first(['id', 'name', 'phone', 'email', 'address', 'map', 'time_work', 'fanpage', 'slogan']);
+
         View::share([
             'categories' => $categories,
-            'policies' => $policies
+            'policies' => $policies,
+            'setting' => $setting
         ]);
 //        if ($this->middleware('auth:web')) {
 ////            $this->middleware(function () {

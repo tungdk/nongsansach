@@ -2,21 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Admin;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class AdminFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Admin::class;
 
     /**
      * Define the model's default state.
@@ -26,13 +24,12 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'Đinh Khắc Tùng',
-            'email' => 'tungdk228@gmail.com',
-            'address' => 'Hà Nội',
-            'phone' => '012345678',
-            'confirmed' => 1,
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('123456'),
+            'phone' => '0123456789',
             'created_at' => Carbon::now()
         ];
+
     }
 }

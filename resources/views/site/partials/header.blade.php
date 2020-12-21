@@ -5,7 +5,7 @@
                style=" font-size: 20px; display: inline-block; position: relative; transform: translateY(2px); "></i>
             Hotline:
             <span>
-					<a href="tel:0348520202"> 0348520202</a>
+					<a href="tel:{{ $setting->phone }}"> {{ $setting->phone }}</a>
 				</span>
         </div>
     </div>
@@ -20,13 +20,12 @@
                                    style=" font-size: 20px; display: inline-block; position: relative; transform: translateY(2px); "></i>
                                 Hotline:
                                 <span>
-										<a href="tel:0348520202"> 0348520202</a>
+										<a href="tel:{{ $setting->phone }}"> {{ $setting->phone }}</a>
 									</span>
                             </li>
                             <li class="margin-left-20">
                                 <i class="fa fa-map-marker"></i> <b>Địa chỉ</b>:
-                                <span>
-										55 Giải Phóng - P.Đồng Tâm - Q.Hai Bà Trưng - HN</span>
+                                <span>{{ $setting->address }}</span>
                             </li>
                         </ul>
 
@@ -110,7 +109,7 @@
                             {{--                            </a>--}}
                             <div class="info a-lcheckeft">
                                 <span style="font-size: 15px"><b>Hỗ trợ 24/7</b></span>
-                                <p>Hotline: 0348520202</p>
+                                <p>Hotline: {{ $setting->phone }}</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
@@ -120,7 +119,7 @@
                             {{--                            </a>--}}
                             <div class="info a-left">
                                 <span style="font-size: 15px"><b>Giờ làm việc</b></span>
-                                <p>T2 - T7 Giờ hành chính</p>
+                                <p>{{ $setting->time_work }}</p>
                             </div>
                         </div>
                     </div>

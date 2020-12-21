@@ -10,21 +10,21 @@
                                 <h3 class="hastog"><span>Liên hệ</span></h3>
                                 <ul class="list-menu list-showroom">
                                     <li style="padding-left: 0;">
-                                        <p>Chúng tôi chuyên cung cấp các sản phẩm thực phẩm sạch an toàn cho sức khỏe con người</p>
+                                        <p>{{ $setting->slogan }}</p>
                                     </li>
 
                                     <li class="clearfix"><i class="block_icon fa fa-map-marker"></i>
-                                        <p>299/3A Lý Thường Kiệt - P.15 - Q.Tân Bình - HCM</p>
+                                        <p>{{ $setting->address }}</p>
                                     </li>
 
                                     <li class="clearfix"><i class="block_icon fa fa-phone"></i>
 
-                                        <a href="tel:0972782255">0972782255</a>
-                                        <p>Thứ 2 - Chủ nhật: 9:00 - 18:00</p>
+                                        <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                                        <p>{{ $setting->time_work }}</p>
                                     </li>
                                     <li class="clearfix"><i class="block_icon fa fa-envelope"></i>
 
-                                        <a href="mailto%20sale%40jweb.html"> sale@jweb.vn</a>
+                                        <a href="mailto: {{ $setting->email }}"> {{ $setting->email }}</a>
 
                                     </li>
                                 </ul>
@@ -102,7 +102,7 @@
                         <i class="fa  fa-angle-up"></i>
                     </div>
 
-                    <a href="tel:0348520202"
+                    <a href="tel:{{ $setting->phone }}"
                        class="suntory-alo-phone bottom-left  suntory-alo-green " id="suntory-alo-phoneIcon">
 
                         <div class="suntory-alo-ph-img-circle"><i class="fa fa-phone"></i></div>
