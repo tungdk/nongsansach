@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <LINK rel="shortcut icon" href="public/img/icon-katun.png">
     <title>@yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Bootstrap 3.3.7 -->
     {{--    <base href="{{asset('adminlte/')}}">--}}
     <link rel="stylesheet" href="{{asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -25,7 +26,8 @@
 
     <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    <link rel="stylesheet" href="{{ asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,8 +42,8 @@
     {{--Thông báo--}}
     @if (session('toastr'))
         <script>
-            var TYPE_MESSAGE="{{ session('toastr.type') }}";
-            var MESSAGE="{{ session('toastr.message') }}";
+            var TYPE_MESSAGE = "{{ session('toastr.type') }}";
+            var MESSAGE = "{{ session('toastr.message') }}";
         </script>
     @endif
     @yield('css')
@@ -49,13 +51,13 @@
 <body class="hold-transition skin-green sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
-    @include('admin.partials.header')
-    <!-- =============================================== -->
+@include('admin.partials.header')
+<!-- =============================================== -->
 
     <!-- Left side column. contains the sidebar -->
-    @include('admin.partials.sidebar')
+@include('admin.partials.sidebar')
 
-    <!-- =============================================== -->
+<!-- =============================================== -->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -99,7 +101,7 @@
         })
     })
     // To make Pace works on Ajax calls
-    if (typeof TYPE_MESSAGE!="undefined") {
+    if (typeof TYPE_MESSAGE != "undefined") {
         switch (TYPE_MESSAGE) {
             case 'success':
                 toastr.success(MESSAGE);
@@ -122,13 +124,13 @@
             }
         })
     })
-    $(function (){
-        $(".js-upload").change(function(){
-            let $this=$(this);
-            if(this.files && this.files[0]){
-                var reader=new FileReader();
-                reader.onload=function (e){
-                    $this.parents('.block-images').find('img').attr('src',e.target.result);
+    $(function () {
+        $(".js-upload").change(function () {
+            let $this = $(this);
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $this.parents('.block-images').find('img').attr('src', e.target.result);
                 };
                 reader.readAsDataURL(this.files[0]);
             }
@@ -141,7 +143,8 @@
         "fadeIn": 300,
         "fadeOut": 1000,
         "timeOut": 5000,
-        "extendedTimeOut": 1000
+        "extendedTimeOut": 1000,
+        "positionClass": "toast-top-right",
     }
 </script>
 

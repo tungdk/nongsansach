@@ -3597,3 +3597,9 @@ footer .footer-info-widget p.hotline a {
     font-weight: 600 !important;
     line-height: 1;
 }
+.has-sub a{
+    color: #fff;
+    font-size: 16px;
+    padding: 15.5px 15px;
+}
+

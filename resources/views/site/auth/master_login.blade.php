@@ -19,3 +19,29 @@
         </div>
     </div>
 @endsection
+@section('js')
+    <script>
+        function login(){
+
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
+            $.ajax({
+                type: 'post',
+                url: '{{ route('site.login.post') }}',
+                data: {
+                    'email': $('#login_email'),
+                    'password': $('#login_password')
+                },
+                success:function (data){
+
+                },
+                error: function (data){
+
+                }
+            });
+        }
+    </script>
+@endsection

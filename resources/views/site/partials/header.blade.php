@@ -131,7 +131,7 @@
                             <div class="heading-cart">
                                 <a href="{{route('site.cart.index')}}">
                                     <div class="icon f-left relative">
-                                        <i class="fa fa-shopping-bag"></i>
+                                        <i class="fa fa-shopping-cart"></i>
                                         <span class="cartCount count_item_pr hidden-lg" id="count_cart">0</span>
                                     </div>
                                     <div class="right-content hidden-md">
@@ -182,7 +182,7 @@
         <div class="icon-cart-mobile hidden-md hidden-lg f-left absolute"
              onclick="window.location.href='{{route('site.cart.index')}}'">
             <div class="icon relative">
-                <i class="fa fa-shopping-bag"></i>
+                <i class="fa fa-shopping-cart"></i>
                 <span class="cartCount count_item_pr" id="count_cart">{{isset($count_cart) ? $count_cart : 0}}</span>
             </div>
         </div>
@@ -233,9 +233,10 @@
                 .sub-menu li {
                     margin-left: 0 !important;
                     background-color: #80bb35;
-                    width: 250px;
-                    height: 40px;
+                    width: 260px;
+                    height: 55px;
                     color: #fff;
+                    padding-top: 15px;
                 }
 
                 /*==Menu cấp 3==*/
@@ -258,7 +259,8 @@
                             @if(isset($categories))
                                 @foreach($categories as $key => $cate)
                                     @if($key == 5)
-                                        <li class="has-sub">Xem thêm
+                                        <li class="has-sub" style="color: #fff; font-size: 16px; padding: 15.5px 15px;">
+                                            Xem thêm >>
                                             <ul class="sub-menu">
                                                 @endif
                                                 @if($key < 5)

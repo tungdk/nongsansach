@@ -47,22 +47,20 @@ function openRegisterModal() {
 }
 
 // function loginAjax(e){
-$('#submit_Login').click(function (e) {
-    $(':input[type="submit"]').prop('disabled', true);
+function submit_Login(url) {
+    $('.error').text('');
+    let email = $('#email').val();
+    let password = $('#password').val();
 
-    $email = $('#email').val();
-    $password = $('#password').val();
-    $('.error').hide();
-    if (!$email) {
-        $('.errorEmail').show().text('Bạn chưa điền email');
-        $(':input[type="submit"]').prop('disabled', false);
-    }
-    if (!$password) {
-        $('.errorPassword').show().text('Bạn chưa điền mật khẩu');
-        $(':input[type="submit"]').prop('disabled', false);
-    }
-    if ($email && $password) {
-        e.preventDefault();
+    // if (!email) {
+    //     $('.errorEmail').show().text('Bạn chưa điền email');
+    //     $(':input[type="submit"]').prop('disabled', false);
+    // }
+    // if (!password) {
+    //     $('.errorPassword').show().text('Bạn chưa điền mật khẩu');
+    //     $(':input[type="submit"]').prop('disabled', false);
+    // }
+    if (email && password) {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -70,34 +68,22 @@ $('#submit_Login').click(function (e) {
         });
         $.ajax({
             type: 'POST',
-            url: "/login",
+            url: url,
             data: {
-                'email': $email,
-                'password': $password }
+                'email': email,
+                'password': password
+            }
             ,
             success: function (data) {
-                console.log(data);
-                if (data.error == true) {
-                    $(':input[type="submit"]').prop('disabled', false);
-                    $('.error').hide();
-                    if (data.message.email != undefined) {
-                        $('.errorEmail').show().text(data.message.email[0]);
-                    }
-                    if (data.message.password != undefined) {
-                        $('.errorPassword').show().text(data.message.password[0]);
-                    }
-                    if (data.message.errorLogin != undefined) {
-                        $('.errorLogin').show().text(data.message.errorLogin[0]);
-                    }
-
-                } else {
-                    // location.reload();
-                    window.location.reload();
-                }
+                location.reload();
+            },
+            error:function(data){
+                $('.error').text(data.responseJSON.message);
             }
         });
     }
-})
+}
+
 //  shakeModal();
 // }
 $('#submit_Register').click(function (e) {
@@ -119,15 +105,15 @@ $('#submit_Register').click(function (e) {
         $('.errorPassword').show().text('Bạn chưa điền mật khẩu');
         $(':input[type="submit"]').prop('disabled', false);
     }
-    if(!$confirm_password){
+    if (!$confirm_password) {
         $('.errorPasswordConfirm').show().text('Bạn chưa điền nhập lại mật khẩu');
         $(':input[type="submit"]').prop('disabled', false);
     }
-    if($password != $confirm_password){
+    if ($password != $confirm_password) {
         $('.errorPasswordConfirm').show().text('Nhập lại mật khẩu không chính xác');
         $(':input[type="submit"]').prop('disabled', false);
     }
-    if ($name && $email && $password && $confirm_password==$password) {
+    if ($name && $email && $password && $confirm_password == $password) {
         e.preventDefault();
         $.ajaxSetup({
             headers: {
@@ -138,10 +124,10 @@ $('#submit_Register').click(function (e) {
             type: 'POST',
             url: "register",
             data: {
-                'name':$name,
+                'name': $name,
                 'email': $email,
                 'password': $password,
-                'confirm_password' : $confirm_password
+                'confirm_password': $confirm_password
             },
             success: function (data) {
                 console.log(data);
@@ -182,6 +168,6 @@ $('#submit_Register').click(function (e) {
 //     }, 1000 );
 // }
 
-$('#closemodal').click(function() {
+$('#closemodal').click(function () {
     $('#loginModal').modal('hide');
 });

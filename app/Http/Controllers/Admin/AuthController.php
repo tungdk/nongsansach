@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LoginRequest;
+use App\Models\Admin;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\MessageBag;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
+    public function index(){
+        $admin = Admin::query()->findOrFail(Auth::id());
+        return view('admin.auth.account', compact('admin'));
+    }
     public function getLogin()
     {
 //        echo "ahihi";
@@ -47,5 +53,20 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
         return redirect()->to('/admin/login');
+    }
+
+    public function change_password(Request $request){
+        $admin = Admin::query()->findOrFail(Auth::id());
+        if(Hash::check($request->password_old, $admin->password)){
+            $admin->password = Hash::make($request->password_new);
+            $admin->save();
+            return response()->json([
+                'status' => true
+            ], 200);
+        }
+        return response()->json([
+            'status' => false
+        ], 404);
+
     }
 }

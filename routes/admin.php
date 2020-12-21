@@ -16,15 +16,14 @@ use \App\Http\Controllers\Admin\SettingController;
 use \App\Http\Controllers\Admin\SliderController;
 use \App\Http\Controllers\Admin\ContactController;
 use \App\Http\Controllers\Admin\UserController;
-use \App\Http\Controllers\Admin\Auth\LoginController;
-use \App\Http\Controllers\Admin\StatisticalController;
+use \App\Http\Controllers\Admin\AuthController;
 use \App\Http\Controllers\Admin\PolicyController;
 
 
 //login admin
-Route::get('login', [LoginController::class, 'getLogin'])->name('admin.login');
-Route::post('login', [LoginController::class, 'postLogin']);
-Route::get('logout', [LoginController::class, 'getLogout'])->name('admin.logout');
+Route::get('login', [AuthController::class, 'getLogin'])->name('admin.login');
+Route::post('login', [AuthController::class, 'postLogin']);
+Route::get('logout', [AuthController::class, 'getLogout'])->name('admin.logout');
 
 Route::group(['middleware' => 'auth:admin'], function () {
     //dashboard
@@ -35,8 +34,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'category'], function () {
 
         Route::get('', [CategoryController::class, 'index'])->name('admin.category.index');
-        Route::get('create', [CategoryController::class, 'create'])->name('admin.category.create');
-        Route::post('create', [CategoryController::class, 'store']);
+//        Route::get('create', [CategoryController::class, 'create'])->name('admin.category.create');
+        Route::get('create', [CategoryController::class, 'get_data_index'])->name('admin.category.get_data_index');
+        Route::post('create', [CategoryController::class, 'store'])->name('admin.category.create');
+        Route::get('load-data', [CategoryController::class, 'load_data'])->name('admin.category.load_data');
 
         Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
         Route::post('edit/{id}', [CategoryController::class, 'update']);
@@ -131,6 +132,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('delete/{id}', [CouponController::class, 'delete'])->name('admin.coupon.delete');
 
         Route::post('sendMail', [CouponController::class, 'sendMail'])->name('admin.coupon.sendMail');
+    });
+
+    //account admin
+    Route::group(['prefix'=> 'account'], function (){
+        Route::get('', [AuthController::class, 'index'])->name('admin.account.index');
+        Route::post('change-password', [AuthController::class, 'change_password'])->name('admin.account.change_password');
     });
 
 //Setting

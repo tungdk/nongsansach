@@ -180,8 +180,8 @@
 
             <li class="header">THÔNG TIN QUẢN TRỊ</li>
 
-            <li class="{{ request()->is('admin/setting/admin') ? 'active' : '' }}"><a
-                    href="{{route('admin.setting.admin')}}"><i class="fa fa-user-circle"></i> Quản trị viên</a>
+            <li class="{{ request()->is('admin/account*') ? 'active' : '' }}"><a
+                    href="{{route('admin.account.index')}}"><i class="fa fa-user-circle"></i> Tài khoản</a>
             </li>
 
             <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}">

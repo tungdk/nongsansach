@@ -24,9 +24,35 @@ class CategoryController extends Controller
         return view('admin.category.index', $data);
     }
 
+    public function load_data(){
+        $categories = Category::query()
+            ->orderByDesc('created_at')
+            ->get(['id', 'name', 'status', 'created_at']);
+        return response()->json([
+            'view' => view('admin.category.data', [
+                'categories' => $categories
+            ])->render()
+        ]);
+    }
     public function create(){
         return view('admin.category.create');
     }
+
+
+//    public function store(CategoryRequest $request){
+//        $category = new Category();
+//        $category->name = $request->name;
+//        $category->slug = Str::slug($request->name);
+//        $category->status = 1;
+//        $success = $category->save();
+//        if($success){
+//            Session::flash('toastr',[
+//                'type'  =>  'success',
+//                'message' => 'Thêm danh mục thành công'
+//            ]);
+//        }
+//        return redirect()->back();
+//    }
 
 
     public function store(CategoryRequest $request){
@@ -36,12 +62,13 @@ class CategoryController extends Controller
         $category->status = 1;
         $success = $category->save();
         if($success){
-            Session::flash('toastr',[
-                'type'  =>  'success',
-                'message' => 'Thêm danh mục thành công'
-            ]);
+            return response()->json([
+                'status' => true
+            ], 200);
         }
-        return redirect()->back();
+        return response()->json([
+            'status' => false
+        ], 400);
     }
 
     public function edit($id){

@@ -21,7 +21,7 @@ class PolicyController extends SiteController
     public function detail($id, $slug){
         $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
 
-        $policy = Policy::query()->findOrFail($id);
+        $policy = Policy::query()->where('status', 1)->findOrFail($id);
 //        $products = Product::query()->where('category_id', $id)->where('status', 1)->orderByDesc('created_at')->get();
         $data = [
 //            'category' => $category,

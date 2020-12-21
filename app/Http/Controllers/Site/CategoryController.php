@@ -13,7 +13,7 @@ class CategoryController extends SiteController
         return view('site.category.index');
     }
     public function detail($id, $slug){
-        $category = Category::query()->findOrFail($id);
+        $category = Category::query()->where('status', 1)->findOrFail($id);
         $products = Product::query()->where('category_id', $id)->where('status', 1)->orderByDesc('created_at')->get();
         $data = [
             'category' => $category,

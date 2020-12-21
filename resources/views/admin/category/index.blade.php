@@ -21,61 +21,120 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">
-                    <a href="{{route('admin.category.create')}}" class="btn btn-success">Thêm mới <i
-                            class="fa fa-plus-circle"></i>
-                    </a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-create">
+                        Thêm mới <i class="fa fa-plus-circle"></i>
+                    </button>
                 </h3>
             </div>
 
             <!-- /.box-header -->
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th style="width: 5%">#</th>
-{{--                        <th style="width: 5%">Mã</th>--}}
-                        <th style="width: 30%">Tên danh mục</th>
-                        <th style="width: 30%">Ngày tạo</th>
-                        <th style="width: 10%">Trạng thái</th>
-                        <th style="width: 20%">Thao tác</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(isset($categories))
-                        @php $i = 1;@endphp
-                        @foreach($categories as $cate)
-                            <tr>
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $cate->name }}</td>
-                                <td>{{ $cate->created_at }}</td>
-                                <td>
-                                    @if($cate->status == 1)
-                                        <a href="{{route('admin.category.active', $cate->id)}}"
-                                           class="label label-info">Hiển thị</a>
-                                    @else
-                                        <a href="{{route('admin.category.active', $cate->id)}}"
-                                           class="label label-default">Ẩn</a>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{route('admin.category.edit', $cate->id)}}"
-                                       class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                        Sửa</a>
-                                    <a href="{{route('admin.category.delete', $cate->id)}}"
-                                       class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                </td>
+            <div class="overlay hidden" id="overlay">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+            <div class="box-body" id="table-list">
 
-                            </tr>
-                        @endforeach
-                    @endif
-
-                    </tbody>
-
-                </table>
             </div>
             <!-- /.box-body -->
         </div>
     </section>
     <!-- /.content -->
+    <div class="modal fade" id="modal-create">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Thêm mới danh mục</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên danh mục</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Mời nhập tên danh mục">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-success" onclick="save_create()"><i class="fa fa-check"></i> Lưu</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+{{--    <div class="modal fade" id="modal-update">--}}
+{{--        <div class="modal-dialog">--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header">--}}
+{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                        <span aria-hidden="true">&times;</span></button>--}}
+{{--                    <h4 class="modal-title">Cập nhật danh mục</h4>--}}
+{{--                </div>--}}
+{{--                <div class="modal-body">--}}
+{{--                    <div class="form-control">--}}
+{{--                        <input type="text" name="name" id="name">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="modal-footer">--}}
+{{--                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>--}}
+{{--                    <button type="button" class="btn btn-primary" onclick="save_create()">Lưu</button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <!-- /.modal-content -->--}}
+{{--        </div>--}}
+{{--        <!-- /.modal-dialog -->--}}
+{{--    </div>--}}
 @endsection
+@section('js')
+    <script>
+        $(function () {
+            load_data();
+            // $('#example1').DataTable({
+            //     "language": {
+            //         "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
+            //     }
+            // })
+        })
 
+        function load_data() {
+            $('#overlay').removeClass('hidden');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'get',
+                url: '{{ route('admin.category.load_data') }}',
+                success: function (data) {
+                    $('#overlay').addClass('hidden');
+                    $('#table-list').empty();
+                    $('#table-list').append(data.view);
+                },
+            });
+        }
+
+        function save_create() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'post',
+                url: '{{ route('admin.category.create') }}',
+                data: {
+                    'name': $('#name').val(),
+                },
+                success: function (data) {
+                    $('#modal-create').modal('toggle');
+                    load_data();
+                    toastr.success('Thêm mới thành công', 'Thành công')
+                },
+                error: function () {
+                    toastr.error('Thêm mới thất bại', 'Thất bại')
+                }
+            });
+        }
+
+    </script>
+@endsection

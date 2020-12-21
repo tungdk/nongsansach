@@ -35,12 +35,20 @@ class AuthController extends SiteController
             if (Hash::check($password, $user->password)) {
                 if ($user->confirmed == 1) {
                     Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1]);
-                    return redirect()->route('site.home');
+                    return response()->json([
+                       'message' => 'Đăng nhập thành công'
+                    ], 200);
                 }
-                return view('site.auth.verify-email', compact('email'));
+                return response()->json([
+                    'message' => 'Tài khoản chưa được xác minh'
+                ], 401);
+//                return view('site.auth.verify-email', compact('email'));
             }
         }
-        return redirect()->back()->withErrors(['invalid'=>'Sai thông tin tài khoản']);
+        return response()->json([
+            'message' => 'Sai thông tin tài khoản'
+        ], 404);
+//        return redirect()->back()->withErrors(['invalid'=>'Sai thông tin tài khoản']);
 
     }
 
