@@ -83,7 +83,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-3 text-lg-left">
                     <div class="logo inline-block">
-                        <a href="{{route('site.home')}}" class="logo-wrapper ">
+                        <a href="{{ URL::to('/') }}" class="logo-wrapper ">
                             <img src="{{asset('/images/logo.png')}}"
                                  alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                         </a>
@@ -249,11 +249,11 @@
             </style>
             <div class="hidden-sm hidden-xs" id="menu">
                 <ul class="nav nav-left">
-                    <li class="nav-item"><a class="nav-link" href="{{route('site.home')}}">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('site.home') }}">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('site.about_us.index') }}">Giới thiệu</a></li>
                     {{--                    <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>--}}
                     <li class="nav-item">
-                        <a class="nav-link" href="san-pham.html">Sản phẩm</a>
+                        <a class="nav-link" href="{{ route('site.category.index') }}">Sản phẩm</a>
                         <ul class="sub-menu">
                             @if(isset($categories))
                                 @foreach($categories as $key => $cate)
@@ -281,7 +281,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('site.post.index') }}">Tin tức</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('site.policy.index') }}">Chính sách</a>
+                        <a class="nav-link" href="#">Chính sách</a>
                         <ul class="sub-menu">
                             @if(isset($policies))
                                 @foreach($policies as $policy)
@@ -300,10 +300,10 @@
                 <div class="menu-search f-right bbbbb">
                     <div class="header_search search_form">
                         <form class="input-group search-bar search_form"
-                              action="https://shop1.jweb.com.vn/tim-kiem.html" method="get" role="search">
-                            <input type="search" name="tu-khoa" value="" placeholder="Tìm sản phẩm"
+                              action="{{ route('site.search.index') }}" method="get" role="search">
+                            <input type="search" name="tukhoa" value="" placeholder="Tìm sản phẩm"
                                    class="input-group-field st-default-search-input search-text auto-search"
-                                   autocomplete="off">
+                                   autocomplete="off" required>
                             <span class="input-group-btn">
 										<button class="btn icon-fallback-text">
 											<i class="fa fa-search"></i>
@@ -335,8 +335,8 @@
                         <li class="li-search">
                             <div class="header_search search_form">
                                 <form class="input-group search-bar search_form"
-                                      action="https://shop1.jweb.com.vn/tim-kiem.html" method="get" role="search">
-                                    <input type="search" name="tu-khoa" value="" placeholder="Tìm sản phẩm"
+                                      action="{{ route('site.search.index') }}" method="get" role="search">
+                                    <input type="search" name="tukhoa" value="" placeholder="Tìm sản phẩm"
                                            class="input-group-field st-default-search-input search-text"
                                            autocomplete="off">
                                     <span class="input-group-btn">
@@ -356,10 +356,10 @@
                         MENU
                     </li>
                     <li class="nav-item "><a class="nav-link" href="{{route('site.home')}}">Trang chủ</a></li>
-                    <li class="nav-item "><a class="nav-link" href="#">Giới thiệu</a></li>
-                    <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>
-                    <li class="nav-item "><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>
-                    <li class="nav-item "><a class="nav-link" href="tin-tuc.html">Tin tức</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{ route('site.about_us.index') }}">Giới thiệu</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{ route('site.category.index') }}">Sản phẩm</a></li>
+                    <li class="nav-item "><a class="nav-link" href="{{ route('site.post.index') }}">Tin tức</a></li>
+                    <li class="nav-item "><a class="nav-link" href="#">Chính sách</a></li>
                     <li class="nav-item "><a class="nav-link" href="{{route('site.contact.index')}}">Liên hệ</a></li>
                 </ul>
             </div>

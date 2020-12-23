@@ -1,5 +1,20 @@
 function subscribe() {
+    $('.error').text("");
+    $('.error').hide();
     $email = $('#email_subscribe').val();
+    if($email == ''){
+        $('.error').show();
+        $('.error').text("Bạn chưa nhập email");
+        return false;
+    }
+    var atposition = $email.indexOf("@");
+    var dotposition = $email.lastIndexOf(".");
+    if (atposition < 1 || dotposition < (atposition + 2)
+        || (dotposition + 2) >= x.length) {
+        $('.error').show();
+        $('.error').text("Vui lòng nhập đúng định dang email.");
+        return false;
+    }
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -230,6 +230,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'comment'], function () {
 
         Route::get('', [CommentController::class, 'index'])->name('admin.comment.index');
+
+        Route::post('show-home', [CommentController::class, 'show_home'])->name('admin.comment.show_home');
+
+
         Route::get('create', [CommentController::class, 'create'])->name('admin.comment.create');
         Route::post('create', [CommentController::class, 'store']);
 

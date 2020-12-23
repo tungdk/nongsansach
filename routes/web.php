@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Site\AboutUsController;
 use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\FavouriteController;
 use App\Http\Controllers\Site\PolicyController;
 use App\Http\Controllers\Site\PostController;
+use App\Http\Controllers\Site\SearchController;
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\Site\HomeController;
@@ -36,14 +38,17 @@ use Laravel\Fortify\Http\Controllers\VerifyEmailController;
 
 //website
 Route::get('',  [HomeController::class,'index']);
-Route::get('home',  [HomeController::class,'index'])->name('site.home');
+Route::get('trang-chu',  [HomeController::class,'index'])->name('site.home');
 
 //login
-Route::get('login',  [AuthController::class,'login'])->name('site.login.get');
+Route::get('dang-nhap',  [AuthController::class,'login'])->name('site.login.get');
 Route::post('login',  [AuthController::class,'postLogin'])->name('site.login.post');
 
-Route::get('register', [AuthController::class, 'register'])->name('site.register.get');
+Route::get('dang-ky', [AuthController::class, 'register'])->name('site.register');
 Route::post('register', [AuthController::class, 'postRegister'])->name('site.register.post');
+
+//logout
+Route::get('logout',  [AuthController::class,'logout'])->name('site.logout');
 
 
 //Xác thực link đã gửi qua mail
@@ -56,22 +61,17 @@ Route::post('resend/verify/email', [AuthController::class, 'resend_email'])->nam
 Route::get('/auth/redirect/{provider}', [SocialController::class, 'redirect']);
 Route::get('/callback/{provider}', [SocialController::class, 'callback']);
 
-//logout
-Route::get('logout',  [AuthController::class,'logout'])->name('site.logout');
-
-Route::get('register',  [AuthController::class,'register'])->name('site.register');
-
 //product
-Route::get('product',  [SiteProductController::class,'detail'])->name('detail');
+Route::get('san-pham',  [SiteProductController::class,'detail'])->name('detail');
 
 //contact
-Route::get('contact', [SiteContactController::class, 'index'])->name('site.contact.index');
+Route::get('lien-he', [SiteContactController::class, 'index'])->name('site.contact.index');
 Route::post('contact', [SiteContactController::class, 'store'])->name('site.contact.store');
 
 Route::group(['middleware'=>'auth:web'], function (){
 
     //cart
-    Route::group(['prefix'=>'cart'], function (){
+    Route::group(['prefix'=>'gio-hang'], function (){
         Route::get('', [SiteCartController::class, 'index'])->name('site.cart.index');
         Route::get('add/{id}/{quantity}', [SiteCartController::class, 'add'])->name('site.cart.add');
         Route::post('update', [SiteCartController::class, 'update'])->name('site.cart.update');
@@ -79,9 +79,9 @@ Route::group(['middleware'=>'auth:web'], function (){
     });
 
     //user
-    Route::group(['prefix'=>'user'], function (){
+    Route::group(['prefix'=>'khach-hang'], function (){
         Route::get('', [SiteUserController::class, 'index'])->name('site.user.index');
-        Route::group(['prefix'=>'account'], function (){
+        Route::group(['prefix'=>'tai-khoan'], function (){
             Route::get('profile', [SiteUserController::class, 'profile'])->name('site.user.account.profile');
             Route::post('profile', [SiteUserController::class, 'update_profile'])->name('site.user.account.update_profile');
             Route::get('password', [SiteUserController::class, 'password'])->name('site.user.account.password');
@@ -110,12 +110,12 @@ Route::group(['middleware'=>'auth:web'], function (){
 
 
 
-Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product'])->name('site.product.detail');
+Route::get('san-pham/{id}/{slug}', [SiteProductController::class, 'detail_product'])->name('site.product.detail');
 
 
 //category
-Route::get('category/{id}/{slug}',[SiteCategoryController::class, 'detail'])->name('site.category.detail');
-Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
+Route::get('danh-muc/{id}/{slug}',[SiteCategoryController::class, 'detail'])->name('site.category.detail');
+Route::get('danh-muc',[SiteCategoryController::class, 'index'])->name('site.category.index');
 
 
 Route::post('subscribe', [SiteController::class, 'subscribe'])->name('site.subscribe');
@@ -126,10 +126,12 @@ Route::post('load_comment', [SiteCommentController::class, 'load_comment'])->nam
 
 Route::post('count_cart', [SiteController::class, 'count_cart'])->name('site.count.cart');
 
-Route::get('policy', [PolicyController::class, 'index'])->name('site.policy.index');
-Route::get('policy/{id}/{slug}', [PolicyController::class, 'detail'])->name('site.policy.detail');
+Route::get('chinh-sach/{id}/{slug}', [PolicyController::class, 'detail'])->name('site.policy.detail');
 
-Route::get('post', [PostController::class, 'index'])->name('site.post.index');
-Route::get('post/{id}/{slug}', [PostController::class, 'detail'])->name('site.post.detail');
+Route::get('tin-tuc', [PostController::class, 'index'])->name('site.post.index');
+Route::get('tin-tuc/{id}/{slug}', [PostController::class, 'detail'])->name('site.post.detail');
 
+Route::get('gioi-thieu', [AboutUsController::class, 'index'])->name('site.about_us.index');
+
+Route::get('tim-kiem', [SearchController::class, 'index'])->name('site.search.index');
 Route::get('test', [SiteController::class, 'test']);

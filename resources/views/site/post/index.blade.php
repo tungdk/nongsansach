@@ -49,8 +49,8 @@
                         <div class="container width-100per">
                             <!-- begin product-bottom.php -->
                             <div class="section-title a-center">
-                                <h2><a href="san-pham-noi-bat.html">Sản phẩm liên quan</a></h2>
-                                <p>Có phải bạn đang tìm những sản phẩm dưới đây</p>
+                                <h2><a href="san-pham-noi-bat.html">Tin tức liên quan</a></h2>
+                                <p>Có phải bạn đang tìm những tin tức dưới đây</p>
                             </div>
                             <div class="owl-carousel" data-lgg-items="4" data-lg-items="4" data-md-items="4"
                                  data-sm-items="3" data-xs-items="2" data-xss-items="2" data-nav="true">
@@ -59,101 +59,7 @@
                         </div>
                     </section>
                 </div>
-                <div class="dqdt-sidebar sidebar right left-content col-lg-3">
-                    <!-- beign layoutRight -->
-                    <!-- sidebar_news_recent.php -->
-                    <div class="blog-aside aside-item">
-                        <div>
-                            <div class="aside-title mb-4">
-                                <h2 class="title-head"><a href="#">Sản phẩm mới</a></h2>
-                            </div>
-                            <div class="aside-content">
-                                <div class="blog-list blog-image-list">
-                                    ???
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end sidebar_news_recent.php --><!-- sidebar_category.php -->
-                    <div class="aside-vetical-menu">
-                        <aside class="aside-item sidebar-category collection-category">
-                            <div class="aside-title">
-                                <h2 class="title-head margin-top-0"><span>Chuyên mục</span></h2>
-                            </div>
-                            <div class="aside-content">
-                                <nav class="nav-category navbar-toggleable-md">
-                                </nav>
-                            </div>
-                        </aside>
-                    </div>
-                    <!-- end sidebar_category.php --><!-- sidebar_product_recent.php -->
-                    <div class="aside-item aside-mini-list-product mb-5">
-                        <div>
-                            <div class="aside-title">
-                                <h2 class="title-head">
-                                    <a href="#" title="Sản phẩm mới">Sản phẩm mới</a>
-                                </h2>
-                            </div>
-                            <div class="aside-content related-product">
-                                <div class="product-mini-lists">
-                                    <div class="products">
-                                        <div class="row row-noGutter">
-                                            <div class="col-sm-12">
-                                                @foreach($recent_products as $product)
-                                                    <div class="product-mini-item clearfix on-sale">
-                                                        <div class="product-img relative">
-                                                            <a href="{{route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->slug])}}">
-                                                                <img src="{{ asset('site/images/lazyload.svg') }}"
-                                                                     data-lazyload="{{ asset('site/images/lazyload.svg') }}"
-                                                                     alt="{{$product->name}}">
-
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <h3>
-                                                                <a href="{{route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->slug])}}"
-                                                                   title="{{$product->name}}"
-                                                                   class="product-name">{{$product->name}}</a>
-                                                            </h3>
-                                                            <div class="price-box">
-                                                                <span class="price"><span
-                                                                        class="price product-price">{{$product->price}}</span> </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <!-- /.products -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end sidebar_product_recent.php --><!-- sidebar_category.php -->
-                    <div class="aside-vetical-menu">
-                        <aside class="aside-item sidebar-category collection-category">
-                            <div class="aside-title">
-                                <h2 class="title-head margin-top-0"><span>Danh mục</span></h2>
-                            </div>
-                            <div class="aside-content">
-
-                                <nav class="nav-category navbar-toggleable-md">
-                                    <ul class="nav navbar-pills">
-                                        <li class="nav-item nav-collapse"><i class="fa fa-arrow-circle-right"
-                                                                             aria-hidden="true"></i><a
-                                                href="danh-muc/aaaaa.html" class="nav-link" data-toggle="collapse"
-                                                data-target="#aaaaa">AAAAA</a>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </aside>
-                    </div>
-                    <!-- end sidebar_category.php -->                <!-- end layoutRight -->
-                </div>
+                @include('site.partials.sidebar-right')
             </div>
         </div>
     </section>

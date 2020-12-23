@@ -1,5 +1,5 @@
 @extends('layouts.layout_site')
-@section('title', 'Chính sách')
+@section('title', 'Giới thiệu')
 @section('content')
     <section class="bread_crumb py-4">
         <div class="container">
@@ -11,49 +11,25 @@
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
 
-                        <li><strong><span itemprop="title">Chính sách</span></strong></li>
+                        <li><strong><span itemprop="title">Giới thiệu</span></strong></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    <section class="product " itemscope="" itemtype="http://schema.org/Product">
-        <meta itemprop="name" content="Vải thiều loại to">
-        <meta itemprop="url" content="//dualeo-x.bizwebvietnam.net/cherry-do-canada-loai-to">
-        <meta itemprop="image"
-              content="../bizweb.dktcdn.net/thumb/grande/100/308/325/products/kf57fd708888943c073792a327aeb51a63.jpg?v=1524537033277">
-
-        <meta itemprop="model" content="">
-
-        <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-            <meta itemprop="price" content="80.000₫">
-
-            <meta itemprop="priceCurrency" content="VND">
-        </div>
-        <meta itemprop="description"
-              content="Giá trị dinh dưỡng:   Nho tươi cung cấp các chất dinh dưỡng, làm giảm mệt nhọc ngay lập tức....">
-
-        <div itemprop="brand" itemscope="" itemtype="http://schema.org/Organization">
-            <span class="hidden" itemprop="name">Canada</span>
-        </div>
+    <section class="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
                     <!-- begin layoutContent -->
                     <!-- begin product.php -->
                     <div class="details-product">
-                        @if(isset($policies))
-                            @foreach($policies as $policy)
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        {{ $policy->name }}
-                                    </div>
-                                    <div class="col-md-5">
-                                        {{ $policy->description }}
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endif
+                        <div class="row">
+                            <div class="col-md-12">
+                                {!! $about_us->about_us !!}
+                            </div>
+                        </div>
+
                     </div>
                     <!-- end product.php -->                <!-- end layoutContent -->
                     <section class="section featured-product wow fadeInUp mb-4">

@@ -2,7 +2,7 @@
     <div class="section section_blog">
         <div class="container">
             <div class="section-title a-center">
-                <h2><a href="#">Tin tức</a></h2>
+                <h2><a href="{{ route('site.post.index') }}">Tin tức</a></h2>
             </div>
             <div class="section-content">
                 <div class="blog-slider owl-carousel" data-lg-items='4' data-md-items='3' data-sm-items='2'

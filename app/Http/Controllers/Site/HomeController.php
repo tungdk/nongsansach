@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Product;
@@ -74,7 +75,15 @@ class HomeController extends SiteController
             ->limit(8)
             ->get(['id', 'title', 'slug', 'thumbnail']);
 
+        //Lấy ra các bình luận
 
+        $comments = Comment::query()
+            ->where([
+                ['status', 1],
+                ['show_home', 1]
+            ])
+            ->orderByDesc('created_at')
+            ->get(['id', 'content', 'user_id']);
         //dữ liệu cần show
         $viewData = [
             'recent_products' => $recent_products,
@@ -83,7 +92,8 @@ class HomeController extends SiteController
             'partner' => $partners,
             'products_cate' => $products_cate,
             'posts' => $posts,
-            'hot_products' => $hot_products
+            'hot_products' => $hot_products,
+            'comments' => $comments
         ];
         return view('site.home.index', $viewData);
     }

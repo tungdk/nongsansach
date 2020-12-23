@@ -32,7 +32,8 @@
                         <th style="width: 15%">Khách hàng</th>
                         <th style="width: 30%">Bình luận</th>
                         <th style="width: 30%">Sản phẩm</th>
-                        <th style="width: 15%">Ngày tạo</th>
+                        <th style="width: 10%">Ngày tạo</th>
+                        <th style="width: 10%">Hiện trang chủ</th>
                         <th style="width: 10%">Trạng thái</th>
 {{--                        <th style="width: 20%">Thao tác</th>--}}
                     </tr>
@@ -52,6 +53,10 @@
                                 </td>
                                 <td>{{ $cmt->product->name }}</td>
                                 <td>{{ $cmt->created_at }}</td>
+                                <td style="text-align: center">
+                                    <input type="checkbox" {{ $cmt->show_home==1 ? 'checked' : ''}} name="checkbox_showhome" onclick="change_show_home({{ $cmt->id }})">
+
+                                </td>
                                 <td>
                                     @if($cmt->status == 1)
                                         <a href="{{route('admin.comment.active', $cmt->id)}}"
@@ -83,3 +88,28 @@
     <!-- /.content -->
 @endsection
 
+@section('js')
+    <script>
+        function change_show_home(id){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+               type: 'post',
+               url: '{{ route('admin.comment.show_home') }}',
+                data: {
+                    'id': id
+                },
+                success:function (data){
+                    toastr.success(data.message, 'Thành công')
+                },
+                error:function (data){
+                    toastr.error("Có lỗi xảy ra, liên hệ quản trị viên", 'Thất bại')
+
+                }
+            });
+        }
+    </script>
+@endsection

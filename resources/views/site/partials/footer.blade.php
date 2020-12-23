@@ -4,7 +4,6 @@
             <div class="footer-inner padding-top-35 pb-lg-5">
                 <div class="container">
                     <div class="row">
-
                         <div class="col-xs-12 col-sm-6 col-lg-4">
                             <div class="footer-widget">
                                 <h3 class="hastog"><span>Liên hệ</span></h3>
@@ -50,16 +49,22 @@
                         <div class="col-xs-12 col-sm-6 col-lg-4">
                             <div class="footer-widget">
                                 <h3 class="hastog"><span>Đăng ký nhận thông tin</span></h3>
-                                <form action="">
-                                    <input type="email" name="email_subscribe" id="email_subscribe" required>
-                                    <button type="button" onclick="subscribe()">Gửi</button>
-                                </form>
-                                <div class="footer__widget__social" style="color: white; font-size: 30px">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <div class="list-menu">
+                                    <form action="">
+                                        <input type="email" name="email_subscribe" id="email_subscribe" placeholder="Email..." required style="width: 280px; border-radius: 15px;">
+                                        <div>
+                                            <span class="error" style="color: red" hidden></span>
+                                        </div>
+                                        <button type="button" class="btn btn-primary" onclick="subscribe()" style="border-radius: 20px">Đăng ký</button>
+                                    </form>
+                                    <div class="footer__widget__social" style="color: white; font-size: 30px">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
