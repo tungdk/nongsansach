@@ -7,7 +7,8 @@
                     <ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
 
                         <li class="home">
-                            <a itemprop="url" href="{{ route('site.home') }}" ><span itemprop="title">Trang chủ</span></a>
+                            <a itemprop="url" href="{{ route('site.home') }}"><span
+                                    itemprop="title">Trang chủ</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
 
@@ -22,7 +23,8 @@
         <div class="box-heading hidden relative">
             <h1 class="title-head">Liên hệ</h1>
         </div>
-        <h2 class="title-head"><span> Gửi tin nhắn cho chúng tôi</span> <b style="color: green">{{session('success')?? ''}}</b></h2>
+        <h2 class="title-head"><span> Gửi tin nhắn cho chúng tôi</span> <b
+                style="color: green">{{session('success')?? ''}}</b></h2>
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
@@ -35,7 +37,9 @@
                                     <div class="row row-8Gutter">
                                         <div class="col-md-12">
                                             <fieldset class="form-group">
-                                                <input type="text" placeholder="Họ tên*" name="name" id="name" class="form-control  form-control-lg" required value="{{old('name')}}">
+                                                <input type="text" placeholder="Họ tên*" name="name" id="name"
+                                                       class="form-control  form-control-lg" required
+                                                       value="{{old('name')}}">
                                             </fieldset>
                                             @if($errors->first('name'))
                                                 <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -43,7 +47,9 @@
                                         </div>
                                         <div class="col-md-12">
                                             <fieldset class="form-group">
-                                                <input type="tel" placeholder="Điện thoại*" name="phone" class="form-control form-control-lg fixnumber" required value="{{old('phone')}}">
+                                                <input type="tel" placeholder="Điện thoại*" name="phone"
+                                                       class="form-control form-control-lg fixnumber" required
+                                                       value="{{old('phone')}}">
                                             </fieldset>
                                             @if($errors->first('phone'))
                                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
@@ -51,7 +57,11 @@
                                         </div>
                                         <div class="col-md-12">
                                             <fieldset class="form-group">
-                                                <input type="email" placeholder="Email*" name="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$" data-validation="email" id="email" class="form-control form-control-lg" required value="{{old('email')}}">
+                                                <input type="email" placeholder="Email*" name="email"
+                                                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$"
+                                                       data-validation="email" id="email"
+                                                       class="form-control form-control-lg" required
+                                                       value="{{old('email')}}">
                                             </fieldset>
                                             @if($errors->first('email'))
                                                 <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -59,13 +69,17 @@
                                         </div>
                                     </div>
                                     <fieldset class="form-group">
-                                        <textarea placeholder="Nhập nội dung*" id="message" name="message" class="form-control form-control-lg" rows="6" Required>{{old('message')}}</textarea>
+                                        <textarea placeholder="Nhập nội dung*" id="message" name="message"
+                                                  class="form-control form-control-lg" rows="6"
+                                                  Required>{{old('message')}}</textarea>
                                     </fieldset>
                                     @if($errors->first('message'))
                                         <span class="text-danger">{{ $errors->first('message') }}</span>
                                     @endif
                                     <div>
-                                        <button tyle="summit" class="btn btn-primary" style="padding:0 40px;text-transform: inherit;">Gửi liên hệ</button>
+                                        <button tyle="summit" class="btn btn-primary"
+                                                style="padding:0 40px;text-transform: inherit;">Gửi liên hệ
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -74,17 +88,16 @@
                     <div class="col-md-6">
                         <div class="contact-box-info clearfix margin-bottom-30">
                             <div>
-
                                 <div class="item">
-
                                     <div><i class="fa fa-map-marker"></i>
-                                        <div class="info">
+                                        <div class="info" style="margin-bottom: 20px">
                                             <label>Địa chỉ liên hệ</label>
                                             {{ $setting->slogan }}
                                         </div>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.233882486378!2d106.00525871426781!3d21.103239790608892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135093744b86b21%3A0xf38545808d0b318e!2zWGUgTsOibmcgQuG6r2MgTmluaA!5e0!3m2!1svi!2s!4v1591957554823!5m2!1svi!2s" width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-                                </div>
+                                        <iframe src="{!! $setting->map !!}" width="100%" height="auto" frameborder="0"
+                                                style="border:0;" allowfullscreen="" aria-hidden="false"
+                                                tabindex="0"></iframe>
+                                    </div>
 
                                     <div>
                                         <i class="fa fa-phone"></i>

@@ -44,7 +44,7 @@
 
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $partner->name }}</td>
-                                <td>{{ $partner->logo }}</td>
+                                <td><img src="{{ asset('uploads/partners/'.$partner->logo) }}" alt="{{ $partner->name }}" style="width: 150px"></td>
                                 <td>{{ $partner->created_at }}</td>
                                 <td>
                                     @if($partner->status == 1)

@@ -22,7 +22,7 @@ class PartnerController extends Controller
     public function store(PartnerRequest $request){
         $partner = new Partner();
         $partner->name = $request->name;
-        $partner->logo = $request->logo;
+        $partner->logo = upload_image('partners', $request->logo);
         $partner->status = $request->status ? '1' : '0';
         $success = $partner->save();
         if($success){
@@ -41,11 +41,11 @@ class PartnerController extends Controller
     }
 
     public function update(PartnerRequest $request, $id){
-        $partner = Partner::find($id);
+        $partner = Partner::query()->findOrFail($id);
         $data = $request->except('_token', 'status', 'logo');
         $data['status'] = $request->status ? '1' : '0';
         if(isset($request->logo)){
-            $data['logo'] = $request->logo;
+            $data['logo'] = upload_image('partners', $request->logo);
         }
         $data['updated_at'] = Carbon::now();
         $success = $partner->update($data);

@@ -58,10 +58,10 @@
                                         <button type="button" class="btn btn-primary" onclick="subscribe()" style="border-radius: 20px">Đăng ký</button>
                                     </form>
                                     <div class="footer__widget__social" style="color: white; font-size: 30px">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                        <a href="https://facebook.com/nongsansach" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        <a href="https://instagram.com/nongsansach" target="_blank"><i class="fa fa-instagram"></i></a>
+                                        <a href="https://twitter.com/nongsansach" target="_blank"><i class="fa fa-twitter"></i></a>
+                                        <a href="https://pinterest.com/nongsansach" target="_blank"><i class="fa fa-pinterest"></i></a>
                                     </div>
                                 </div>
 

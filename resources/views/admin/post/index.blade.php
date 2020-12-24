@@ -53,7 +53,7 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>
-                                    <img src="{{pare_url_file($post->thumbnail) }}"
+                                    <img src="{{ asset('uploads/posts/'.$post->thumbnail) }}"
                                          style="width: 80px; height: 80px" alt="">
                                 </td>
                                 <td>{{ $post->postcate->name }}</td>

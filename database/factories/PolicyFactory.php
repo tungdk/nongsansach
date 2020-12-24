@@ -1,51 +1,32 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
-use App\Models\Admin;
 use App\Models\Policy;
-use App\Models\Setting;
-use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
-class DatabaseSeeder extends Seeder
+class PolicyFactory extends Factory
 {
     /**
-     * Seed the application's database.
+     * The name of the factory's corresponding model.
      *
-     * @return void
+     * @var string
      */
-    public function run()
+    protected $model = Policy::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
     {
-//         User::factory(1)->create();
-//         Admin::factory(1)->create();
-//         Setting::factory(1)->create();
-//         Policy::factory(1)->create();
-//        DB::table('admins')->insert([
-//            'name' => 'Admin',
-//            'email' => 'admin@gmail.com',
-//            'password' => Hash::make('123456'),
-//            'phone' => '0123456789',
-//            'created_at' => Carbon::now()
-//        ]);
-//
-//        DB::table('users')->insert([
-//           'name' => 'Đinh Khắc Tùng',
-//           'email' => 'tungdk228@gmail.com',
-//           'address' => 'Hà Nội',
-//           'phone' => '012345678',
-//           'confirmed' => 1,
-//           'password' => Hash::make('123456'),
-//           'created_at' => Carbon::now()
-//        ]);
-
-        DB::table('policies')->insert([
-            'name' => 'Chính sách bảo mật',
-            'slug' => 'chinh-sach-bao-mat',
-            'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
+        return [
+            [
+                'name' => 'Chính sách bảo mật',
+                'slug' => 'chinh-sach-bao-mat',
+                'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;www.nongsansachvietnam.vn cam kết sẽ bảo mật những th&ocirc;ng tin mang t&iacute;nh ri&ecirc;ng tư của kh&aacute;ch h&agrave;ng. Qu&yacute; kh&aacute;ch vui l&ograve;ng đọc bản &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; dưới đ&acirc;y để hiểu hơn những cam kết m&agrave; ch&uacute;ng t&ocirc;i thực hiện, nhằm t&ocirc;n trọng v&agrave; bảo vệ quyền lợi của người truy cập:</p>
 
@@ -101,16 +82,15 @@ class DatabaseSeeder extends Seeder
 <p>&nbsp;&nbsp;&nbsp;&nbsp;- V&igrave; vậy, bạn đ&atilde; đồng &yacute; rằng, khi bạn sử dụng website của ch&uacute;ng t&ocirc;i sau khi chỉnh sửa nghĩa l&agrave; bạn đ&atilde; thừa nhận, đồng &yacute; tu&acirc;n thủ cũng như tin tưởng v&agrave;o sự chỉnh sửa n&agrave;y. Do đ&oacute;, ch&uacute;ng t&ocirc;i đề nghị bạn n&ecirc;n xem trước nội dung trang n&agrave;y trước khi truy cập c&aacute;c nội dung kh&aacute;c tr&ecirc;n website cũng như bạn n&ecirc;n đọc v&agrave; tham khảo kỹ nội dung &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; của từng website m&agrave; bạn đang truy cập.</p>
 
 <div class="ddict_btn" style="left:1666.25px; top:1094px"><img src="chrome-extension://bpggmmljdiliancllaapiggllnkbjocb/logo/16.png" /></div>',
-            'status' => 1,
-            'description' => 'ádsđâsđấ',
-            'created_at' => \Illuminate\Support\Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('policies')->insert([
-            'name' => 'Thoả thuận sử dụng',
-            'slug' => 'thoa-thuan-su-dung',
-            'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
+                'status' => 1,
+                'description' => 'ádsđâsđấ',
+                'created_at' => Carbon::now(),
+                'update_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Thoả thuận sử dụng',
+                'slug' => 'thoa-thuan-su-dung',
+                'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;www.nongsansachvietnam.vn cam kết sẽ bảo mật những th&ocirc;ng tin mang t&iacute;nh ri&ecirc;ng tư của kh&aacute;ch h&agrave;ng. Qu&yacute; kh&aacute;ch vui l&ograve;ng đọc bản &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; dưới đ&acirc;y để hiểu hơn những cam kết m&agrave; ch&uacute;ng t&ocirc;i thực hiện, nhằm t&ocirc;n trọng v&agrave; bảo vệ quyền lợi của người truy cập:</p>
 
@@ -166,16 +146,15 @@ class DatabaseSeeder extends Seeder
 <p>&nbsp;&nbsp;&nbsp;&nbsp;- V&igrave; vậy, bạn đ&atilde; đồng &yacute; rằng, khi bạn sử dụng website của ch&uacute;ng t&ocirc;i sau khi chỉnh sửa nghĩa l&agrave; bạn đ&atilde; thừa nhận, đồng &yacute; tu&acirc;n thủ cũng như tin tưởng v&agrave;o sự chỉnh sửa n&agrave;y. Do đ&oacute;, ch&uacute;ng t&ocirc;i đề nghị bạn n&ecirc;n xem trước nội dung trang n&agrave;y trước khi truy cập c&aacute;c nội dung kh&aacute;c tr&ecirc;n website cũng như bạn n&ecirc;n đọc v&agrave; tham khảo kỹ nội dung &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; của từng website m&agrave; bạn đang truy cập.</p>
 
 <div class="ddict_btn" style="left:1666.25px; top:1094px"><img src="chrome-extension://bpggmmljdiliancllaapiggllnkbjocb/logo/16.png" /></div>',
-            'status' => 1,
-            'description' => 'ádsđâsđấ',
-            'created_at' => \Illuminate\Support\Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('policies')->insert([
-            'name' => 'Chính sách vận chuyển',
-            'slug' => 'chin-sach-van-chuyen',
-            'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
+                'status' => 1,
+                'description' => 'ádsđâsđấ',
+                'created_at' => Carbon::now(),
+                'update_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Chính sách vận chuyển',
+                'slug' => 'chin-sach-van-chuyen',
+                'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;www.nongsansachvietnam.vn cam kết sẽ bảo mật những th&ocirc;ng tin mang t&iacute;nh ri&ecirc;ng tư của kh&aacute;ch h&agrave;ng. Qu&yacute; kh&aacute;ch vui l&ograve;ng đọc bản &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; dưới đ&acirc;y để hiểu hơn những cam kết m&agrave; ch&uacute;ng t&ocirc;i thực hiện, nhằm t&ocirc;n trọng v&agrave; bảo vệ quyền lợi của người truy cập:</p>
 
@@ -231,16 +210,15 @@ class DatabaseSeeder extends Seeder
 <p>&nbsp;&nbsp;&nbsp;&nbsp;- V&igrave; vậy, bạn đ&atilde; đồng &yacute; rằng, khi bạn sử dụng website của ch&uacute;ng t&ocirc;i sau khi chỉnh sửa nghĩa l&agrave; bạn đ&atilde; thừa nhận, đồng &yacute; tu&acirc;n thủ cũng như tin tưởng v&agrave;o sự chỉnh sửa n&agrave;y. Do đ&oacute;, ch&uacute;ng t&ocirc;i đề nghị bạn n&ecirc;n xem trước nội dung trang n&agrave;y trước khi truy cập c&aacute;c nội dung kh&aacute;c tr&ecirc;n website cũng như bạn n&ecirc;n đọc v&agrave; tham khảo kỹ nội dung &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; của từng website m&agrave; bạn đang truy cập.</p>
 
 <div class="ddict_btn" style="left:1666.25px; top:1094px"><img src="chrome-extension://bpggmmljdiliancllaapiggllnkbjocb/logo/16.png" /></div>',
-            'status' => 1,
-            'description' => 'ádsđâsđấ',
-            'created_at' => \Illuminate\Support\Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('policies')->insert([
-            'name' => 'Chính sách đổi trả hàng',
-            'slug' => 'chinh-sach-doi-tra-hang',
-            'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
+                'status' => 1,
+                'description' => 'ádsđâsđấ',
+                'created_at' => Carbon::now(),
+                'update_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Chính sách đổi trả hàng',
+                'slug' => 'chinh-sach-doi-tra-hang',
+                'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;www.nongsansachvietnam.vn cam kết sẽ bảo mật những th&ocirc;ng tin mang t&iacute;nh ri&ecirc;ng tư của kh&aacute;ch h&agrave;ng. Qu&yacute; kh&aacute;ch vui l&ograve;ng đọc bản &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; dưới đ&acirc;y để hiểu hơn những cam kết m&agrave; ch&uacute;ng t&ocirc;i thực hiện, nhằm t&ocirc;n trọng v&agrave; bảo vệ quyền lợi của người truy cập:</p>
 
@@ -296,16 +274,15 @@ class DatabaseSeeder extends Seeder
 <p>&nbsp;&nbsp;&nbsp;&nbsp;- V&igrave; vậy, bạn đ&atilde; đồng &yacute; rằng, khi bạn sử dụng website của ch&uacute;ng t&ocirc;i sau khi chỉnh sửa nghĩa l&agrave; bạn đ&atilde; thừa nhận, đồng &yacute; tu&acirc;n thủ cũng như tin tưởng v&agrave;o sự chỉnh sửa n&agrave;y. Do đ&oacute;, ch&uacute;ng t&ocirc;i đề nghị bạn n&ecirc;n xem trước nội dung trang n&agrave;y trước khi truy cập c&aacute;c nội dung kh&aacute;c tr&ecirc;n website cũng như bạn n&ecirc;n đọc v&agrave; tham khảo kỹ nội dung &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; của từng website m&agrave; bạn đang truy cập.</p>
 
 <div class="ddict_btn" style="left:1666.25px; top:1094px"><img src="chrome-extension://bpggmmljdiliancllaapiggllnkbjocb/logo/16.png" /></div>',
-            'status' => 1,
-            'description' => 'ádsđâsđấ',
-            'created_at' => \Illuminate\Support\Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('policies')->insert([
-            'name' => 'Hướng dẫn thanh toán',
-            'slug' => 'huong-dan-thanh-toan',
-            'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
+                'status' => 1,
+                'description' => 'ádsđâsđấ',
+                'created_at' => Carbon::now(),
+                'update_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Hướng dẫn thanh toán',
+                'slug' => 'huong-dan-thanh-toan',
+                'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;www.nongsansachvietnam.vn cam kết sẽ bảo mật những th&ocirc;ng tin mang t&iacute;nh ri&ecirc;ng tư của kh&aacute;ch h&agrave;ng. Qu&yacute; kh&aacute;ch vui l&ograve;ng đọc bản &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; dưới đ&acirc;y để hiểu hơn những cam kết m&agrave; ch&uacute;ng t&ocirc;i thực hiện, nhằm t&ocirc;n trọng v&agrave; bảo vệ quyền lợi của người truy cập:</p>
 
@@ -361,16 +338,15 @@ class DatabaseSeeder extends Seeder
 <p>&nbsp;&nbsp;&nbsp;&nbsp;- V&igrave; vậy, bạn đ&atilde; đồng &yacute; rằng, khi bạn sử dụng website của ch&uacute;ng t&ocirc;i sau khi chỉnh sửa nghĩa l&agrave; bạn đ&atilde; thừa nhận, đồng &yacute; tu&acirc;n thủ cũng như tin tưởng v&agrave;o sự chỉnh sửa n&agrave;y. Do đ&oacute;, ch&uacute;ng t&ocirc;i đề nghị bạn n&ecirc;n xem trước nội dung trang n&agrave;y trước khi truy cập c&aacute;c nội dung kh&aacute;c tr&ecirc;n website cũng như bạn n&ecirc;n đọc v&agrave; tham khảo kỹ nội dung &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; của từng website m&agrave; bạn đang truy cập.</p>
 
 <div class="ddict_btn" style="left:1666.25px; top:1094px"><img src="chrome-extension://bpggmmljdiliancllaapiggllnkbjocb/logo/16.png" /></div>',
-            'status' => 1,
-            'description' => 'ádsđâsđấ',
-            'created_at' => \Illuminate\Support\Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('policies')->insert([
-            'name' => 'Chính sách bảo hành',
-            'slug' => 'chinh-sach-bao-hanh',
-            'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
+                'status' => 1,
+                'description' => 'ádsđâsđấ',
+                'created_at' => Carbon::now(),
+                'update_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Chính sách bảo hành',
+                'slug' => 'chinh-sach-bao-hanh',
+                'content' => '<p>Ch&iacute;nh s&aacute;ch bảo mật<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;www.nongsansachvietnam.vn cam kết sẽ bảo mật những th&ocirc;ng tin mang t&iacute;nh ri&ecirc;ng tư của kh&aacute;ch h&agrave;ng. Qu&yacute; kh&aacute;ch vui l&ograve;ng đọc bản &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; dưới đ&acirc;y để hiểu hơn những cam kết m&agrave; ch&uacute;ng t&ocirc;i thực hiện, nhằm t&ocirc;n trọng v&agrave; bảo vệ quyền lợi của người truy cập:</p>
 
@@ -426,11 +402,11 @@ class DatabaseSeeder extends Seeder
 <p>&nbsp;&nbsp;&nbsp;&nbsp;- V&igrave; vậy, bạn đ&atilde; đồng &yacute; rằng, khi bạn sử dụng website của ch&uacute;ng t&ocirc;i sau khi chỉnh sửa nghĩa l&agrave; bạn đ&atilde; thừa nhận, đồng &yacute; tu&acirc;n thủ cũng như tin tưởng v&agrave;o sự chỉnh sửa n&agrave;y. Do đ&oacute;, ch&uacute;ng t&ocirc;i đề nghị bạn n&ecirc;n xem trước nội dung trang n&agrave;y trước khi truy cập c&aacute;c nội dung kh&aacute;c tr&ecirc;n website cũng như bạn n&ecirc;n đọc v&agrave; tham khảo kỹ nội dung &ldquo;Ch&iacute;nh s&aacute;ch bảo mật&rdquo; của từng website m&agrave; bạn đang truy cập.</p>
 
 <div class="ddict_btn" style="left:1666.25px; top:1094px"><img src="chrome-extension://bpggmmljdiliancllaapiggllnkbjocb/logo/16.png" /></div>',
-            'status' => 1,
-            'description' => 'ádsđâsđấ',
-            'created_at' => \Illuminate\Support\Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
+                'status' => 1,
+                'description' => 'ádsđâsđấ',
+                'created_at' => Carbon::now(),
+                'update_at' => Carbon::now()
+            ]
+        ];
     }
 }

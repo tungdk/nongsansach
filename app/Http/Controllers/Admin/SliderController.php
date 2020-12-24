@@ -22,10 +22,13 @@ class SliderController extends Controller
     }
 
     public function store(SliderRequest $request){
-        $data = $request->except('_token', 'status');
+        $data = $request->except('_token', 'status', 'thumbnail');
         $data['status'] = $request->status ? '1' : '0';
         $data['created_at'] = Carbon::now();
-        $success = Slider::insertGetId($data);
+        if($request->thumbnail){
+            $data['thumbnail'] = upload_image('sliders', $request->thumbnail);
+        }
+        $success = Slider::query()->insertGetId($data);
         if($success){
             Session::flash('toastr',[
                 'type'  =>  'success',

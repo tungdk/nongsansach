@@ -43,7 +43,7 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $slider->title }}</td>
-                                        <td>{{ $slider->image }}</td>
+                                        <td><img src="{{ asset('uploads/sliders/'.$slider->thumbnail) }}" alt="{{$slider->name}}" style="width: 150px"></td>
                                         <td>
                                             @if($slider->status == 1)
                                                 <a href="{{route('admin.slider.active', $slider->id)}}"

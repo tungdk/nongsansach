@@ -32,9 +32,7 @@ class PostController extends Controller
         $data = $request->except('_token', 'thumbnail');
         $data['slug'] = Str::slug($request->title);
         if($request->thumbnail){
-            $image = upload_image('thumbnail');
-            if($image['code'] == 1)
-                $data['thumbnail'] = $image['name'];
+            $data['thumbnail'] = upload_image('posts', $request->thumbnail);
         }
         $data['status'] = $request->status ?? 0;
         $data['created_at'] = Carbon::now();
@@ -53,13 +51,11 @@ class PostController extends Controller
     }
 
     public function update(PostRequest $request, $id){
-        $post = Post::find($id);
+        $post = Post::query()->findOrFail($id);
         $data = $request->except('_token', 'thumbnail');
         $data['slug'] = Str::slug($request->title);
         if($request->thumbnail){
-            $image = upload_image('thumbnail');
-            if($image['code'] == 1)
-                $data['thumbnail'] = $image['name'];
+            $data['thumbnail'] = upload_image('posts', $request->thumbnail);
         }
         $data['updated_at'] = Carbon::now();
         $post->update($data);
@@ -67,20 +63,20 @@ class PostController extends Controller
     }
 
     public function active($id){
-        $post = Post::find($id);
+        $post = Post::query()->findOrFail($id);
         $post->status = ! $post->status;
         $post->save();
         return redirect()->back();
     }
 
     public function trash(){
-        $posts = Post::where('status',0)->get();
+        $posts = Post::query()->where('status',0)->get();
         $count_post = count($posts);
         return view('admin.post.trash', compact('posts','count_post'));
     }
 
     public function delete($id){
-        $post = Post::find($id);
+        $post = Post::query()->findOrFail($id);
         if($post) $post->delete();
         return redirect()->back();
     }

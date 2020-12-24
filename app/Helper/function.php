@@ -9,49 +9,64 @@ if (!function_exists('upload_image')) {
      * @param array $extend [ định dạng file có thể upload được]
      * @return array|int [ tham số trả về là 1 mảng - nếu lỗi trả về int ]
      */
-    function upload_image($file, $folder = '', array $extend = array())
-    {
-        $code = 1;
-        // lay duong dan anh
-        $baseFilename = public_path() . '/uploads/' . $_FILES[$file]['name'];
+//    function upload_image($file, $folder = '', array $extend = array())
+//    {
+//        $code = 1;
+//        // lay duong dan anh
+//        $baseFilename = public_path() . '/uploads/' . $_FILES[$file]['name'];
+//
+//        // thong tin file
+//        $info = new SplFileInfo($baseFilename);
+//
+//        // duoi file
+//        $ext = strtolower($info->getExtension());
+//
+//        // kiem tra dinh dang file
+//        if (!$extend)
+//            $extend = ['png', 'jpg', 'jpeg', 'webp'];
+//
+//        if (!in_array($ext, $extend))
+//            return $data['code'] = 0;
+//
+//        // Tên file mới
+//        $nameFile = trim(str_replace('.' . $ext, '', strtolower($info->getFilename())));
+//        $filename = date('Y-m-d__') . \Illuminate\Support\Str::slug($nameFile) . '.' . $ext;;
+//
+//        // thu muc goc de upload
+//        $path = public_path() . '/uploads/' . date('Y/m/d/');
+//        if ($folder)
+//            $path = public_path() . '/uploads/' . $folder . '/' . date('Y/m/d/');
+//
+//        if (!file_exists($path)) {
+//            mkdir($path, 0777, true);
+//        }
+//
+//        // di chuyen file vao thu muc uploads
+//        move_uploaded_file($_FILES[$file]['tmp_name'], $path . $filename);
+//
+//        $data = [
+//            'name' => $filename,
+//            'code' => $code,
+//            'path' => $path,
+//            'path_img' => 'uploads/' . $filename
+//        ];
+//
+//        return $data;
+//    }
+    function upload_image($folder, $image){
+        if (!is_null($image)) {
+            $fileExtension = $image->getClientOriginalExtension(); // Lấy . của file
 
-        // thong tin file
-        $info = new SplFileInfo($baseFilename);
+            // Filename cực shock để khỏi bị trùng
+            $fileName = time() . "_" . rand(0, 9999999) . "_" . md5(rand(0, 9999999)) . "." . $fileExtension;
 
-        // duoi file
-        $ext = strtolower($info->getExtension());
+            // Thư mục upload
+            $uploadPath = public_path('/uploads/' . $folder); // Thư mục upload
 
-        // kiem tra dinh dang file
-        if (!$extend)
-            $extend = ['png', 'jpg', 'jpeg', 'webp'];
-
-        if (!in_array($ext, $extend))
-            return $data['code'] = 0;
-
-        // Tên file mới
-        $nameFile = trim(str_replace('.' . $ext, '', strtolower($info->getFilename())));
-        $filename = date('Y-m-d__') . \Illuminate\Support\Str::slug($nameFile) . '.' . $ext;;
-
-        // thu muc goc de upload
-        $path = public_path() . '/uploads/' . date('Y/m/d/');
-        if ($folder)
-            $path = public_path() . '/uploads/' . $folder . '/' . date('Y/m/d/');
-
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
+            // Bắt đầu chuyển file vào thư mục
+            $image->move($uploadPath, $fileName);
+            return $fileName;
         }
-
-        // di chuyen file vao thu muc uploads
-        move_uploaded_file($_FILES[$file]['tmp_name'], $path . $filename);
-
-        $data = [
-            'name' => $filename,
-            'code' => $code,
-            'path' => $path,
-            'path_img' => 'uploads/' . $filename
-        ];
-
-        return $data;
     }
 
 }
