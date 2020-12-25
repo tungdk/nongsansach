@@ -75,41 +75,18 @@
                 <div class="container">
                     <div class="inner clearfix">
                         <div class="row">
-                            <div class="col-md-4    text-center text-lg-left">
-                                © Bản quyền thuộc về <b>Đinh Khắc Tùng</b>                                </div>
-{{--                            <div class="col-md-8 text-center text-lg-right hidden-xs">--}}
-{{--                                <ul class="list-menu-footer">--}}
-{{--                                    <li>--}}
-{{--                                        <a href="index.html">Trang chủ</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li>--}}
-{{--                                        <a href="#">Giới thiệu</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li>--}}
-{{--                                        <a href="#">Dịch vụ</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li>--}}
-{{--                                        <a href="san-pham.html">Sản phẩm</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li>--}}
-{{--                                        <a href="tin-tuc.html">Tin tức</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li>--}}
-{{--                                        <a href="lien-he.html">Liên hệ</a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-
+                            <div class="col-md-4 text-center text-lg-left">
+                                © Bản quyền thuộc về <b>Đinh Khắc Tùng</b>
+                            </div>
                         </div>
                     </div>
 
                     <div class="back-to-top">
-                        <i class="fa  fa-angle-up"></i>
+                        <i class="fa fa-angle-up"></i>
                     </div>
 
                     <a href="tel:{{ $setting->phone }}"
                        class="suntory-alo-phone bottom-left  suntory-alo-green " id="suntory-alo-phoneIcon">
-
                         <div class="suntory-alo-ph-img-circle"><i class="fa fa-phone"></i></div>
                     </a>
 

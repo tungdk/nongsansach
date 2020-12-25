@@ -49,17 +49,17 @@
                             @endif
 
                             <li class="li-search hidden">
-                                <a href="site/javscrript_%3b.html">
-                                    <i class="fa fa-search"></i></a>
+{{--                                <a href="site/javscrript_%3b.html">--}}
+{{--                                    <i class="fa fa-search"></i></a>--}}
                                 <div class="dropdown topbar-dropdown hidden-md hidden-sm hidden-xs">
                                     <div class="content a-center">
                                         <div class="header_search search_form">
                                             <form class="input-group search-bar search_form"
-                                                  action="https://shop1.jweb.com.vn/tim-kiem.html" method="get"
+                                                  action="{{ route('site.search.index') }}" method="get"
                                                   role="search">
-                                                <input type="search" name="query" value="" placeholder="Tìm sản phẩm"
+                                                <input type="search" name="tukhoa" value="" placeholder="Tìm sản phẩm"
                                                        class="input-group-field st-default-search-input search-text"
-                                                       autocomplete="off">
+                                                       autocomplete="off" required>
                                                 <span class="input-group-btn">
 															<button class="btn icon-fallback-text">
 																<i class="fa fa-search"></i>
@@ -338,7 +338,7 @@
                                       action="{{ route('site.search.index') }}" method="get" role="search">
                                     <input type="search" name="tukhoa" value="" placeholder="Tìm sản phẩm"
                                            class="input-group-field st-default-search-input search-text"
-                                           autocomplete="off">
+                                           autocomplete="off" required>
                                     <span class="input-group-btn">
 												<button class="btn icon-fallback-text">
 													<i class="fa fa-search"></i>

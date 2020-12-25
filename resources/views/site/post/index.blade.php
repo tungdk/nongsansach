@@ -59,7 +59,107 @@
                         </div>
                     </section>
                 </div>
-                @include('site.partials.sidebar-right')
+                <div class="dqdt-sidebar sidebar right left-content col-lg-3">
+                    <div class="aside-mini-list-product mb-5">
+                        <div class="content a-center">
+                            <div class="search_form">
+                                <form class="input-group search-bar search_form"
+                                      action="{{ route('site.post.search') }}" method="get"
+                                      role="search">
+                                    <input type="search" name="tukhoa" value="" placeholder="Tìm tin tức"
+                                           class="input-group-field st-default-search-input search-text"
+                                           autocomplete="off" style="border-radius: 5px" required>
+                                    <span class="input-group-btn">
+															<button class="btn icon-fallback-text">
+																<i class="fa fa-search"></i>
+															</button>
+														</span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aside-vetical-menu">
+                        <aside class="aside-item sidebar-category collection-category">
+                            <div class="aside-title">
+                                <h2 class="title-head margin-top-0"><span>Danh mục tin tức</span></h2>
+                            </div>
+                            <div class="aside-content">
+
+                                <nav class="nav-category navbar-toggleable-md">
+                                    <ul class="nav navbar-pills">
+                                        {{--                        <li class="nav-item nav-collapse">--}}
+                                        {{--                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>--}}
+                                        {{--                            <a href="danh-muc/aaaaa.html" class="nav-link" data-toggle="collapse" data-target="#aaaaa">AAAAA</a>--}}
+                                        @if(isset($post_categories))
+                                            @foreach($post_categories as $key => $cate)
+                                                <li class="nav-item nav-collapse">
+                                                    @if($key == 5)
+                                                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                        <a href="{{ route('site.category.index') }}" class="nav-link"
+                                                           data-toggle="collapse" data-target="#aaaaa">Xem thêm</a>
+                                                        @break
+                                                    @else
+                                                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                        <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}"
+                                                           class="nav-link"
+                                                           data-toggle="collapse"
+                                                           data-target="#aaaaa">{{$cate->name}}</a>
+                                                    @endif
+                                                </li>
+                                    @endforeach
+                                    @endif
+                                </nav>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <div class="aside-item aside-mini-list-product mb-5">
+                        <div>
+                            <div class="aside-title">
+                                <h2 class="title-head">
+                                    <a href="#" title="Sản phẩm mới">Tin tức nổi bật</a>
+                                </h2>
+                            </div>
+                            <div class="aside-content related-product">
+                                <div class="product-mini-lists">
+                                    <div class="products">
+                                        <div class="row row-noGutter">
+                                            <div class="col-sm-12">
+                                                @foreach($five_post_best_views as $post)
+                                                    <div class="product-mini-item clearfix on-sale">
+                                                        <div class="product-img relative">
+                                                            <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}">
+                                                                <img src="{{ asset('site/images/lazyload.svg') }}"
+                                                                     data-lazyload="{{ asset('uploads/posts/'.$post->thumbnail) }}"
+                                                                     alt="{{$post->slug}}">
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h3>
+                                                                <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"
+                                                                   title="{{$post->title}}"
+                                                                   class="product-name">{{$post->title}}</a>
+                                                            </h3>
+                                                            <div class="price-box">
+                                                                <span class="price"><span
+                                                                        class="price"><i class="fa fa-eye"></i> {{$post->views}}</span> </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!-- /.products -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

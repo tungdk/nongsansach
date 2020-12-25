@@ -4,24 +4,37 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\PostCategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends SiteController
 {
-    public function index(){
+    public function index()
+    {
         $recent_products = Product::query()
             ->where('status', 1)
             ->orderByDesc('updated_at')
             ->limit(5)
             ->get();
+        $post_categories = PostCategory::query()->where('status', 1)->get(['id', 'name', 'slug']);
+
+        $five_post_best_views = Post::query()
+            ->where('status', 1)
+            ->orderByDesc('views')
+            ->take(5)
+            ->get(['id', 'title', 'slug', 'thumbnail', 'views']);
         $viewData = [
-            'recent_products' =>   $recent_products
+            'recent_products' => $recent_products,
+            'post_categories' => $post_categories,
+            'five_post_best_views' => $five_post_best_views
         ];
         return view('site.post.index', $viewData);
     }
-    public function detail($id, $slug){
+
+    public function detail($id, $slug)
+    {
         Post::query()->findOrFail($id)->increment('views');
         $post = Post::query()->findOrFail($id);
 
@@ -33,11 +46,35 @@ class PostController extends SiteController
             'post' => $post,
 //            'count_comments' => $count_comments
         ];
-        if($post->slug == $slug){
+        if ($post->slug == $slug) {
             return view('site.post.detail', $data);
+        } else {
+            return redirect()->route('site.post.detail', [$post->id, $post->slug]);
         }
-        else{
-            return redirect()->route('site.post.detail',[$post->id, $post->slug]);
-        }
+    }
+
+    public function search(Request $request)
+    {
+        $tukhoa = $request->tukhoa;
+        $posts = Post::query()
+            ->where([
+                ['title', 'LIKE', '%' . $tukhoa . '%'],
+                ['status', 1]
+            ])
+            ->orderByDesc('created_at')
+            ->get(['title', 'slug', 'thumbnail', 'views']);
+
+        $five_post_best_views = Post::query()
+            ->where('status', 1)
+            ->orderByDesc('views')
+            ->take(5)
+            ->get(['title', 'slug', 'thumbnail', 'views']);
+
+        $viewData = [
+            'posts' => $posts,
+            'five_post_best_views' => $five_post_best_views
+        ];
+        return view('site.post.search', $viewData);
+
     }
 }

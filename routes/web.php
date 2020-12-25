@@ -130,6 +130,7 @@ Route::get('chinh-sach/{id}/{slug}', [PolicyController::class, 'detail'])->name(
 
 Route::get('tin-tuc', [PostController::class, 'index'])->name('site.post.index');
 Route::get('tin-tuc/{id}/{slug}', [PostController::class, 'detail'])->name('site.post.detail');
+Route::get('tin-tuc/tim-kiem', [PostController::class, 'search'])->name('site.post.search');
 
 Route::get('gioi-thieu', [AboutUsController::class, 'index'])->name('site.about_us.index');
 
