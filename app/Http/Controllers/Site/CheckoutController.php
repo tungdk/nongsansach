@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class CheckoutController extends Controller
+class CheckoutController extends SiteController
 {
     public function index()
     {
@@ -30,11 +30,11 @@ class CheckoutController extends Controller
             ->orderByDesc('carts.created_at')->get();
         foreach ($carts as $cart) {
             if ($cart->quantity > $cart->product_quantity) {
-                return redirect()->to('/cart')->with('error', 'Số lượng sản phẩm '. $cart->name .' không đủ.');
+                return redirect()->route('site.cart.index')->with('error', 'Số lượng sản phẩm '. $cart->name .' không đủ.');
             }
         }
         if (count($carts) == 0) {
-            return redirect()->to('/cart');
+            return redirect()->route('site.cart.index');
         }
 //        $total = Cart::query()->select(SUM( 'carts.quantity' * 'product.price' ) AS 'thanhtien' )->get();
         $total = DB::table('carts')

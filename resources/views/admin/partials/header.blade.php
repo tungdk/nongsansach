@@ -147,7 +147,7 @@
                 </li>
                 <!-- Control Sidebar Toggle Button -->
                 <li>
-                    <a href="{{route('admin.setting.website')}}"><i class="fa fa-gears"></i></a>
+                    <a href="{{route('admin.setting.index')}}"><i class="fa fa-gears"></i></a>
                 </li>
             </ul>
         </div>

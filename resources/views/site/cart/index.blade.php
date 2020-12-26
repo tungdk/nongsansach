@@ -60,7 +60,18 @@
             @endif
 
             function update_cart(product_id, key) {
-                const _token = '{{@csrf_field()}}';
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
                 let quantity = $('#quantity_' + key).val();
                 $.ajaxSetup({
                     headers: {
@@ -78,17 +89,6 @@
                         if (data.status == true) {
                             $('.show_cart').empty();
                             $('.show_cart').append(data.view);
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                            })
 
                             Toast.fire({
                                 icon: 'success',
@@ -103,7 +103,10 @@
                         }
                     },
                     error: function () {
-
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Thông tin nhập vào không đúng'
+                        })
                     }
                 })
             }

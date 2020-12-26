@@ -142,16 +142,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 //Setting
     Route::group(['prefix' => 'setting'], function () {
-        Route::get('admin', [SettingController::class, 'admin'])->name('admin.setting.admin');
-        Route::post('admin', [SettingController::class, 'update_index']);
+        Route::get('', [SettingController::class, 'index'])->name('admin.setting.index');
 
-        Route::get('website', [SettingController::class, 'website'])->name('admin.setting.website');
-        Route::post('website', [SettingController::class, 'update_website']);
-
-        Route::get('social', [SettingController::class, 'social'])->name('admin.setting.social');
-        Route::post('social', [SettingController::class, 'update_social']);
-
-
+        Route::post('update', [SettingController::class, 'update'])->name('admin.setting.update');
     });
 
 //Slider

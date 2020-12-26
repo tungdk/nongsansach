@@ -1,4 +1,4 @@
-@if($orders->count() > 0)
+@if(isset($orders) && count($orders) > 0)
     <style>
         .ahihi .nav > li > a {
             padding: 0px 15px !important;

@@ -9,8 +9,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Trang quản trị</a></li>
-            <li><a href="{{route('admin.setting.index')}}">Cài đặt</a></li>
-            <li class="active">Danh sách</li>
+            <li class="active">Cài đặt</li>
         </ol>
     </section>
 
@@ -19,73 +18,189 @@
 
         <!-- Default box -->
         <div class="box">
-            <div class="box-header with-border">
-                <div class="btn-group float-right" >
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-success">Thêm mới <i class="fa fa-plus-circle"></i></button>
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{route('admin.setting.create') . '?type=Text'}}">Text</a></li>
-                            <li><a href="{{route('admin.setting.create') . '?type=Textarea'}}">Textarea</a></li>
-                            <li><a href="{{route('admin.setting.create') . '?type=Ckeditor'}}">Ckeditor</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="box-header with-border float-right">
+
             </div>
+
+            <!-- /.box-header -->
             <div class="box-body">
                 <div class="col-md-12">
-                    <div class="box">
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <th style="width: 5%">#</th>
-                                <th style="width: 30%">Tên</th>
-                                <th style="width: 30%">Giá trị</th>
-                                <th >Kiểu</th>
-                                <th style="width: 10%">Trạng thái</th>
-                                <th style="width: 20%">Thao tác</th>
-                            </tr>
-                            @if(isset($settings))
-                                @foreach($settings as $setting)
-                                    <tr>
+                    <div class="row">
+                        <form action="" id="form_change_setting">
 
-                                        <td>{{ $setting->id }}</td>
-                                        <td>{{ $setting->config_key }}</td>
-                                        <td><textarea rows="4" cols="50" disabled>{{ $setting->config_value }}</textarea> </td>
-                                        <td>{{ $setting->type }}</td>
-                                        <td>
-                                            @if($setting->status == 1)
-                                                <a href="{{route('admin.setting.active', $setting->id)}}" class="label label-info">Hiển thị</a>
-                                            @else
-                                                <a href="{{route('admin.setting.active', $setting->id)}}" class="label label-default">Ẩn</a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{route('admin.setting.edit', $setting->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                                Sửa</a>
-                                            <a href="{{route('admin.setting.delete', $setting->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                        </td>
+                            <div class="col-sm-6">
+                                <div class="box box-warning">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"><b>Thông tin cửa hàng</b></h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <style>
+                                            .error {
+                                                color: red;
+                                            }
+                                        </style>
+                                        <label for="name">Tên cửa hàng</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"
+                                                   value="{{ $setting->name }}"
+                                                   name="name"
+                                                   id="name" required>
+                                            <span class="error" id="error_name"></span>
+                                        </div>
+                                        <label for="name">Số điện thoại</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="phone" value="{{ $setting->phone }}"
+                                                   id="phone" required>
+                                            <span class="error" id="error_phone"></span>
+                                        </div>
+                                        <label for="name">Email</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="email" value="{{ $setting->email }}"
+                                                   id="email" required>
+                                            <span class="error" id="error_email"></span>
+                                        </div>
 
-                                    </tr>
-                                @endforeach
-                            @endif
-                            </tbody>
-                        </table>
-                        <!-- /.box-body -->
+                                        <label for="name">Thời gian mở cửa</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="time_work" value="{{ $setting->time_work }}"
+                                                   id="time_work" required>
+                                            <span class="error" id="error_time_work"></span>
+                                        </div>
+
+                                        <label for="name">Khẩu hiệu</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="slogan" value="{{ $setting->slogan }}"
+                                                   id="slogan" required>
+                                            <span class="error" id="error_slogan"></span>
+                                        </div>
+
+                                        <label for="name">Địa chỉ</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="address" value="{{ $setting->address }}"
+                                                   id="address" required>
+                                            <span class="error" id="error_address"></span>
+                                        </div>
+
+                                        <label for="name">Fanpage facebook</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="fanpage" value="{{ $setting->fanpage }}"
+                                                   id="fanpage" required>
+                                            <span class="error" id="error_fanpage"></span>
+                                        </div>
+
+                                        <label for="name">Bản đồ</label>
+                                        <div class="form-group">
+                                            <textarea type="text" class="form-control" id="map" name="map" rows="8" required>{{ $setting->map }}</textarea>
+                                            <span class="error" id="error_map"></span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="name">Trang giới thiệu</label>
+                                <div class="form-group">
+                                        <textarea name="about_us" id="about_us" cols="5" rows="2"
+                                                class="form-control">{{ $setting->about_us ?? '' }}</textarea>
+                                    <span class="error" id="error_about_us"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <h3 class="box-title">
+                                    <button type="button" class="btn btn-block btn-success"
+                                            onclick="change_setting()">Lưu thay đổi
+                                    </button>
+                                </h3>
+                            </div>
+                        </form>
+
                     </div>
-                    <!-- /.box -->
+
                 </div>
             </div>
             <!-- /.box-body -->
-            <div class="box-footer">
-{{--                {!! $categories->links() !!}--}}
-            </div>
         </div>
-        <!-- /.box -->
-
     </section>
     <!-- /.content -->
+@endsection
+
+@section('js')
+    <script src="{{asset('adminlte/ckeditor/ckeditor.js')}}"></script>
+    <script>
+        CKEDITOR.replace('about_us');
+
+
+        function change_setting() {
+            $('.error').text("");
+            // $('#form_change_setting').validate({
+            //     errorClass: 'error',
+            //     rules: {
+            //         password_old: {
+            //             required: true,
+            //             minlength: 6
+            //         },
+            //         password_new: {
+            //             required: true,
+            //             minlength: 6
+            //
+            //         },
+            //         confirm_password: {
+            //             required: true,
+            //             equalTo: '#password_new'
+            //         }
+            //     },
+            //     messages: {
+            //         password_old: {
+            //             required: 'Vui lòng nhập mật khẩu hiện tại',
+            //             minlength: 'Độ dài tối thiểu 6 kí tự'
+            //         },
+            //         password_new: {
+            //             required: 'Vui lòng nhập mật khẩu mới',
+            //             minlength: 'Độ dài tối thiểu 6 kí tự'
+            //
+            //         },
+            //         confirm_password: {
+            //             required: 'Vui lòng nhập xác nhận mật khẩu mới',
+            //             equalTo: 'Không trùng khớp với mật khẩu mới'
+            //         }
+            //     }
+            // });
+            // if ($('#form_change_password').valid() == false) {
+            //     return false;
+            // }
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'post',
+                url: '{{ route('admin.setting.update') }}',
+                data: {
+                    'name' : $('#name').val(),
+                    'phone' : $('#phone').val(),
+                    'email' : $('#email').val(),
+                    'address' : $('#address').val(),
+                    'map' : $('#map').val(),
+                    'time_work' : $('#time_work').val(),
+                    'fanpage' : $('#fanpage').val(),
+                    'slogan' : $('#slogan').val(),
+                    'about_us' : $('#about_us').val(),
+                },
+                success: function (data) {
+                    toastr.success("Cập nhật thông tin thành công", 'Thành công');
+                },
+                error: function (data) {
+                    if (data.status == 404) {
+                        $('#error_password_old').text('Mật khẩu hiện tại không đúng');
+                    } else {
+                        toastr.error('Thông tin dữ liệu không hợp lệ', 'Thất bại')
+                    }
+                }
+            });
+        }
+    </script>
 @endsection

@@ -24,7 +24,15 @@ class SettingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'map' => 'required',
+            'time_work' => 'required',
+            'fanpage' => 'required',
+            'slogan' => 'required',
+            'about_us' => 'required',
         ];
     }
 }

@@ -73,13 +73,13 @@
                             </ul>
                         </div>
                     @endif
-                    @if(request()->is('user/account/profile'))
+                    @if(request()->is('khach-hang/tai-khoan/profile'))
                         @include('site.user.components.profile')
-                    @elseif(request()->is('user/account/password'))
+                    @elseif(request()->is('khach-hang/tai-khoan/password'))
                         @include('site.user.components.password')
-                    @elseif(request()->is('user/comment'))
+                    @elseif(request()->is('khach-hang/comment'))
                         @include('site.user.components.comment')
-                    @elseif(request()->is('user/favourite'))
+                    @elseif(request()->is('khach-hang/favourite'))
                         @include('site.user.components.favourite')
                     @else
                         @include('site.user.components.purchase')

@@ -86,7 +86,7 @@
                                                     font-weight: 500;
                                                     line-height: 1.4;
                                                     color: #e5101d;">
-                                            <strong>{{$cart->price_new}}đ</strong></div>
+                                            <strong>{{ number_format($cart->price_new, 0, ',', '.') }} đ</strong></div>
                                         <span class="quantity" style="font-size: 1.4rem;
                                                 font-weight: 500;
                                                 color: #000;">x {{$cart->quantity}}
@@ -123,7 +123,7 @@
                 </div>
                 <div class="col-md-12 panel">
                     <div class="col-md-12 header">
-                        Tổng thanh toán <span class="all_total">{{number_format($total, 0, ',', '.')}}đ</span>
+                        Tổng thanh toán <span class="all_total" style="color: red">{{number_format($total, 0, ',', '.')}}đ</span>
                     </div>
                     <div class="col-md-12 content">
                         <button type="button" class="btn" tabindex="6"

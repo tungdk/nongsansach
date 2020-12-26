@@ -28,46 +28,38 @@
                         <div class="col-sm-6">
                             <div class="box box-warning">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Ảnh đại diện</h3>
-                                </div>
-                                <div class="box-body block-images">
-                                    <div style="margin-bottom: 10px">
-                                        <img src="/images/no-image.jpg" class="img-thumbnail"
-                                             onerror="this.onerror=null;this.src='images/no-image.jpg'" alt=""
-                                             style="width:200px; height:200px">
-                                    </div>
-                                    <div style="position: relative;">
-                                        <a href="javascript:;" class="btn btn-primary">Choose File....
-                                            <input type="file"
-                                                   style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"
-                                                   name="avatar" size="40" class="js-upload">
-                                        </a>
-                                        &nbsp;
-                                        <span class="label label-info" id="upload-file-info"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="box box-warning">
-                                <div class="box-header with-border">
                                     <h3 class="box-title"><b>Đổi mật khẩu</b></h3>
                                 </div>
                                 <div class="box-body">
-                                    <label for="name">Mật khẩu cũ</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="password_old" id="password_old" required>
-                                    </div>
-                                    <label for="name">Mật khẩu mới</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="password_new" id="password_new" required>
-                                    </div>
-                                    <label for="name">Xác nhận mật khẩu mới</label>
-                                    <div class="form-group">
-                                        <input type="text"  class="form-control" name="confirm_password" id="confirm_password" required>
-                                    </div>
+                                    <style>
+                                        .error {
+                                            color: red;
+                                        }
+                                    </style>
+                                    <form action="" id="form_change_password">
+                                        <label for="name">Mật khẩu cũ</label>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="password_old"
+                                                   id="password_old" required>
+                                            <span class="error" id="error_password_old"></span>
+                                        </div>
+                                        <label for="name">Mật khẩu mới</label>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="password_new"
+                                                   id="password_new" required>
+                                            <span class="error" id="error_password_new"></span>
+                                        </div>
+                                        <label for="name">Xác nhận mật khẩu mới</label>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="confirm_password"
+                                                   id="confirm_password" required>
+                                            <span class="error" id="error_confirm_password"></span>
+                                        </div>
 
-                                    <button type="button" class="btn btn-block btn-primary" onclick="change_password()">Đổi mật khẩu</button>
+                                        <button type="button" class="btn btn-block btn-primary"
+                                                onclick="change_password()">Đổi mật khẩu
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
 
@@ -84,25 +76,72 @@
 
 @section('js')
     <script>
-        function change_password(){
+        function change_password() {
+            $('.error').text("");
+            $('#form_change_password').validate({
+                errorClass: 'error',
+                rules: {
+                    password_old: {
+                        required: true,
+                        minlength: 6
+                    },
+                    password_new: {
+                        required: true,
+                        minlength: 6
+
+                    },
+                    confirm_password: {
+                        required: true,
+                        equalTo: '#password_new'
+                    }
+                },
+                messages: {
+                    password_old: {
+                        required: 'Vui lòng nhập mật khẩu hiện tại',
+                        minlength: 'Độ dài tối thiểu 6 kí tự'
+                    },
+                    password_new: {
+                        required: 'Vui lòng nhập mật khẩu mới',
+                        minlength: 'Độ dài tối thiểu 6 kí tự'
+
+                    },
+                    confirm_password: {
+                        required: 'Vui lòng nhập xác nhận mật khẩu mới',
+                        equalTo: 'Không trùng khớp với mật khẩu mới'
+                    }
+                }
+            });
+            if ($('#form_change_password').valid() == false) {
+                return false;
+            }
+            let password_old = $('#password_old').val().trim();
+            let password_new = $('#password_new').val().trim();
+            let confirm_password = $('#confirm_password').val().trim();
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
             $.ajax({
-               type: 'post',
-               url: '{{ route('admin.account.change_password') }}',
+                type: 'post',
+                url: '{{ route('admin.account.change_password') }}',
                 data: {
-                   'password_old': $('#password_old').val(),
-                    'password_new': $('#password_new').val(),
-                    'confirm_password': $('#confirm_password').val()
+                    'password_old': password_old,
+                    'password_new': password_new,
+                    'confirm_password': confirm_password
                 },
-                success: function (data){
-                    toastr.success('Đổi mật khẩu thành công', 'Thành công')
+                success: function (data) {
+                    $('#password_old').text("");
+                    $('#password_new').text("");
+                    $('#confirm_password').text("");
+                    toastr.success('Đổi mật khẩu thành công', 'Thành công');
                 },
-                error: function (){
-                    toastr.error('Mật khẩu cũ không đúng', 'Thất bại')
+                error: function (data) {
+                    if (data.status == 404) {
+                        $('#error_password_old').text('Mật khẩu hiện tại không đúng');
+                    } else {
+                        toastr.error('Thông tin dữ liệu không hợp lệ', 'Thất bại')
+                    }
                 }
             });
         }

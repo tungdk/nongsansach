@@ -4,9 +4,7 @@
             <i class="fa fa-mobile"
                style=" font-size: 20px; display: inline-block; position: relative; transform: translateY(2px); "></i>
             Hotline:
-            <span>
-					<a href="tel:{{ $setting->phone }}"> {{ $setting->phone }}</a>
-				</span>
+            <span><a href="tel:{{ $setting->phone ?? '' }}"> {{ $setting->phone ?? '' }}</a></span>
         </div>
     </div>
     <div class="topbar hidden-sm hidden-xs">
@@ -20,12 +18,12 @@
                                    style=" font-size: 20px; display: inline-block; position: relative; transform: translateY(2px); "></i>
                                 Hotline:
                                 <span>
-										<a href="tel:{{ $setting->phone }}"> {{ $setting->phone }}</a>
+										<a href="tel:{{ $setting->phone ?? '' }}"> {{ $setting->phone ?? ''}}</a>
 									</span>
                             </li>
                             <li class="margin-left-20">
                                 <i class="fa fa-map-marker"></i> <b>Địa chỉ</b>:
-                                <span>{{ $setting->address }}</span>
+                                <span>{{ $setting->address ?? ''}}</span>
                             </li>
                         </ul>
 
@@ -109,7 +107,7 @@
                             {{--                            </a>--}}
                             <div class="info a-lcheckeft">
                                 <span style="font-size: 15px"><b>Hỗ trợ 24/7</b></span>
-                                <p>Hotline: {{ $setting->phone }}</p>
+                                <p>Hotline: {{ $setting->phone ?? '' }}</p>
                             </div>
                         </div>
                         <div class="item-policy d-flex align-items-center">
@@ -119,7 +117,7 @@
                             {{--                            </a>--}}
                             <div class="info a-left">
                                 <span style="font-size: 15px"><b>Giờ làm việc</b></span>
-                                <p>{{ $setting->time_work }}</p>
+                                <p>{{ $setting->time_work ?? '' }}</p>
                             </div>
                         </div>
                     </div>
@@ -131,12 +129,12 @@
                                 <a href="{{route('site.cart.index')}}">
                                     <div class="icon f-left relative">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span class="cartCount count_item_pr hidden-lg" id="count_cart">0</span>
+                                        <span class="cartCount count_item_pr hidden-lg" >0</span>
                                     </div>
                                     <div class="right-content hidden-md">
-                                        <span class="label">Giỏ hàng</span>(
+                                        <span class="label">Giỏ hàng</span> (
                                         <span class="cartCount2"
-                                              id="count_cart">{{isset($count_cart) ? $count_cart : 0}}</span>)
+                                              >{{$count_cart ?? 0}}</span>)
                                     </div>
                                 </a>
                             </div>
@@ -182,7 +180,7 @@
              onclick="window.location.href='{{route('site.cart.index')}}'">
             <div class="icon relative">
                 <i class="fa fa-shopping-cart"></i>
-                <span class="cartCount count_item_pr" id="count_cart">{{isset($count_cart) ? $count_cart : 0}}</span>
+                <span class="cartCount count_item_pr">{{isset($count_cart) ? $count_cart : 0}}</span>
             </div>
         </div>
     </div>

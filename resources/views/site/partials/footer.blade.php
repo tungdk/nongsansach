@@ -9,21 +9,21 @@
                                 <h3 class="hastog"><span>Liên hệ</span></h3>
                                 <ul class="list-menu list-showroom">
                                     <li style="padding-left: 0;">
-                                        <p>{{ $setting->slogan }}</p>
+                                        <p>{{ $setting->slogan ?? "" }}</p>
                                     </li>
 
                                     <li class="clearfix"><i class="block_icon fa fa-map-marker"></i>
-                                        <p>{{ $setting->address }}</p>
+                                        <p>{{ $setting->address ?? ""}}</p>
                                     </li>
 
                                     <li class="clearfix"><i class="block_icon fa fa-phone"></i>
 
-                                        <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
-                                        <p>{{ $setting->time_work }}</p>
+                                        <a href="tel:{{ $setting->phone ?? "" }}">{{ $setting->phone ?? ""}}</a>
+                                        <p>{{ $setting->time_work ?? ""}}</p>
                                     </li>
                                     <li class="clearfix"><i class="block_icon fa fa-envelope"></i>
 
-                                        <a href="mailto: {{ $setting->email }}"> {{ $setting->email }}</a>
+                                        <a href="mailto: {{ $setting->email ?? ""}}"> {{ $setting->email ?? "" }}</a>
 
                                     </li>
                                 </ul>
@@ -85,7 +85,7 @@
                         <i class="fa fa-angle-up"></i>
                     </div>
 
-                    <a href="tel:{{ $setting->phone }}"
+                    <a href="tel:{{ $setting->phone ?? ""}}"
                        class="suntory-alo-phone bottom-left  suntory-alo-green " id="suntory-alo-phoneIcon">
                         <div class="suntory-alo-ph-img-circle"><i class="fa fa-phone"></i></div>
                     </a>

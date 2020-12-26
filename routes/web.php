@@ -96,7 +96,7 @@ Route::group(['middleware'=>'auth:web'], function (){
 
 
     Route::group(['prefix'=>'favourite'], function (){
-        Route::get('add/{id}', [FavouriteController::class, 'add'])->name('site.favourite');
+        Route::get('add/{id}', [FavouriteController::class, 'add'])->name('site.favourite.add');
     });
 
     Route::get('check-out', [CheckoutController::class, 'index'])->name('site.checkout.index');

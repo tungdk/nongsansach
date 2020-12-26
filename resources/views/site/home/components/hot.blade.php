@@ -47,11 +47,11 @@
                                                                                     </div>
                                                                                     <br>
                                                                                     <div class="action-cart" >
-                                                                                        <a href="" data-url="{{URL::to('cart/add/'.$product->id.'/1')}}"
+                                                                                        <a href="" data-url="{{ route('site.cart.add', ['id'=>$product->id, 'quantity'=>1]) }}"
                                                                                            class="btn price product-price add_to_cart" style="display: inline-block; font-size: 15px; line-height: 50px; padding: 0 10px!important;">
                                                                                             {{--                                                                                                    <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i></a>--}}
                                                                                             <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i> Giỏ hàng</a>
-                                                                                        <a href="" data-url="{{URL::to('favourite/add/'.$product->id)}}"
+                                                                                        <a href="" data-url="{{ route('site.favourite.add', ['id'=>$product->id]) }}"
                                                                                            class="btn price product-price add_to_favourite" style="display: inline-block; font-size: 15px; line-height: 50px; padding: 0 10px!important;">
                                                                                             {{--                                                                                                    <i class="fa fa-heart-o" title="Thêm vào yêu thích"></i></a>--}}
                                                                                             <i class="fa fa-heart-o" title="Thêm vào yêu thích"></i> Yêu thích</a>

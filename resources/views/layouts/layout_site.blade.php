@@ -9,8 +9,6 @@
 {{--    <link rel="icon" href="site/uploads/images/caidat/favicon.png" type="image/x-icon"/>--}}
 {{-- <link rel="shortcut icon" type="image/png" href="/images/logo.png"/> --}}
 
-    <!-- ================= Fonts ================== -->
-
     <link rel="stylesheet" href="{{asset('site/css/icon-font.min.css')}}">
     <link
         href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&amp;subset=vietnamese"
@@ -55,8 +53,10 @@
                 type: 'POST',
                 url: '{{ route('site.count.cart') }}',
                 success: function (data) {
-                    var element = document.getElementById('count_cart');
-                    element.innerHTML = data;
+                    $('.cartCount').text(data);
+                    $('.cartCount2').text(data);
+                    // var element = document.getElementById('count_cart');
+                    // element.innerHTML = data;
                 },
                 error: function () {
 
@@ -117,45 +117,6 @@
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
     })();
-    // function subscribe() {
-    //     $email = $('#email_subscribe').val();
-    //     $.ajaxSetup({
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //         }
-    //     });
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: 'subscribe',
-    //         data: {
-    //             'email': $email
-    //         },
-    //         success: function (data) {
-    //             if (data.status == true) {
-    //                 document.getElementById('email_subscribe').value = "";
-    //                 Swal.fire({
-    //                     icon: 'success',
-    //                     title: 'Cảm ơn bạn đã đăng ký',
-    //                     text: 'Chúng tôi sẽ gửi thông tin qua email của bạn',
-    //                 })
-    //             } else {
-    //                 Swal.fire({
-    //                     icon: 'error',
-    //                     title: data.message,
-    //                 })
-    //             }
-    //         },
-    //         error: function (data) {
-    //             Swal.fire({
-    //                 icon: 'error',
-    //                 title: 'Có lỗi xảy ra',
-    //             })
-    //         }
-    //     });
-    // }
 </script>
-<!--End of Tawk.to Script-->
 </body>
-
-<!-- Mirrored from shop1.jweb.com.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Nov 2020 07:31:55 GMT -->
 </html>
