@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class PolicyRequest extends FormRequest
 {
@@ -24,7 +26,8 @@ class PolicyRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'policy_content'=>'required'
+            'policy_content'=>'required',
+            'status' => 'boolean'
         ];
         if ($this->id) {
             $rules['name'] = "required|unique:policies,name," . $this->id;
@@ -32,5 +35,10 @@ class PolicyRequest extends FormRequest
         }
         $rules['name'] = "required|unique:policies,name";
         return $rules;
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['messages'=>$validator->errors()], 422));
     }
 }

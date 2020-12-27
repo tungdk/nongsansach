@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SettingWebsiteRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class SettingWebsiteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'integer',
+            'status' => 'integer| between:0,2'
         ];
     }
 }

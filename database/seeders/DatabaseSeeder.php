@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//         User::factory(1)->create();
-//         Admin::factory(1)->create();
-//         Setting::factory(1)->create();
+         User::factory(1)->create();
+         Admin::factory(1)->create();
+         Setting::factory(1)->create();
 //         Policy::factory(1)->create();
 //        DB::table('admins')->insert([
 //            'name' => 'Admin',

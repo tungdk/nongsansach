@@ -1,7 +1,6 @@
 @extends('layouts.layout_admin')
 @section('title', 'Chính sách')
 @section('content')
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -24,49 +23,11 @@
                             class="fa fa-plus-circle"></i></a>
                 </h3>
             </div>
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th style="width: 5%">#</th>
-                        <th>Tên chính sách</th>
-                        <th>Ngày tạo</th>
-                        <th>Ngày cập nhật</th>
-                        <th>Trạng thái</th>
-                        <th>Thao tác</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(isset($policies))
-                        @php $i=1; @endphp
-                        @foreach($policies as $policy)
-                            <tr>
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $policy->name }}</td>
-                                <td>{{ $policy->created_at }}</td>
-                                <td>{{ $policy->updated_at }}</td>
-                                <td>
-                                    @if($policy->status == 1)
-                                        <a href="{{route('admin.policy.active', $policy->id)}}"
-                                           class="label label-info">Hiển thị</a>
-                                    @else
-                                        <a href="{{route('admin.policy.active', $policy->id)}}"
-                                           class="label label-default">Ẩn</a>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{route('admin.policy.edit', $policy->id)}}"
-                                       class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                        Sửa</a>
-                                    <a href="{{route('admin.policy.delete', $policy->id)}}"
-                                       class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                </td>
+            <div class="overlay hidden" id="overlay">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+            <div class="box-body" id="table-list">
 
-                            </tr>
-                        @endforeach
-                    @endif
-                    </tbody>
-                </table>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
@@ -77,12 +38,12 @@
     <!-- /.content -->
 @endsection
 @section('js')
+    <script src="{{ asset('js/admin/crud.js') }}"></script>
     <script>
-
-        function send_mail(id) {
-            const token = "{{ @csrf_token() }}";
-            send_mail_information(id, token);
-        }
+        let url_active = '{{ route('admin.policy.active') }}';
+        let url_delete = '{{ route('admin.policy.delete') }}'
+        $(function () {
+            load_data('{{route('admin.policy.load_data')}}');
+        })
     </script>
-    <script src="{{ asset("js/admin/send_mail.js") }}"></script>
 @endsection

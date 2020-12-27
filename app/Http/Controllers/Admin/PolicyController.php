@@ -13,8 +13,24 @@ use Illuminate\Support\Str;
 class PolicyController extends Controller
 {
     public function index(){
-        $policies = Policy::query()->get();
-        return view('admin.policy.index', compact('policies'));
+        return view('admin.policy.index');
+    }
+
+    function getAll(){
+        return Policy::query()
+            ->where('is_deleted', null)
+            ->orWhere('is_deleted', 0)
+            ->orderByDesc('created_at')
+            ->get();
+    }
+
+    function load_data(){
+        $policies = $this->getAll();
+        return  response()->json([
+            'view' => view('admin.policy.data', [
+                'policies' => $policies
+            ])->render()
+        ]);
     }
 
     public function create(){
@@ -22,23 +38,16 @@ class PolicyController extends Controller
     }
 
     public function store(PolicyRequest $request){
-        $name = $request->name;
-        $content = $request->policy_content;
-        $status = $request->status;
         $policy = new Policy();
-        $policy->name = $name;
-        $policy->slug = Str::slug($name);
-        $policy->content = $content;
-        $policy->status = $status;
-        $success = $policy->save();
+        $policy->name = $request->name;
+        $policy->slug = Str::slug($request->name);
+        $policy->content = $request->policy_content;
+        $policy->status = $request->status;
+        $policy->save();
 
-        if($success){
-            Session::flash('toastr',[
-                'type'  =>  'success',
-                'message' => 'Thêm chính sách thành công'
-            ]);
-        }
-        return redirect()->back();
+        return response()->json([
+            'message' => 'Thành công'
+        ], 200);
     }
 
     public function edit($id)
@@ -47,29 +56,49 @@ class PolicyController extends Controller
         return view('admin.policy.update', compact('policy'));
     }
 
-    public function update(PolicyRequest $request, $id)
+    public function update(PolicyRequest $request)
     {
+        $id = $request->id;
         $policy = Policy::query()->findOrFail($id);
-        $data = $request->except('_token');
         $data = [
             'updated_at' => Carbon::now(),
             'name' => $request->name,
             'content' => $request->policy_content
         ];
+        $data['status'] = $request->status ? '1' : 0;
 
         $policy->update($data);
-        Session::flash('toastr', [
-            'type' => 'success',
-            'message' => 'Cập nhật thành công'
-        ]);
-        return redirect()->back();
+        return response()->json([
+            'message' => 'Thành công'
+        ], 200);
     }
 
-    public function active($id)
+    public function active(Request $request)
     {
-        $policy = Policy::find($id);
+        $id = $request->id;
+        $policy = Policy::query()->findOrFail($id);
         $policy->status = !$policy->status;
         $policy->save();
-        return redirect()->back();
+
+        $policies = $this->getAll();
+        return response()->json([
+            'view' => view('admin.policy.data', [
+                'policies' => $policies
+            ])->render()
+        ]);
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $policy = Policy::query()->findOrFail($id);
+        $policy->is_deleted = 1;
+        $policy->save();
+        $policies = $this->getAll();
+        return response()->json([
+            'view' => view('admin.policy.data', [
+                'policies' => $policies
+            ])->render()
+        ]);
     }
 }

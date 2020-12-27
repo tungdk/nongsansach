@@ -47,6 +47,11 @@
         </script>
     @endif
     @yield('css')
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <!-- Site wrapper -->

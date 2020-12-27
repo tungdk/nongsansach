@@ -165,7 +165,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'contact'], function () {
 
         Route::get('', [ContactController::class, 'index'])->name('admin.contact.index');
-        Route::get('status/{id}/{status}', [ContactController::class, 'status'])->name('admin.contact.status');
+        Route::get('data', [ContactController::class, 'load_data'])->name('admin.contact.load_data');
+
+        Route::post('status', [ContactController::class, 'status'])->name('admin.contact.status');
 
     });
 
@@ -192,19 +194,18 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'policy'], function () {
 
         Route::get('', [PolicyController::class, 'index'])->name('admin.policy.index');
+
+        Route::get('data', [PolicyController::class, 'load_data'])->name('admin.policy.load_data');
+
         Route::get('create', [PolicyController::class, 'create'])->name('admin.policy.create');
-        Route::post('create', [PolicyController::class, 'store']);
+        Route::post('create', [PolicyController::class, 'store'])->name('admin.policy.store');
 
         Route::get('edit/{id}', [PolicyController::class, 'edit'])->name('admin.policy.edit');
-        Route::post('edit/{id}', [PolicyController::class, 'update']);
+        Route::post('edit', [PolicyController::class, 'update'])->name('admin.policy.update');
 
-        Route::get('active/{id}', [PolicyController::class, 'active'])->name('admin.policy.active');
-        Route::get('hot/{id}', [PolicyController::class, 'hot'])->name('admin.policy.hot');
+        Route::post('active', [PolicyController::class, 'active'])->name('admin.policy.active');
 
-        Route::delete('delete/{id}', [PolicyController::class, 'delete'])->name('admin.policy.delete');
-
-        Route::post('sendMail', [PolicyController::class, 'sendMail'])->name('admin.policy.sendMail');
-
+        Route::post('delete', [PolicyController::class, 'delete'])->name('admin.policy.delete');
     });
 
 //order

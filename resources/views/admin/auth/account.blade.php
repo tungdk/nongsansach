@@ -47,17 +47,15 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control" name="password_new"
                                                    id="password_new" required>
-                                            <span class="error" id="error_password_new"></span>
                                         </div>
                                         <label for="name">Xác nhận mật khẩu mới</label>
                                         <div class="form-group">
                                             <input type="password" class="form-control" name="confirm_password"
                                                    id="confirm_password" required>
-                                            <span class="error" id="error_confirm_password"></span>
                                         </div>
 
                                         <button type="button" class="btn btn-block btn-primary"
-                                                onclick="change_password()">Đổi mật khẩu
+                                                onclick="change_password()" id="btn-change-password">Đổi mật khẩu
                                         </button>
                                     </form>
                                 </div>
@@ -114,6 +112,8 @@
             if ($('#form_change_password').valid() == false) {
                 return false;
             }
+            $('#btn-change-password').prop('disabled', true);
+
             let password_old = $('#password_old').val().trim();
             let password_new = $('#password_new').val().trim();
             let confirm_password = $('#confirm_password').val().trim();
@@ -135,6 +135,8 @@
                     $('#password_new').text("");
                     $('#confirm_password').text("");
                     toastr.success('Đổi mật khẩu thành công', 'Thành công');
+                    $('#btn-change-password').prop('disabled', false);
+
                 },
                 error: function (data) {
                     if (data.status == 404) {
@@ -142,6 +144,7 @@
                     } else {
                         toastr.error('Thông tin dữ liệu không hợp lệ', 'Thất bại')
                     }
+                    $('#btn-change-password').prop('disabled', false);
                 }
             });
         }
