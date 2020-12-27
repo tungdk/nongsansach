@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class PartnerRequest extends FormRequest
 {
@@ -33,5 +35,9 @@ class PartnerRequest extends FormRequest
         $rules['name'] = 'required|unique:partners,name';
         $rules['logo'] = "required|image";
         return $rules;
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['messages'=>$validator->errors()], 422));
     }
 }

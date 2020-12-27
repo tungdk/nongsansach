@@ -21,6 +21,7 @@ class CreateCommentsTable extends Migration
             $table->integer('rating');
             $table->tinyInteger('status');
             $table->tinyInteger('show_home')->default(0);
+            $table->tinyInteger('is_deleted')->nullable();
             $table->timestamps();
         });
     }

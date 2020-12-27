@@ -102,7 +102,6 @@
                 type: 'post',
                 url: '{{ route('admin.policy.store') }}',
                 data: {
-                    'id': $('#id').val(),
                     'name': $('#name').val(),
                     'policy_content': policy_content.getData().trim(),
                     'status': status,

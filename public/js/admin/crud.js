@@ -40,7 +40,7 @@ function change_status(id) {
     });
 }
 
-function delete_policy(id) {
+function delete_item(id) {
     Swal.fire({
         title: 'Bạn chắc chắn muốn xoá?',
         icon: 'warning',
@@ -68,7 +68,7 @@ function delete_policy(id) {
                     toastr.success("Xoá thành công", 'Thành công');
                 },
                 error: function (data) {
-                    toastr.success("Có lỗi xảy ra, liên hệ với quản trị viên", 'Thành công');
+                    toastr.error("Có lỗi xảy ra, liên hệ với quản trị viên", 'Thành công');
                 }
             });
         }

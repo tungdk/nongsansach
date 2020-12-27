@@ -42,8 +42,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
         Route::post('edit/{id}', [CategoryController::class, 'update']);
 
-        Route::get('active/{id}', [CategoryController::class, 'active'])->name('admin.category.active');
-        Route::delete('delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+        Route::post('active', [CategoryController::class, 'active'])->name('admin.category.active');
+        Route::post('delete', [CategoryController::class, 'delete'])->name('admin.category.delete');
 
 
     });
@@ -161,14 +161,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('delete/{id}', [SliderController::class, 'delete'])->name('admin.slider.delete');
     });
 
-//Contact
+//Contact done
     Route::group(['prefix' => 'contact'], function () {
-
         Route::get('', [ContactController::class, 'index'])->name('admin.contact.index');
         Route::get('data', [ContactController::class, 'load_data'])->name('admin.contact.load_data');
-
         Route::post('status', [ContactController::class, 'status'])->name('admin.contact.status');
-
     });
 
 //User - khách hàng
@@ -176,35 +173,33 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('', [UserController::class, 'index'])->name('admin.user.index');
     });
 
-
+//Partner - đối tác
     Route::group(['prefix' => 'partner'], function () {
 
         Route::get('', [PartnerController::class, 'index'])->name('admin.partner.index');
+        Route::get('load-data', [PartnerController::class, 'load_data'])->name('admin.partner.load_data');
+        Route::post('active', [PartnerController::class, 'active'])->name('admin.partner.active');
+        Route::post('delete', [PartnerController::class, 'delete'])->name('admin.partner.delete');
+
+
         Route::get('create', [PartnerController::class, 'create'])->name('admin.partner.create');
-        Route::post('create', [PartnerController::class, 'store']);
+        Route::post('create', [PartnerController::class, 'store'])->name('admin.partner.store');
 
         Route::get('edit/{id}', [PartnerController::class, 'edit'])->name('admin.partner.edit');
         Route::post('edit/{id}', [PartnerController::class, 'update']);
 
-        Route::get('active/{id}', [PartnerController::class, 'active'])->name('admin.partner.active');
-        Route::delete('delete/{id}', [PartnerController::class, 'delete'])->name('admin.partner.delete');
+
     });
 
-//Policy
+//Policy done
     Route::group(['prefix' => 'policy'], function () {
-
         Route::get('', [PolicyController::class, 'index'])->name('admin.policy.index');
-
         Route::get('data', [PolicyController::class, 'load_data'])->name('admin.policy.load_data');
-
         Route::get('create', [PolicyController::class, 'create'])->name('admin.policy.create');
         Route::post('create', [PolicyController::class, 'store'])->name('admin.policy.store');
-
         Route::get('edit/{id}', [PolicyController::class, 'edit'])->name('admin.policy.edit');
         Route::post('edit', [PolicyController::class, 'update'])->name('admin.policy.update');
-
         Route::post('active', [PolicyController::class, 'active'])->name('admin.policy.active');
-
         Route::post('delete', [PolicyController::class, 'delete'])->name('admin.policy.delete');
     });
 
@@ -220,24 +215,13 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('delete/{id}', [OrderController::class, 'delete'])->name('admin.order.delete');
     });
 
-    //Comment
+    //Comment done
     Route::group(['prefix' => 'comment'], function () {
-
         Route::get('', [CommentController::class, 'index'])->name('admin.comment.index');
-
+        Route::get('load-data', [CommentController::class, 'load_data'])->name('admin.comment.load_data');
         Route::post('show-home', [CommentController::class, 'show_home'])->name('admin.comment.show_home');
-
-
-        Route::get('create', [CommentController::class, 'create'])->name('admin.comment.create');
-        Route::post('create', [CommentController::class, 'store']);
-
-        Route::get('edit/{id}', [CommentController::class, 'edit'])->name('admin.comment.edit');
-        Route::post('edit/{id}', [CommentController::class, 'update']);
-
-        Route::get('active/{id}', [CommentController::class, 'active'])->name('admin.comment.active');
-        Route::get('hot/{id}', [CommentController::class, 'hot'])->name('admin.comment.hot');
-
-        Route::delete('delete/{id}', [CommentController::class, 'delete'])->name('admin.comment.delete');
+        Route::post('active', [CommentController::class, 'active'])->name('admin.comment.active');
+        Route::post('delete', [CommentController::class, 'delete'])->name('admin.comment.delete');
 
     });
 

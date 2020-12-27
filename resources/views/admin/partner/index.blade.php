@@ -24,50 +24,10 @@
                             class="fa fa-plus-circle"></i></a>
                 </h3>
             </div>
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th style="width: 5%">#</th>
-                        <th>Tên</th>
-                        <th>Ảnh</th>
-                        <th>Ngày tạo</th>
-                        <th>Trang thái</th>
-                        <th>Thao tác</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(isset($partners))
-                        @php $i = 1; @endphp
-                        @foreach($partners as $partner)
-                            <tr>
-
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $partner->name }}</td>
-                                <td><img src="{{ asset('uploads/partners/'.$partner->logo) }}" alt="{{ $partner->name }}" style="width: 150px"></td>
-                                <td>{{ $partner->created_at }}</td>
-                                <td>
-                                    @if($partner->status == 1)
-                                        <a href="{{route('admin.partner.active', $partner->id)}}"
-                                           class="label label-info">Hiển thị</a>
-                                    @else
-                                        <a href="{{route('admin.partner.active', $partner->id)}}"
-                                           class="label label-default">Ẩn</a>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{route('admin.partner.edit', $partner->id)}}"
-                                       class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                        Sửa</a>
-                                    <a href="{{route('admin.partner.delete', $partner->id)}}"
-                                       class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
-                                </td>
-
-                            </tr>
-                        @endforeach
-                    @endif
-                    </tbody>
-                </table>
+            <div class="overlay hidden" id="overlay">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+            <div class="box-body" id="table-list">
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
@@ -76,4 +36,14 @@
 
     </section>
     <!-- /.content -->
+@endsection
+@section('js')
+    <script src="{{ asset('js/admin/crud.js') }}"></script>
+    <script>
+        let url_active = '{{ route('admin.partner.active') }}';
+        let url_delete = '{{ route('admin.partner.delete') }}'
+        $(function () {
+            load_data('{{route('admin.partner.load_data')}}');
+        })
+    </script>
 @endsection

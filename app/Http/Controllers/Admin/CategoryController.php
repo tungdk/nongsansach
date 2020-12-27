@@ -24,10 +24,16 @@ class CategoryController extends Controller
         return view('admin.category.index', $data);
     }
 
-    public function load_data(){
-        $categories = Category::query()
+    function getAll(){
+        return Category::query()
+            ->where('is_deleted', 0)
+            ->orWhere('is_deleted', null)
             ->orderByDesc('created_at')
             ->get(['id', 'name', 'status', 'created_at']);
+    }
+
+    public function load_data(){
+        $categories = $this->getAll();
         return response()->json([
             'view' => view('admin.category.data', [
                 'categories' => $categories
@@ -37,23 +43,6 @@ class CategoryController extends Controller
     public function create(){
         return view('admin.category.create');
     }
-
-
-//    public function store(CategoryRequest $request){
-//        $category = new Category();
-//        $category->name = $request->name;
-//        $category->slug = Str::slug($request->name);
-//        $category->status = 1;
-//        $success = $category->save();
-//        if($success){
-//            Session::flash('toastr',[
-//                'type'  =>  'success',
-//                'message' => 'Thêm danh mục thành công'
-//            ]);
-//        }
-//        return redirect()->back();
-//    }
-
 
     public function store(CategoryRequest $request){
         $category = new Category();
@@ -89,10 +78,31 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
-    public function active($id){
+    public function active(Request $request){
+        $id = $request->id;
         $category = Category::query()->findOrFail($id);
         $category->status = ! $category->status;
         $category->save();
-        return redirect()->back();
+
+        $categories = $this->getAll();
+        return response()->json([
+            'view' => view('admin.category.data', [
+                'categories' => $categories
+            ])->render()
+        ]);
+    }
+
+    public function delete(Request $request){
+        $id = $request->id;
+        $category = Category::query()->findOrFail($id);
+        $category->is_deleted = 1;
+        $category->save();
+
+        $categories = $this->getAll();
+        return response()->json([
+            'view' => view('admin.category.data', [
+                'categories' => $categories
+            ])->render()
+        ]);
     }
 }

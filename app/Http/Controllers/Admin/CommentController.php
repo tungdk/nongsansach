@@ -9,8 +9,24 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     public function index(){
-        $comments = Comment::all();
-        return view('admin.comment.index', compact('comments'));
+        return view('admin.comment.index');
+    }
+
+    function getAll(){
+        return Comment::query()
+            ->where('is_deleted', null)
+            ->orWhere('is_deleted', 0)
+            ->orderByDesc('created_at')
+            ->get();
+    }
+
+    function load_data(){
+        $comments = $this->getAll();
+        return  response()->json([
+            'view' => view('admin.comment.data', [
+                'comments' => $comments
+            ])->render()
+        ], 200);
     }
     public function show_home(Request $request){
         $comment = Comment::query()->findOrFail($request->id);
@@ -25,6 +41,25 @@ class CommentController extends Controller
         $comment = Comment::query()->findOrFail($request->id);
         $comment->status = ! $comment->status;
         $comment->save();
-       return back();
+
+        $comments = $this->getAll();
+        return  response()->json([
+            'view' => view('admin.comment.data', [
+                'comments' => $comments
+            ])->render()
+        ], 200);
+    }
+
+    public function delete(Request $request){
+        $comment = Comment::query()->findOrFail($request->id);
+        $comment->is_deleted = 1;
+        $comment->save();
+
+        $comments = $this->getAll();
+        return  response()->json([
+            'view' => view('admin.comment.data', [
+                'comments' => $comments
+            ])->render()
+        ], 200);
     }
 }

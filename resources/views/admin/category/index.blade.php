@@ -46,74 +46,77 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Thêm mới danh mục</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tên danh mục</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Mời nhập tên danh mục">
+                <form action="" id="form_create">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên danh mục</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                   placeholder="Mời nhập tên danh mục">
+                            <span class="error text-danger" id="error_name"></span>
+                        </div>
                     </div>
-                </div>
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-success" onclick="save_create()"><i class="fa fa-check"></i> Lưu</button>
+                    <button type="button" class="btn btn-success" onclick="save_create()" id="btn_save_create"><i class="fa fa-check"></i>
+                        Lưu
+                    </button>
                 </div>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
     </div>
-{{--    <div class="modal fade" id="modal-update">--}}
-{{--        <div class="modal-dialog">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                        <span aria-hidden="true">&times;</span></button>--}}
-{{--                    <h4 class="modal-title">Cập nhật danh mục</h4>--}}
-{{--                </div>--}}
-{{--                <div class="modal-body">--}}
-{{--                    <div class="form-control">--}}
-{{--                        <input type="text" name="name" id="name">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="modal-footer">--}}
-{{--                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>--}}
-{{--                    <button type="button" class="btn btn-primary" onclick="save_create()">Lưu</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <!-- /.modal-content -->--}}
-{{--        </div>--}}
-{{--        <!-- /.modal-dialog -->--}}
-{{--    </div>--}}
+    {{--    <div class="modal fade" id="modal-update">--}}
+    {{--        <div class="modal-dialog">--}}
+    {{--            <div class="modal-content">--}}
+    {{--                <div class="modal-header">--}}
+    {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+    {{--                        <span aria-hidden="true">&times;</span></button>--}}
+    {{--                    <h4 class="modal-title">Cập nhật danh mục</h4>--}}
+    {{--                </div>--}}
+    {{--                <div class="modal-body">--}}
+    {{--                    <div class="form-control">--}}
+    {{--                        <input type="text" name="name" id="name">--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="modal-footer">--}}
+    {{--                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>--}}
+    {{--                    <button type="button" class="btn btn-primary" onclick="save_create()">Lưu</button>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--            <!-- /.modal-content -->--}}
+    {{--        </div>--}}
+    {{--        <!-- /.modal-dialog -->--}}
+    {{--    </div>--}}
 @endsection
 @section('js')
+    <script src="{{ asset('js/admin/crud.js') }}"></script>
     <script>
+        let url_active = '{{ route('admin.category.active') }}';
+        let url_delete = '{{ route('admin.category.delete') }}'
         $(function () {
-            load_data();
-            // $('#example1').DataTable({
-            //     "language": {
-            //         "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Vietnamese.json"
-            //     }
-            // })
+            load_data('{{route('admin.category.load_data')}}');
         })
 
-        function load_data() {
-            $('#overlay').removeClass('hidden');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        function save_create() {
+            $('.error').text("");
+            $('#form_create').validate({
+                rules:{
+                    name: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Vui lòng nhập thông tin"
+                    }
                 }
             });
-            $.ajax({
-                type: 'get',
-                url: '{{ route('admin.category.load_data') }}',
-                success: function (data) {
-                    $('#overlay').addClass('hidden');
-                    $('#table-list').empty();
-                    $('#table-list').append(data.view);
-                },
-            });
-        }
-
-        function save_create() {
+            if($('#form_create').valid() == false){
+                return false;
+            }
+            $('#btn_save_create').prop('disabled', true);
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -127,11 +130,20 @@
                 },
                 success: function (data) {
                     $('#modal-create').modal('toggle');
-                    load_data();
-                    toastr.success('Thêm mới thành công', 'Thành công')
+                    load_data('{{route('admin.category.load_data')}}');
+                    toastr.success('Thêm mới thành công', 'Thành công');
+                    $('#btn_save_create').prop('disabled', false);
+
                 },
-                error: function () {
-                    toastr.error('Thêm mới thất bại', 'Thất bại')
+                error: function (response) {
+                    let data = response.responseJSON['messages'];
+                    if (data.name && data.name[0] == 86) {
+                        $('#error_name').text("Tên danh mục đã tồn tại");
+                    }
+                    else {
+                        toastr.error('Có lỗi xảy ra, vui lòng kiểm tra lại dữ liệu đầu vào hoặc liên hệ với quản trị viên', 'Thông báo');
+                    }
+                    $('#btn_save_create').prop('disabled', false);
                 }
             });
         }

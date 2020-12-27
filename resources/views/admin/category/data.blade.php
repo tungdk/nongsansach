@@ -19,10 +19,10 @@
                 <td>{{ $cate->created_at }}</td>
                 <td>
                     @if($cate->status == 1)
-                        <a href="{{route('admin.category.active', $cate->id)}}"
+                        <a href="#" onclick="change_status({{ $cate->id }}); return false;"
                            class="label label-info">Hiển thị</a>
                     @else
-                        <a href="{{route('admin.category.active', $cate->id)}}"
+                        <a href="#" onclick="change_status({{ $cate->id }}); return false;"
                            class="label label-default">Ẩn</a>
                     @endif
                 </td>
@@ -30,7 +30,7 @@
                     <a href="{{route('admin.category.edit', $cate->id)}}"
                        class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                         Sửa</a>
-                    <a href="{{route('admin.category.delete', $cate->id)}}"
+                    <a href="#" onclick="delete_item({{ $cate->id }}); return false;"
                        class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
                 </td>
 

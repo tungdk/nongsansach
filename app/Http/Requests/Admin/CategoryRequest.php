@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CategoryRequest extends FormRequest
 {
@@ -30,5 +32,9 @@ class CategoryRequest extends FormRequest
         }
         $rules['name'] = "required|unique:categories,name";
         return $rules;
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['messages'=>$validator->errors()], 422));
     }
 }

@@ -12,9 +12,26 @@ use Illuminate\Support\Facades\Session;
 class PartnerController extends Controller
 {
     public function index(){
-        $partners = Partner::query()->get();
-        return view('admin.partner.index', compact('partners'));
+        return view('admin.partner.index');
     }
+
+    function getAll(){
+        return Partner::query()
+            ->where('is_deleted', null)
+            ->orWhere('is_deleted', 0)
+            ->orderByDesc('created_at')
+            ->get();
+    }
+
+    function load_data(){
+        $partners = $this->getAll();
+        return  response()->json([
+            'view' => view('admin.partner.data', [
+                'partners' => $partners
+            ])->render()
+        ], 200);
+    }
+
     public function create(){
         return view('admin.partner.create');
     }
@@ -24,15 +41,10 @@ class PartnerController extends Controller
         $partner->name = $request->name;
         $partner->logo = upload_image('partners', $request->logo);
         $partner->status = $request->status ? '1' : '0';
-        $success = $partner->save();
-        if($success){
-            Session::flash('toastr',[
-                'type'  =>  'success',
-                'message' => 'Thêm đối tác thành công'
-            ]);
-        }
-
-        return redirect()->back();
+        $partner->save();
+        return  response()->json([
+            'message' => 'Thành công'
+        ], 200);
     }
 
     public function edit($id){
@@ -58,10 +70,31 @@ class PartnerController extends Controller
         return redirect()->back();
     }
 
-    public function active($id){
-        $parter = Partner::find($id);
+    public function active(Request $request){
+        $id = $request->id;
+        $parter = Partner::query()->findOrFail($id);
         $parter->status = ! $parter->status;
         $parter->save();
-        return redirect()->back();
+
+        $partners = $this->getAll();
+        return  response()->json([
+            'view' => view('admin.partner.data', [
+                'partners' => $partners
+            ])->render()
+        ], 200);
+    }
+
+    public function delete(Request $request){
+        $id = $request->id;
+        $parter = Partner::query()->findOrFail($id);
+        $parter->is_deleted = 1;
+        $parter->save();
+
+        $partners = $this->getAll();
+        return  response()->json([
+            'view' => view('admin.partner.data', [
+                'partners' => $partners
+            ])->render()
+        ], 200);
     }
 }

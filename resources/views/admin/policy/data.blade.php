@@ -30,7 +30,7 @@
                 <td>
                     <a href="{{route('admin.policy.edit', $policy->id)}}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                         Sửa</a>
-                    <a href="#" class="btn btn-xs btn-danger" onclick="delete_policy({{$policy->id}}); return false"><i class="fa fa-trash"></i> Xoá</a>
+                    <a href="#" class="btn btn-xs btn-danger" onclick="delete_item({{$policy->id}}); return false"><i class="fa fa-trash"></i> Xoá</a>
                 </td>
 
             </tr>
