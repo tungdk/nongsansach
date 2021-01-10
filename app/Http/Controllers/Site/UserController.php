@@ -28,10 +28,10 @@ class UserController extends SiteController
     public function index()
     {
         $orders = Order::query()->findOrFail(Auth::id());
-
         if (Auth::check()) {
             $user = $this->get_user();
             return view('site.user.index', compact('user', 'orders'));
+
         }
         return view('site.user.index', compact('orders'));
     }

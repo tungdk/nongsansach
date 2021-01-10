@@ -23,7 +23,7 @@ class CreateSettingsTable extends Migration
             $table->string('time_work');
             $table->string('fanpage');
             $table->string('slogan');
-            $table->string('about_us');
+            $table->text('about_us');
 
             $table->timestamps();
         });

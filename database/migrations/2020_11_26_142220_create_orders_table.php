@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('note')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('payment_method');
-            $table->integer('sale');
+            $table->integer('sale')->nullable();
             $table->double('total_money');
             $table->timestamps();
         });
