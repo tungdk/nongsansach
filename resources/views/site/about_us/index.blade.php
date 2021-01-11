@@ -29,22 +29,7 @@
                                 {!! $about_us->about_us !!}
                             </div>
                         </div>
-
                     </div>
-                    <!-- end product.php -->                <!-- end layoutContent -->
-                    <section class="section featured-product wow fadeInUp mb-4">
-                        <div class="container width-100per">
-                            <!-- begin product-bottom.php -->
-                            <div class="section-title a-center">
-                                <h2><a href="san-pham-noi-bat.html">Sản phẩm liên quan</a></h2>
-                                <p>Có phải bạn đang tìm những sản phẩm dưới đây</p>
-                            </div>
-                            <div class="owl-carousel" data-lgg-items="4" data-lg-items="4" data-md-items="4"
-                                 data-sm-items="3" data-xs-items="2" data-xss-items="2" data-nav="true">
-                            </div>
-                            <!-- end product-bottom.php -->
-                        </div>
-                    </section>
                 </div>
                 @include('site.partials.sidebar-right')
             </div>

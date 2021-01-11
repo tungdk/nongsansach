@@ -30,7 +30,8 @@ class SiteController extends Controller
             ->get(['id', 'name', 'slug']);
 
         //Lấy thông tin website
-        $setting = Setting::query()->first(['id', 'name', 'phone', 'email', 'address', 'map', 'time_work', 'fanpage', 'slogan']);
+        $setting = Setting::query()
+            ->first(['id', 'name', 'phone', 'email', 'address', 'map', 'time_work', 'fanpage', 'slogan']);
 
         View::share([
             'categories' => $categories,

@@ -91,9 +91,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($request->name);
         $data['updated_at'] = Carbon::now();
         if ($request->avatar) {
-            $image = upload_image('products', 'avatar');
-            if ($image['code'] == 1)
-                $data['avatar'] = $image['name'];
+            $data['avatar'] = upload_image('products', $request->avatar);
         }
         $product->update($data);
 

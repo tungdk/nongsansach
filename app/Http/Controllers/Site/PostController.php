@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class PostController extends SiteController
 {
-    public function index()
+    public function hamdungchung()
     {
         $recent_products = Product::query()
             ->where('status', 1)
@@ -25,10 +24,25 @@ class PostController extends SiteController
             ->orderByDesc('views')
             ->take(5)
             ->get(['id', 'title', 'slug', 'thumbnail', 'views']);
-        $viewData = [
+
+        return ([
             'recent_products' => $recent_products,
             'post_categories' => $post_categories,
             'five_post_best_views' => $five_post_best_views
+        ]);
+
+    }
+
+    public function index()
+    {
+        $posts = Post::query()->where('status', 1)
+            ->paginate(3, ['id', 'title', 'description', 'slug', 'thumbnail']);
+        $data = $this->hamdungchung();
+        $viewData = [
+            'recent_products' => $data['recent_products'],
+            'post_categories' => $data['post_categories'],
+            'five_post_best_views' => $data['five_post_best_views'],
+            'posts' => $posts
         ];
         return view('site.post.index', $viewData);
     }
@@ -37,14 +51,12 @@ class PostController extends SiteController
     {
         Post::query()->findOrFail($id)->increment('views');
         $post = Post::query()->findOrFail($id);
-
-//        $recent_products = Post::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
-//        $post = Post::query()->select('products.*', DB::raw('(price_old - price_new)/price_old * 100 as percent'))->findOrFail($id);
-//        $count_comments = Comment::query()->where('product_id', $id)->where('status', 1)->orderByDesc('created_at')->count();
+        $data = $this->hamdungchung();
         $data = [
-//            'recent_products' => $recent_products,
+            'recent_products' => $data['recent_products'],
             'post' => $post,
-//            'count_comments' => $count_comments
+            'post_categories' => $data['post_categories'],
+            'five_post_best_views' => $data['five_post_best_views'],
         ];
         if ($post->slug == $slug) {
             return view('site.post.detail', $data);

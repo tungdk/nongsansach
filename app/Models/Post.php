@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = 'posts';
-
+    protected $guarded = [];
 
     public function postcate()
     {

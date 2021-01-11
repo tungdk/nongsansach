@@ -17,7 +17,7 @@
                                         <div class="product-img relative">
                                             <a href="{{route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->slug])}}">
                                                 <img src="{{ asset('site/images/lazyload.svg') }}"
-                                                     data-lazyload="{{ asset('updloads/products/'.$product->image) }}"
+                                                     data-lazyload="{{ asset('uploads/products/'.$product->avatar) }}"
                                                      alt="{{$product->slug}}">
 
                                             </a>
@@ -25,12 +25,13 @@
                                         <div class="product-info">
                                             <h3>
                                                 <a href="{{route('site.product.detail', ['id'=>$product->id, 'slug'=>$product->slug])}}"
-                                                   title="{{$product->name}}"
-                                                   class="product-name">{{$product->name}}</a>
+                                                   title="{{$product->name}}    "
+                                                   class="product-name">{{ strlen($product->name) > 30 ? substr($product->name, 0, 30)."..." : $product->name }}</a>
                                             </h3>
                                             <div class="price-box">
-                                                                <span class="price"><span
-                                                                        class="price product-price">{{$product->price}}</span> </span>
+                                                <span class="price">
+                                                    <span class="price product-price">{{ number_format($product->price_new, 0, '.', ',')}}₫</span>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +70,8 @@
                                         @break
                                     @else
                                         <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                        <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}" class="nav-link"
+                                        <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}"
+                                           class="nav-link"
                                            data-toggle="collapse" data-target="#aaaaa">{{$cate->name}}</a>
                                     @endif
                                 </li>

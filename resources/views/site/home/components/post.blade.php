@@ -9,16 +9,22 @@
                      data-xs-items="2" data-nav="true">
                     @if(isset($posts))
                         @foreach($posts as $post)
-                            <div class="blog-item text-center p-4 mb-5">
-                                <div class="image-avata">
-                                    <img data-src="https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78"
-                                         class="owl-lazy"
-                                         alt="Khách hàng thân thiết">
+                            <article class="blog-item text-center">
+                                <div>
+                                    <div class="blog-item-thumbnail">
+                                        <a href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">
+                                            <img data-src="{{ asset('uploads/posts/'.$post->thumbnail) }}"
+                                                alt="{{ $post->title }}"
+                                                class="owl-lazy">
+                                        </a>
+                                    </div>
+                                    <div class="blog-item-info m-4">
+                                        <h3 class="blog-item-name"><a
+                                                href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">{{ strlen($post->title) > 90 ? substr($post->title, 0, 90)."..." : $post->title }}</a></h3>
+                                        <a class="btn" href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">Chi tiết</a>
+                                    </div>
                                 </div>
-                                <h4 class="name">{{ $post->title }}</h4>
-{{--                                <p class="designation m-0">{{ $post->description }}</p>--}}
-                                <p class="designation m-0"><a href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">Xem thêm <i class="fa fa-long-arrow-right"></i> </a></p>
-                            </div>
+                            </article>
                         @endforeach
                     @endif
                 </div>

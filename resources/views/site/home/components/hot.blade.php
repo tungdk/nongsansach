@@ -26,14 +26,14 @@
                                                                                 <a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
                                                                                    title="{{$product->name}}">
                                                                                     <img
-                                                                                        src="site/images/lazyload.svg"
-                                                                                        data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
-                                                                                        alt="{{$product->name}}">
+                                                                                        src="{{ asset('site/images/lazyload.svg') }}"
+                                                                                        data-lazyload="{{ asset('uploads/products/'.$product->avatar) }}"
+                                                                                        alt="{{$product->slug}}">
                                                                                 </a>
                                                                             </div>
                                                                             <div class="product-info a-center">
                                                                                 <h3 class="product-name">
-                                                                                    <a href="ten-san-pham-dang-ban-1.html"
+                                                                                    <a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
                                                                                        title="{{$product->name}}">{{$product->name}}</a>
                                                                                 </h3>
                                                                                 <div class="price-box clearfix">

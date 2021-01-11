@@ -81,7 +81,7 @@
                                         <!-- end product item -->
                                     </div>
                                 @empty
-                                    <p>Không có dữ liệu</p>
+                                    <p>Danh mục này chưa có sản phẩm</p>
                                 @endforelse
                             @endif
                         </div>

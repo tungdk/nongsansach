@@ -16,150 +16,43 @@
             </div>
         </div>
     </section>
-    <section class="product " itemscope="" itemtype="http://schema.org/Product">
-        <meta itemprop="name" content="Vải thiều loại to">
-        <meta itemprop="url" content="//dualeo-x.bizwebvietnam.net/cherry-do-canada-loai-to">
-        <meta itemprop="image"
-              content="../bizweb.dktcdn.net/thumb/grande/100/308/325/products/kf57fd708888943c073792a327aeb51a63.jpg?v=1524537033277">
-
-        <meta itemprop="model" content="">
-
-        <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-            <meta itemprop="price" content="80.000₫">
-
-            <meta itemprop="priceCurrency" content="VND">
-        </div>
-        <meta itemprop="description"
-              content="Giá trị dinh dưỡng:   Nho tươi cung cấp các chất dinh dưỡng, làm giảm mệt nhọc ngay lập tức....">
-
-        <div itemprop="brand" itemscope="" itemtype="http://schema.org/Organization">
-            <span class="hidden" itemprop="name">Canada</span>
-        </div>
+    <section class="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <!-- begin layoutContent -->
-                    <!-- begin product.php -->
-                    <div class="details-product">
-                        <div class="row">Đây là danh sách các tin tức</div>
+                    <section style="padding-bottom: 50px" class="catelogy_post">
+                        <!--blog post-->
+                        <div class="row">
+                            @foreach($posts as $post)
+                                <article class="m_bottom_20 clearfix inline">
+                                    <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"
+                                       class="col-md-2 photoframe d_block d_xs_inline_b f_xs_none wrapper shadow f_left m_right_20 m_bottom_10 r_corners inline">
+                                        <img style="width: 120px;"
+                                             src="{{ asset('uploads/posts/'.$post->thumbnail) }}"
+                                             class="tr_all_long_hover"
+                                             alt="{{ $post->title }}">
+                                    </a>
+                                    <div class="mini_post_content col-md-10" style="padding-top: 3px">
+                                        <b><a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"
+                                              class="color_dark fw_medium">{{ strlen($post->title) > 130 ? substr($post->title)."..." : $post->title}}</a></b>
+                                        <p class="m_bottom_10">{{ strlen($post->description) > 260 ? substr($post->description)."..." : $post->description}}</p>
+                                    </div>
 
-                    </div>
-                    <!-- end product.php -->                <!-- end layoutContent -->
-                    <section class="section featured-product wow fadeInUp mb-4">
-                        <div class="container width-100per">
-                            <!-- begin product-bottom.php -->
-                            <div class="section-title a-center">
-                                <h2><a href="san-pham-noi-bat.html">Tin tức liên quan</a></h2>
-                                <p>Có phải bạn đang tìm những tin tức dưới đây</p>
+                                </article>
+                                <hr class="divider_type_3 m_bottom_10">
+                            @endforeach
+                            <div class="clearfix m_xs_bottom_30">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+                                    <!--pagination-->
+                                    <p style="vertical-align: top;padding-right: 10px"
+                                       class="d_inline_middle f_size_medium">{{ $posts->links('vendor/pagination/bootstrap-4') }} </p>
+                                </div>
+
                             </div>
-                            <div class="owl-carousel" data-lgg-items="4" data-lg-items="4" data-md-items="4"
-                                 data-sm-items="3" data-xs-items="2" data-xss-items="2" data-nav="true">
-                            </div>
-                            <!-- end product-bottom.php -->
                         </div>
                     </section>
                 </div>
-                <div class="dqdt-sidebar sidebar right left-content col-lg-3">
-                    <div class="aside-mini-list-product mb-5">
-                        <div class="content a-center">
-                            <div class="search_form">
-                                <form class="input-group search-bar search_form"
-                                      action="{{ route('site.post.search') }}" method="get"
-                                      role="search">
-                                    <input type="search" name="tukhoa" value="" placeholder="Tìm tin tức"
-                                           class="input-group-field st-default-search-input search-text"
-                                           autocomplete="off" style="border-radius: 5px" required>
-                                    <span class="input-group-btn">
-															<button class="btn icon-fallback-text">
-																<i class="fa fa-search"></i>
-															</button>
-														</span>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="aside-vetical-menu">
-                        <aside class="aside-item sidebar-category collection-category">
-                            <div class="aside-title">
-                                <h2 class="title-head margin-top-0"><span>Danh mục tin tức</span></h2>
-                            </div>
-                            <div class="aside-content">
-
-                                <nav class="nav-category navbar-toggleable-md">
-                                    <ul class="nav navbar-pills">
-                                        {{--                        <li class="nav-item nav-collapse">--}}
-                                        {{--                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>--}}
-                                        {{--                            <a href="danh-muc/aaaaa.html" class="nav-link" data-toggle="collapse" data-target="#aaaaa">AAAAA</a>--}}
-                                        @if(isset($post_categories))
-                                            @foreach($post_categories as $key => $cate)
-                                                <li class="nav-item nav-collapse">
-                                                    @if($key == 5)
-                                                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                                        <a href="{{ route('site.category.index') }}" class="nav-link"
-                                                           data-toggle="collapse" data-target="#aaaaa">Xem thêm</a>
-                                                        @break
-                                                    @else
-                                                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                                        <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}"
-                                                           class="nav-link"
-                                                           data-toggle="collapse"
-                                                           data-target="#aaaaa">{{$cate->name}}</a>
-                                                    @endif
-                                                </li>
-                                    @endforeach
-                                    @endif
-                                </nav>
-                            </div>
-                        </aside>
-                    </div>
-
-                    <div class="aside-item aside-mini-list-product mb-5">
-                        <div>
-                            <div class="aside-title">
-                                <h2 class="title-head">
-                                    <a href="#" title="Sản phẩm mới">Tin tức nổi bật</a>
-                                </h2>
-                            </div>
-                            <div class="aside-content related-product">
-                                <div class="product-mini-lists">
-                                    <div class="products">
-                                        <div class="row row-noGutter">
-                                            <div class="col-sm-12">
-                                                @foreach($five_post_best_views as $post)
-                                                    <div class="product-mini-item clearfix on-sale">
-                                                        <div class="product-img relative">
-                                                            <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}">
-                                                                <img src="{{ asset('site/images/lazyload.svg') }}"
-                                                                     data-lazyload="{{ asset('uploads/posts/'.$post->thumbnail) }}"
-                                                                     alt="{{$post->slug}}">
-
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-info">
-                                                            <h3>
-                                                                <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"
-                                                                   title="{{$post->title}}"
-                                                                   class="product-name">{{$post->title}}</a>
-                                                            </h3>
-                                                            <div class="price-box">
-                                                                <span class="price"><span
-                                                                        class="price"><i class="fa fa-eye"></i> {{$post->views}}</span> </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <!-- /.products -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('site.post.sidebar_right')
             </div>
         </div>
     </section>
