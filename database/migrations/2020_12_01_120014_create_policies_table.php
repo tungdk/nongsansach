@@ -20,7 +20,7 @@ class CreatePoliciesTable extends Migration
             $table->string('description');
             $table->text('content');
             $table->tinyInteger('status');
-            $table->tinyInteger('is_deleted')->nullable();
+            $table->tinyInteger('is_deleted')->default(0);
             $table->timestamps();
         });
     }

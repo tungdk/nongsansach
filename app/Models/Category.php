@@ -9,6 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = 'categories';
+    protected $guarded = [];
 
     public function parent_cate(){
         return Category::query()->where('id', $this->parent_id)->first();

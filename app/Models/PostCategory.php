@@ -9,5 +9,6 @@ class PostCategory extends Model
 {
     use HasFactory;
     protected $table = 'post_categories';
+    protected $guarded = [];
 
 }

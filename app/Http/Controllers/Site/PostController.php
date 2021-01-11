@@ -36,7 +36,7 @@ class PostController extends SiteController
     public function index()
     {
         $posts = Post::query()->where('status', 1)
-            ->paginate(3, ['id', 'title', 'description', 'slug', 'thumbnail']);
+            ->paginate(10, ['id', 'title', 'description', 'slug', 'thumbnail', 'updated_at']);
         $data = $this->hamdungchung();
         $viewData = [
             'recent_products' => $data['recent_products'],

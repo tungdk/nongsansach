@@ -19,27 +19,70 @@
     <section class="product">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
-                    <section style="padding-bottom: 50px" class="catelogy_post">
-                        <!--blog post-->
+                {{--                <div class="col-lg-9">--}}
+                {{--                    <section style="padding-bottom: 50px" class="catelogy_post">--}}
+                {{--                        <!--blog post-->--}}
+                {{--                        <div class="row">--}}
+                {{--                            @foreach($posts as $post)--}}
+                {{--                                <article class="m_bottom_20 clearfix inline">--}}
+                {{--                                    <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"--}}
+                {{--                                       class="col-md-2 photoframe d_block d_xs_inline_b f_xs_none wrapper shadow f_left m_right_20 m_bottom_10 r_corners inline">--}}
+                {{--                                        <img style="width: 120px;"--}}
+                {{--                                             src="{{ asset('uploads/posts/'.$post->thumbnail) }}"--}}
+                {{--                                             class="tr_all_long_hover"--}}
+                {{--                                             alt="{{ $post->title }}">--}}
+                {{--                                    </a>--}}
+                {{--                                    <div class="mini_post_content col-md-10" style="padding-top: 3px">--}}
+                {{--                                        <b><a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"--}}
+                {{--                                              class="color_dark fw_medium">{{ strlen($post->title) > 130 ? substr($post->title)."..." : $post->title}}</a></b>--}}
+                {{--                                        <p class="m_bottom_10">{{ strlen($post->description) > 260 ? substr($post->description)."..." : $post->description}}</p>--}}
+                {{--                                    </div>--}}
+
+                {{--                                </article>--}}
+                {{--                                <hr class="divider_type_3 m_bottom_10">--}}
+                {{--                            @endforeach--}}
+                {{--                            <div class="clearfix m_xs_bottom_30">--}}
+                {{--                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">--}}
+                {{--                                    <!--pagination-->--}}
+                {{--                                    <p style="vertical-align: top;padding-right: 10px"--}}
+                {{--                                       class="d_inline_middle f_size_medium">{{ $posts->links('vendor/pagination/bootstrap-4') }} </p>--}}
+                {{--                                </div>--}}
+
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </section>--}}
+                {{--                </div>--}}
+                <section class="main_container collection col-lg-9">
+                    <section class="list-blogs blog-main">
                         <div class="row">
                             @foreach($posts as $post)
-                                <article class="m_bottom_20 clearfix inline">
-                                    <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"
-                                       class="col-md-2 photoframe d_block d_xs_inline_b f_xs_none wrapper shadow f_left m_right_20 m_bottom_10 r_corners inline">
-                                        <img style="width: 120px;"
-                                             src="{{ asset('uploads/posts/'.$post->thumbnail) }}"
-                                             class="tr_all_long_hover"
-                                             alt="{{ $post->title }}">
-                                    </a>
-                                    <div class="mini_post_content col-md-10" style="padding-top: 3px">
-                                        <b><a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"
-                                              class="color_dark fw_medium">{{ strlen($post->title) > 130 ? substr($post->title)."..." : $post->title}}</a></b>
-                                        <p class="m_bottom_10">{{ strlen($post->description) > 260 ? substr($post->description)."..." : $post->description}}</p>
-                                    </div>
+                                <div class="col-xs-12">
+                                    <article class="blog-item">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-4">
+                                                <div class="blog-item-thumbnail">
+                                                    <a href="/me-da-chon-duoc-quay-cui-cho-be-loai-nao-tot-chua.html">
+                                                        <img
+                                                            src="{{ asset('site/images/lazyload.svg') }}"
+                                                            data-lazyload="{{ asset('uploads/posts/'.$post->thumbnail) }}"
+                                                            alt="{{ $post->title }}">
 
-                                </article>
-                                <hr class="divider_type_3 m_bottom_10">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8">
+                                                <div class="blog-item-info">
+                                                    <h3 class="blog-item-name"><a
+                                                            href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}">{{ strlen($post->title) > 130 ? substr($post->title)."..." : $post->title}}</a></h3>
+                                                    <div class="post-time">
+                                                        <div class="inline-block">{{ $post->updated_at }}</div>
+                                                    </div>
+                                                    <p class="blog-item-summary">{{ strlen($post->description) > 260 ? substr($post->description)."..." : $post->description}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
                             @endforeach
                             <div class="clearfix m_xs_bottom_30">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
@@ -50,8 +93,10 @@
 
                             </div>
                         </div>
-                    </section>
-                </div>
+                        <div class="text-center">
+                        </div>
+                    </section>          <!-- end layoutContent -->
+                </section>
                 @include('site.post.sidebar_right')
             </div>
         </div>

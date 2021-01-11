@@ -18,7 +18,7 @@ class CreatePartnersTable extends Migration
             $table->string('name', 50);
             $table->string('logo');
             $table->tinyInteger('status');
-            $table->tinyInteger('is_deleted')->nullable();
+            $table->tinyInteger('is_deleted')->default(0);
             $table->timestamps();
         });
     }

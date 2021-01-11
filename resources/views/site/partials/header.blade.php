@@ -251,7 +251,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('site.about_us.index') }}">Giới thiệu</a></li>
                     {{--                    <li class="nav-item "><a class="nav-link" href="#">Dịch vụ</a></li>--}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('site.category.index') }}">Sản phẩm</a>
+                        <a class="nav-link" href="{{ route('site.category.index') }}">Danh mục</a>
                         <ul class="sub-menu">
                             @if(isset($categories))
                                 @foreach($categories as $key => $cate)

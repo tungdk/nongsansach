@@ -65,8 +65,9 @@ class HomeController extends SiteController
         //Đối tác
         $partners = Partner::query()
             ->where('status', 1)
+            ->where('is_deleted', 0)
             ->orderByDesc('created_at')
-            ->get('logo');
+            ->get(['id', 'logo']);
 
         //Bài viết
         $posts = Post::query()
@@ -89,7 +90,7 @@ class HomeController extends SiteController
             'recent_products' => $recent_products,
             'categories_random' => $categories_random,
             'sliders' => $sliders,
-            'partner' => $partners,
+            'partners' => $partners,
             'products_cate' => $products_cate,
             'posts' => $posts,
             'hot_products' => $hot_products,

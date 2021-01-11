@@ -9,5 +9,6 @@ class Order_detail extends Model
 {
     use HasFactory;
     protected $table = 'order_details';
+    protected $guarded = [];
 
 }
