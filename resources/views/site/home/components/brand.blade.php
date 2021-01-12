@@ -3,6 +3,7 @@
         <div class="container">
             <div class="section-title a-center">
                 <h2><span>Đối tác</span></h2>
+                <p>Những đối tác mua hàng của chúng tôi.</p>
             </div>
             <div class="section-content">
                 <div class="owl-carousel owl-theme" data-lg-items="6" data-md-items="5" data-sm-items="4"
@@ -10,7 +11,7 @@
                     @if(isset($partners))
                         @foreach($partners as $partner)
                             <div class="brand-item">
-                                <a href="#" class="img25"><img data-src="{{ asset('uploads/partners/'. $partner->logo) }}" class="owl-lazy"
+                                <a href="javascript:;" class="img25"><img data-src="{{ asset('uploads/partners/'. $partner->logo) }}" class="owl-lazy"
                                                                alt="{{ $partner->name }}">
                                 </a>
                             </div>

@@ -26,7 +26,14 @@
             <hr>
 
         @endforeach
-{{--        {{$comments->links()}}--}}
+            <div class="clearfix m_xs_bottom_30">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+                    <!--pagination-->
+                    <p style="vertical-align: top;padding-right: 10px"
+                       class="d_inline_middle f_size_medium">{{ $comments->links('vendor/pagination/bootstrap-4') }} </p>
+                </div>
+
+            </div>
     @else
         <div class="no-comment" style="margin-top: 30px">
             <p>Bạn chưa có hoạt động bình luận nào.</p>

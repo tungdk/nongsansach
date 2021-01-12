@@ -11,8 +11,9 @@ class Category extends Model
     protected $table = 'categories';
     protected $guarded = [];
 
-    public function parent_cate(){
-        return Category::query()->where('id', $this->parent_id)->first();
+    public function products(){
+        return $this->hasMany('App\Models\Product','category_id','id');
     }
+
 
 }

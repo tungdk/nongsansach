@@ -28,6 +28,12 @@
         </div>
         <hr>
     @endforeach
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+        <!--pagination-->
+        <p style="vertical-align: top;padding-right: 10px"
+           class="d_inline_middle f_size_medium"> {{ $comments->links('site/partials/paginate') }}</p>
+    </div>
 @else
     <p>Không có đánh giá nào cho sản phẩm này.</p>
 @endif

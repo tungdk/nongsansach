@@ -48,7 +48,7 @@ class SliderController extends Controller
         $data = $request->except('_token', 'status', 'thumbnail');
         $data['status'] = $request->status ? '1' : '0';
         if(isset($request->thumbnail)){
-            $data['thumbnail'] = $request->thumbnail;
+            $data['thumbnail'] = upload_image('sliders', $request->thumbnail);
         }
         $data['created_at'] = Carbon::now();
         $sliders->update($data);

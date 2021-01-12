@@ -23,7 +23,10 @@ class CommentController extends Controller
     public function load_comment(Request $request)
     {
         $product_id = $request->product_id;
-        $comments = Comment::query()->where('product_id', $product_id)->where('status', 1)->orderByDesc('created_at')->get();
+        $comments = Comment::query()
+            ->where('product_id', $product_id)->where('status', 1)
+            ->orderByDesc('created_at')
+            ->paginate(5);
         return response()->json([
             'view' => view('site.product.components.comment', [
                 'comments' => $comments,

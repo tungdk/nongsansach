@@ -37,14 +37,14 @@
                                                 <a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
                                                    title="{{$product->name}}">
                                                     <img
-                                                        src="site/images/lazyload.svg"
-                                                        data-lazyload="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
+                                                        src="{{ asset('site/images/lazyload.svg') }}"
+                                                        data-lazyload="{{ asset('uploads/products/'.$product->avatar) }}"
                                                         alt="{{$product->name}}">
                                                 </a>
                                             </div>
                                             <div class="product-info a-center">
                                                 <h3 class="product-name">
-                                                    <a href="ten-san-pham-dang-ban-1.html"
+                                                    <a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
                                                        title="{{$product->name}}">{{$product->name}}</a>
                                                 </h3>
                                                 <div class="price-box clearfix">
@@ -83,9 +83,21 @@
                                 @empty
                                     <p>Danh mục này chưa có sản phẩm</p>
                                 @endforelse
+                                    <div class="clearfix m_xs_bottom_30">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+                                            <!--pagination-->
+                                            <p style="vertical-align: top;padding-right: 10px"
+                                               class="d_inline_middle f_size_medium">{{ $products->links('vendor/pagination/bootstrap-4') }} </p>
+                                        </div>
+
+                                    </div>
                             @endif
                         </div>
-                        @include('site.partials.sidebar-right')
+                        <aside class="dqdt-sidebar sidebar left left-content col-lg-3">
+                            @include('site.partials.five_new_product')
+                            @include('site.partials.five_hot_news')
+                            @include('site.partials.sidebar-category')
+                        </aside>
                     </div>
                     <div class="text-center">
                     </div>

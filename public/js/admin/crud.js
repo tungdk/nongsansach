@@ -40,6 +40,30 @@ function change_status(id) {
     });
 }
 
+function show_home(id) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: 'post',
+        url: url_show_home,
+        data: {
+            'id': id
+        },
+        success: function (data) {
+            $('#overlay').addClass('hidden');
+            $('#table-list').empty();
+            $('#table-list').append(data.view);
+            toastr.success("Cập nhật thành công", 'Thành công');
+        },
+        error: function (data) {
+            toastr.error("Có lỗi xảy ra, liên hệ với quản trị viên", 'Thành công');
+        }
+    });
+}
+
 function delete_item(id) {
     Swal.fire({
         title: 'Bạn chắc chắn muốn xoá?',

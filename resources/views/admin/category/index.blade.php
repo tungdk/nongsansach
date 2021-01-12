@@ -94,7 +94,8 @@
     <script src="{{ asset('js/admin/crud.js') }}"></script>
     <script>
         let url_active = '{{ route('admin.category.active') }}';
-        let url_delete = '{{ route('admin.category.delete') }}'
+        let url_delete = '{{ route('admin.category.delete') }}';
+        let url_show_home = '{{ route('admin.category.show_home') }}'
         $(function () {
             load_data('{{route('admin.category.load_data')}}');
         })

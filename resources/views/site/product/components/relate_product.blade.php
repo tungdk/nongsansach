@@ -19,15 +19,17 @@
                             </a>
                         </div>
                         <div class="product-info a-center">
-                            <h3 class="product-name"><a href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
-                                                        title="{{ $product->name }}">{{ $product->name }}</a></h3>
+                            <h3 class="product-name"><a
+                                    href="{{route('site.product.detail',['id' => $product->id, 'slug' => $product->slug])}}"
+                                    title="{{ $product->name }}">{{ $product->name }}</a></h3>
 
                             <div class="price-box clearfix">
                                 <div class="special-price">
                                     <span class="price product-price">{{ number_format($product->price_new, 0, '.', ',') }}₫</span>
                                 </div>
-
-
+                                <div class="old-price">
+                                    <span class="price product-price-old">{{ number_format($product->price_old, 0, '.', ',') }}₫</span>
+                                </div>
                             </div>
                         </div>
                     </div>

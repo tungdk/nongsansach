@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index(){
         $categories = Category::query()
             ->orderByDesc('created_at')
-            ->get(['id', 'name', 'status', 'created_at']);
+            ->get(['id', 'name', 'status', 'created_at', 'show_home']);
         $data = [
             'categories' => $categories
         ];
@@ -28,7 +28,7 @@ class CategoryController extends Controller
             ->where('is_deleted', 0)
             ->orWhere('is_deleted', null)
             ->orderByDesc('created_at')
-            ->get(['id', 'name', 'status', 'created_at']);
+            ->get(['id', 'name', 'status', 'created_at', 'show_home']);
     }
 
     public function load_data(){
@@ -95,6 +95,19 @@ class CategoryController extends Controller
         $id = $request->id;
         $category = Category::query()->findOrFail($id);
         $category->is_deleted = 1;
+        $category->save();
+
+        $categories = $this->getAll();
+        return response()->json([
+            'view' => view('admin.category.data', [
+                'categories' => $categories
+            ])->render()
+        ]);
+    }
+
+    public function show_home(Request $request){
+        $category = Category::query()->findOrFail($request->id);
+        $category->show_home = !$category->show_home;
         $category->save();
 
         $categories = $this->getAll();

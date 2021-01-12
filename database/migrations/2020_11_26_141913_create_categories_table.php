@@ -18,7 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->tinyInteger('status')->default(1);
-            $table->tinyInteger('is_deleted')->nullable();
+            $table->tinyInteger('is_deleted')->default(0);
+            $table->tinyInteger('show_home')->default(0);
             $table->timestamps();
         });
     }

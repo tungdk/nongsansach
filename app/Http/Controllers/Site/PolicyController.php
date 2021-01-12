@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 class PolicyController extends SiteController
 {
     public function detail($id, $slug){
-        $recent_products = Product::query()
-            ->where('status', 1)
-            ->orderByDesc('updated_at')
-            ->limit(5)
-            ->get(['id', 'name', 'slug', 'price_new', 'avatar']);
         $policy = Policy::query()->where('status', 1)->findOrFail($id);
         $policies = Policy::query()
             ->where([
@@ -23,7 +18,8 @@ class PolicyController extends SiteController
             ])->get(['id', 'name', 'slug']);
         $data = [
             'policy' => $policy,
-            'recent_products' => $recent_products,
+            'recent_products' => $this->five_new_product(),
+            'five_post_best_views' => $this->five_hot_news(),
             'policies' => $policies
         ];
         if($policy->slug == $slug){

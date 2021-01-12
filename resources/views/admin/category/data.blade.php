@@ -3,10 +3,11 @@
     <tr>
         <th style="width: 5%">#</th>
         {{--                        <th style="width: 5%">Mã</th>--}}
-        <th style="width: 30%">Tên danh mục</th>
-        <th style="width: 30%">Ngày tạo</th>
+        <th style="width: 40%">Tên danh mục</th>
+        <th style="width: 20%">Ngày tạo</th>
         <th style="width: 10%">Trạng thái</th>
-        <th style="width: 20%">Thao tác</th>
+        <th style="width: 10%">Trang chủ</th>
+        <th style="width: 15%">Thao tác</th>
     </tr>
     </thead>
     <tbody class="load-data">
@@ -24,6 +25,15 @@
                     @else
                         <a href="#" onclick="change_status({{ $cate->id }}); return false;"
                            class="label label-default">Ẩn</a>
+                    @endif
+                </td>
+                <td class="text-center">
+                    @if($cate->show_home == 1)
+                        <a href="#" onclick="show_home({{ $cate->id }}); return false;"
+                           ><i class="fa fa-check"></i></a>
+                    @else
+                        <a href="#" onclick="show_home({{ $cate->id }}); return false;"
+                           ><i class="fa fa-square-o"></i></a>
                     @endif
                 </td>
                 <td>

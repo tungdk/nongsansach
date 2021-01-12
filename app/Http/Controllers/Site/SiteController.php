@@ -7,6 +7,9 @@ use App\Http\Requests\Site\SubscribeRequest;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Policy;
+use App\Models\Post;
+use App\Models\PostCategory;
+use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Subscribe;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +21,17 @@ class SiteController extends Controller
     public function __construct()
     {
         //lấy danh mục
+        $getCategories = [];
         $categories = Category::query()
             ->where('status', 1)
+            ->where('is_deleted', 0)
             ->orderByDesc('created_at')
             ->get(['id', 'name', 'slug']);
+        foreach ($categories as $category){
+            if(isset($category->products) && $category->products->count() > 0){
+                array_push($getCategories, $category);
+            }
+        }
 
         //lấy danh sách chính sách
         $policies = Policy::query()
@@ -34,10 +44,30 @@ class SiteController extends Controller
             ->first(['id', 'name', 'phone', 'email', 'address', 'map', 'time_work', 'fanpage', 'slogan']);
 
         View::share([
-            'categories' => $categories,
+            'categories' => $getCategories,
             'policies' => $policies,
             'setting' => $setting
         ]);
+    }
+
+    public function five_new_product(){
+        return Product::query()
+            ->where('status', 1)
+            ->orderByDesc('updated_at')
+            ->limit(5)
+            ->get();
+    }
+
+    public function five_hot_news(){
+        return Post::query()
+            ->where('status', 1)
+            ->orderByDesc('views')
+            ->take(5)
+            ->get(['id', 'title', 'slug', 'thumbnail', 'views', 'updated_at']);
+    }
+
+    public function post_category(){
+        return PostCategory::query()->where('status', 1)->get(['id', 'name', 'slug']);
     }
 
     function count_cart()

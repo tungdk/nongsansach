@@ -31,7 +31,11 @@
                         </div>
                     </div>
                 </div>
-                @include('site.partials.sidebar-right')
+                <aside class="dqdt-sidebar sidebar left left-content col-lg-3">
+                    @include('site.partials.five_new_product')
+                    @include('site.partials.five_hot_news')
+                    @include('site.partials.sidebar-category')
+                </aside>
             </div>
         </div>
     </section>

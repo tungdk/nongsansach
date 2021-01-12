@@ -28,17 +28,16 @@
     <div class="container">
         <div class="row">
             <section class="main_container collection col-lg-9">
-                <article class="article-main" itemscope itemtype="http://schema.org/Article">
+                <article class="article-main">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="article-details">
-                                <h1 class="article-title">Sách Biến chứng sau cắt dạ dày</h1>
+                                <h1 class="article-title">{{ $post->title }}</h1>
                                 <div class="post-time">
-                                    30-08-2019 23:08:37        </div>
+                                    {{ $post->updated_at }}
+                                </div>
                                 <div class="article-content">
-                                    <p style="text-align: center;"><span style="font-size: 24pt;"><img src="https://thuvienthammy.com/uploads/sachgiaiphau/images/sach-y-hoc/bien-chung-sau-cat-da-day.jpg" alt="bien chung sau cat da day" width="511" height="459" /></span></p>
-                                    <p style="text-align: center;"><span style="font-size: 24pt;"><a href="https://drive.google.com/open?id=1WeqaKWkFMYpkvHVJ7xDV2UgQ7CncdHhE" target="_blank" rel="noopener noreferrer">Tải S&aacute;ch Biến chứng sau cắt dạ d&agrave;y</a></span></p>        </div>
-
+                                    <p>{!! $post->content !!} </p>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -46,10 +45,7 @@
                                 <!-- tags -->
                                 <div class="col-xs-12 col-sm-6 tag_article ">
                                     <span class="inline"><i class="fa fa-tags"></i> </span>
-                                    <a href="/the/bien-chung-sau-cat-da-day.html">biến chứng sau cắt dạ dày</a>
-                                    <a href="/the/da-day.html">dạ dày</a>
-                                    <a href="/the/bien-chung.html">biến chứng</a>
-
+                                    <a href="/">nông sản sạch</a>
                                 </div>
 
 
@@ -86,51 +82,18 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="block-recent">
-                                <h2 class="gothamvnu-book">Các tin khác</h2>
+                                <h2 class="gothamvnu-book">Các tin khác liên quan</h2>
                                 <ul>
-
-                                    <li>
-                                        <a href="/video-atlas-of-oculofacial-plastic-and-reconstructive-surgery.html"
-                                           title="Video Atlas of Oculofacial Plastic and Reconstructive surgery"
-                                           alt="Video Atlas of Oculofacial Plastic and Reconstructive surgery "> <i
-                                                class="fa  fa-caret-right"></i>Video Atlas of Oculofacial Plastic and
-                                            Reconstructive surgery </a>
-                                    </li>
-
-
-                                    <li>
-                                        <a href="/thuoc-uc-che-men-chuyen-trong-dieu-tri-suy-tim-sau-nhoi-mau-co-tim.html"
-                                           title="Thuốc ức chế men chuyển trong điều trị suy tim sau nhồi máu cơ tim"
-                                           alt="Thuốc ức chế men chuyển trong điều trị suy tim sau nhồi máu cơ tim "> <i
-                                                class="fa  fa-caret-right"></i>Thuốc ức chế men chuyển trong điều trị suy tim
-                                            sau nhồi máu cơ tim </a>
-                                    </li>
-
-
-                                    <li>
-                                        <a href="/ebook-xu-tri-loan-nhip-tim.html" title="Ebook Xử Trí Loạn Nhịp Tim"
-                                           alt="Ebook Xử Trí Loạn Nhịp Tim "> <i class="fa  fa-caret-right"></i>Ebook Xử Trí
-                                            Loạn Nhịp Tim </a>
-                                    </li>
-
-
-                                    <li>
-                                        <a href="/pdf-sach-giai-phau-nguoi-trinh-van-minh.html"
-                                           title="PDF Sách Giải Phẫu Người - Trịnh Văn Minh"
-                                           alt="PDF Sách Giải Phẫu Người - Trịnh Văn Minh "> <i class="fa  fa-caret-right"></i>PDF
-                                            Sách Giải Phẫu Người - Trịnh Văn Minh </a>
-                                    </li>
-
-
-                                    <li>
-                                        <a href="/pdf-sach-bai-giang-giai-phau-hoc-gs-nguyen-quang-quyen.html"
-                                           title="PDF Sách Bài giảng Giải Phẫu Học - GS. Nguyễn Quang Quyền"
-                                           alt="PDF Sách Bài giảng Giải Phẫu Học - GS. Nguyễn Quang Quyền "> <i
-                                                class="fa  fa-caret-right"></i>PDF Sách Bài giảng Giải Phẫu Học - GS. Nguyễn
-                                            Quang Quyền </a>
-                                    </li>
-
-
+                                    @foreach($relate_posts as $post)
+                                        <li>
+                                            <a href="{{route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug])}}"
+                                               title="{{ $post->title}}"
+                                               alt="{{ $post->title}}">
+                                                <i class="fa fa-caret-right"></i>
+                                                {{ $post->title }}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

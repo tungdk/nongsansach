@@ -17,9 +17,16 @@ class HomeController extends SiteController
     public function index()
     {
         //sản phẩm theo danh mục
-        $categories_random = Category::query()->where('status', 1)->inRandomOrder()->limit(3)->get();
+        $categories_show_home= Category::query()
+            ->where([
+                    ['status', 1],
+                    ['show_home', 1],
+                    ['is_deleted', 0]
+                ])
+            ->get();
+
         $products_cate = [];
-        foreach ($categories_random as $cate) {
+        foreach ($categories_show_home as $cate) {
             $products_cate[$cate->name] = [
                 'id' => $cate->id,
                 'slug' => $cate->slug,
@@ -27,14 +34,12 @@ class HomeController extends SiteController
                     ->where([
                         ['status', 1],
                         ['category_id', $cate->id],
-                        ['quantity', '>', 0]
                     ])
-                    ->orderByDesc('created_at')
-                    ->limit(4)
+                    ->orderByDesc('updated_at')
+                    ->limit(8)
                     ->get(['id', 'name', 'price_old', 'price_new', 'slug', 'avatar'])
             ];
         }
-
         //sản phẩm gần đây
         $recent_products = Product::query()
             ->where([
@@ -88,7 +93,6 @@ class HomeController extends SiteController
         //dữ liệu cần show
         $viewData = [
             'recent_products' => $recent_products,
-            'categories_random' => $categories_random,
             'sliders' => $sliders,
             'partners' => $partners,
             'products_cate' => $products_cate,

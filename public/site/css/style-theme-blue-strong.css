@@ -522,7 +522,7 @@ footer .site-footer h3 {
   overflow: hidden;
   display: block;
   text-align: center; }
-  .banner-image-col-tab .item a img {
+  .banner-image-col-tab .item img {
     border-radius: 15px; }
     @media (max-width: 575px) {
       .banner-image-col-tab .item a img {

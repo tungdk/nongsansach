@@ -9,12 +9,11 @@ $(function () {
                 // var data2 = JSON.parse(data);
                 if (data.success == true) {
 
-                    var count_cart = $('#count_cart')
-                    var count = count_cart.text();
-                    var x = parseInt(count);
+                    var count_cart = $('.cartCount2').text()
+                    var x = parseInt(count_cart);
                     var y = x + 1;
-                    var element = document.getElementById('count_cart');
-                    element.innerHTML = y;
+                    $('.cartCount2').text(y);
+                    $('.cartCount').text(y);
                     Swal.fire({
                         title: 'Thêm vào giỏ hàng thành công',
                         icon: 'success',

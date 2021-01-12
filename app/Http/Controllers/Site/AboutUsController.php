@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 class AboutUsController extends SiteController
 {
     public function index(){
+
         $recent_products = Product::query()->where('status', 1)->orderByDesc('updated_at')->limit(5)->get();
         $about_us = Setting::query()->first();
         $viewData = [
+            'five_post_best_views' => $this->five_hot_news(),
             'recent_products' => $recent_products,
             'about_us' => $about_us
         ];

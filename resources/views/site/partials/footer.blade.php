@@ -4,7 +4,7 @@
             <div class="footer-inner padding-top-35 pb-lg-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
                             <div class="footer-widget">
                                 <h3 class="hastog"><span>Liên hệ</span></h3>
                                 <ul class="list-menu list-showroom">
@@ -30,23 +30,36 @@
                             </div>
                         </div>
 
-{{--                        <div class="col-xs-12 col-sm-6 col-lg-3">--}}
-{{--                            <div class="footer-widget">--}}
-{{--                                <h3 class="margin-bottom-20 hastog"><span>Địa chỉ cửa hàng</span></h3>--}}
-{{--                                <div class="list-menu">--}}
-{{--                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.233882486378!2d106.00525871426781!3d21.103239790608892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135093744b86b21%3A0xf38545808d0b318e!2zWGUgTsOibmcgQuG6r2MgTmluaA!5e0!3m2!1svi!2s!4v1591957554823!5m2!1svi!2s" width="100%" height="auto" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>                                    </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
                             <div class="footer-widget">
-                                <h3 class="margin-bottom-20 hastog"><span>Kết nối với chúng tôi</span></h3>
-                                <div class="list-menu">
-                                    <iframe src="https://www.facebook.com/plugins/page.php?href={{$setting->fanpage ?? ""}};tabs&amp;width=340&amp;height=214&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="340" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>                                    </div>
+                                <h3 class="hastog"><span>Danh mục</span></h3>
+                                <ul class="list-menu list-blogs">
+                                    @foreach($categories as $key => $cate)
+                                        @if($key < 6)
+                                            <li>
+                                                <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}">{{ $cate->name }}</a>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <a href="{{ route('site.category.index')}}">Xem thêm >></a>
+                                            </li>
+                                            @break
+                                        @endif
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
+                            <div class="footer-widget">
+                                <h3 class="margin-bottom-20 hastog"><span>Kết nối với chúng tôi</span></h3>
+                                <div class="list-menu">
+                                    <iframe src="https://www.facebook.com/plugins/page.php?href={{$setting->fanpage ?? ""}};tabs&amp;width=340&amp;height=214&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="262px" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-lg-3">
                             <div class="footer-widget">
                                 <h3 class="hastog"><span>Đăng ký nhận thông tin</span></h3>
                                 <div class="list-menu">

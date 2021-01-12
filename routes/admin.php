@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::post('edit/{id}', [CategoryController::class, 'update']);
 
         Route::post('active', [CategoryController::class, 'active'])->name('admin.category.active');
+        Route::post('show_home', [CategoryController::class, 'show_home'])->name('admin.category.show_home');
         Route::post('delete', [CategoryController::class, 'delete'])->name('admin.category.delete');
 
 

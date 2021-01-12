@@ -138,34 +138,6 @@
                                     </div>
                                 </a>
                             </div>
-                            {{--                            <div class="top-cart-content">--}}
-                            {{--                                <ul id="cart-sidebar" class="mini-products-list count_li">--}}
-                            {{--                                    <li class="list-item">--}}
-                            {{--                                        <ul></ul>--}}
-                            {{--                                    </li>--}}
-                            {{--                                    <li class="action">--}}
-                            {{--                                        <ul>--}}
-                            {{--                                            <li class="li-fix-1">--}}
-                            {{--                                                <div class="top-subtotal">--}}
-                            {{--                                                    Tổng tiền thanh toán:--}}
-                            {{--                                                    <span class="price"></span>--}}
-                            {{--                                                </div>--}}
-                            {{--                                            </li>--}}
-                            {{--                                            <li class="li-fix-2" style="">--}}
-                            {{--                                                <div class="actions">--}}
-                            {{--                                                    <a href="{{route('site.cart.index')}}" class="btn btn-primary">--}}
-                            {{--                                                        <span>Giỏ hàng</span>--}}
-                            {{--                                                    </a>--}}
-                            {{--                                                    <a href="gio-hang/thanh-toan.html"--}}
-                            {{--                                                       class="btn btn-checkout btn-gray">--}}
-                            {{--                                                        <span>Thanh toán</span>--}}
-                            {{--                                                    </a>--}}
-                            {{--                                                </div>--}}
-                            {{--                                            </li>--}}
-                            {{--                                        </ul>--}}
-                            {{--                                    </li>--}}
-                            {{--                                </ul>--}}
-                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -187,31 +159,6 @@
     <nav>
         <div class="container">
             <style>
-                /*#menu ul {*/
-                /*    list-style-type: none;*/
-                /*    text-align: center;*/
-                /*}*/
-
-                /*#menu li {*/
-                /*    color: #fff;*/
-                /*    display: inline-block;*/
-                /*    width: 120px;*/
-                /*    height: 40px;*/
-                /*    line-height: 40px;*/
-                /*    margin-left: -5px;*/
-                /*}*/
-
-                /*#menu a {*/
-                /*    text-decoration: none;*/
-                /*    color: #fff;*/
-                /*    display: block;*/
-                /*}*/
-
-                /*#menu a:hover {*/
-                /*    background: #80bb35;*/
-                /*    color: #333;*/
-                /*}*/
-
                 /*==Dropdown Menu==*/
                 .sub-menu {
                     display: none;
@@ -238,7 +185,7 @@
 
                 /*==Menu cấp 3==*/
                 .sub-menu > ul {
-                    display: none ! mportant;
+                    display: none ! important;
                 }
 
                 .has-sub {
@@ -279,7 +226,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('site.post.index') }}">Tin tức</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Chính sách</a>
+                        <a class="nav-link" href="">Chính sách</a>
                         <ul class="sub-menu">
                             @if(isset($policies))
                                 @foreach($policies as $policy)

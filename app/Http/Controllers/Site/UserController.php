@@ -130,7 +130,10 @@ class UserController extends SiteController
 
     public function comment(Request $request)
     {
-        $comments = Comment::query()->where('user_id', Auth::id())->orderByDesc('created_at')->get();
+        $comments = Comment::query()
+            ->where('user_id', Auth::id())
+            ->orderByDesc('created_at')
+            ->paginate(5);
         if ($request->ajax()) {
             return response()->json([
                 'view' => view('site.user.components.comment', [
@@ -144,7 +147,10 @@ class UserController extends SiteController
 
     public function favourite(Request $request)
     {
-        $favourites = Favourite::query()->where('user_id', Auth::id())->orderByDesc('created_at')->get();
+        $favourites = Favourite::query()
+            ->where('user_id', Auth::id())
+            ->orderByDesc('created_at')
+            ->paginate(5);
 
         if ($request->ajax()) {
             return response()->json([

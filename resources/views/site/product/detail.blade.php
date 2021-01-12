@@ -335,7 +335,11 @@
 
                 @include('site.product.components.relate_product')
             </div>
-            @include('site.partials.sidebar-right')
+            <div class="dqdt-sidebar sidebar right left-content col-lg-3">
+                @include('site.partials.five_new_product')
+                @include('site.partials.sidebar-category')
+                @include('site.partials.five_hot_news')
+            </div>
         </div>
         </div>
     </section>
@@ -421,7 +425,7 @@
         {{--        }--}}
         {{--    });--}}
         {{--}--}}
-        function load_comment() {
+        function load_comment(page) {
             let product_id = $('#product_id').val();
             $.ajaxSetup({
                 headers: {
@@ -434,9 +438,10 @@
                 data: {
                     // 'token' : token,
                     'product_id': product_id,
+                    'page': page
                 },
                 success: function (data) {
-                    $('.comment-view').append(data.view);
+                    $('.comment-view').empty().append(data.view);
                 },
                 error: function (data) {
 
