@@ -123,9 +123,9 @@
                                                 <span class="product-price-new">
                                                     ₫{{number_format($product->price_new, 0, ',', '.')}}
                                                 </span>
-                                                <span class="product-price-sale"
+                                                <span class="product-price-sale p-2"
                                                       style="margin-left: 20px; margin-bottom: 2px">
-                                                - {{number_format($product->percent)}}% GIẢM
+                                                Giảm {{number_format($product->percent)}}%
                                                 </span>
                                         </span>
                                     </div>
@@ -143,12 +143,6 @@
                             @endif
                             <!-- Giá -->
                             </div>
-                            <div class="product-summary product_description margin-bottom-15">
-                                <div class="rte description">
-                                    <p>{{$product->description}}</p>
-                                </div>
-                            </div>
-
                             <div class="col-md-12">
                                 <label for="quantity">Số lượng</label>
                                 {{--                                    <div class="input-group">--}}

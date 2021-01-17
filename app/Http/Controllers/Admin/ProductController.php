@@ -25,16 +25,25 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::with('category:id, c_name');
-        if ($id = $request->id) $products->where('id', $id);
-        if ($name = $request->name) $products->where('name', 'like', '%' . $name . '%');
-        if (request()->type === 'active') {
+        if ($id = $request->id)
+            $products->where('id', $id)->orderByDesc('created_at');
+        if ($name = $request->name)
+            $products->where('name', 'like', '%' . $name . '%')->orderByDesc('created_at');
+        if (request()->type === 'active')
+        {
             $products = Product::where('status', 1)->where('quantity', '>', 10)->orderByDesc('created_at')->paginate(10);
-        } elseif (request()->type === 'soldout') {
+        }
+        elseif (request()->type === 'soldout')
+        {
             $products = Product::where('quantity', '<=', 10)->orderByDesc('created_at')->get();
-        } elseif (request()->type === 'unlisted') {
+        }
+        elseif (request()->type === 'unlisted')
+        {
             $products = Product::where('status', 0)->orderByDesc('created_at')->get();
-        } else {
-            $products = Product::orderByDesc('created_at')->get();
+        }
+        else
+            {
+            $products = Product::query()->orderByDesc('created_at')->get();
         }
         $viewData = [
             'products' => $products

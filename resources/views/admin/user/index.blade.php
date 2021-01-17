@@ -46,7 +46,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone }}</td>
                                 <td>
-                                    @if($user->status == 1)
+                                    @if($user->active == 1)
                                         <a href="{{route('admin.slider.active', $user->id)}}" class="label label-info">Hiển
                                             thị</a>
                                     @else

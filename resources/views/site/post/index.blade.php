@@ -44,7 +44,7 @@
                                                     <div class="post-time">
                                                         <div class="inline-block">{{ $post->updated_at }}</div>
                                                     </div>
-                                                    <p class="blog-item-summary">{{ strlen($post->description) > 260 ? substr($post->description)."..." : $post->description}}</p>
+                                                    <p class="blog-item-summary">{{ strlen($post->description) > 260 ? mb_substr($post->description, 0, 260)."..." : $post->description}}</p>
                                                 </div>
                                             </div>
                                         </div>

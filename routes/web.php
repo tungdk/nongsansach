@@ -81,7 +81,7 @@ Route::group(['middleware'=>'auth:web'], function (){
     //user
     Route::group(['prefix'=>'user'], function (){
         Route::get('', [SiteUserController::class, 'index'])->name('site.user.index');
-        Route::group(['prefix'=>'tai-khoan'], function (){
+        Route::group(['prefix'=>'account'], function (){
             Route::get('profile', [SiteUserController::class, 'profile'])->name('site.user.account.profile');
             Route::post('profile', [SiteUserController::class, 'update_profile'])->name('site.user.account.update_profile');
             Route::get('password', [SiteUserController::class, 'password'])->name('site.user.account.password');

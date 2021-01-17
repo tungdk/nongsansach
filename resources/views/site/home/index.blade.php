@@ -7,6 +7,12 @@
             <div class="container">
                 <div class="row">
                     <section class="layoutHeader">
+                        <a href="#">
+                            <img class="banner-right" src="{{ asset('site/images/banner-left.png') }}" alt="">
+                        </a>
+                        <a href="#">
+                            <img class="banner-left" src="{{ asset('site/images/banner-right.png') }}" alt="">
+                        </a>
                         <!-- home_slider.php -->
                         <div class="col-md-9 col-md-push-3 px-md-4 px-0 mt-md-5 mb-5">
                             <div class="home-slider owl-carousel" data-lg-items="1" data-md-items="1" data-sm-items="1"

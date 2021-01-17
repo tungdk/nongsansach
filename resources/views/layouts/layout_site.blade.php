@@ -69,23 +69,17 @@
     </script>
 </head>
 
-<body>
-<!-- Main content -->
-
-<!-- header.php -->
-@include('site.partials.header')
-<!-- end header.php -->
-
-{{--<h1 class="hidden">Cửa hàng bán hàng tiết kiệm và nhanh chóng</h1>--}}
-
-@yield('content')
-
-{{--<div class="container">--}}
-{{--</div>--}}
-
-<!-- footer.php -->
-@include('site.partials.footer')
-
+<body class="body-show">
+<div class="shopNS">
+    {{--<div class="load">--}}
+    {{--    <img src="{{ asset('site/images/loading.gif') }}" alt="">--}}
+    {{--</div>--}}
+    @include('site.partials.header')
+    <div class="body">
+        @yield('content')
+    </div>
+    @include('site.partials.footer')
+</div>
 
 @include('site.auth.modal_login_register')
 

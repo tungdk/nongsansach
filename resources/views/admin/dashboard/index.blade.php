@@ -81,40 +81,6 @@
 
         <div class="row">
             <div class="col-md-8">
-                <h1>Biểu đồ</h1>
-            </div>
-            <div class="col-md-4">
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Thống kê truy cập</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                    class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                    class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <ul>
-                                <li>Đang trực tuyến: 1</li>
-                                <li>Tổng tháng này: 111</li>
-                                <li>Tổng tháng trước: 11</li>
-                                <li>Tổng một năm: 1111</li>
-                                <li>Tổng truy cập: 11111</li>
-                            </ul>
-                        </div>
-                        <!-- /.table-responsive -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8">
                 <figure class="highcharts-figure">
                     <div id="container1"></div>
                 </figure>
@@ -241,7 +207,7 @@
                             @foreach($topBuyedProduct as $product)
                                 <li class="item">
                                     <div class="product-img">
-                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                        <img src="{{ asset('uploads/products/'.$product->avatar) }}" alt="{{ $product->slug }}">
                                     </div>
                                     <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title">{{ $product->name }}
@@ -281,7 +247,7 @@
                             @foreach($topViewProduct as $product)
                                 <li class="item">
                                     <div class="product-img">
-                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                        <img src="{{ asset('uploads/products/'.$product->avatar) }}" alt="Product Image">
                                     </div>
                                     <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title">{{ $product->name }}

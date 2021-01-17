@@ -71,8 +71,8 @@
                             <?php $total += $cart->TongTien; ?>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="https://miro.medium.com/max/10000/0*wZAcNrIWFFjuJA78" alt=""
-                                         style="width: 110px">
+                                    <img src="{{ asset('uploads/products/'.$cart->avatar) }}" alt=""
+                                         style="width: 80px; height: 80px; object-fit: cover">
                                 </div>
                                 <div class="col-md-8" style="">
                                     <div class="product-name">

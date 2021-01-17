@@ -1,16 +1,15 @@
 function subscribe() {
     $('.error').text("");
     $('.error').hide();
-    $email = $('#email_subscribe').val();
-    if($email == ''){
+    let email = $('#email_subscribe').val();
+    if(email == ''){
         $('.error').show();
         $('.error').text("Bạn chưa nhập email");
         return false;
     }
-    var atposition = $email.indexOf("@");
-    var dotposition = $email.lastIndexOf(".");
-    if (atposition < 1 || dotposition < (atposition + 2)
-        || (dotposition + 2) >= x.length) {
+    var atposition = email.indexOf("@");
+    var dotposition = email.lastIndexOf(".");
+    if (atposition < 1 || dotposition < (atposition + 2) || (dotposition + 2) >= email.length) {
         $('.error').show();
         $('.error').text("Vui lòng nhập đúng định dang email.");
         return false;
@@ -24,7 +23,7 @@ function subscribe() {
         type: 'POST',
         url: 'subscribe',
         data: {
-            'email': $email
+            'email': email
         },
         success: function (data) {
             if (data.status == true) {

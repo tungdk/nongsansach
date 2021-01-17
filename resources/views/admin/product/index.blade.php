@@ -71,12 +71,12 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th style="width: 55%">Sản phẩm</th>
+                        <th style="width: 45%">Sản phẩm</th>
                         {{--                                <th>Ảnh</th>--}}
                         <th style="width: 10%">Giá</th>
-                        <th style="width: 5%">Số lượng</th>
+                        <th style="width: 10%">Số lượng</th>
                         {{--                                <th>Trạng thái</th>--}}
-                        <th style="width: 5%">Nổi bật</th>
+                        <th style="width: 10%">Nổi bật</th>
                         <th style="width: 5%">Gửi mail</th>
                         <th>Thao tác</th>
                     </tr>
@@ -91,7 +91,7 @@
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <img src="{{pare_url_file($product->avatar) }}"
+                                                <img src="{{ asset('uploads/products/'. $product->avatar) }}"
                                                      style="width: 80px; height: 80px" alt="">
                                             </div>
                                             <div class="col-md-7" style="padding-left: 20px">

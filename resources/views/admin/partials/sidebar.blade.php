@@ -186,8 +186,17 @@
 
             <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}">
                 <a href="{{route('admin.setting.index')}}">
-                    <i class="fa fa-cogs"></i> <span> Cài đặt hệ
-                            thống</span>
+                    <i class="fa fa-cogs"></i>
+                    <span> Cài đặt hệ thống</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('admin.instruction.index')}}" target="_blank">
+                    <i class="fa fa-hard-of-hearing"></i>
+                    <span>Hướng dẫn sử dụng</span>
                     <span class="pull-right-container">
             </span>
                 </a>

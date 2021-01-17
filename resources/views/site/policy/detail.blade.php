@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <ul class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <ul class="breadcrumb">
                         <li class="home">
                             <a itemprop="url" href="{{route('site.home')}}"><span itemprop="title">Trang chủ</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>

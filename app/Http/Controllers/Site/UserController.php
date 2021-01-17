@@ -27,7 +27,7 @@ class UserController extends SiteController
 
     public function index()
     {
-        $orders = Order::query()->findOrFail(Auth::id());
+        $orders = Order::query()->where('user_id', Auth::id())->get();
         if (Auth::check()) {
             $user = $this->get_user();
             return view('site.user.index', compact('user', 'orders'));

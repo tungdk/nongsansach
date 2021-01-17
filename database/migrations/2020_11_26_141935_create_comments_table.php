@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('product_id');
-            $table->string('comment');
+            $table->string('content');
             $table->integer('rating');
             $table->tinyInteger('status');
             $table->tinyInteger('show_home')->default(0);

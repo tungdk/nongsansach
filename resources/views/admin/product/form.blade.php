@@ -116,17 +116,6 @@
         </div>
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Gắn thẻ</h3>
-            </div>
-            <div class="box-body">
-                <div class="form-group">
-                    <input type="text" data-role="tagsinput" name="tags" class="form-control"
-                           value="{{ $product->tags ?? '' }}">
-                </div>
-            </div>
-        </div>
-        <div class="box box-warning">
-            <div class="box-header with-border">
                 <h3 class="box-title">Ảnh đại diện</h3>
             </div>
             <div class="box-body block-images">

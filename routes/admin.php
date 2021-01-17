@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ChatController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\InstructionController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PartnerController;
 use Illuminate\Support\Facades\Route;
@@ -45,8 +46,6 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::post('active', [CategoryController::class, 'active'])->name('admin.category.active');
         Route::post('show_home', [CategoryController::class, 'show_home'])->name('admin.category.show_home');
         Route::post('delete', [CategoryController::class, 'delete'])->name('admin.category.delete');
-
-
     });
 
 //Unit
@@ -226,11 +225,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     });
 
-    //chat
-    Route::group(['prefix' => 'chat'], function () {
-        Route::get('', [ChatController::class, 'index'])->name('admin.chat.index');
+    //download hướng dẫn sử dụng
+    Route::group(['prefix' => 'instruction'], function (){
+        Route::get('/', [InstructionController::class, 'index'])->name('admin.instruction.index');
+        Route::get('download', [InstructionController::class, 'download'])->name('admin.instruction.download');
     });
 
-    Route::get('test', [PostController::class, 'test']);
 });
 

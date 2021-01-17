@@ -29,10 +29,10 @@ class DashboardController extends Controller
         $orders = Order::query()->where('status', 1)->orderByDesc('created_at')->get();
 
         //sản phẩm xem nhiều
-        $topViewProduct = Product::query()->orderByDesc('views')->limit(10)->get();
+        $topViewProduct = Product::query()->orderByDesc('views')->limit(5)->get();
 
         //sản phẩm bán chạy
-        $topBuyedProduct = Product::query()->orderByDesc('buyed')->limit(10)->get();
+        $topBuyedProduct = Product::query()->orderByDesc('buyed')->limit(5)->get();
 
         $viewData = [
             'totalOrders' => $totalOrders,

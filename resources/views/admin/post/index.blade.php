@@ -54,7 +54,7 @@
                                 <td>{{ $post->title }}</td>
                                 <td>
                                     <img src="{{ asset('uploads/posts/'.$post->thumbnail) }}"
-                                         style="width: 80px; height: 80px" alt="">
+                                         style="width: 80px; height: 80px; object-fit: cover" alt="">
                                 </td>
                                 <td>{{ $post->postcate->name }}</td>
                                 <td>{{ $post->views }}</td>
