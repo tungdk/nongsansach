@@ -1,5 +1,5 @@
 @extends('layouts.layout_admin')
-@section('title', 'Slider')
+@section('title', 'Khách hàng')
 @section('content')
 
     <!-- Content Header (Page header) -->
@@ -47,19 +47,17 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>
                                     @if($user->active == 1)
-                                        <a href="{{route('admin.slider.active', $user->id)}}" class="label label-info">Hiển
+                                        <a href="{{route('admin.user.active', $user->id)}}" class="label label-info">Hiển
                                             thị</a>
                                     @else
-                                        <a href="{{route('admin.slider.active', $user->id)}}"
+                                        <a href="{{route('admin.user.active', $user->id)}}"
                                            class="label label-default">Ẩn</a>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('admin.slider.edit', $user->id)}}"
-                                       class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
-                                        Sửa</a>
-                                    <a href="{{route('admin.slider.delete', $user->id)}}" class="btn btn-xs btn-danger"><i
-                                            class="fa fa-trash"></i> Xoá</a>
+                                    <a href="{{route('admin.user.show', $user->id)}}"
+                                       class="btn btn-xs btn-primary"><i class="fa fa-eye"></i>
+                                    </a>
                                 </td>
 
                             </tr>

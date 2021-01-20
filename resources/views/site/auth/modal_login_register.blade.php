@@ -2,7 +2,8 @@
     <div class="modal-dialog login animated">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="closemodal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="closemodal">&times;
+                </button>
                 <h4 class="modal-title">Đăng nhập</h4>
             </div>
             <div class="modal-body">
@@ -15,19 +16,17 @@
                                 @csrf
                                 <label for="email">Email</label>
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                                <p style="color:red; dislay:none;" class="error errorEmail"></p>
+{{--                                <p style="color:red; dislay:none;" class="error errorEmail"></p>--}}
+                                
                                 <label for="password">Mật khẩu</label>
                                 <input id="password" class="form-control" type="password" placeholder="Mật khẩu"
                                        name="password">
-                                <p style="color:red; dislay:none;" class="error errorPassword"></p>
+
+{{--                                <p style="color:red; dislay:none;" class="error errorPassword"></p>--}}
                                 <p style="color:red; dislay:none" class="error errorLogin"></p>
-                                @if(session('msg'))
-                                    <div class="msg alert alert-danger">
-                                        <p style="color:red; dislay:none">{{session('msg')}}</p>
-                                    </div>
-                                @endif
-                                <input class="btn btn-default btn-login" type="button" value="Đăng nhập"
-                                       id="submit_Login">
+                                <button class="btn btn-default btn-login" type="button"
+                                        onclick="submit_Login('{{route('site.login.post')}}')">Đăng nhập
+                                </button>
                                 <a href="{{URL::to('/password/email')}}" class="forgot-password">Quên mật khẩu?</a>
                             </form>
                         </div>
@@ -57,10 +56,13 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ URL::to('/auth/redirect/facebook')}}" class="btn btn-lg btn-facebook btn-block text-uppercase"
-                   type="button" style="color: white; background-color: #3b5998"><i class="fa fa-facebook mr-2"></i> Đăng nhập với Facebook</a>
+                <a href="{{ URL::to('/auth/redirect/facebook')}}"
+                   class="btn btn-lg btn-facebook btn-block text-uppercase"
+                   type="button" style="color: white; background-color: #3b5998"><i class="fa fa-facebook mr-2"></i>
+                    Đăng nhập với Facebook</a>
                 <a href="{{ URL::to('/auth/redirect/google') }}" class="btn btn-lg btn-google btn-block text-uppercase"
-                   type="button" style="color: white; background-color: #ea4335"><i class="fa fa-google-plus mr-2"></i> Đăng nhập với Google</a>
+                   type="button" style="color: white; background-color: #ea4335"><i class="fa fa-google-plus mr-2"></i>
+                    Đăng nhập với Google</a>
 
             </div>
 

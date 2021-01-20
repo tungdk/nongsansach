@@ -16,11 +16,10 @@
         <div class="col-sm-4 invoice-col">
             Người gửi
             <address>
-                <strong>Cửa hàng Nông Sản Sạch.</strong><br>
-                795 Folsom Ave, Suite 600<br>
-                San Francisco, CA 94107<br>
-                Phone: (804) 123-5432<br>
-                Email: info@almasaeedstudio.com
+                <strong>{{ $setting->name }}</strong><br>
+                {{ $setting->address }}<br>
+                Phone: {{ $setting->phone }}<br>
+                Email: {{ $setting->email }}
             </address>
             <hr>
         </div>
@@ -63,7 +62,7 @@
                         <td>{{ $i++ }}.</td>
                         <td>{{ $product->name }}</td>
                         <td><img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU"
+                                src="{{ asset('uploads/products/'.$product->image) }}"
                                 alt="" style="width: 80px"></td>
                         <td> {{ number_format($product->price, 0, ',', '.') }} đ</td>
                         <td style="text-align: center"> {{ $product->quantity }} </td>
@@ -93,12 +92,12 @@
             <div class="table-responsive" style="text-align: right">
                 <table class="table">
                     <tr>
-                        <th>Mã giảm giá:</th>
-                        <td>{{ $order->sale ? '-'.$order->sale.'%' : ''}}</td>
+                        <th>Giảm giá:</th>
+                        <td>{{ $order->sale ? '-'.$order->sale.' đ' : ''}}</td>
                     </tr>
                     <tr>
-                        <th>Shipping:</th>
-                        <td>$5.80</td>
+                        <th>Vận chuyển:</th>
+                        <td></td>
                     </tr>
                     <tr>
                         <th>Tạm tính:</th>

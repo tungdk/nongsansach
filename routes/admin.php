@@ -171,6 +171,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
 //User - khách hàng
     Route::group(['prefix' => 'user'], function () {
         Route::get('', [UserController::class, 'index'])->name('admin.user.index');
+        Route::get('active/{id}', [UserController::class, 'active'])->name('admin.user.active');
+        Route::get('show/{id}', [UserController::class, 'show'])->name('admin.user.show');
+
     });
 
 //Partner - đối tác

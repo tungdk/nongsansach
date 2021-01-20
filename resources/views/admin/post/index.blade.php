@@ -23,11 +23,11 @@
                 <h3 class="box-title"><a href="{{route('admin.post.create')}}" class="btn btn-success">Thêm mới <i
                             class="fa fa-plus-circle"></i></a>
                 </h3>
-                <h3 class="box-title" style="float: right">
-                    <a href="{{route('admin.post.index')}}" class="btn btn-success">Danh sách <i class="fa fa-list"></i></a>
-                    <a href="{{route('admin.post.trash')}}" class="btn btn-default">Thùng rác <i
-                            class="fa fa-trash"></i></a>
-                </h3>
+{{--                <h3 class="box-title" style="float: right">--}}
+{{--                    <a href="{{route('admin.post.index')}}" class="btn btn-success">Danh sách <i class="fa fa-list"></i></a>--}}
+{{--                    <a href="{{route('admin.post.trash')}}" class="btn btn-default">Thùng rác <i--}}
+{{--                            class="fa fa-trash"></i></a>--}}
+{{--                </h3>--}}
             </div>
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-hover">

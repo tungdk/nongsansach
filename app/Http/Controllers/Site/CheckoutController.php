@@ -10,6 +10,7 @@ use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\Order_detail;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -91,9 +92,9 @@ class CheckoutController extends SiteController
         $address = $request->address;
         $note = $request->note;
         $payment_method = $request->payment_method;
-
         //check coupon
-        if ($coupon_id = $request->coupon_id) {
+        if ($request->coupon_id) {
+            $coupon_id = $request->coupon_id;
             $time_now = Carbon::now();
             $coupon = Coupon::query()
                 ->where('id', $coupon_id)
@@ -108,7 +109,6 @@ class CheckoutController extends SiteController
                 ]);
             }
             $coupon_sale = $coupon->sale;
-            $data['sale'] = $coupon_sale;
         }
 
         //tính tổng tiền
@@ -124,7 +124,8 @@ class CheckoutController extends SiteController
             $total_money = $total_money + $cart->thanhtien;
         }
         if(isset($coupon_sale)){
-            $total_money = $total_money - ($coupon_sale * $total_money)/100;
+            $money_sale = ($coupon_sale * $total_money)/100;
+            $total_money = $total_money - $money_sale;
         }
 
         $data = [
@@ -135,7 +136,9 @@ class CheckoutController extends SiteController
             'note' => $note,
             'payment_method' => $payment_method,
             'total_money' => $total_money,
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'sale' => $money_sale ?? 0
         ];
         $orderID = Order::query()->insertGetId($data);
         if ($orderID) {
@@ -155,6 +158,7 @@ class CheckoutController extends SiteController
                     $order_detail->name = $cart->name;
                     $order_detail->quantity = $cart->quantity;
                     $order_detail->price = $cart->price_new;
+                    $order_detail->image = $cart->avatar;
                     $order_detail->save();
 
                     //trừ đi số lượng bên bảng sản phẩm
@@ -183,13 +187,14 @@ class CheckoutController extends SiteController
             $order = Order::query()->find($orderID);
             $order_details = Order_detail::query()->select('*', DB::raw('price * quantity as thanhtien'))->where('order_id', $orderID)->get();
             SendOrderJob::dispatch($user->email, $order, $order_details);
-
+            $setting = Setting::query()->first();
             return response()->json([
                 'status' => true,
                 'message' => 'Đặt hàng thành công',
                 'view' => view('site.checkout.checkout_success',[
                     'order' => $order,
-                    'order_details' => $order_details
+                    'order_details' => $order_details,
+                    'setting' => $setting
                 ])->render()
             ]);
         }

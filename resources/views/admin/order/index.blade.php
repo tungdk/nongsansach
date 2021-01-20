@@ -29,13 +29,11 @@
                            class="form-control">
                     <select name="status" id="" class="form-control">
                         <option value="-1" selected>Trạng thái</option>
-                        <option value="1" {{ Request::get('status')==1 ? "selected='selected'" : ""}}>Chờ xử lý</option>
-                        <option value="2" {{ Request::get('status')==2 ? "selected='selected'" : ""}}>Xác nhận</option>
-                        <option value="3" {{ Request::get('status')==3 ? "selected='selected'" : ""}}>Đang vận chuyển
-                        </option>
-                        <option value="4" {{ Request::get('status')==4 ? "selected='selected'" : ""}}>Đã giao hàng
-                        </option>
-                        <option value="0" {{ Request::get('status')==0 ? "selected='selected'" : ""}} >Hủy bỏ</option>
+                        <option value="1" {{ Request::get('status')==1 ? "selected" : ""}}>Chờ xử lý</option>
+                        <option value="2" {{ Request::get('status')==2 ? "selected" : ""}}>Xác nhận</option>
+                        <option value="3" {{ Request::get('status')==3 ? "selected" : ""}}>Đang vận chuyển</option>
+                        <option value="4" {{ Request::get('status')==4 ? "selected" : ""}}>Đã giao hàng</option>
+                        <option value="0" {{ Request::get('status')==0 ? "selected" : ""}} >Hủy bỏ</option>
                     </select>
                     <button type="submit" class="btn btn-info"><i class="fa fa-search"> Tìm kiếm</i></button>
                 </form>
@@ -71,9 +69,9 @@
                                 </td>
                                 <td>{{ $order->created_at }}</td>
                                 <td>
-                                            <span class="label label-{{ $order->getStatus($order->status)['class'] }}">
-                                                {{ $order->getStatus($order->status)['name'] }}
-                                            </span>
+                                    <span class="label label-{{ $order->getStatus($order->status)['class'] }}">
+                                        {{ $order->getStatus($order->status)['name'] }}
+                                    </span>
                                 </td>
                                 <td>
                                     <button onclick="view_order({{$order->id}})"

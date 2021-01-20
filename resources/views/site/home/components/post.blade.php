@@ -15,12 +15,12 @@
                                         <a href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">
                                             <img data-src="{{ asset('uploads/posts/'.$post->thumbnail) }}"
                                                 alt="{{ $post->title }}"
-                                                class="owl-lazy">
+                                                class="owl-lazy" style="width: 265px; height: 175px">
                                         </a>
                                     </div>
                                     <div class="blog-item-info m-4">
                                         <h3 class="blog-item-name"><a
-                                                href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">{{ strlen($post->title) > 90 ? substr($post->title, 0, 90)."..." : $post->title }}</a></h3>
+                                                href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">{{ strlen($post->title) > 45 ? mb_substr($post->title, 0, 45)."..." : $post->title }}</a></h3>
                                         <a class="btn" href="{{ route('site.post.detail', ['id'=>$post->id, 'slug'=>$post->slug]) }}">Chi tiết</a>
                                     </div>
                                 </div>

@@ -25,56 +25,63 @@
     <div class="container content_checkout">
         <div class="row">
             <div class="col-md-7">
-                <div class="col-md-12 panel">
+                <div class="col-md-12 panel pt-4">
                     <div class="col-md-12 header" style="display: flex; justify-content: space-between;">
                         <div>
                             <i class="fa fa-map-marker"></i> Địa chỉ nhận hàng:
                         </div>
-                        <span onclick="$('.form_address').show()">Thay đổi >></span>
                     </div>
-                    <div class="col-md-12 content">
-                        {{$user->name . ' | ' . $user->phone}} <br>
-                        {{$user->address}}
-
-                    </div>
-                    <div class="col-md-12 form_address" hidden>
+                    <div class="col-md-12 form_address pt-3">
                         <form action="">
-                            <input type="text" name="name" placeholder="Nhập họ tên người nhận"
-                                   value="{{ $user->name }}" id="name" >
-                            <input type="text" name="phone" placeholder="Nhập số điện thoại người nhận"
-                                   value="{{ $user->phone }}" id="phone">
-                            <input type="text" name=address"" placeholder="Nhập địa chỉ nhận hàng"
-                                   value="{{ $user->address }}" id="address">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Họ và tên người nhân</label>
+                                <input type="text" name="name" placeholder="Nhập họ tên người nhận"
+                                       value="{{ $user->name }}" id="name" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Số điện thoại người nhận</label>
+                                <input type="text" name="phone" placeholder="Nhập số điện thoại người nhận"
+                                       value="{{ $user->phone }}" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Địa chỉ nhận hàng</label>
+                                <input type="text" name=address"" placeholder="Nhập địa chỉ nhận hàng"
+                                       value="{{ $user->address }}" id="address">
+                            </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-md-12 panel">
+                <div class="col-md-12 panel pt-4">
                     <div class="col-md-12 header">
                         <i class="fa fa-dolly-flatbed"></i> Phương thức thanh toán
                     </div>
-                    <div class="col-md-12 content">
-                        <label for="checkout">
-                            <input type="radio" value="0" name="payment_method" id="payment_method_0" checked> Thanh toán khi nhận hàng</label>
-                        <label for="checkout">
-                            <input type="radio" value="1" name="payment_method" id="payment_method_1"> Thanh toán trực tuyến</label>
+                    <div class="col-md-12 content pt-3 pb-3">
+                        <label class="pt-2">
+                            <input type="radio" value="0" name="payment_method" id="payment_method_0" checked/>
+                            Thanh toán khi nhận hàng
+                        </label>
+                        <label class="pt-2">
+                            <input type="radio" value="1" name="payment_method" id="payment_method_1"/>
+                            Thanh toán trực tuyến
+                        </label>
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="col-md-12 panel">
+                <div class="col-md-12 panel pt-4">
                     <div class="col-md-12 header">
                         <i class="fa fa-calendar-check-o"></i> Thông tin đơn hàng
                     </div>
-                    <div class="col-md-12 content">
+                    <div class="col-md-12 content pt-4">
                         <?php $total = 0; ?>
                         @foreach($carts as $cart)
                             <?php $total += $cart->TongTien; ?>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <img src="{{ asset('uploads/products/'.$cart->avatar) }}" alt=""
                                          style="width: 80px; height: 80px; object-fit: cover">
                                 </div>
-                                <div class="col-md-8" style="">
+                                <div class="col-md-9" style="">
                                     <div class="product-name">
                                         {{$cart->name}}
                                     </div>
@@ -95,37 +102,38 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div>
+                        <div class="pt-4">
                             Mã giảm giá của shop
                             <input type="text" name="coupon" id="coupon">
                             <span id="coupon_id" hidden></span>
-                            <span hidden class="error_coupon"></span>
-                            <button type="button" onclick="check_coupon()">Gửi</button>
-                            <button type="button" onclick="cancel_coupon()">Huỷ</button>
+                            <span hidden class="error_coupon"></span><br>
+                            <button type="button" class="btn btn-success" onclick="check_coupon()">Gửi</button>
+                            <button type="button" class="btn btn-danger" onclick="cancel_coupon()">Huỷ</button>
                         </div>
-                        <div >Tạm tính: <span class="total" style="font-size: 1.4rem;
+                        <div class="pt-5">Tạm tính: <span class="total" style="font-size: 1.4rem;
                                                     font-weight: 500;
                                                     line-height: 1.4;
+                                                    float: right;
                                                     color: #e5101d;">{{number_format($total, 0, ',', '.')}} đ</span> <br></div>
-                        <div>Mã giảm giá: <span class="value_coupon"></span></div>
-                        <div>Phí vận chuyển: <br></div>
+                        <div class="pt-3">Mã giảm giá: <span class="value_coupon" style="float:right;"></span></div>
+                        <div class="pt-3 pb-3">Phí vận chuyển: <br></div>
                     </div>
                 </div>
 
                 <div class="col-md-12 panel">
-                    <div class="col-md-12 header">
+                    <div class="col-md-12 header pt-4 pb-3">
                         <i class="fa fa-comment-o"></i> Ghi chú
                     </div>
-                    <div class="col-md-12 content">
-                        <textarea name="note" id="note" cols="30" rows="6"
+                    <div class="col-md-12 content pb-3">
+                        <textarea name="note" id="note" cols="30" rows="5"
                                   placeholder="Bạn có nhắn gì tới shop không"></textarea>
                     </div>
                 </div>
                 <div class="col-md-12 panel">
-                    <div class="col-md-12 header">
-                        Tổng thanh toán <span class="all_total" style="color: red">{{number_format($total, 0, ',', '.')}}đ</span>
+                    <div class="col-md-12 header pt-4 pb-4" style="font-size: 20px">
+                        Tổng thanh toán: <span class="all_total" style="color: red">{{number_format($total, 0, '.', ',')}} đ</span>
                     </div>
-                    <div class="col-md-12 content">
+                    <div class="col-md-12 content pb-4">
                         <button type="button" class="btn" tabindex="6"
                                 style="background-color: red; width: 100%; color: white" onclick="check_out()">Đặt hàng
                         </button>
@@ -157,11 +165,11 @@
 
                         let conpon = ({{$total}} * data.sale)/100;
                         $('.value_coupon').empty();
-                        $('.value_coupon').append( '-' + conpon+ 'đ');
+                        $('.value_coupon').append( '-' + conpon + ' đ');
 
                         let thanhtien = {{$total}} - conpon;
                         $('.all_total').empty();
-                        $('.all_total').append(thanhtien+'đ');
+                        $('.all_total').append(thanhtien+' đ');
 
                         $('#coupon_id').empty();
                         $('#coupon_id').append(data.id);
@@ -181,6 +189,13 @@
         }
 
         function check_out(){
+            if($('#name').val() === "" || $('#phone').val() === "" || $('#address').val() === "" ){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Vui lòng nhập địa chỉ nhận hàng'
+                })
+                return false;
+            }
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

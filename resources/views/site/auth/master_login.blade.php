@@ -10,7 +10,7 @@
                 <img src="images/image-login.jpg" alt="">
             </div>
             <div class="col-sm-3 col-md-5 col-lg-5" style="float: right">
-                @if(request()->is('dang-ky'))
+                @if(request()->is('register'))
                     @include('site.auth.register')
                 @else
                     @include('site.auth.login')

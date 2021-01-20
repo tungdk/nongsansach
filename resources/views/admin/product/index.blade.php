@@ -84,9 +84,10 @@
                     <tbody>
 
                     @if(isset($products))
+                        <?php $i=1; ?>
                         @foreach($products as $product)
                             <tr @if($product->status == 0) style="background-color: #cecece" @endif>
-                                <td>{{ $product->id }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>
                                     <div class="col-md-12">
                                         <div class="row">

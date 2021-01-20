@@ -1262,7 +1262,7 @@ footer {
     footer .back-to-top.show {
       position: fixed;
       right: 20px;
-      bottom: 100px; }
+      bottom: 115px; }
     @media (max-width: 1199px) {
       footer .back-to-top {
         width: 40px;
@@ -1769,7 +1769,7 @@ footer {
   font-weight: 400; }
 
 .blog-item-name {
-  font-weight: 700;
+  font-weight: 550;
   position: relative;
   font-size: 1.07143em;
   line-height: 24px;

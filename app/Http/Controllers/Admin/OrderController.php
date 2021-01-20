@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Order_detail;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,12 +34,17 @@ class OrderController extends Controller
                 'message' => 'Đơn hàng không tồn tại'
             ]);
         }
-        $order_detail = Order_detail::query()->select('*', DB::raw('price * quantity as thanhtien'))->where('order_id', $order_id)->get();
+        $order_detail = Order_detail::query()
+            ->select('*', DB::raw('price * quantity as thanhtien'))
+            ->where('order_id', $order_id)
+            ->get();
+        $setting = Setting::query()->first();
         return response()->json([
             'status' => true,
             'view' => view('admin.order.view_order', [
                 'order' => $order,
-                'order_detail' => $order_detail
+                'order_detail' => $order_detail,
+                'setting' => $setting
             ])->render()
         ]);
     }

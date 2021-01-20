@@ -73,21 +73,28 @@
             </li>
 
 
-            <li class="treeview {{ request()->is('admin/order*') ? 'active' : '' }}">
-                <a href="#">
+{{--            <li class="treeview {{ request()->is('admin/order*') ? 'active' : '' }}">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fa fa-cart-arrow-down"></i> <span> Đơn hàng</span>--}}
+{{--                    <span class="pull-right-container">--}}
+{{--              <i class="fa fa-angle-left pull-right"></i>--}}
+{{--            </span>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li class="{{ request()->is('admin/order') ? 'active' : '' }}"><a--}}
+{{--                            href="{{route('admin.order.index')}}"><i class="fa fa-circle-o"></i> Tất cả</a></li>--}}
+{{--                    <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-circle-o"></i> Chờ xác nhận</a></li>--}}
+{{--                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Đã huỷ</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+
+            <li class="{{ request()->is('admin/order') ? 'active' : '' }}">
+                <a href="{{route('admin.order.index')}}">
                     <i class="fa fa-cart-arrow-down"></i> <span> Đơn hàng</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li class="{{ request()->is('admin/order') ? 'active' : '' }}"><a
-                            href="{{route('admin.order.index')}}"><i class="fa fa-circle-o"></i> Tất cả</a></li>
-                    <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-circle-o"></i> Chờ xác nhận</a></li>
-                    <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Đã huỷ</a></li>
-                </ul>
             </li>
-
 
             <li class="{{ request()->is('admin/coupon*') ? 'active' : '' }}">
                 <a href="{{route('admin.coupon.index')}}">

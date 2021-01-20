@@ -17,7 +17,7 @@ class CreateCouponsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
-            $table->integer('sale');
+            $table->double('sale');
             $table->integer('count');
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('send_mail')->default(0);

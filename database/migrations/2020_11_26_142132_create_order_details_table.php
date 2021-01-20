@@ -20,6 +20,7 @@ class CreateOrderDetailsTable extends Migration
             $table->tinyInteger('quantity');
             $table->double('price');
             $table->integer('order_id');
+            $table->string('image');
             $table->timestamps();
         });
     }

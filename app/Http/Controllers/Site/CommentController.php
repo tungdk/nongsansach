@@ -75,7 +75,11 @@ class CommentController extends Controller
         $product->save();
 
         $count_comments = Comment::query()->where('product_id', $product_id)->where('status', 1)->orderByDesc('created_at')->count();
-        $comments = Comment::query()->where('product_id', $product_id)->where('status', 1)->orderByDesc('created_at')->limit(5)->get();
+        $comments = Comment::query()
+            ->where('product_id', $product_id)
+            ->where('status', 1)
+            ->orderByDesc('created_at')
+            ->paginate(5);
         return response()->json([
             'status' => true,
             'message' => 'Bình luận thành công',

@@ -15,4 +15,15 @@ class UserController extends Controller
         ];
         return view('admin.user.index', $data   );
     }
+
+    public function active($id){
+        $user = User::query()->findOrFail($id);
+        $user->active = ! $user->active;
+        $user->save();
+        return redirect()->back();
+    }
+
+    public function show($id){
+        return view('admin.user.show');
+    }
 }
