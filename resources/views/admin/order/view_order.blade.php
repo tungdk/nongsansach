@@ -91,7 +91,7 @@
                 <table class="table">
                     <tr>
                         <th>Mã giảm giá:</th>
-                        <td>{{ $order->sale ? '-'.$order->sale.'%' : ''}}</td>
+                        <td>{{ $order->sale ? '-'.$order->sale.' đ' : ''}}</td>
                     </tr>
                     <tr>
                         <th>Phí vận chuyển:</th>
@@ -123,6 +123,13 @@
             </div>
         </div>
         <!-- /.col -->
+        <div class="col-xs-12">
+            <button type="button" class="btn btn-success" onclick="print_order()"><i class="fa fa-print"></i> In
+                đơn hàng
+            </button>
+            <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Xác nhận</button>
+            <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Huỷ đơn hàng</button>
+        </div>
     </div>
     <!-- /.row -->
 </section>

@@ -226,7 +226,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('site.post.index') }}">Tin tức</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Chính sách</a>
+                        <a class="nav-link" href="javascript:;">Chính sách</a>
                         <ul class="sub-menu">
                             @if(isset($policies))
                                 @foreach($policies as $policy)

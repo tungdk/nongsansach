@@ -3606,6 +3606,16 @@ footer .footer-info-widget p.hotline a {
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
 }
+.banner-center {
+    position: fixed;
+    top: 25%;
+    right: 50%;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
 @media only screen and (max-width:1905px) {
     .banner-right {
         right: 10%;
@@ -3631,6 +3641,9 @@ footer .footer-info-widget p.hotline a {
     .banner-left {
         left: 0;
         margin-left: 0.5rem;
+    }
+    .banner-center {
+        left: 3%;
     }
 }
 

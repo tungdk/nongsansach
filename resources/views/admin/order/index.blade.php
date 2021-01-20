@@ -132,11 +132,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-success" onclick="print_order()"><i class="fa fa-print"></i> In
-                        đơn hàng
-                    </button>
-                    <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Xác nhận</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Huỷ đơn hàng</button>
+{{--                    <button type="button" class="btn btn-success" onclick="print_order()"><i class="fa fa-print"></i> In--}}
+{{--                        đơn hàng--}}
+{{--                    </button>--}}
+{{--                    <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Xác nhận</button>--}}
+{{--                    <button type="button" class="btn btn-danger"><i class="fa fa-times"></i> Huỷ đơn hàng</button>--}}
                 </div>
             </div>
             <!-- /.modal-content -->

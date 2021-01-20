@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>@yield('pageTitle') Nông sản sạch</title>
+    <title>@yield('pageTitle', "Nông sản sạch") </title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 {{--    <link rel="icon" href="site/uploads/images/caidat/favicon.png" type="image/x-icon"/>--}}
 {{-- <link rel="shortcut icon" type="image/png" href="/images/logo.png"/> --}}
 
     <link rel="stylesheet" href="{{asset('site/css/icon-font.min.css')}}">
-    <link
-        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&amp;subset=vietnamese"
-        rel="stylesheet">
+{{--    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&amp;subset=vietnamese"--}}
+{{--        rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('site/css/fonts-googleapi.css') }}">
     <link rel="stylesheet" href="{{asset('site/css/font-awesome.min.css')}}">
     <!-- Plugin CSS -->
     <link href="{{asset('site/css/plugin.css')}}" rel="stylesheet" type="text/css"/>
@@ -21,21 +21,18 @@
 
     <!-- Build Main CSS -->
 
-    <link href="{{asset('site/css/base.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('site/css/style.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('site/css/module.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('site/css/responsive.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('site/css/base.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('site/css/style.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('site/css/module.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('site/css/responsive.min.css')}}" rel="stylesheet" type="text/css"/>
 
     <!-- Theme Main CSS -->
-    <link href="{{asset('site/css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('site/css/style-theme-blue-strong.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('site/css/bootstrap-theme.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('site/css/style-theme-blue-strong.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
 
     <!-- chat -->
 {{--    <link href="{{asset('site/css/chat.css')}}" rel="stylesheet" type="text/css"/>--}}
-
-    <link href="{{asset('site/css/responsive-update.css')}}" rel="stylesheet" type="text/css"/>
-
     <link href="{{asset('css/modal_login_register.css')}}" rel="stylesheet"/>
 
     <!-- Header JS -->

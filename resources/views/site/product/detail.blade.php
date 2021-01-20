@@ -25,7 +25,7 @@
             </div>
         </div>
     </section>
-    <section class="product " itemscope="" itemtype="http://schema.org/Product">
+    <section class="product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
@@ -40,26 +40,26 @@
                                         <img
                                             src="{{ asset('uploads/products/'.$product->avatar) }}"/>
                                     </li>
-                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
-                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">
-                                        <img
-                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>
-                                    </li>
-                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
-                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">
-                                        <img
-                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>
-                                    </li>
-                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
-                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">
-                                        <img
-                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>
-                                    </li>
-                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"
-                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">
-                                        <img
-                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>
-                                    </li>
+                                    {{--                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"--}}
+                                    {{--                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">--}}
+                                    {{--                                        <img--}}
+                                    {{--                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"--}}
+                                    {{--                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">--}}
+                                    {{--                                        <img--}}
+                                    {{--                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"--}}
+                                    {{--                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">--}}
+                                    {{--                                        <img--}}
+                                    {{--                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"--}}
+                                    {{--                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">--}}
+                                    {{--                                        <img--}}
+                                    {{--                                            src="{{ asset('uploads/products/'.$product->avatar) }}"/>--}}
+                                    {{--                                    </li>--}}
                                     {{--                                    <li data-thumb="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg"--}}
                                     {{--                                        data-src="http://nongsansachvietnam.vn/upload/products/thumb/Nho_xanh_Ninh_Thun.jpg">--}}
                                     {{--                                        <img--}}
@@ -203,20 +203,16 @@
                                 <div class="banner-image-col-tab">
                                     <div class="row col-md-12">
                                         <div class="item px-4 mb-4 col-md-6">
-                                            <a href="banner-2-col-1.html">
-                                                <img src="{{ asset('site/images/lazyload.svg') }}"
-                                                     data-lazyload="{{ asset('site/images/banner_coltab3_1.png') }}"
-                                                     class="img-responsive"
-                                                     alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                                            </a>
+                                            <img src="{{ asset('site/images/lazyload.svg') }}"
+                                                 data-lazyload="{{ asset('site/images/banner_coltab3_1.png') }}"
+                                                 class="img-responsive"
+                                                 alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                                         </div>
                                         <div class="item px-4 mb-4 col-md-6">
-                                            <a href="banner-2-col-2.html">
-                                                <img src="{{ asset('site/images/lazyload.svg') }}"
-                                                     data-lazyload="{{ asset('site/images/banner_coltab3_2.png') }}"
-                                                     class="img-responsive"
-                                                     alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
-                                            </a>
+                                            <img src="{{ asset('site/images/lazyload.svg') }}"
+                                                 data-lazyload="{{ asset('site/images/banner_coltab3_2.png') }}"
+                                                 class="img-responsive"
+                                                 alt="Cửa hàng bán hàng tiết kiệm và nhanh chóng">
                                         </div>
                                     </div>
                                 </div>
@@ -455,12 +451,11 @@
                     'quantity': quantity
                 },
                 success: function (data) {
-                    var count_cart = $('#count_cart')
-                    var count = count_cart.text();
-                    var x = parseInt(count);
+                    var count_cart = $('.cartCount2').text()
+                    var x = parseInt(count_cart);
                     var y = x + 1;
-                    var element = document.getElementById('count_cart');
-                    element.innerHTML = y;
+                    $('.cartCount2').text(y);
+                    $('.cartCount').text(y);
                     Swal.fire({
                         title: 'Thêm vào giỏ hàng thành công',
                         icon: 'success',

@@ -7,12 +7,35 @@
             <div class="container">
                 <div class="row">
                     <section class="layoutHeader">
-                        <a href="#">
-                            <img class="banner-right" src="{{ asset('site/images/banner-left.png') }}" alt="">
+                        <a href="javascript:;" class="banner-right-right">
+                            <img class="banner-right" src="{{ asset('site/images/banner-right.png') }}"
+                                 alt="Giảm cực sốc từ 20% đến 50%" style="z-index: 1000">
+                            <p class="banner-right" style="z-index: 2000;margin-right: 100px;margin-top: 25px;"
+                               onclick="$('.banner-right-right').hide()"><i class="fa fa-times-circle"></i></p>
                         </a>
-                        <a href="#">
-                            <img class="banner-left" src="{{ asset('site/images/banner-right.png') }}" alt="">
+                        <a href="javascript:;" class="banner-left-left">
+                            <img class="banner-left" src="{{ asset('site/images/banner-left.png') }}"
+                                 alt="Tiễn năm tơi bời, tưng bừng giảm lớn" style="z-index: 1000">
+                            <p class="banner-left" style="z-index: 2000;margin-left: 100px;margin-top: 25px;"
+                               onclick="$('.banner-left-left').hide()"><i class="fa fa-times-circle"></i></p>
                         </a>
+
+                        <div class="modal fade" id="banner-center" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" style="-webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    top: 50%;
+    margin: 0 auto;">
+                                <img src="{{ asset('site/images/banner-thuc-pham-sach-nong-san-sach.jpg') }}"
+                                     alt="Cửa hành thực phẩm nông sản sạch" style="width: 100%" >
+                                <a href="javascript:;" class="close-modal" style="position: absolute; right: 8px; font-size: 25px; color: red"
+                                   data-dismiss="modal">
+                                    <i class="fa fa-times-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+
                         <!-- home_slider.php -->
                         <div class="col-md-9 col-md-push-3 px-md-4 px-0 mt-md-5 mb-5">
                             <div class="home-slider owl-carousel" data-lg-items="1" data-md-items="1" data-sm-items="1"
@@ -149,4 +172,11 @@
     <!-- end home_customer.php --><!-- home_brand.php -->
     </section>
     <!-- end section layoutContent -->
+@endsection
+@section('js')
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('#banner-center').modal('show');
+        }, 230);
+    </script>
 @endsection
