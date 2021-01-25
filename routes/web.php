@@ -4,6 +4,7 @@ use App\Http\Controllers\Site\AboutUsController;
 use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\FavouriteController;
 use App\Http\Controllers\Site\PolicyController;
+use App\Http\Controllers\Site\PostCategoryController;
 use App\Http\Controllers\Site\PostController;
 use App\Http\Controllers\Site\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -89,7 +90,12 @@ Route::group(['middleware'=>'auth:web'], function (){
 
         });
         Route::get('purchase', [SiteUserController::class, 'purchase'])->name('site.user.purchase');
+        Route::post('cancel_order', [SiteUserController::class, 'cancel_order'])->name('site.user.cancel_order');
+        Route::post('view-order', [SiteUserController::class, 'view_order'])->name('site.order.view');
+
+
         Route::get('comment', [SiteUserController::class, 'comment'])->name('site.user.comment');
+
         Route::get('favourite', [SiteUserController::class, 'favourite'])->name('site.user.favourite');
         Route::post('delete-favourite', [SiteUserController::class, 'delete_favourite'])->name('site.user.delete_favourite');
     });
@@ -113,7 +119,6 @@ Route::group(['middleware'=>'auth:web'], function (){
 Route::get('product/{id}/{slug}', [SiteProductController::class, 'detail_product'])
     ->name('site.product.detail');
 
-
 //category
 Route::get('category/{id}/{slug}',[SiteCategoryController::class, 'detail'])->name('site.category.detail');
 Route::get('category',[SiteCategoryController::class, 'index'])->name('site.category.index');
@@ -129,10 +134,16 @@ Route::post('count_cart', [SiteController::class, 'count_cart'])->name('site.cou
 
 Route::get('policy/{id}/{slug}', [PolicyController::class, 'detail'])->name('site.policy.detail');
 
+//post
 Route::get('posts', [PostController::class, 'index'])->name('site.post.index');
 Route::get('post/{id}/{slug}', [PostController::class, 'detail'])->name('site.post.detail');
 Route::get('post/search', [PostController::class, 'search'])->name('site.post.search');
 
+//post_category
+Route::get('post_category/{id}/{slug}', [PostCategoryController::class, 'detail'])->name('site.post_category.detail');
+
 Route::get('about_us', [AboutUsController::class, 'index'])->name('site.about_us.index');
 
 Route::get('search', [SearchController::class, 'index'])->name('site.search.index');
+
+Route::get('test', [\App\Http\Controllers\Site\UserController::class, 'purchase']);

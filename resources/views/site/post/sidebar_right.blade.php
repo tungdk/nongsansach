@@ -16,12 +16,12 @@
                                 <li class="nav-item nav-collapse">
                                     @if($key == 5)
                                         <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                        <a href="{{ route('site.category.index') }}" class="nav-link"
+                                        <a href="{{ route('site.post_category.index') }}" class="nav-link"
                                            data-toggle="collapse" data-target="#aaaaa">Xem thêm</a>
                                         @break
                                     @else
                                         <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                        <a href="{{ route('site.category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}"
+                                        <a href="{{ route('site.post_category.detail', ['id'=>$cate->id, 'slug'=>$cate->slug]) }}"
                                            class="nav-link"
                                            data-toggle="collapse"
                                            data-target="#aaaaa">{{$cate->name}}</a>

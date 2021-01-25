@@ -16,14 +16,14 @@
                     <p>{{$favorite->content}}</p>
                 </div>
                 <div class="account-body-item account-body-post-title">
-                    <a href="">{{$favorite->product->name}}</a>
+                    <a href="{{ route('site.product.detail', ['id'=>$favorite->product_id, 'slug'=>$favorite->product->slug]) }}">{{$favorite->product->name}}</a>
                 </div>
                 <div class="account-body-item account-body-created_at">
                     <span class="time">{{$favorite->created_at}}</span>
                 </div>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-danger" onclick="delete_favourite({{$favorite->id}})">Xoá</button>
+                <button class="btn btn-danger" onclick="delete_favourite({{$favorite->product_id}})">Xoá</button>
             </div>
             <div class="clearfix"></div>
             <hr>
@@ -44,7 +44,7 @@
     @endif
 </div>
 <script>
-    function delete_favourite(id) {
+    function delete_favourite(product_id) {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -56,34 +56,47 @@
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
         })
-        $.ajax({
-            type: 'POST',
-            url: '{{ route('site.user.delete_favourite') }}',
-            data: {
-                'id': id
-            },
-            success: function (data) {
-                if (data.status == true) {
-                    Toast.fire({
-                        icon: 'success',
-                        title: data.message
-                    })
-                    appendData(data.view);
-                } else {
-                    Toast.fire({
-                        icon: 'error',
-                        title: data.message
-                    })
-                }
+        Swal.fire({
+            title: 'Bạn đồng ý xoá?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Đồng ý'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('site.user.delete_favourite') }}',
+                    data: {
+                        'product_id': product_id
+                    },
+                    success: function (data) {
+                        if (data.status == true) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: data.message
+                            })
+                            appendData(data.view);
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: data.message
+                            })
+                        }
 
-            },
-            error: function (data) {
-                Toast.fire({
-                    icon: 'error',
-                    title: 'Có lỗi xảy ra'
-                })
+                    },
+                    error: function (data) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Có lỗi xảy ra'
+                        })
+                    }
+                });
+
             }
-        });
+        })
     }
     function appendData(data) {
         $('#pageContent').empty();

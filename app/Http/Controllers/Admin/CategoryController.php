@@ -6,6 +6,7 @@ use App\Components\Recusive;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -94,11 +95,19 @@ class CategoryController extends Controller
     public function delete(Request $request){
         $id = $request->id;
         $category = Category::query()->findOrFail($id);
+        $product = Product::query()->where('category_id', $id)->first();
+        if($product){
+            return response()->json([
+                'success' => false,
+                'message' => 'Không thể xoá, danh mục này còn sản phẩm'
+            ]);
+        }
         $category->is_deleted = 1;
         $category->save();
 
         $categories = $this->getAll();
         return response()->json([
+            'success' => true,
             'view' => view('admin.category.data', [
                 'categories' => $categories
             ])->render()

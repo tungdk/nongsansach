@@ -1,6 +1,4 @@
 @extends('layouts.layout_site')
-@section('css')
-@endsection
 @section('content')
     <section class="bread_crumb py-4">
         <div class="container">

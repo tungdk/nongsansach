@@ -137,6 +137,7 @@
                         <button type="button" class="btn" tabindex="6"
                                 style="background-color: red; width: 100%; color: white" onclick="check_out()">Đặt hàng
                         </button>
+                        <div id="paypal-button" hidden></div>
                     </div>
                 </div>
             </div>
@@ -144,49 +145,47 @@
     </div>
 @endsection
 @section('js')
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script>
-        function check_coupon(){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: 'POST',
-                url: '{{route('site.check_coupon')}}',
-                data: {
-                    'coupon': $('#coupon').val()
-                },
-                success: function (data){
-                    if(data.status === true){
-                        $('.error_coupon').empty();
-                        $('.error_coupon').append(data.message);
-                        $('.error_coupon').show();
+        var vnd_to_usd = {{ $total }};
+        var total_money = Math.ceil(vnd_to_usd / 23000);
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AXiaINF8v6itpsxjVt-8DPQV35_2s_pnh9mo3FHchR4_ur5NI1JEq7Q5EyjHB9-ylYwySJo2VxaYm6kO',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
 
-                        let conpon = ({{$total}} * data.sale)/100;
-                        $('.value_coupon').empty();
-                        $('.value_coupon').append( '-' + conpon + ' đ');
+            // Enable Pay Now checkout flow (optional)
+            commit: true,
 
-                        let thanhtien = {{$total}} - conpon;
-                        $('.all_total').empty();
-                        $('.all_total').append(thanhtien+' đ');
+            // Set up a payment
+            payment: function(data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: total_money,
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            // Execute the payment
+            onAuthorize: function(data, actions) {
+                return actions.payment.execute().then(function() {
+                    var success = 'true';
+                });
+            }
+        }, '#paypal-button');
 
-                        $('#coupon_id').empty();
-                        $('#coupon_id').append(data.id);
-
-                    }
-                    else {
-                        $('.error_coupon').empty();
-                        $('.error_coupon').append(data.message);
-                        $('.error_coupon').show();
-                    }
-                },
-                error: function (data){
-
-                }
-
-            });
-        }
 
         function check_out(){
             if($('#name').val() === "" || $('#phone').val() === "" || $('#address').val() === "" ){
@@ -196,6 +195,15 @@
                 })
                 return false;
             }
+
+            // if(document.querySelector('input[name = "payment_method"]:checked').value == 1){
+            //     $('#paypal-button').submit();
+            //     if(success != 'true'){
+            //         window.alert('Số dư tài khoản của bạn không đủ');
+            //         return false;
+            //     }
+            // }
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -245,6 +253,49 @@
                         icon: 'error',
                         title: 'Có lỗi xảy ra'
                     })
+                }
+            });
+        }
+
+        function check_coupon(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: '{{route('site.check_coupon')}}',
+                data: {
+                    'coupon': $('#coupon').val()
+                },
+                success: function (data){
+                    if(data.status === true){
+                        $('.error_coupon').empty();
+                        $('.error_coupon').append(data.message);
+                        $('.error_coupon').show();
+
+                        let x = {{$total}} * data.sale;
+                        let conpon = x/100;
+                        $('.value_coupon').empty();
+                        $('.value_coupon').append( '-' + conpon + ' đ');
+
+                        let thanhtien = {{$total}} - conpon;
+                        $('.all_total').empty();
+                        $('.all_total').append(thanhtien+' đ');
+
+                        $('#coupon_id').empty();
+                        $('#coupon_id').append(data.id);
+
+                    }
+                    else {
+                        $('.error_coupon').empty();
+                        $('.error_coupon').append(data.message);
+                        $('.error_coupon').show();
+                    }
+                },
+                error: function (data){
+
                 }
 
             });

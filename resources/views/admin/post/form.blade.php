@@ -75,7 +75,7 @@
             </div>
             <div class="box-body block-images">
                 <div style="margin-bottom: 10px">
-                    <img src="{{ isset($post->thumbnail) ? pare_url_file($post->thumbnail) : '/images/no-image.jpg' }}" class="img-thumbnail"
+                    <img src="{{ isset($post->thumbnail) ? asset('uploads/posts/'.$post->thumbnail) : asset('images/no-image.jpg') }}" class="img-thumbnail"
                          onerror="this.onerror=null;this.src='images/no-image.jpg'" alt=""
                          style="width:200px; height:200px">
                 </div>

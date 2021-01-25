@@ -120,14 +120,11 @@
             </div>
             <div class="box-body block-images">
                 <div style="margin-bottom: 10px">
-                    <img src="/images/no-image.jpg" class="img-thumbnail"
-                         onerror="this.onerror=null;this.src='images/no-image.jpg'" alt=""
-                         style="width:200px; height:200px">
+                    <img src="{{ isset($product->avatar) ? asset('uploads/products/'.$product->avatar) : asset('images/no-image.jpg') }}" class="img-thumbnail" onerror="this.onerror=null;this.src='{{asset('public/images/no-image.jpg')}}" alt="" style="width:200px; height:200px">
                 </div>
                 <div style="position: relative;">
                     <a href="javascript:;" class="btn btn-primary">Choose File....
-                        <input type="file"
-                               style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"
+                        <input type="file" style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"
                                name="avatar" size="40" class="js-upload">
                     </a>
                     &nbsp;
@@ -135,30 +132,6 @@
                 </div>
             </div>
         </div>
-{{--        <div class="box box-warning">--}}
-{{--            <div class="box-header with-border">--}}
-{{--                <h3 class="box-title">Ảnh khác</h3>--}}
-{{--            </div>--}}
-{{--            <div>--}}
-{{--                <a href="#" onclick="">Thêm ảnh</a>--}}
-{{--            </div>--}}
-{{--            <div class="box-body block-images add_image">--}}
-{{--                <div style="margin-bottom: 10px">--}}
-{{--                    <img src="{{url('/')}}/public/uploads/brand/" class="img-thumbnail"--}}
-{{--                         onerror="this.onerror=null;this.src='{{asset('images/no-image.jpg')}}" alt=""--}}
-{{--                         style="width:200px; height:200px">--}}
-{{--                </div>--}}
-{{--                <div style="position: relative;">--}}
-{{--                    <a href="javascript:;" class="btn btn-primary">Choose File....--}}
-{{--                        <input type="file"--}}
-{{--                               style="position:absolute;z-index:2;top:0;left:0;opacity:0;background-color:transparent"--}}
-{{--                               name="avatar-other" size="40" class="js-upload">--}}
-{{--                    </a>--}}
-{{--                    &nbsp;--}}
-{{--                    <span class="label label-info" id="upload-file-info"></span>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
 
     <div class="clearfix"></div>
@@ -177,15 +150,7 @@
     <script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
     <script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script>
-        var options = {
-            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
-            entities_latin: false
-        };
         CKEDITOR.replace('idContent', options);
-
     </script>
 @endsection
 

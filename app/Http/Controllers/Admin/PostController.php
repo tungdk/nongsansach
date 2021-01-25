@@ -59,6 +59,10 @@ class PostController extends Controller
         }
         $data['updated_at'] = Carbon::now();
         $post->update($data);
+        Session::flash('toastr', [
+            'type' => 'success',
+            'message' => 'Cập nhật bài viết thành công'
+        ]);
         return redirect()->back();
     }
 
@@ -66,6 +70,10 @@ class PostController extends Controller
         $post = Post::query()->findOrFail($id);
         $post->status = ! $post->status;
         $post->save();
+        Session::flash('toastr', [
+            'type' => 'success',
+            'message' => 'Cập nhật bài viết thành công'
+        ]);
         return redirect()->back();
     }
 
@@ -78,6 +86,10 @@ class PostController extends Controller
     public function delete($id){
         $post = Post::query()->findOrFail($id);
         if($post) $post->delete();
+        Session::flash('toastr', [
+            'type' => 'success',
+            'message' => 'Xoá bài viết thành công'
+        ]);
         return redirect()->back();
     }
 

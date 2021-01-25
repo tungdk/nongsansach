@@ -87,12 +87,17 @@ function delete_item(id) {
                 },
                 success: function (data) {
                     $('#overlay').addClass('hidden');
-                    $('#table-list').empty();
-                    $('#table-list').append(data.view);
-                    toastr.success("Xoá thành công", 'Thành công');
+                    if(data.success == true){
+                        $('#table-list').empty();
+                        $('#table-list').append(data.view);
+                        toastr.success("Xoá thành công", 'Thành công');
+                    }
+                    else {
+                        toastr.error(data.message, 'Thất bại');
+                    }
                 },
                 error: function (data) {
-                    toastr.error("Có lỗi xảy ra, liên hệ với quản trị viên", 'Thành công');
+                    toastr.error("Có lỗi xảy ra, liên hệ với quản trị viên", 'Thất bại');
                 }
             });
         }

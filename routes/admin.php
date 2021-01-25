@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('active/{id}', [ProductController::class, 'active'])->name('admin.product.active');
         Route::get('hot/{id}', [ProductController::class, 'hot'])->name('admin.product.hot');
 
-        Route::delete('delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
+        Route::post('delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
 
         Route::post('sendMail', [ProductController::class, 'sendMail'])->name('admin.product.sendMail');
 

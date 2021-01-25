@@ -8,7 +8,7 @@
             <div class="col-md-2">
                 <div class="account-body-avatar">
                     <img class="media-object"
-                         src="{{ asset('uploads/products/'.$cmt->product->avatar)}}" alt="">
+                         src="{{ asset('uploads/products/'.$cmt->product->avatar)}}" alt="" style="width: 100%; height: 100%">
                 </div>
             </div>
             <div class="col-md-8">
@@ -19,7 +19,7 @@
                     <span class="time">{{$cmt->created_at}}</span>
                 </div>
                 <div class="account-body-item account-body-post-title">
-                    <a href="">{{$cmt->product->name}}</a>
+                    <a href="{{ route('site.product.detail', ['id'=>$cmt->product_id, 'slug'=>$cmt->product->slug]) }}">{{$cmt->product->name}}</a>
                 </div>
             </div>
             <div class="clearfix"></div>

@@ -26,24 +26,20 @@ class ProductController extends Controller
     {
         $products = Product::with('category:id, c_name');
         if ($id = $request->id)
-            $products->where('id', $id)->orderByDesc('created_at');
+            $products->where('id', $id)->orderByDesc('created_at')->where('status', 1);
         if ($name = $request->name)
-            $products->where('name', 'like', '%' . $name . '%')->orderByDesc('created_at');
+            $products->where('name', 'like', '%' . $name . '%')->where('status', 1)->orderByDesc('created_at');
         if (request()->type === 'active')
         {
-            $products = Product::where('status', 1)->where('quantity', '>', 10)->orderByDesc('created_at')->paginate(10);
+            $products = Product::where('status', 1)->where('quantity', '>', 10)->where('status', 1)->orderByDesc('created_at')->paginate(10);
         }
         elseif (request()->type === 'soldout')
         {
-            $products = Product::where('quantity', '<=', 10)->orderByDesc('created_at')->get();
-        }
-        elseif (request()->type === 'unlisted')
-        {
-            $products = Product::where('status', 0)->orderByDesc('created_at')->get();
+            $products = Product::where('quantity', '<=', 10)->where('status', 1)->orderByDesc('created_at')->get();
         }
         else
             {
-            $products = Product::query()->orderByDesc('created_at')->get();
+            $products = Product::query()->where('status', 1)->orderByDesc('created_at')->get();
         }
         $viewData = [
             'products' => $products
@@ -103,15 +99,30 @@ class ProductController extends Controller
             $data['avatar'] = upload_image('products', $request->avatar);
         }
         $product->update($data);
-
+        Session::flash('toastr', [
+            'type' => 'success',
+            'message' => 'Cập nhật sản phẩm thành công'
+        ]);
         return redirect()->back();
     }
 
     public function active($id)
     {
         $product = $this->product->findOrFailProduct($id);
-        $product->status = !$product->status;
-        $product->save();
+        if($product->quantity > 0){
+            Session::flash('toastr', [
+                'type' => 'error',
+                'message' => 'Sản phẩm còn hàng không thể xoá'
+            ]);
+        }
+        else{
+            $product->status = !$product->status;
+            $product->save();
+            Session::flash('toastr', [
+                'type' => 'success',
+                'message' => 'Cập nhật sản phẩm thành công'
+            ]);
+        }
         return redirect()->back();
     }
 
@@ -120,6 +131,10 @@ class ProductController extends Controller
         $product = $this->product->findOrFailProduct($id);
         $product->hot = !$product->hot;
         $product->save();
+        Session::flash('toastr', [
+            'type' => 'success',
+            'message' => 'Cập nhật sản phẩm thành công'
+        ]);
         return redirect()->back();
     }
 

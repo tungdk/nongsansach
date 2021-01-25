@@ -61,9 +61,6 @@
                     <li class="nav-item @if(request()->type === 'soldout') active @endif">
                         <a class="nav-link" href="{{route('admin.product.index') . '?type=soldout'}}">Hết hàng</a>
                     </li>
-                    <li class="nav-item @if(request()->type === 'unlisted') active @endif">
-                        <a class="nav-link" href="{{route('admin.product.index') . '?type=unlisted'}}">Đã ẩn</a>
-                    </li>
                 </ul>
             </div>
             <div class="box-body">
@@ -72,10 +69,8 @@
                     <tr>
                         <th>#</th>
                         <th style="width: 45%">Sản phẩm</th>
-                        {{--                                <th>Ảnh</th>--}}
                         <th style="width: 10%">Giá</th>
                         <th style="width: 10%">Số lượng</th>
-                        {{--                                <th>Trạng thái</th>--}}
                         <th style="width: 10%">Nổi bật</th>
                         <th style="width: 5%">Gửi mail</th>
                         <th>Thao tác</th>
@@ -144,7 +139,7 @@
                                     <a href="{{route('admin.product.edit', $product->id)}}"
                                        class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i>
                                         Sửa</a>
-                                    <a href="{{route('admin.product.delete', $product->id)}}"
+                                    <a href="{{route('admin.product.active', $product->id)}}"
                                        class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Xoá</a>
                                     @if($product->status == 1)
                                         <button class="btn btn-xs btn-default" onclick="send_mail({{$product->id}})"><i

@@ -341,14 +341,19 @@
     <script>
         window.onload = function () {
             load_comment();
-            // get_last_id();
         };
 
         function add_comment() {
-            {{--const _token = {{csrf_token()}};--}}
             let product_id = $('#product_id').val();
             let commentContent = $('#input-commentContent').val();
             let rating = $('#rating').val();
+            if(commentContent.trim() == ""){
+                Swal.fire({
+                    icon: 'error',
+                    text: "Bạn chưa nhập bình luận",
+                })
+                return false;
+            }
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -358,7 +363,6 @@
                 type: 'POST',
                 url: '{{ route('site.comment.store') }}',
                 data: {
-                    // 'token' : token,
                     'product_id': product_id,
                     'commentContent': commentContent,
                     'rating': rating
@@ -451,23 +455,32 @@
                     'quantity': quantity
                 },
                 success: function (data) {
-                    var count_cart = $('.cartCount2').text()
-                    var x = parseInt(count_cart);
-                    var y = x + 1;
-                    $('.cartCount2').text(y);
-                    $('.cartCount').text(y);
-                    Swal.fire({
-                        title: 'Thêm vào giỏ hàng thành công',
-                        icon: 'success',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: 'Tiếp tục mua hàng',
-                        confirmButtonText: 'Đi đến giỏ hàng',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "/cart";
-                        }
-                    })
+                    if(data.success == true){
+                        var count_cart = $('.cartCount2').text()
+                        var x = parseInt(count_cart);
+                        var y = x + 1;
+                        $('.cartCount2').text(y);
+                        $('.cartCount').text(y);
+                        Swal.fire({
+                            title: 'Thêm vào giỏ hàng thành công',
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: 'Tiếp tục mua hàng',
+                            confirmButtonText: 'Đi đến giỏ hàng',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/cart";
+                            }
+                        })
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: data.message,
+                        })
+                    }
+
                 },
                 error: function (data) {
                     openLoginModal();

@@ -10,7 +10,8 @@
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
                         <li>
-                            <a itemprop="url" href="{{route('site.category.index')}}"><span itemprop="title">Danh mục</span></a>
+                            <a itemprop="url" href="{{route('site.category.index')}}"><span
+                                    itemprop="title">Danh mục</span></a>
                             <span> <i class="fa fa-angle-right"></i> </span>
                         </li>
                         <li><strong><span itemprop="title"> {{$category->name}}</span></strong></li>
@@ -54,7 +55,7 @@
                                                                 style="font-size: 25px"> ₫{{number_format($product->price_new, 0, ',', '.')}}</span>
                                                         @else
                                                             <del style="font-size: 15px">
-                                                                ₫{{number_format($product->price_new, 0, ',', '.')}}</del>
+                                                                ₫{{number_format($product->price_old, 0, ',', '.')}}</del>
                                                             <span
                                                                 style="font-size: 25px"> ₫{{number_format($product->price_new, 0, ',', '.')}}</span>
                                                         @endif
@@ -83,14 +84,14 @@
                                 @empty
                                     <p>Danh mục này chưa có sản phẩm</p>
                                 @endforelse
-                                    <div class="clearfix m_xs_bottom_30">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
-                                            <!--pagination-->
-                                            <p style="vertical-align: top;padding-right: 10px"
-                                               class="d_inline_middle f_size_medium">{{ $products->links('vendor/pagination/bootstrap-4') }} </p>
-                                        </div>
-
+                                <div class="clearfix m_xs_bottom_30">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+                                        <!--pagination-->
+                                        <p style="vertical-align: top;padding-right: 10px"
+                                           class="d_inline_middle f_size_medium">{{ $products->links('vendor/pagination/bootstrap-4') }} </p>
                                     </div>
+
+                                </div>
                             @endif
                         </div>
                         <aside class="dqdt-sidebar sidebar left left-content col-lg-3">

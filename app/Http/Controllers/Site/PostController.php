@@ -9,14 +9,21 @@ use Illuminate\Http\Request;
 
 class PostController extends SiteController
 {
+    public function __construct(PostCategory $postCategory)
+    {
+        parent::__construct();
+        $this->postCategory = $postCategory;
+    }
+
     public function index()
     {
         $posts = Post::query()->where('status', 1)
+            ->orderByDesc('updated_at')
             ->paginate(8, ['id', 'title', 'description', 'slug', 'thumbnail', 'updated_at']);
         $viewData = [
             'recent_products' => $this->five_new_product(),
             'five_post_best_views' => $this->five_hot_news(),
-            'post_categories' => $this->post_category(),
+            'post_categories' => $this->postCategory->getPostCategory(),
             'posts' => $posts
         ];
         return view('site.post.index', $viewData);
